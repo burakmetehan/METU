@@ -1,5 +1,8 @@
 /*
-	Burak Metehan Tunçel
+	Burak Metehan Tunçel/2468726
+	2020-2021
+	METU CENG  
+	CENG 140: Take Home Exam 2	
 */
 #include <stdlib.h>
 #include <stdio.h>
@@ -46,7 +49,6 @@ void modified_selection_sort(unsigned int* drivers_id, float* sum_lap_times, flo
 }
 
 /* THE2 Functions */
-
 float*** create_sector_times(unsigned int* n_drivers, unsigned int* n_laps){
 	float ***sector_times;
 	int i, j, k;
