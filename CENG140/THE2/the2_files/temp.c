@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 float* selection_sort(float* arr, unsigned int len, char ord){
 	float *sorted_arr;
 	int i, j;
@@ -49,9 +48,6 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 
 	return sorted_arr;
 }
-
-
-
 
 int main(){
 	float *sorted;

@@ -7,7 +7,43 @@
 #define n_sector 3
 
 /* THE2 Helper Funtions */
+void modified_selection_sort(unsigned int* drivers_id, float* sum_lap_times, float n_drivers){
+	int i, j;
+	int min_index; /* While iterating, index of minimum value will be stored */
+	
+	for(i=0; i<n_drivers; i++)
+	{
+		/* Searching for min index */
+		for(min_index = i, j = i+1; j<n_drivers; j++)
+		{
+			if(sum_lap_times[j] < sum_lap_times[min_index])
+			{
+				min_index = j;
+			}else;
+		}
 
+		/* Swapping */
+		/*
+		I need to swap both drivers IDs and sum_lap_times by using same index
+		*/
+		if(min_index != i)
+		{
+			float temp;
+			
+			/* Swapping lap times */
+			temp = sum_lap_times[i];
+			sum_lap_times[i] = sum_lap_times[min_index];
+			sum_lap_times[min_index] = temp;
+
+			/* Swapping Drivers' IDs */
+			temp = drivers_id[i];
+			drivers_id[i] = drivers_id[min_index];
+			drivers_id[min_index] = temp;
+		}else;
+	}
+	
+	return;
+}
 
 /* THE2 Functions */
 
@@ -217,20 +253,20 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 
 unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers, unsigned int n_laps){
 	unsigned int *finishing_positions;
-	unsigned int *drivers_id;
 	float *sum_of_lap_time;
 	
 	int i, j;
 	float sum; /* Used for sum of lap times */
 
-	/* Allocating helper drivers' id array and filling it */
-	drivers_id = (unsigned int *) malloc(sizeof(unsigned int) * n_drivers);
-	for(i=0; i<n_drivers; i++) drivers_id[i] = i;
+	/* Allocating finishing_positions array and filling it */
+	finishing_positions = (unsigned int *) malloc(sizeof(unsigned int) * n_drivers);
+	for(i=0; i<n_drivers; i++) finishing_positions[i] = i;
+	/* It is filled with numbers [0, n_drivers]. It will be changed according to lap times in modified sort function */
 
 	/* 
 	Allocating helper lap time sums array 
 	This array's values will be the sum of the lap times
-	They will fit with the indexes of drivers_id
+	They will fit with the indexes of finishing_positions
 	*/
 	sum_of_lap_time = (float *) malloc(sizeof(float) * n_drivers);
 	for(i=0; i<n_drivers; i++)
@@ -238,7 +274,7 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 		for(sum=0, j=0; j<n_laps; j++)
 		{
 			/* Calculating sum */
-			sum += lap_times[i][j];			
+			sum += lap_times[i][j];
 		}
 		/* Assigning the sum */
 		sum_of_lap_time[i] = sum;
@@ -246,35 +282,96 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 
 	/* 
 	I have two additional arrays
-		The drivers_id array includes the drivers' id
+		The finishing_positions array includes the drivers' id
 		The sum_of_lap_time array includes the sum of the lap times
-	sum_of_lap_time[index] has the total lap times of the drivers_id[index] ('index'th driver)
+	sum_of_lap_time[index] has the total lap times of the finishing_positions[index] ('index'th driver)
 
 	Therefore, I can use modified version of the selection sort that I have done coding above.
-	The sorting will be done on sum_of_lap_time and at the same time I will change the drivers_id array with same index.
+	The sorting will be done on sum_of_lap_time and at the same time I will change the finishing_positions array with same index.
 	In the end, I will have finishing positions.	
 	*/
-
+	modified_selection_sort(finishing_positions, sum_of_lap_time, n_drivers);
 
 	/* Freeing used memory that will not returned  */
-	free(drivers_id);
 	free(sum_of_lap_time);
 
+	/* Returning */
 	return finishing_positions;
 }
 
 
-float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_laps, unsigned int driver1,
-	unsigned int driver2){
-	return NULL;
+float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_laps, unsigned int driver1, unsigned int driver2){
+	float *time_diff;
+	int i;
+
+	/* Allocating necessary memory to store the time differences */
+	time_diff = (float *) malloc(sizeof(float) * n_laps);
+
+	/* Since the differences are accumulated, it can be better initiliaze first difference by hand instead of if inside of for loop */
+	time_diff[0] = lap_times[driver1][0] - lap_times[driver2][0];
+
+	/* Calculating time differences accumulatively */
+	for(i=1; i < n_laps; i++)
+	{
+		time_diff[i] = time_diff[i-1] + (lap_times[driver1][i] - lap_times[driver2][i]);
+	}
+
+	/* Returning */
+	return time_diff;
 }
 
 
 unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_drivers, unsigned int n_races){
-	return NULL;
+	unsigned int *total_points;
+	int *position_map;
+	int i, j;
+
+	/* Allocating necessary memory to store the position map and taking input */
+	position_map = (int *) malloc(sizeof(int) * p_drivers);
+	for(i=0; i < p_drivers; i++)
+	{
+		scanf("%d", &position_map[i]);
+	}
+
+	/* Allocating necessary memory to store the total_points */
+	total_points = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
+
+	/* Calculating and assigning the calculated value */
+	for(i=0; i < p_drivers; i++)
+	{
+		unsigned int sum;
+		for(sum=0, j=0; j < n_races; j++)
+		{
+			sum += position_map[positions[i][j]-1];
+		}
+		total_points[i] = sum;
+	}
+
+	/* Freeing used memory that will not returned  */
+	free(position_map);
+
+	/* Returning */
+	return total_points;
 }
 
 
 unsigned int find_season_ranking(int* total_points, unsigned int p_drivers, unsigned int id){
-	return 0;
+	unsigned int season_rank;
+	int i, point_of_id;
+
+	/* 
+	Initially, I think season rank of driver is 1. 
+	If there is a higher points in total_points array, rank will increase 1.
+	If there is same points I need to check the id number.
+	*/
+	point_of_id = total_points[id];
+	for(season_rank=1, i=0; i < p_drivers; i++)
+	{
+		if(total_points[i] > point_of_id) season_rank++;
+		else if(total_points[i] == point_of_id && i < id) season_rank++;
+		else;		
+	}
+
+	/* Returning */
+	return season_rank;
 }

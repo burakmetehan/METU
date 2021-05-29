@@ -24,37 +24,15 @@ int main(){
 	fastest_lap = find_fastest_lap(lap_times, ...);
 	printf("Printing fastest lap to check the answer: %d\n", fastest_lap);
 	*/
-	float *sorted;
-	float arr[] = {3.0, 2.0, 7.0, 9.0, 4.0};
-	int len=5;
+	int total_points[10] = {77, 92, 60, 55, 85, 94, 85, 66, 60, 59};
 	int i;
+	unsigned int p_drivers = 10;
+
+	for(i=0; i<p_drivers; i++)
+	{
+		printf("%u ", find_season_ranking(total_points, p_drivers, i));
+	}
 	
-	sorted = selection_sort(arr, 5, 'A');
-	for(i=0; i<len; i++)
-	{
-		printf("%f ", arr[i]);
-	}
-	printf("\n");
-	for(i=0; i<len; i++)
-	{
-		printf("%f ", sorted[i]);
-	}
-	printf("\n");
-	free(sorted);
-
-	sorted = selection_sort(arr, 5, 'D');
-	for(i=0; i<len; i++)
-	{
-		printf("%f ", arr[i]);
-	}
-	printf("\n");
-	for(i=0; i<len; i++)
-	{
-		printf("%f ", sorted[i]);
-	}
-	printf("\n");
-	free(sorted);
-
 	return 0;
 }
 
@@ -237,4 +215,125 @@ free(sorted);
 2.000000 3.000000 4.000000 7.000000 9.000000 
 3.000000 2.000000 7.000000 9.000000 4.000000 
 9.000000 7.000000 4.000000 3.000000 2.000000 
+*/
+
+/* Find Finishing Positions
+float lap_times_arr[3][3] = {
+	{88.419998, 85.699997, 82.209999}, // Driver_0 = 256.33
+	{84.479996, 80.180000, 87.289993}, // Driver_1 = 251.95
+	{89.419998, 86.699997, 83.209999}  // Driver_2 = 259.33
+};
+unsigned int n_drivers=3, n_laps=3;
+int i, j;
+unsigned int *finishing_positions;
+float** lap_times;
+lap_times = (float **) malloc(sizeof(float *)*n_drivers);
+
+for(i=0; i<n_drivers; i++)
+{
+	lap_times[i] = (float *) malloc(sizeof(float)*n_laps);
+	for (j=0; j < n_laps; j++)
+	{
+		lap_times[i][j] = lap_times_arr[i][j];
+	}		
+}
+
+finishing_positions = find_finishing_positions(lap_times, n_drivers, n_laps);
+
+for(i=0; i<n_drivers; i++)
+{
+	printf("%u ", finishing_positions[i]);
+}
+
+free(lap_times);
+free(finishing_positions);
+
+// out file:
+1 0 2
+
+*/
+
+/* Find Time Differences
+float lap_times_arr[3][3] = {
+	{88.419998, 85.699997, 82.209999}, // Driver_0 = 256.33
+	{84.479996, 80.180000, 87.289993}, // Driver_1 = 251.95
+	{89.419998, 86.699997, 83.209999}  // Driver_2 = 259.33
+};
+unsigned int n_drivers=3, n_laps=3;
+int i, j;
+float *time_diff;
+float** lap_times;
+lap_times = (float **) malloc(sizeof(float *)*n_drivers);
+
+for(i=0; i<n_drivers; i++)
+{
+	lap_times[i] = (float *) malloc(sizeof(float)*n_laps);
+	for (j=0; j < n_laps; j++)
+	{
+		lap_times[i][j] = lap_times_arr[i][j];
+	}		
+}
+
+time_diff = find_time_diff(lap_times, n_drivers, n_laps, 1, 2);
+
+for(i=0; i<n_drivers; i++)
+{
+	printf("%f ", time_diff[i]);
+}
+
+free(lap_times);
+free(time_diff);
+
+// out file:
+-4.940002 -11.459999 -7.380005 
+*/
+
+/* Calculate Total Points
+unsigned int positions_arr[10][4] = {
+	{1, 2, 2, 4},
+	{3, 1, 5, 6},
+	{1, 2, 2, 4},
+	{3, 1, 5, 6},
+	{1, 2, 2, 4},
+	{3, 1, 5, 6},
+	{1, 2, 2, 4},
+	{3, 1, 5, 6},
+	{1, 2, 2, 4},
+	{3, 1, 5, 6}
+};
+unsigned int p_drivers=10, n_races=4;
+int i, j;
+unsigned int *total_points;
+unsigned int **positions;
+positions = (unsigned int **) malloc(sizeof(unsigned int *)*p_drivers);
+
+for(i=0; i<p_drivers; i++)
+{
+	positions[i] = (unsigned int *) malloc(sizeof(unsigned int)*n_races);
+	for (j=0; j < n_races; j++)
+	{
+		positions[i][j] = positions_arr[i][j];
+	}		
+}
+
+total_points = calculate_total_points(positions, p_drivers, n_races);
+
+for(i=0; i<p_drivers; i++)
+{
+	printf("%u ", total_points[i]);
+}
+
+// out file:
+73 58 73 58 73 58 73 58 73 58 
+*/
+
+/* Find Season Ranking
+int total_points[10] = {77, 92, 60, 55, 85, 94, 85, 66, 60, 59};
+int i;
+unsigned int p_drivers = 10;
+
+for(i=0; i<p_drivers; i++)
+{
+	printf("%u ", find_season_ranking(total_points, p_drivers, i));
+}
 */
