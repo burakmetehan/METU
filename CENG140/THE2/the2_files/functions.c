@@ -183,6 +183,7 @@ unsigned int find_driver_fastest_lap(float lap_times_of_driver[][3], unsigned in
 		
 		if(sum < min_time)
 		{
+			min_time = sum;
 			driver_fastest_lap = i;
 		}else;
 	}
@@ -332,7 +333,7 @@ unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_dr
 	position_map = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
 	for(i=0; i < p_drivers; i++)
 	{
-		scanf("%d", &position_map[i]);
+		scanf("%u", &position_map[i]);
 	}
 
 	/* Allocating necessary memory to store the total_points */

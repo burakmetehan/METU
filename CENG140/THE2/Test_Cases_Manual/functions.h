@@ -15,6 +15,6 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_laps, unsigned int driver1,
     unsigned int driver2);
 unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_drivers, unsigned int n_races);
-unsigned int find_season_ranking(int* total_points, unsigned int p_drivers, unsigned int id);
+unsigned int find_season_ranking(unsigned int* total_points, unsigned int p_drivers, unsigned int id);
 
 #endif
