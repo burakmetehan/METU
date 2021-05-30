@@ -325,11 +325,11 @@ float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_
 
 unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_drivers, unsigned int n_races){
 	unsigned int *total_points;
-	int *position_map;
+	unsigned int *position_map;
 	int i, j;
 
 	/* Allocating necessary memory to store the position map and taking input */
-	position_map = (int *) malloc(sizeof(int) * p_drivers);
+	position_map = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
 	for(i=0; i < p_drivers; i++)
 	{
 		scanf("%d", &position_map[i]);
@@ -357,7 +357,7 @@ unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_dr
 }
 
 
-unsigned int find_season_ranking(int* total_points, unsigned int p_drivers, unsigned int id){
+unsigned int find_season_ranking(unsigned int* total_points, unsigned int p_drivers, unsigned int id){
 	unsigned int season_rank;
 	int i, point_of_id;
 
