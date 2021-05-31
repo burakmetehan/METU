@@ -12,6 +12,15 @@ If you want to compile again, you need to delete the previous executable.
 You may do this by "make clean" or simply "rm main"
 */
 
+void print_time_diff(float* time_diff, int len){
+	int i;
+	for(i=0; i<len; i++)
+	{
+		printf("%.2f ", time_diff[i]);
+	}printf("\n");
+}
+
+
 int main(){
 	/*
 	Function calls here to test your code
@@ -24,27 +33,39 @@ int main(){
 	fastest_lap = find_fastest_lap(lap_times, ...);
 	printf("Printing fastest lap to check the answer: %d\n", fastest_lap);
 	*/
-	int total_points[10] = {77, 92, 60, 55, 85, 94, 85, 66, 60, 59};
-	int i;
-	unsigned int p_drivers = 10;
+	unsigned int **positions;
+	unsigned int *total_points;
+	unsigned int n_drivers, n_laps;
+	unsigned int p_drivers, n_races;
+	unsigned int i, j, k;
+	
+	positions = create_positions(&p_drivers, &n_races);
+	total_points = calculate_total_points(positions, p_drivers, n_races);
 
-	for(i=0; i<p_drivers; i++)
+	for(i=0; i < p_drivers; i++)
+	{
+		printf("%u ", total_points[i]);
+	}
+	printf("\n");
+
+	/* find_season_ranking */
+	for(i=0; i < p_drivers; i++)
 	{
 		printf("%u ", find_season_ranking(total_points, p_drivers, i));
 	}
-	
+	printf("\n");
+
 	return 0;
 }
 
 /* Create Sector Times 
 
 float ***sector_times;
-int i,j,k;
+int i, j, k;
 unsigned int drivers, laps;
 
 sector_times = create_sector_times(&drivers, &laps);
 
-printf("\n");
 for(i=0; i<drivers; i++)
 {
 	for(j=0; j<laps; j++)
@@ -96,7 +117,7 @@ for(i=0; i<n_drivers; i++)
 {
 	for(j=0; j<n_laps; j++)
 	{
-		printf("%f ", lap_times[i][j]);
+		printf("%.2f ", lap_times[i][j]);
 	}
 	printf("\n");
 }
@@ -125,20 +146,14 @@ free(lap_times);
 /* Fastest Lap
 
 float ***sector_times, **lap_times;
-unsigned int **positions;
 unsigned int n_drivers, n_laps;
-unsigned int p_drivers, n_races;
-unsigned int fastest_lap;
 
 sector_times = create_sector_times(&n_drivers, &n_laps);
-positions = create_positions(&p_drivers, &n_races);
 lap_times = calculate_lap_times(sector_times, n_drivers, n_laps);
-fastest_lap = find_fastest_lap(lap_times, n_drivers, n_laps);
 
-printf("%u\n", fastest_lap);
+printf("%u\n", find_fastest_lap(lap_times, n_drivers, n_laps));
 
 free(sector_times);
-free(positions);
 free(lap_times);
 
 // in file:
@@ -159,133 +174,92 @@ free(lap_times);
 
 /* Find Driver Fastest Lap
 
-unsigned int n_drivers=2, n_laps=3;
-unsigned int fastest_lap;
-int i;
-float sector_time[2][3][3] = {
-	{{22.17, 34.85, 27.46}, {20.19, 32.48, 27.51}, {23.17, 35.10, 29.02}},
-	{{25.27, 33.65, 29.50}, {24.07, 36.47, 25.16}, {19.48, 33.17, 29.56}}
-};
+float*** sector_times;
+	unsigned int n_drivers, n_laps;
+	int i;
 
-for(i=0; i<n_drivers; i++)
-{
-	fastest_lap = find_driver_fastest_lap(sector_time[i], n_laps);
-	printf("%u\n", fastest_lap);
-}
-// out file:
-1
-2
+	sector_times = create_sector_times(&n_drivers, &n_laps);
+
+	for(i=0; i<n_drivers; i++)
+	{
+		printf("%u ", find_driver_fastest_lap(sector_times[i], n_laps));
+	}
+	printf("\n");
 */
 
 /* Selection Sort
 
-float *sorted;
-float arr[] = {3.0, 2.0, 7.0, 9.0, 4.0};
-int len=5;
-int i;
+void print_arr(float* arr_copy, int arr_len){
+	int i;
+	for(i=0; i<arr_len; i++)
+	{
+		printf("%.2f ", arr_copy[i]);
+	}
+	printf("\n");
+}
 
-sorted = selection_sort(arr, 5, 'A');
-for(i=0; i<len; i++)
-{
-	printf("%f ", arr[i]);
-}
-printf("\n");
-for(i=0; i<len; i++)
-{
-	printf("%f ", sorted[i]);
-}
-printf("\n");
-free(sorted);
+int arr_count = 15;
+int arr_len = 15;
+float *arr = (float *) malloc(sizeof(float) * arr_len);
+float *arr_copy;
+int i, j;
 
-sorted = selection_sort(arr, 5, 'D');
-for(i=0; i<len; i++)
+for(i=0; i<arr_count; i++)
 {
-	printf("%f ", arr[i]);
-}
-printf("\n");
-for(i=0; i<len; i++)
-{
-	printf("%f ", sorted[i]);
-}
-printf("\n");
-free(sorted);
+	for(j=0; j<arr_len; j++)
+	{
+		scanf("%f", &arr[j]);
+	}
 
-// out file:
-3.000000 2.000000 7.000000 9.000000 4.000000 
-2.000000 3.000000 4.000000 7.000000 9.000000 
-3.000000 2.000000 7.000000 9.000000 4.000000 
-9.000000 7.000000 4.000000 3.000000 2.000000 
+	arr_copy = selection_sort(arr, arr_len, 'A');
+	print_arr(arr_copy, arr_len);
+
+	arr_copy = selection_sort(arr, arr_len, 'D');
+	print_arr(arr_copy, arr_len);
+}
+free(arr);
 */
 
 /* Find Finishing Positions
-float lap_times_arr[3][3] = {
-	{88.419998, 85.699997, 82.209999}, // Driver_0 = 256.33
-	{84.479996, 80.180000, 87.289993}, // Driver_1 = 251.95
-	{89.419998, 86.699997, 83.209999}  // Driver_2 = 259.33
-};
-unsigned int n_drivers=3, n_laps=3;
-int i, j;
-unsigned int *finishing_positions;
-float** lap_times;
-lap_times = (float **) malloc(sizeof(float *)*n_drivers);
+float ***sector_times;
+float **lap_times;
+unsigned int *finishing_position;
+unsigned int n_drivers, n_laps;
+int i;
 
+sector_times = create_sector_times(&n_drivers, &n_laps);
+lap_times = calculate_lap_times(sector_times, n_drivers, n_laps);
+
+finishing_position = find_finishing_positions(lap_times, n_drivers, n_laps);
 for(i=0; i<n_drivers; i++)
 {
-	lap_times[i] = (float *) malloc(sizeof(float)*n_laps);
-	for (j=0; j < n_laps; j++)
-	{
-		lap_times[i][j] = lap_times_arr[i][j];
-	}		
-}
-
-finishing_positions = find_finishing_positions(lap_times, n_drivers, n_laps);
-
-for(i=0; i<n_drivers; i++)
-{
-	printf("%u ", finishing_positions[i]);
-}
-
-free(lap_times);
-free(finishing_positions);
-
-// out file:
-1 0 2
-
+	printf("%u ", finishing_position[i]);
+}printf("\n");
 */
 
 /* Find Time Differences
-float lap_times_arr[3][3] = {
-	{88.419998, 85.699997, 82.209999}, // Driver_0 = 256.33
-	{84.479996, 80.180000, 87.289993}, // Driver_1 = 251.95
-	{89.419998, 86.699997, 83.209999}  // Driver_2 = 259.33
-};
-unsigned int n_drivers=3, n_laps=3;
-int i, j;
-float *time_diff;
-float** lap_times;
-lap_times = (float **) malloc(sizeof(float *)*n_drivers);
+float ***sector_times;
+	float **lap_times;
+	float *time_diff;
+	unsigned int n_drivers, n_laps;
+	unsigned int i, j;
 
-for(i=0; i<n_drivers; i++)
-{
-	lap_times[i] = (float *) malloc(sizeof(float)*n_laps);
-	for (j=0; j < n_laps; j++)
+	sector_times = create_sector_times(&n_drivers, &n_laps);
+	lap_times = calculate_lap_times(sector_times, n_drivers, n_laps);
+
+ 	for(i=0; i<n_drivers; i++)
 	{
-		lap_times[i][j] = lap_times_arr[i][j];
-	}		
-}
-
-time_diff = find_time_diff(lap_times, n_drivers, n_laps, 1, 2);
-
-for(i=0; i<n_drivers; i++)
-{
-	printf("%f ", time_diff[i]);
-}
-
-free(lap_times);
-free(time_diff);
-
-// out file:
--4.940002 -11.459999 -7.380005 
+		for(j=i; j<n_drivers; j++)
+		{
+			if(i == j) continue;
+			else
+			{
+				time_diff = find_time_diff(lap_times, n_drivers, n_laps, i, j);
+				print_time_diff(time_diff, n_laps);
+			}
+		}
+	}
+	printf("\n");
 */
 
 /* Calculate Total Points

@@ -61,7 +61,9 @@ float*** create_sector_times(unsigned int* n_drivers, unsigned int* n_laps){
 	{
 		sector_times[i] = (float **) malloc(sizeof(float *) * (*n_laps));
 		for(j=0; j<*n_laps; j++)
+		{
 			sector_times[i][j] = (float *) malloc(sizeof(float) * n_sector);
+		}			
 	}
 
 	/* Reading the input */
@@ -158,7 +160,7 @@ unsigned int find_fastest_lap(float** lap_times, unsigned int n_drivers, unsigne
 }
 
 
-unsigned int find_driver_fastest_lap(float lap_times_of_driver[][3], unsigned int n_laps){
+unsigned int find_driver_fastest_lap(float** sector_times_of_driver, unsigned int n_laps){
 	/* 
 	I need to create and initiliaze the values of driver_fastest_lap and min_time because I will make comparison. 
 	While comparing, I will compare the previous value wiith the current value.
@@ -168,17 +170,17 @@ unsigned int find_driver_fastest_lap(float lap_times_of_driver[][3], unsigned in
 	int i, j;
 	/* Defining and Initializing the min_time */
 	float min_time, sum;
-	for(min_time=0, i=0; i<3; i++)
+	for(min_time=0, i=0; i<n_sector; i++)
 	{
-		min_time += lap_times_of_driver[0][i];
+		min_time += sector_times_of_driver[0][i];
 	}
-	
+
 	/* Calculating the lap time and comparing them */
-	for(i=1; i<n_laps; i++)
+	for(i=0; i<n_laps; i++)
 	{
-		for(sum=0, j=0; j<3; j++)
+		for(sum=0, j=0; j<n_sector; j++)
 		{
-			sum += lap_times_of_driver[i][j];
+			sum += sector_times_of_driver[i][j];
 		}
 		
 		if(sum < min_time)

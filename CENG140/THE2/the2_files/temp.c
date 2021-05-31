@@ -50,21 +50,13 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 }
 
 int main(){
-	float *sorted;
-	float arr[] = {3.0, 2.0, 7.0, 9.0, 4.0};
-	int i;
-	
-	sorted = selection_sort(arr, 5, 'D');
-
-	for(i=0; i<5; i++)
-	{
-		printf("%f ", arr[i]);
-	}
-	printf("\n");
-	for(i=0; i<5; i++)
-	{
-		printf("%f ", sorted[i]);
-	}
+	int i, j, k;
+	for(i=0; i < 3; i++)
+		for(j=0; j < 3; j++)
+			for(k=0; k < 3; k++)
+				printf("%d,%d,%d ", i, j, k);
+			printf("\n");
+		printf("\n");
 
 	return 0;
 }
