@@ -2,8 +2,8 @@
 #include "functions.h"
 
 #define n_sector 3
-#define arr_count 15
-#define arr_len 15
+#define arr_count 25
+#define arr_len 25
 
 
 void print_sector_times(float*** sector_times, unsigned int n_drivers, unsigned int n_laps){
