@@ -8,11 +8,11 @@
 
 void print_sector_times(float*** sector_times, unsigned int n_drivers, unsigned int n_laps){
 	int i, j, k;
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
-		for(j=0; j<n_laps; j++)
+		for(j = 0; j < n_laps; j++)
 		{
-			for(k=0; k<3; k++)
+			for(k = 0; k < 3; k++)
 			{
 				printf("%.2f ", sector_times[i][j][k]);
 			}
@@ -24,9 +24,9 @@ void print_sector_times(float*** sector_times, unsigned int n_drivers, unsigned 
 
 void print_positions(unsigned int** positions, unsigned int p_drivers, unsigned int n_races){
 	int i, j;
-	for(i=0; i < p_drivers; i++)
+	for(i = 0; i < p_drivers; i++)
 	{
-		for(j=0; j < n_races; j++)
+		for(j = 0; j < n_races; j++)
 		{
 			printf("%u ", positions[i][j]);
 		}
@@ -37,9 +37,9 @@ void print_positions(unsigned int** positions, unsigned int p_drivers, unsigned 
 
 void print_lap_times(float** lap_times, unsigned int n_drivers, unsigned int n_laps){
 	int i, j;
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
-		for(j=0; j<n_laps; j++)
+		for(j = 0; j < n_laps; j++)
 		{
 			printf("%.2f ", lap_times[i][j]);
 		}
@@ -55,7 +55,7 @@ void print_fastest_lap(float** lap_times, unsigned int n_drivers, unsigned int n
 
 void print_driver_fastest_lap(float*** sector_times, unsigned int n_drivers, unsigned int n_laps){
 	int i;
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 		printf("%u ", find_driver_fastest_lap(sector_times[i], n_laps));
 	printf("\n");
 }
@@ -63,7 +63,7 @@ void print_driver_fastest_lap(float*** sector_times, unsigned int n_drivers, uns
 
 void print_arr(float* arr_copy){
 	int i;
-	for(i=0; i<arr_len; i++)
+	for(i = 0; i < arr_len; i++)
 	{
 		printf("%.2f ", arr_copy[i]);
 	}
@@ -75,9 +75,9 @@ void test_print_selection_sort(void){
 	float *arr = (float *) malloc(sizeof(float) * arr_len);
 	float *arr_copy;
 
-	for(i=0; i<arr_count; i++)
+	for(i = 0; i < arr_count; i++)
 	{
-		for(j=0; j<arr_len; j++)
+		for(j = 0; j < arr_len; j++)
 		{
 			scanf("%f", &arr[j]);
 		}

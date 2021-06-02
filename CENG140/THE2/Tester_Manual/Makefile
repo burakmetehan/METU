@@ -1,10 +1,10 @@
-test:
-	gcc functions_test.c functions.c print_functions.c -ansi -Wall -pedantic-errors -o function_test
-clean_test:
-	rm function_test
+creator:
+	gcc tester_creator.c functions.c print_functions.c -ansi -Wall -pedantic-errors -o tester_creator
+clean_creator:
+	rm tester_creator
 clean_output:
-	rm function_test_check_result function_test_output_calls
+	rm tester_creator_output tester_result
 run:
-	./function_test < function_test_input > function_test_output_calls
+	./tester_creator < tester_input > tester_creator_output
 check:
-	python3 function_test_check.py > function_test_check_result
+	python3 tester.py > tester_result

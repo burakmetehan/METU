@@ -26,4 +26,5 @@ void print_time_diff(float** lap_times, float* time_diff, unsigned int n_drivers
 void print_total_points(unsigned int* total_points, unsigned int p_drivers);
 
 void print_season_ranking(unsigned int* total_points, unsigned int p_drivers);
+
 #endif

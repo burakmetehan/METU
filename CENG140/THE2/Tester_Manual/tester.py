@@ -1,28 +1,25 @@
-from os import close
 
 
-manual = open("./function_test_output_manual", "r")
-function = open("./function_test_output_calls", "r")
+manual = open("./tester_output_manual", "r")
+creator = open("./tester_creator_output", "r")
 
 man = manual.read().splitlines()
-func = function.read().splitlines()
+crtr = creator.read().splitlines()
 
 """ First Check """
-print("First Check")
 for i in range(len(man)):
-	if man[i] == func[i]:
+	if man[i] == crtr[i]:
 		print("Line {} is True".format(i+1))
 	else:
 		print("Line {} is False".format(i+1))
 
-print("Second Check")
 """ Second Check: Detail Check """
 for i in range(len(man)):
 	man_detail = man[i].split()
-	func_detail = func[i].split()
+	crtr_detail = crtr[i].split()
 	correct = 1
 	for j in range(len(man_detail)):
-		if man_detail[j] == func_detail[j]:
+		if man_detail[j] == crtr_detail[j]:
 			continue
 		else:
 			correct = 0
@@ -33,4 +30,4 @@ for i in range(len(man)):
 
 
 manual.close()
-function.close()
+creator.close()
