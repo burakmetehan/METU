@@ -14,10 +14,10 @@ void modified_selection_sort(unsigned int* drivers_id, float* sum_lap_times, flo
 	int i, j;
 	int min_index; /* While iterating, index of minimum value will be stored */
 	
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
 		/* Searching for min index */
-		for(min_index = i, j = i+1; j<n_drivers; j++)
+		for(min_index = i, j = i+1; j < n_drivers; j++)
 		{
 			if(sum_lap_times[j] < sum_lap_times[min_index])
 			{
@@ -57,19 +57,19 @@ float*** create_sector_times(unsigned int* n_drivers, unsigned int* n_laps){
 
 	/* Allocating necessary area to store the sector_times */
 	sector_times = (float ***) malloc(sizeof(float **) * (*n_drivers));
-	for(i=0; i<*n_drivers; i++)
+	for(i = 0; i < *n_drivers; i++)
 	{
 		sector_times[i] = (float **) malloc(sizeof(float *) * (*n_laps));
-		for(j=0; j<*n_laps; j++)
+		for(j = 0; j < *n_laps; j++)
 		{
 			sector_times[i][j] = (float *) malloc(sizeof(float) * n_sector);
-		}			
+		}
 	}
 
 	/* Reading the input */
-	for(i=0; i<*n_drivers; i++)
-		for(j=0; j<*n_laps; j++)
-			for(k=0; k<n_sector; k++)
+	for(i = 0; i < *n_drivers; i++)
+		for(j = 0; j < *n_laps; j++)
+			for(k = 0; k < n_sector; k++)
 				scanf("%f", &sector_times[i][j][k]);
 
 	/* Returning */
@@ -85,15 +85,15 @@ unsigned int** create_positions(unsigned int* p_drivers, unsigned int* n_races){
 
 	/* Allocating necessary area to store the positions */
 	positions = (unsigned int **) malloc(sizeof(unsigned int *) * (*p_drivers));
-	for(i=0; i<*p_drivers; i++)
+	for(i = 0; i < *p_drivers; i++)
 	{
 		positions[i] = (unsigned int *) malloc(sizeof(unsigned int) * (*n_races));
 	}
 
 	/* Reading the input */
-	for(i=0; i<*p_drivers; i++)
-		for(j=0; j<*n_races; j++)
-				scanf("%u", &positions[i][j]);
+	for(i = 0; i < *p_drivers; i++)
+		for(j = 0; j < *n_races; j++)
+			scanf("%u", &positions[i][j]);
 
 	/* Returning */
 	return positions;
@@ -107,18 +107,18 @@ float** calculate_lap_times(float*** sector_times, unsigned int n_drivers, unsig
 
 	/* Allocating necessary area to store the lap_times */
 	lap_times = (float **) malloc(sizeof(float *) * (n_drivers));
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
 		lap_times[i] = (float *) malloc(sizeof(float) * (n_laps));
 	}
 
 	/* Calculating the lap times */
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
-		for(j=0; j<n_laps; j++)
+		for(j = 0; j < n_laps; j++)
 		{
 			/* Calculating sum */
-			for(sum=0, k=0; k<n_sector; k++)
+			for(sum = 0, k = 0; k < n_sector; k++)
 			{
 				sum += sector_times[i][j][k];
 			}
@@ -143,9 +143,9 @@ unsigned int find_fastest_lap(float** lap_times, unsigned int n_drivers, unsigne
 	int i, j;
 
 	/* Comparing the lap times of drivers */
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
-		for(j=0; j<n_laps; j++)
+		for(j = 0; j < n_laps; j++)
 		{
 			if(lap_times[i][j] < min_time)
 			{
@@ -170,15 +170,15 @@ unsigned int find_driver_fastest_lap(float** sector_times_of_driver, unsigned in
 	int i, j;
 	/* Defining and Initializing the min_time */
 	float min_time, sum;
-	for(min_time=0, i=0; i<n_sector; i++)
+	for(min_time = 0, i = 0; i < n_sector; i++)
 	{
 		min_time += sector_times_of_driver[0][i];
 	}
 
 	/* Calculating the lap time and comparing them */
-	for(i=0; i<n_laps; i++)
+	for(i = 0; i < n_laps; i++)
 	{
-		for(sum=0, j=0; j<n_sector; j++)
+		for(sum = 0, j = 0; j < n_sector; j++)
 		{
 			sum += sector_times_of_driver[i][j];
 		}
@@ -201,16 +201,16 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 
 	/* Allocating necessary area to store the copy of arr. Then copying the values of arr to new arr */
 	sorted_arr = (float *) malloc(sizeof(float)*len);
-	for(i=0; i<len; i++) sorted_arr[i]=arr[i];
+	for(i = 0; i < len; i++) sorted_arr[i]=arr[i];
 	
 	/* After copying, I use "selection sort" to sort the copy of the arr (sorted_arr) */
 	if(ord == 'A')
 	{
 		int min_index; /* While iterating, index of minimum value will be stored */
-		for(i=0; i<len; i++)
+		for(i = 0; i < len; i++)
 		{
 			/* Searching for min index */
-			for(min_index = i, j = i+1; j<len; j++)
+			for(min_index = i, j = i+1; j < len; j++)
 			{
 				if(sorted_arr[j] < sorted_arr[min_index])
 				{
@@ -230,10 +230,10 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 	else
 	{
 		int max_index; /* While iterating, index of maximum value will be stored */
-		for(i=0; i<len; i++)
+		for(i = 0; i < len; i++)
 		{
 			/* Searching for max index */
-			for(max_index = i, j = i+1; j<len; j++)
+			for(max_index = i, j = i+1; j < len; j++)
 			{
 				if(sorted_arr[j] > sorted_arr[max_index])
 				{
@@ -265,7 +265,7 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 
 	/* Allocating finishing_positions array and filling it */
 	finishing_positions = (unsigned int *) malloc(sizeof(unsigned int) * n_drivers);
-	for(i=0; i<n_drivers; i++) finishing_positions[i] = i;
+	for(i = 0; i < n_drivers; i++) finishing_positions[i] = i;
 	/* It is filled with numbers [0, n_drivers]. It will be changed according to lap times in modified sort function */
 
 	/* 
@@ -274,9 +274,9 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 	They will fit with the indexes of finishing_positions
 	*/
 	sum_of_lap_time = (float *) malloc(sizeof(float) * n_drivers);
-	for(i=0; i<n_drivers; i++)
+	for(i = 0; i < n_drivers; i++)
 	{
-		for(sum=0, j=0; j<n_laps; j++)
+		for(sum = 0, j = 0; j < n_laps; j++)
 		{
 			/* Calculating sum */
 			sum += lap_times[i][j];
@@ -316,7 +316,7 @@ float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_
 	time_diff[0] = lap_times[driver1][0] - lap_times[driver2][0];
 
 	/* Calculating time differences accumulatively */
-	for(i=1; i < n_laps; i++)
+	for(i = 1; i < n_laps; i++)
 	{
 		time_diff[i] = time_diff[i-1] + (lap_times[driver1][i] - lap_times[driver2][i]);
 	}
@@ -333,7 +333,7 @@ unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_dr
 
 	/* Allocating necessary memory to store the position map and taking input */
 	position_map = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
-	for(i=0; i < p_drivers; i++)
+	for(i = 0; i < p_drivers; i++)
 	{
 		scanf("%u", &position_map[i]);
 	}
@@ -342,10 +342,10 @@ unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_dr
 	total_points = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
 
 	/* Calculating and assigning the calculated value */
-	for(i=0; i < p_drivers; i++)
+	for(i = 0; i < p_drivers; i++)
 	{
 		unsigned int sum;
-		for(sum=0, j=0; j < n_races; j++)
+		for(sum = 0, j = 0; j < n_races; j++)
 		{
 			sum += position_map[positions[i][j]-1];
 		}
@@ -370,7 +370,7 @@ unsigned int find_season_ranking(unsigned int* total_points, unsigned int p_driv
 	If there is same points I need to check the id number.
 	*/
 	point_of_id = total_points[id];
-	for(season_rank=1, i=0; i < p_drivers; i++)
+	for(season_rank = 1, i = 0; i < p_drivers; i++)
 	{
 		if(total_points[i] > point_of_id) season_rank++;
 		else if(total_points[i] == point_of_id && i < id) season_rank++;
