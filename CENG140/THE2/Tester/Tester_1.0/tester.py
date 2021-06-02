@@ -17,15 +17,15 @@ for i in range(test_case_number):
 	code_time_out = time()
 	total_time_code_exec += (code_time_out-code_time_in)
 	
-	manual = open(f"./results/result{i}", "r")
+	result = open(f"./results/result{i}", "r")
 	function = open("./temp_output", "r")
 
-	man = manual.read().splitlines()
+	res = result.read().splitlines()
 	func = function.read().splitlines()
 
 	""" First Check """
-	for i in range(len(man)):
-		if man[i] == func[i]:
+	for i in range(len(res)):
+		if res[i] == func[i]:
 			continue
 		else:
 			passed_cases_first -= 1
@@ -33,21 +33,17 @@ for i in range(test_case_number):
 
 
 	""" Second Check: Detail Check """
-	for i in range(len(man)):
-		man_detail = man[i].split()
+	for i in range(len(res)):
+		res_detail = res[i].split()
 		func_detail = func[i].split()
-		for j in range(len(man_detail)):
-			if man_detail[j] == func_detail[j]:
+		for j in range(len(res_detail)):
+			if res_detail[j] == func_detail[j]:
 				continue
 			else:
 				passed_cases_second -= 1
 				error_list.append("Line {}/{} is False".format(i+1, j+1))
-		
-	if not (i+1)%10:
-		os.system("clear")
-		print("The process is running: %{:.2f}".format((i+1)/test_case_number))
 
-	manual.close()
+	result.close()
 	function.close()
 total_time_out = time()
 
