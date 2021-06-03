@@ -25,7 +25,7 @@ def race_to_driver_positions(matrix): # basically transpose of an matrix
 
 
 n_sector = 3
-test_case_number = 100
+test_case_number = 10000
 pre_build_position_map = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 22, 24, 27, 30, 33, 36, 40, 44, 48, 52, 56, 60]
 for i in range(test_case_number):
 	n_drivers = random.randint(1, 25)

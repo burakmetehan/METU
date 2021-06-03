@@ -4,11 +4,14 @@ from time import time
 os.system("gcc -c functions.c -o functions.o")
 os.system("gcc ./object_files/creator.o ./object_files/print.o functions.o -o creator")
 
-passed_cases_first = 100
-passed_cases_second = 100
-test_case_number = 100
+passed_cases_first = 1000
+passed_cases_second = 1000
+test_case_number = 1000
+test_case_counter = 0
 error_list = []
 total_time_code_exec = 0
+
+os.system("clear")
 
 total_time_init = time()
 for i in range(test_case_number):
@@ -42,6 +45,11 @@ for i in range(test_case_number):
 			else:
 				passed_cases_second -= 1
 				error_list.append("Line {}/{} is False".format(i+1, j+1))
+
+	test_case_counter += 1
+	if not ((test_case_counter)%25):
+		os.system("clear")
+		print("Tester is running: %{:.2f}".format(test_case_counter/test_case_number*100))
 
 	result.close()
 	function.close()

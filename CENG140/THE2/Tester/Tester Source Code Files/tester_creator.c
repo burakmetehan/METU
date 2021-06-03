@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "functions.h"
-#include "print_function.h"
+#include "print_functions.h"
 
 int main(){
 	/* Sector Times Variables */
