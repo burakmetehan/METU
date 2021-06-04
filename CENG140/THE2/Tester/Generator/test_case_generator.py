@@ -25,6 +25,11 @@ while True:
 	except ValueError:
 		print("Value Error is Occured. Enter an integer value.")
 
+# Saving Test Case Number into cases files
+with open(f"./cases/test_case_number", "w") as case_number:
+	case_number.write("Test Case Number:\n")
+	case_number.write(f"{test_case_number}")
+
 # Generating Cases
 for i in range(test_case_number):
 	n_drivers = random.randint(1, 25)
