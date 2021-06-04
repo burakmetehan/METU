@@ -27,6 +27,7 @@ def race_to_driver_positions(matrix): # basically transpose of an matrix
 n_sector = 3
 test_case_number = 10000
 pre_build_position_map = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 22, 24, 27, 30, 33, 36, 40, 44, 48, 52, 56, 60]
+
 for i in range(test_case_number):
 	n_drivers = random.randint(1, 25)
 	n_laps = random.randint(1, 25)
@@ -37,8 +38,8 @@ for i in range(test_case_number):
 		""" n_drivers, n_laps and sector_times """
 		case.write(f"{n_drivers} {n_laps} \n")
 		
-		for driver in range(n_drivers):
-			for lap in range(n_laps):
+		for _ in range(n_drivers):
+			for _ in range(n_laps):
 				for sector in range(n_sector):
 					case.write("{:.2f} ".format(random.uniform(15,45)))
 				case.write("\n")
@@ -48,11 +49,11 @@ for i in range(test_case_number):
 		
 		# Need to create positions of races. Then, It will be rotated.
 		race_positions = [] # positions of all races
-		for race in range(n_races):
+		for _ in range(n_races):
 			positions = list(range(1, p_drivers+1))
-			t_list = [] # positions in one race
-			for driver in range(p_drivers):
-				t = random.choice(positions)
+			t_list = [] # temp_list: positions in one race
+			for _ in range(p_drivers):
+				t = random.choice(positions) # temp variable
 				positions.remove(t)
 				t_list.append(t)
 			race_positions.append(t_list)
@@ -77,18 +78,3 @@ for i in range(test_case_number):
 		pos_point_map.reverse()
 		for i in range(len(pos_point_map)):
 			case.write("{} ".format(pos_point_map[i]))
-			
-"""
-1, 2, 6, 3, 5, 4
-6, 5, 4, 1, 3, 2
-5, 3, 1, 4, 6, 2
-5, 2, 4, 6, 1, 3
-1, 3, 6, 4, 2, 5
-
-1 6 5 5 1 
-2 5 3 2 3 
-6 4 1 4 6 
-3 1 4 6 4 
-5 3 6 1 2 
-4 2 2 3 5 
-"""
