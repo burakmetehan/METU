@@ -21,7 +21,6 @@ with open(f"./cases/test_case_number", "r") as case_number:
 	test_case_number = int(number[1])
 
 passed_cases = test_case_number
-test_case_counter = 0
 error_list = []
 total_time_code_exec = 0
 
@@ -40,18 +39,17 @@ for i in range(test_case_number):
 	res = result.read().splitlines()
 	func = function.read().splitlines()
 
-	""" First Check """
-	for i in range(len(res)):
-		if res[i] == func[i]:
+	""" Checking """
+	for j in range(len(res)):
+		if res[j] == func[j]:
 			continue
 		else:
 			passed_cases -= 1
-			error_list.append("Line {} is False".format(i+1))
+			error_list.append("Error: Case {}/ Line {}".format(i, j+1))
 	
-	test_case_counter += 1
-	if not ((test_case_counter)%25):
+	if not ((i+1)%25):
 		os.system("clear")
-		print("Tester is running: %{:.2f}".format(test_case_counter/test_case_number*100))
+		print("Tester is running: %{:.2f}".format((i+1)/test_case_number*100))
 
 	result.close()
 	function.close()
