@@ -1,6 +1,10 @@
 import os
 from time import time
 
+
+print("Preparing for Testing.")
+
+
 os.system("gcc -c functions.c -o functions.o")
 os.system("gcc ./object_files/creator.o ./object_files/print.o functions.o -o creator")
 
