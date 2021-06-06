@@ -7,6 +7,7 @@ print("Preparing for Testing.")
 
 os.system("gcc -c functions.c -o functions.o")
 os.system("gcc ./object_files/creator.o ./object_files/print.o functions.o -o creator")
+os.system("mkdir outputs")
 
 
 def print_result(cases, pass_case, tot_time, tot_code_time, aver_code_time):
@@ -46,6 +47,7 @@ for i in range(test_case_number):
 		else:
 			passed_cases -= 1
 			error_list.append("Error: Case {}/ Line {}".format(i, j+1))
+			os.system(f"cp ./temp_output ./outputs/output{i}")
 	
 	if not ((i+1)%25):
 		os.system("clear")
@@ -66,6 +68,7 @@ os.system("rm ./temp_output")
 os.system("clear")
 
 if not error_list:
+	os.system("rm -rf ./outputs")
 	print("Congratulations! There is no error in your outputs.")
 	print_result(test_case_number, passed_cases, total_time, total_time_code_exec, average_code_exec)
 else:
