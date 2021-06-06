@@ -71,16 +71,16 @@ for i in range(test_case_number):
 		
 		""" selection_sort """
 		# Number of test cases and the length of array will be 25
-		for i in range(25):
-			for j in range(25):
+		for _ in range(25):
+			for _ in range(25):
 				case.write("{:.2f} ".format(random.uniform(1,100)))
 			case.write("\n")
 
 		""" position_point_map """
 		pos_point_map = pre_build_position_map[0:p_drivers]
 		pos_point_map.reverse()
-		for i in range(len(pos_point_map)):
-			case.write("{} ".format(pos_point_map[i]))
+		for j in range(len(pos_point_map)):
+			case.write("{} ".format(pos_point_map[j]))
 
 # Generating Results
 for i in range(test_case_number):
