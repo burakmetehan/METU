@@ -11,7 +11,7 @@ os.system("mkdir outputs")
 
 
 def print_result(cases, pass_case, tot_time, tot_code_time, aver_code_time):
-	print("Correct result percentage rate for first check: %{}".format(format(pass_case/cases*100, ".2f")))
+	print("Correct result percentage rate: %{}".format(format(pass_case/cases*100, ".2f")))
 	print(f"Tester's Total Execution Time: {tot_time}")
 	print(f"Your Code's Total Execution Time: {tot_code_time}")
 	print(f"Your Code's Average Execution Time: {aver_code_time}")
@@ -29,6 +29,8 @@ os.system("clear")
 
 total_time_init = time()
 for i in range(test_case_number):
+	case_error = 0
+
 	code_time_in = time()
 	os.system(f"./creator < ./cases/case{i} > ./temp_output")
 	code_time_out = time()
@@ -45,10 +47,14 @@ for i in range(test_case_number):
 		if res[j] == func[j]:
 			continue
 		else:
-			passed_cases -= 1
+			case_error = 1
 			error_list.append("Error: Case {}/ Line {}".format(i, j+1))
-			os.system(f"cp ./temp_output ./outputs/output{i}")
-	
+			
+	if case_error:
+		passed_cases -= 1
+		os.system(f"cp ./temp_output ./outputs/output{i}")
+
+
 	if not ((i+1)%25):
 		os.system("clear")
 		print("Tester is running: %{:.2f}".format((i+1)/test_case_number*100))
