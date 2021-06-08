@@ -10,7 +10,7 @@
 #define n_sector 3
 
 /* THE2 Helper Funtions */
-void modified_selection_sort(unsigned int* drivers_id, float* sum_lap_times, float n_drivers){
+void modified_selection_sort(float* sum_lap_times, unsigned int* drivers_id, unsigned int n_drivers){
 	int i, j;
 	int min_index; /* While iterating, index of minimum value will be stored */
 	
@@ -22,7 +22,13 @@ void modified_selection_sort(unsigned int* drivers_id, float* sum_lap_times, flo
 			if(sum_lap_times[j] < sum_lap_times[min_index])
 			{
 				min_index = j;
-			}else;
+			}
+			else if(sum_lap_times[j] == sum_lap_times[min_index] && drivers_id[j] < drivers_id[min_index]) 
+			{
+				/* If lap_times of two drivers are equal, the driver with the smaller ID needs to be before the other */
+				min_index = j;
+			}
+			else;
 		}
 
 		/* Swapping */
@@ -92,9 +98,12 @@ unsigned int** create_positions(unsigned int* p_drivers, unsigned int* n_races){
 
 	/* Reading the input */
 	for(i = 0; i < *p_drivers; i++)
+	{
 		for(j = 0; j < *n_races; j++)
+		{
 			scanf("%u", &positions[i][j]);
-
+		}
+	}
 	/* Returning */
 	return positions;
 }
@@ -295,7 +304,7 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 	The sorting will be done on sum_of_lap_time and at the same time I will change the finishing_positions array with same index.
 	In the end, I will have finishing positions.	
 	*/
-	modified_selection_sort(finishing_positions, sum_of_lap_time, n_drivers);
+	modified_selection_sort(sum_of_lap_time, finishing_positions, n_drivers);
 
 	/* Freeing used memory that will not returned  */
 	free(sum_of_lap_time);
