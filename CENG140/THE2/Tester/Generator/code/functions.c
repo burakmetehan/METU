@@ -8,24 +8,57 @@
 #include <stdio.h>
 
 #define n_sector 3
+#define epsilon 0.0001
 
 /* THE2 Helper Funtions */
+void float_swap(float *value1, float *value2){
+	float temp;
+	temp = *value1;
+	*value1 = *value2;
+	*value2 = temp;
+}
+
+
+void uint_swap(unsigned int *value1, unsigned int *value2){
+	unsigned int temp;
+	temp = *value1;
+	*value1 = *value2;
+	*value2 = temp;
+}
+
+
+void float_abs(float *value, int* is_negative){
+	*is_negative = 0;
+	if(*value < 0){
+		*is_negative = 1;
+		*value = (-*value);
+	}
+}
+
+
 void modified_selection_sort(float* sum_lap_times, unsigned int* drivers_id, unsigned int n_drivers){
 	int i, j;
-	int min_index; /* While iterating, index of minimum value will be stored */
+	int min_index, is_negative; /* While iterating, index of minimum value will be stored */
+	float diff; /* difference */
 	
 	for(i = 0; i < n_drivers; i++)
 	{
 		/* Searching for min index */
 		for(min_index = i, j = i+1; j < n_drivers; j++)
 		{
-			if(sum_lap_times[j] < sum_lap_times[min_index])
-			{
-				min_index = j;
-			}
-			else if(sum_lap_times[j] == sum_lap_times[min_index] && drivers_id[j] < drivers_id[min_index]) 
+			diff = sum_lap_times[j] - sum_lap_times[min_index];
+			float_abs(&diff, &is_negative);
+
+			if(diff < epsilon)
 			{
 				/* If lap_times of two drivers are equal, the driver with the smaller ID needs to be before the other */
+				if(drivers_id[j] <  drivers_id[min_index])
+					min_index = j;
+				else
+					continue;
+			}
+			else if(is_negative)
+			{
 				min_index = j;
 			}
 			else;
@@ -36,18 +69,12 @@ void modified_selection_sort(float* sum_lap_times, unsigned int* drivers_id, uns
 		I need to swap both drivers IDs and sum_lap_times by using same index
 		*/
 		if(min_index != i)
-		{
-			float temp;
-			
+		{	
 			/* Swapping lap times */
-			temp = sum_lap_times[i];
-			sum_lap_times[i] = sum_lap_times[min_index];
-			sum_lap_times[min_index] = temp;
+			float_swap(&sum_lap_times[i], &sum_lap_times[min_index]);
 
 			/* Swapping Drivers' IDs */
-			temp = drivers_id[i];
-			drivers_id[i] = drivers_id[min_index];
-			drivers_id[min_index] = temp;
+			uint_swap(&drivers_id[i], &drivers_id[min_index]);
 		}else;
 	}
 	
@@ -98,12 +125,9 @@ unsigned int** create_positions(unsigned int* p_drivers, unsigned int* n_races){
 
 	/* Reading the input */
 	for(i = 0; i < *p_drivers; i++)
-	{
 		for(j = 0; j < *n_races; j++)
-		{
 			scanf("%u", &positions[i][j]);
-		}
-	}
+
 	/* Returning */
 	return positions;
 }
@@ -147,16 +171,23 @@ unsigned int find_fastest_lap(float** lap_times, unsigned int n_drivers, unsigne
 	While comparing, I will compare the previous value wiith the current value.
 	Therefore, it can be better to initiliaze these values with the first driver's id and its first lap time.
 	*/
-	unsigned int driver_id=0;
-	float min_time=lap_times[0][0];
+	unsigned int driver_id = 0;
+	float diff = 0; /* difference */
+	float min_time = lap_times[0][0];
 	int i, j;
+	int is_negative;
 
 	/* Comparing the lap times of drivers */
 	for(i = 0; i < n_drivers; i++)
 	{
 		for(j = 0; j < n_laps; j++)
 		{
-			if(lap_times[i][j] < min_time)
+			diff = lap_times[i][j] - min_time;
+			float_abs(&diff, &is_negative);
+
+			if(diff < epsilon)
+				continue;
+			else if(is_negative)
 			{
 				min_time = lap_times[i][j];
 				driver_id = i;
@@ -175,10 +206,12 @@ unsigned int find_driver_fastest_lap(float** sector_times_of_driver, unsigned in
 	While comparing, I will compare the previous value wiith the current value.
 	Therefore, it can be better to initiliaze these values with the first lap and its first lap time.
 	*/
-	unsigned int driver_fastest_lap=0;
+	unsigned int driver_fastest_lap = 0;
 	int i, j;
-	/* Defining and Initializing the min_time */
-	float min_time, sum;
+	float min_time, sum, diff = 0; /* difference */
+	int is_negative;
+	
+	/* Initializing the min_time */
 	for(min_time = 0, i = 0; i < n_sector; i++)
 	{
 		min_time += sector_times_of_driver[0][i];
@@ -192,7 +225,13 @@ unsigned int find_driver_fastest_lap(float** sector_times_of_driver, unsigned in
 			sum += sector_times_of_driver[i][j];
 		}
 		
-		if(sum < min_time)
+		
+		diff = sum - min_time;
+		float_abs(&diff, &is_negative);
+
+		if(diff < epsilon)
+			continue;
+		else if(is_negative)
 		{
 			min_time = sum;
 			driver_fastest_lap = i;
@@ -209,8 +248,8 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 	int i, j;
 
 	/* Allocating necessary area to store the copy of arr. Then copying the values of arr to new arr */
-	sorted_arr = (float *) malloc(sizeof(float)*len);
-	for(i = 0; i < len; i++) sorted_arr[i]=arr[i];
+	sorted_arr = (float *) malloc(sizeof(float) * len);
+	for(i = 0; i < len; i++) sorted_arr[i] = arr[i];
 	
 	/* After copying, I use "selection sort" to sort the copy of the arr (sorted_arr) */
 	if(ord == 'A')
@@ -229,10 +268,7 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 			/* Swapping */
 			if(min_index != i)
 			{
-				float temp; /* While swapping, I will need a temporary variable */
-				temp = sorted_arr[i];
-				sorted_arr[i] = sorted_arr[min_index];
-				sorted_arr[min_index] = temp;
+				float_swap(&sorted_arr[i], &sorted_arr[min_index]);
 			}else;
 		}
 	}
@@ -252,10 +288,7 @@ float* selection_sort(float* arr, unsigned int len, char ord){
 			/* Swapping */
 			if(max_index != i)
 			{
-				float temp; /* While swapping, I will need a temporary variable */
-				temp = sorted_arr[i];
-				sorted_arr[i] = sorted_arr[max_index];
-				sorted_arr[max_index] = temp;
+				float_swap(&sorted_arr[i], &sorted_arr[max_index]);
 			}else;
 		}
 	}
@@ -275,7 +308,7 @@ unsigned int* find_finishing_positions(float** lap_times, unsigned int n_drivers
 	/* Allocating finishing_positions array and filling it */
 	finishing_positions = (unsigned int *) malloc(sizeof(unsigned int) * n_drivers);
 	for(i = 0; i < n_drivers; i++) finishing_positions[i] = i;
-	/* It is filled with numbers [0, n_drivers]. It will be changed according to lap times in modified sort function */
+	/* It is filled with numbers [0, n_drivers-1]. It will be changed according to lap times in modified sort function */
 
 	/* 
 	Allocating helper lap time sums array 
@@ -338,7 +371,8 @@ float* find_time_diff(float** lap_times, unsigned int n_drivers, unsigned int n_
 unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_drivers, unsigned int n_races){
 	unsigned int *total_points;
 	unsigned int *position_map;
-	int i, j;
+	unsigned int sum;
+	int i, j;	
 
 	/* Allocating necessary memory to store the position map and taking input */
 	position_map = (unsigned int *) malloc(sizeof(unsigned int) * p_drivers);
@@ -353,7 +387,6 @@ unsigned int* calculate_total_points(unsigned int** positions, unsigned int p_dr
 	/* Calculating and assigning the calculated value */
 	for(i = 0; i < p_drivers; i++)
 	{
-		unsigned int sum;
 		for(sum = 0, j = 0; j < n_races; j++)
 		{
 			sum += position_map[positions[i][j]-1];
