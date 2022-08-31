@@ -1,0 +1,24 @@
+In the textbook, is stated that in order to attain a margin of error $\Delta$ for estimating a population mean with a confidence level $(1 - \alpha)$, a sample of size $n$ should be satisfied the following inequality
+\begin{equation*}
+  n \geq \left( \frac{z_{\alpha/2} \cdot \sigma}{\Delta} \right)^2
+\end{equation*}
+
+\noindent The followings are given:
+\begin{itemize}[leftmargin=.6cm]
+  \item $\Delta$, error or margin = $1.55$.
+  \item $(1 - \alpha)$, confidence level = $0.98$
+\end{itemize}
+
+\noindent So, we have $\Delta = 1.55$, $\alpha = 0.02$, and $\sigma = 3$. We need to look for quantiles:
+\begin{align*}
+  &q_{0.01} = -z_{0.01} &\textnormal{and}& &q_{0.99} = z_{0.01}
+\end{align*}
+So, we $z_{0.01} = q_{0.99} = 2.3263$.
+\begin{equation*}
+  n \geq \left( \frac{z_{\alpha/2} \cdot \sigma}{\Delta} \right)^2 = \left( \frac{z_{0.01} \cdot \sigma}{\Delta} \right)^2 = \left( \frac{2.3263 \cdot 3}{1.55} \right)^2 = 20.272651492195628 \approx 20.27
+\end{equation*}
+So, we have the following inequality:
+\begin{equation*}
+  n \geq 20.27
+\end{equation*}
+So smallest required sample size that satisfies the condition is $n = 21$.

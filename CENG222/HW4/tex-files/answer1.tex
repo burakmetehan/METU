@@ -1,0 +1,90 @@
+\section*{Answer 1}
+
+\subsection*{(a)}
+
+% Use Normal approximation to determine the size of your Monte Carlo simulation so that with probability 0.99, your answer should differ from the true value by no more than 0.02. (5pts)
+
+Since it is given that Normal approximation can be used, the following formula can be used to determine the size of the Monte Carlo study:
+\begin{equation*}
+  \mathrm{N} \geq 0.25 \left( \dfrac{z_{\alpha / 2}}{\varepsilon} \right)^2
+\end{equation*}
+In question the followings are given,
+\begin{align*}
+  \alpha = 0.01 \quad \varepsilon = 0.02
+\end{align*}
+So,
+\begin{align*}
+  \mathrm{N} & \geq 0.25 \left( \frac{z_{0.005}}{0.02} \right)^2 \\
+             & \geq 0.25 \left( \frac{2.575}{0.02} \right)^2 \\
+             & \geq 4144.140625 
+\end{align*}
+Since $\mathrm{N}$ should be a integer, \textbf{4145} is the size of Monte Carlo study.
+
+
+\subsection*{(b)}
+
+\subsubsection*{Expected Value for the Weight of an Automobile}
+
+% What is the expected value for the weight of an automobile?
+
+The weight of an automobile has Gamma distribution with $\alpha_a = 190$, $\lambda_a = 0.15$. Since expected value of Gamma distribution is $\dfrac{\alpha}{\lambda}$,
+\begin{equation*}
+  \expc{w_a} = \frac{\alpha_a}{\lambda_a} = \frac{190}{0.15} = 1266.\bar{6} \approx 1267
+\end{equation*}
+where $w_a = \textit{expected\_weight\_of\_automobile}$.
+
+\subsubsection*{Expected Value for the Weight of an Truck}
+
+% What is the expected value for the weight of a truck?
+
+The weight of an automobile has Gamma distribution with $\alpha_t = 110$, $\lambda_t = 0.01$. Since expected value of Gamma distribution is $\dfrac{\alpha}{\lambda}$,
+\begin{equation*}
+  \expc{w_t} = \frac{\alpha_t}{\lambda_t} = \frac{110}{0.01} = 11000
+\end{equation*}
+where $w_t = \textit{expected\_weight\_of\_truck}$.
+
+\newpage
+
+\subsubsection*{Expected Total Weight of all Automobiles}
+
+% What is the expected value for the total weights of all automobiles that pass over the bridge on a day?
+
+The total weight of all automobiles that pass over the bridge on a day can be calculated as follows:
+\begin{equation*}
+  \expc{ \textit{expected\_number\_of\_automobiles} \times \textit{expected\_weight\_of\_automobile} }
+\end{equation*}
+For the convenience, let $n_a = \textit{expected\_number\_of\_automobiles}$ and $w_a = \textit{expected\_weight\_of\_automobile}$. Since these are independent events,
+\begin{equation*}
+  \expc{ n_a \times w_a } = \expc{n_a} \times \expc{w_a}
+\end{equation*}
+$\expc{w_a}$ was calculated and $\expc{w_a} \approx 1267$. $\expc{n_a}$ should be calculated. Since the expected number of automobiles that pass over the bridge on a day has Poisson distribution with $\lambda = 50$ and the expected value of Poisson distribution is $\lambda$,
+\begin{equation*}
+  \expc{n_a} = \lambda = 50
+\end{equation*}
+So,
+\begin{align*}
+  \expc{ n_a \times w_a } &= \expc{n_a} \times \expc{w_a} \\
+                          &= 50 \times \frac{190}{0.15} = 63333.\bar{3} \approx 63333
+\end{align*}
+
+\subsubsection*{Expected Total Weight of all Trucks}
+
+% What is the expected value for the total weights of all trucks that pass over the bridge on a day?
+
+\noindent The total weight of all trucks that pass over the bridge on a day can be calculated as follows:
+\begin{equation*}
+  \expc{ \textit{expected\_number\_of\_trucks} \times \textit{expected\_weight\_of\_truck} }
+\end{equation*}
+For the convenience, let $n_t = \textit{expected\_number\_of\_trucks}$ and $w_t = \textit{expected\_weight\_of\_truck}$. Since these are independent events,
+\begin{equation*}
+  \expc{ n_t \times w_t } = \expc{n_t} \times \expc{w_t}
+\end{equation*}
+$\expc{w_t}$ was calculated and $\expc{w_t} = 11000$. $\expc{n_t}$ should be calculated. Since the expected number of automobiles that pass over the bridge on a day has Poisson distribution with $\lambda = 10$ and the expected value of Poisson distribution is $\lambda$,
+\begin{equation*}
+  \expc{n_t} = \lambda = 10
+\end{equation*}
+So,
+\begin{align*}
+  \expc{ n_t \times w_t } &= \expc{n_t} \times \expc{w_t} \\
+                          &= 10 \times 11000 = 110000
+\end{align*}

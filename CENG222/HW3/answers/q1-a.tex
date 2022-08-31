@@ -1,0 +1,81 @@
+The followings are given:
+\begin{itemize}[leftmargin=.6cm]
+  \item \textbf{Measurements:}
+  \begin{center}20.1, 12.8, 18.9, 16.4, 20.3, 10.1, 15.4, 12.4, 24.7, 18.5\end{center}
+  \item $\sigma = 3$
+\end{itemize}
+
+\subparagraph{Construct 90\% confidence interval}
+
+Since we know what $\sigma$ is, we can use the following formula
+\begin{equation*}
+  \bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
+\end{equation*}
+
+\begin{enumerate}[leftmargin=.6cm]
+  \item 
+\textbf{We need to calculate the $\bar{X}$.} $measurement\_size = 10$ and $measurement\_sum = 169.6$. So, 
+\begin{align*}
+  \bar{X} &= measurement\_sum / measurement\_size\\
+          &= 169.6 / 10 = 16.96
+\end{align*}
+
+\item  
+\textbf{We need to calculate the $\alpha$ for 90\% confidence interval}
+\begin{equation*}
+  1 - \alpha = 0.90 \Rightarrow \alpha = 0.10 \textnormal{ and } \alpha = 0.05
+\end{equation*}
+\end{enumerate}
+
+\noindent Hence, we are looking for quantiles
+\begin{align*}
+  &q_{0.05} = -z_{0.05} &\textnormal{and}& &q_{0.950} = z_{0.05}
+\end{align*}
+$z_{0.05} = q_{0.950} = 1.6449$.
+\begin{equation*}
+  \bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}} = 16.96 \pm 1.6449 \cdot \frac{3}{\sqrt{10}} = 16.96 \pm 1.5604891569632902 \approx 16.96 \pm 1.56
+\end{equation*}
+So, the interval is,
+\begin{align*}
+  &\left[ 16.96 - 1.5604891569632902,\ 16.96 + 1.5604891569632902 \right]\\
+  =&\left[ 15.39951084303671,\ 18.52048915696329 \right]\\
+  \approx&\left[ 15.40,\ 18.52 \right]
+\end{align*}
+
+
+\subparagraph{Construct 99\% confidence interval}
+
+Since we know what $\sigma$ is, we can use the following formula
+\begin{equation*}
+  \bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
+\end{equation*}
+
+\begin{enumerate}[leftmargin=.6cm]
+  \item 
+\textbf{We know the $\bar{X}$.}
+\begin{align*}
+  \bar{X} &= measurement\_sum / measurement\_size\\
+          &= 169.6 / 10 = 16.96
+\end{align*}
+
+\item  
+\textbf{We need to calculate the $\alpha$ for 99\% confidence interval}
+\begin{equation*}
+  1 - \alpha = 0.99 \Rightarrow \alpha = 0.01 \textnormal{ and } \alpha = 0.005
+\end{equation*}
+\end{enumerate}
+
+\noindent Hence, we are looking for quantiles
+\begin{align*}
+  &q_{0.005} = -z_{0.005} &\textnormal{and}& &q_{0.995} = z_{0.005}
+\end{align*}
+$z_{0.005} = q_{0.995} = 2.5758$.
+\begin{equation*}
+  \bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}} = 16.96 \pm 2.5758 \cdot \frac{3}{\sqrt{10}} = 16.96 \pm 2.4436184391185134 \approx 16.96 \pm 2.44
+\end{equation*}
+So, the interval is,
+\begin{align*}
+  &\left[ 16.96 - 2.4436184391185134,\ 16.96 + 2.4436184391185134 \right]\\
+  =&\left[ 14.516381560881488,\ 19.403618439118514 \right]\\
+  \approx&\left[ 14.52,\ 19.40 \right]
+\end{align*}

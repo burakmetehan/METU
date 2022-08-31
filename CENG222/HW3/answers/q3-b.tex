@@ -1,0 +1,34 @@
+In here, T-test can be used with the following hypotheses:
+\begin{itemize}[leftmargin=.6cm]
+  \item Null hypothesis $H_0$: $\mu_A - \mu_B \geq 90$.
+  \item Alternate hypothesis $H_A$: $\mu_A - \mu_B < 90$
+\end{itemize}
+
+\noindent The formula of T-test for unknown and unequal standard deviations is,
+\begin{equation*}
+  t = \frac{\bar{X_A} - \bar{X_B} - D}{\sqrt{\dfrac{s_A^2}{n_A} + \dfrac{s_B^2}{n_B}}}
+\end{equation*}
+where $D = \mu_A - \mu_B$.\\
+
+\noindent When we insert data,
+\begin{equation*}
+  t = \frac{211 - 133 - 90}{\sqrt{\dfrac{(5.2)^2}{20} + \dfrac{(22.8)^2}{32}}} = -2.8606315819550376 \approx -2.86
+\end{equation*}
+
+\noindent We need to calculate the critical value. Degrees of freedom is coming from  Satterthwaite approximation:
+\begin{equation*}
+  d.f. = \frac{ \left( \dfrac{s_A^2}{n_A} + \dfrac{s_B^2}{n_B} \right)^2}{\dfrac{s_A^4}{n_A^2(n_A-1)} + \dfrac{s_B^4}{n_B^2(n_B-1)}}
+\end{equation*}
+When we insert data,
+\begin{equation*}
+  d.f. = \frac{ \left( \dfrac{(5.2)^2}{20} + \dfrac{(22.8)^2}{32} \right)^2}{\dfrac{(5.2)^4}{(20^2)(19)} + \dfrac{(22.8)^4}{(32^2)(31)}} = 35.96822746722723 \approx 36
+\end{equation*}
+
+\noindent So,
+\begin{equation*}
+  t_{\alpha} =  2.434
+\end{equation*}
+
+\noindent The acceptance region for left tail T-test is: $[-t_{\alpha},\ \infty)$. So our acceptance region is $[-2.434,\ \infty)$. Since $-2.86 < -2.434$, sufficient evidence against $H_0$ is provided (and sufficient evidence in favor of $H_A$ is also provided.)\\
+
+Thus, the researcher \textit{\textbf{cannot claim}} that the computer $B$ provides a 90-minutes or better improvement. 

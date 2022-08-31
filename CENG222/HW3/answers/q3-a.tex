@@ -1,0 +1,28 @@
+In here, T-test can be used with the following hypotheses:
+\begin{itemize}[leftmargin=.6cm]
+  \item Null hypothesis $H_0$: $\mu_A - \mu_B \geq 90$.
+  \item Alternate hypothesis $H_A$: $\mu_A - \mu_B < 90$
+\end{itemize}
+
+\noindent The formula of T-test for unknown but equal standard deviations is, (where $D = \mu_A - \mu_B$).
+\begin{equation*}
+  t = \frac{\bar{X_A} - \bar{X_B} - D}{s_p \sqrt{\dfrac{1}{n_A} + \dfrac{1}{n_B}}}
+\end{equation*}
+
+\noindent When we insert data,
+\begin{equation*}
+  t = \frac{211 - 133 - 90}{18.24 \sqrt{\dfrac{1}{20} + \dfrac{1}{32}}} = -2.3084693271786647 \approx -2.31
+\end{equation*}
+where
+\begin{equation*}
+  s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s_B^2}{n_A + n_B - 2}} = \sqrt{\frac{(19)(5.2)^2 + (31)(22.8)^2}{20 + 32 - 2}} = 18.236666362030096 \approx 18.24
+\end{equation*}
+
+\noindent We need to calculate the critical value. Degrees of freedom is $d.f. = n_A + n_B - 2 = 50$. So,
+\begin{equation*}
+  t_{\alpha} = 2.403
+\end{equation*}
+
+\noindent The acceptance region for left tail T-test is: $[-t_{\alpha},\ \infty)$. So our acceptance region is $[-2.403,\ \infty)$. Since $-2.31 > -2.403$, sufficient evidence in favor of $H_0$ is provided (and sufficient evidence against $H_A$ is also provided.)\\
+
+Thus, the researcher \textit{\textbf{can claim}} that the computer $B$ provides a 90-minutes or better improvement.

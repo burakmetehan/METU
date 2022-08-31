@@ -1,0 +1,98 @@
+\section*{Answer 4}
+
+% Central Limit Theorem applies to all these distributions with sufficiently large $n$ in the case of Binomial, k for Negative Binomial, and α for Gamma variables.
+
+
+% According to Central Limit Theorem, as long as $n$ is large, one can use Normal distribution to compute probabilities about $S_n$. So, in here $n = 30.000$, then we can use 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%variables are Binomial; in other words, they are Binomial distribution. For small 
+
+% Also, the Central Limit Theorem is applicable to Binomial variables with sufficiently large $n$. So, we can use the Binomial($n, p$). since p is not small or large enough. Instead, $0.05 \leq p \leq 0.95$; therefore, we can 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% In here, let 
+% \begin{itemize}
+%   \item $X_1 = 70$ people from undergraduate
+%   \item $X_2 = 71$ people from undergraduate
+%   \item[] $\cdot$
+%   \item[] $\cdot$
+%   \item[] $\cdot$
+%   \item $X_{31} = 100$ people from undergraduate   
+% \end{itemize}
+% We need to find the sum of the probability of each one. So, the Central Limit Theorem is applicable to Binomial variables with sufficiently large $n$. 
+% So, $S_n = X_1 + \cdots + X_{31}$. For small $p$, we can use Poisson, but out $p$is not small. In such situation, $0.05 \leq p \leq 0.95$, we can use the following
+% \begin{equation*}
+%   \textnormal{Binomial}(n, p) \approx Normal \left( \mu = np, \sigma = \sqrt{np(1-p)} \right)
+% \end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+According to Central Limit Theorem, if $n$ is sufficiently large and $p$ satisfies the condition $0.05 \leq p \leq 0.95$, then all distribution can be thought as Normal distribution. Since all variables are Binomial, we can use the following
+\begin{equation*}
+  \textnormal{Binomial}(n, p) \approx \textnormal{Normal}\left( \mu = np, \sigma = \sqrt{np(1-p)} \right)
+\end{equation*}
+
+\subsection*{a)}
+
+We need to determine $n$, $p$ and, by using these, we need to find $\mu$, $\sigma$
+
+\begin{multicols}{2}
+  \begin{itemize}
+    \item $n = 100$
+    \item $p = 0.74$
+    \item $\mu = np = 74$
+    \item $\sigma = \sqrt{np(1-p)} \approx 4.39$
+  \end{itemize}
+\end{multicols}
+
+And we are asked the following, ($X$ = the number of undergraduate students in the group.)
+
+\begin{align*}
+  \prob{X \geq 70} &= \prob{X \geq 69.5} &(\textit{Continuity correction})\\
+  &= 1 - \prob{X \leq 69.5}\\
+  &= 1 - \prob{\dfrac{X - \mu}{\sigma} \leq \dfrac{69.5 - \mu}{\sigma}}\\
+  &= 1 - \prob{\dfrac{X - 74}{4.38634244} \leq \dfrac{69.5 - 74}{4.38634244}}\\
+  &= 1 - \prob{Z \leq \dfrac{69.5 - 74}{4.38634244}}\\
+  &= 1 - \prob{Z \leq - 1.025911693}\\
+  &= 1 - \Phi(- 1.025911693)\\
+  &= 1 - 0.1525 = 0.8475 \approx 0.85
+\end{align*}
+
+\newpage
+\subsection*{b)}
+
+We need to determine $n$, $p$ and, by using these, we need to find $\mu$, $\sigma$
+
+\begin{multicols}{2}
+  \begin{itemize}
+    \item $n = 100$
+    \item $p = 0.10$
+    \item $\mu = np = 10$
+    \item $\sigma = \sqrt{np(1-p)} = 3$
+  \end{itemize}
+\end{multicols}
+
+And we are asked the following, ($X$ = the number of people pursuing a doctoral degree in the group.)
+
+\begin{align*}
+  \prob{X \leq 5} &= \prob{X \leq 5.5} &(\textit{Continuity correction})\\  
+  &= \prob{\dfrac{X - \mu}{\sigma} \leq \dfrac{5.5 - \mu}{\sigma}}\\
+  &= \prob{\dfrac{X - 10}{3} \leq \dfrac{5.5 - 10}{3}}\\
+  &= \prob{Z \leq - 1.50}\\
+  &= \Phi(- 1.50)\\
+  &= 0.066807 \approx 0.07
+\end{align*}
+
+
+
+% \begin{align*}
+%   \prob{0 \leq X \leq 5} &= \prob{\dfrac{0 - \mu}{\sigma} \leq \dfrac{X - \mu}{\sigma} \leq \dfrac{5 - \mu}{\sigma}}\\
+%   &= \prob{\dfrac{0 - 10}{3} \leq \dfrac{X - 10}{3} \leq \dfrac{5 - 10}{3}}\\
+%   &= \prob{- 3.33 \leq Z \leq - 1.67}\\
+%   &= \Phi(- 1.67) - \Phi(- 3.33)\\
+%   &= 0.0475 - 0.0004 = 0.0471
+% \end{align*}

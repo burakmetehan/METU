@@ -1,0 +1,118 @@
+\section*{Answer 1}
+
+\subsection*{a)}
+
+\noindent \textit{They are \textbf{not independent}}. Independence formula for continuous variables is
+\begin{equation*}
+    f_{(X, Y)} (x, y) = f_X(x) f_Y(y)
+\end{equation*}
+So, we need to find equations for $f_X(x)$ and $f_Y(y)$.
+
+\subsubsection*{Finding $f_X(x)$}
+
+\begin{equation*}
+    f_X(x) = \int_{-\infty}^{\infty} f_{(X, Y)} (x, y) dy
+\end{equation*}
+
+\noindent We can rewrite the function $f_{(X, Y)}(x, y)$ as follows,
+\begin{equation*}
+    f_{(X, Y)}(x, y) = \begin{cases}
+        \dfrac{1}{\pi} &\textnormal{if $-\sqrt{1-x^2} \leq y \leq \sqrt{1-x^2}$}\\
+        0 &\textnormal{otherwise}
+    \end{cases}
+\end{equation*}
+One can say that for otherwise part, the integral is 0. For other part,
+\begin{align*}
+    f_X(x) &= \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} f_{(X, Y)}(x, y) dy\\
+         &= \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{\pi} dy\\
+         &= \frac{2\sqrt{1-x^2}}{\pi} &-1 \leq x \leq 1
+\end{align*}
+
+\subsubsection*{Finding $f_Y(y)$}
+
+\noindent Similarly, we can rewrite the function $f_{(X, Y)}(x, y)$ as follows,
+\begin{equation*}
+    f_{(X, Y)}(x, y) = \begin{cases}
+        \dfrac{1}{\pi} &\textnormal{if $-\sqrt{1-y^2} \leq x \leq \sqrt{1-y^2}$}\\
+        0 &\textnormal{otherwise}
+    \end{cases}
+\end{equation*}
+From here,
+\begin{align*}
+    f_Y(y) &= \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} f_{(X, Y)}(x, y) dx\\
+         &= \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \frac{1}{\pi} dx\\
+         &= \frac{2\sqrt{1-y^2}}{\pi} &-1 \leq y \leq 1
+\end{align*}
+
+\noindent In the end, we have
+\begin{align*}
+    f_X(x) &= \begin{cases}
+                \dfrac{2\sqrt{1-x^2}}{\pi} &-1 \leq x \leq 1\\
+                0 &\textnormal{otherwise}
+            \end{cases}\\
+    f_Y(y) &= \begin{cases}
+                \dfrac{2\sqrt{1-y^2}}{\pi} &-1 \leq y \leq 1\\
+                0 &\textnormal{otherwise}
+            \end{cases}
+\end{align*}
+
+\noindent So back to formula
+\begin{equation*}
+    \left[ f_{(X, Y)}(x, y) = \begin{cases}
+        \dfrac{1}{\pi} &x^2 + y^2 \leq 1\\
+        0 &\textnormal{otherwise}
+    \end{cases} \right]\
+    \
+    \
+    \neq \left[ f_X(x) f_Y(y) = \begin{cases}
+        \dfrac{2\sqrt{1-x^2}}{\pi} \cdot \dfrac{2\sqrt{1-y^2}}{\pi} &-1 \leq x \leq 1, -1 \leq y \leq 1\\
+        0 &\textnormal{otherwise}
+    \end{cases} \right]
+\end{equation*}
+
+\noindent Also, we can show that they are dependent if we find at least 1 pair that violates the independecy equation. Let $x = y = \dfrac{\sqrt{3}}{2}$, then
+\begin{equation*}
+    f_{(X, Y)}\left(\dfrac{\sqrt{3}}{2}, \dfrac{\sqrt{3}}{2}\right) = \frac{1}{\pi} \neq \frac{1}{\pi^2} = f_X\left(\dfrac{\sqrt{3}}{2}\right) f_Y\left(\dfrac{\sqrt{3}}{2}\right)
+\end{equation*}
+
+\subsection*{b)}
+
+From part a,
+\begin{align*}
+    f_X(x) &= \begin{cases}
+                \dfrac{2\sqrt{1-x^2}}{\pi} &-1 \leq x \leq 1\\
+                0 &\textnormal{otherwise}
+            \end{cases}\\
+    f_Y(y) &= \begin{cases}
+                \dfrac{2\sqrt{1-y^2}}{\pi} &-1 \leq y \leq 1\\
+                0 &\textnormal{otherwise}
+            \end{cases}
+\end{align*}
+
+\subsection*{c)}
+
+Since our pdf is piecewise, we need the calculate each piece one by one,
+\begin{align*}
+    \expc{X} = \mu &= \int_{-\infty}^{\infty} x f_X(x) dx\\
+                        &= \int_{-\infty}^{-1} x f_X(x) dx + \int_{-1}^{1} x f_X(x) dx + \int_{1}^{\infty} x f_X(x) dx\\
+                        &= \int_{-\infty}^{-1} x 0 dx + \int_{-1}^{1} x \dfrac{2\sqrt{1-x^2}}{\pi} dx + \int_{1}^{\infty} x 0 dx\\
+                        &= \int_{-\infty}^{-1} 0 dx + \int_{-1}^{1} x \dfrac{2\sqrt{1-x^2}}{\pi} dx + \int_{1}^{\infty} 0 dx\\
+                        &= 0 + \left[ -\frac{2}{\pi} \cdot \frac{1}{3} \left( 1 - x^2 \right)^{\frac{3}{2}} \right]\Biggl|_{-1}^{1} + 0\\
+                        &= \left[ -\frac{2}{\pi} \cdot \frac{1}{3} \left( 1 - 1^2 \right)^{\frac{3}{2}} \right] - \left[ -\frac{2}{\pi} \cdot \frac{1}{3} \left( 1 - (-1)^2 \right)^{\frac{3}{2}} \right]\\
+                        &= 0 - 0 = 0
+\end{align*}
+
+\subsection*{d)}
+
+Since our pdf is piecewise, we need the calculate each piece one by one,
+\begin{align*}
+    \var{X} &= \expc{X - \mu^2}^2\\
+            &= \int_{-\infty}^{\infty} \left( x - \mu \right)^2 f_X(x) dx\ \ \ \ \ (\mu = 0)\\
+            &= \int_{-\infty}^{\infty} x^2 f_X(x) dx\\
+            &= \int_{-\infty}^{-1} x^2 f_X(x) dx + \int_{-1}^{1} x^2 f_X(x) dx + \int_{1}^{\infty} x^2 f_X(x) dx\\
+            &= 0 + \int_{-1}^{1} x^2 \dfrac{2\sqrt{1-x^2}}{\pi} dx + 0\\
+            &= \left[ \frac{1}{16\pi} \left( 4 \arcsin(x) - \sin(4\arcsin(x)) \right) \right] \Biggl|_{-1}^{1}\\
+            &= \left[ \frac{1}{16\pi} \left( 4 \arcsin(1) - \sin(4\arcsin(1)) \right) \right] - \left[ \frac{1}{16\pi} \left( 4 \arcsin(-1) - \sin(4\arcsin(-1)) \right) \right]\\
+            &= \left( \frac{1}{8} \right) - \left( -\frac{1}{8} \right)\\
+            &= \frac{2}{8} = \frac{1}{4}
+\end{align*}

@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+
+%
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+%
+\setlength{\parindent}{0pt}
+
+% macros
+\newcommand{\prob}[1]{\textbf{\textit{P}}\left\{#1\right\}}
+\newcommand{\expc}[1]{\mathbf{E}\left(#1\right)}
+\newcommand{\expcs}[1]{\mathbf{E}^2\left(#1\right)}
+\newcommand{\var}[1]{\text{Var}\left( #1 \right)}
+
+\newenvironment{formula}[1]{\begin{mybox}{cyan}{\textbf{#1}}}{\end{mybox}}
+
+\begin{document}
+
+% Bu ödevde emeği geçen herkesin tüm aile bireylerine sevgilerimi yolluyorum. Umuarım, bu ödevi verip bana çektirdiklerini çekmeden ölmezler, analarından babalarından, çocuklarından çıkar.
+
+\section*{Student Information}
+
+Name : Burak Metethan Tunçel\\
+
+ID : 2468726\\
+
+\input{answers/answer1.tex}
+
+\input{answers/answer2.tex}
+
+\input{answers/answer3.tex}
+
+\input{answers/answer4.tex}
+
+\end{document}
+

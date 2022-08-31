@@ -1,0 +1,122 @@
+\newpage
+\section*{Answer 3}
+
+\subsection*{a)}
+
+% Let Xn = Exponential(λn) for 1 ≤ n ≤ N be independent random variables and T = min(X1, X2, . . . , XN ).
+% What is the cdf of T?
+
+For a random variable $X_i$, it has cdf
+\begin{align*}
+    F_{X_i} (x) &= \prob{X_i \leq x} = 1 - e^{-\lambda_i x_i} &x > 0
+\end{align*}
+for $i = 1, 2, ..., N$. Also, $T = \min(X_1, X_2, ..., X_N)$. Then the CDF of $T$ is
+\begin{align*}
+    F_T(t) &= \prob{T \leq t}\\
+    &= 1 - \prob{T \geq t}\\
+    &= 1 - \prob{\min(X_1, X_2, ..., X_N) \geq t}\\
+    &= 1 - \prob{X_1 \geq t, X_2 \geq t, ..., X_N \geq t}\\
+    &= 1 - \prob{X_1 \geq t} \prob{X_2 \geq t} \cdots \prob{X_N \geq t}\\
+    &= 1 - e^{\lambda_1 t} e^{\lambda_2 t} \cdots e^{\lambda_N t}\\
+    &= 1 - e^{-\sum_{i = 1}^{N} \lambda_i t}\ \ \ \ \ \ t > 0
+\end{align*}
+
+The answer is
+\begin{equation*}
+    F_T(t) = 1 - e^{-(\lambda_1 + \cdots + \lambda_N)t}
+\end{equation*}
+
+
+% Since given random variables are independent, one can notice that $T$ is also exponentially distributed, with parameter 
+% \begin{equation*}
+%     \lambda = \lambda_1 + \cdots + \lambda_N
+% \end{equation*} 
+
+% So, the pdf of $T$
+
+% Distribution of $T$ is
+% \begin{equation*}
+%     \textnormal{Exponential}(\lambda_1 + ... + \lambda_N)
+% \end{equation*}
+
+% Then,
+
+% \begin{equation*}
+%     f(x) = \lambda e^{-\lambda x} = (\lambda_1 + ... + \lambda_N) e^{-(\lambda_1 + ... + \lambda_N)x}
+% \end{equation*}
+
+% So,
+
+% \begin{align*}
+%     \prob{T > x} = F(x) &= \int_{0}^{x} f(t) dt\\
+%     &= \int_{0}^{x} (\lambda_1 + ... + \lambda_N) e^{-(\lambda_1 + ... + \lambda_N)t} dt\\
+%     &= e^{-(\lambda_1 + ... + \lambda_N)t} \Big|_0^x\\
+%     &= 1 - e^{-(\lambda_1 + ... + \lambda_N)x}
+% \end{align*}
+
+
+\subsection*{b)}
+
+% We are given 10 different computers C1, C2, . . . , C10 the lifetimes of which are exponential random variables with means 10/n years (1 ≤ n ≤ 10), respectively. Each computer’s lifetime is independent from the others. What is the expected time before one of the computers fails?
+
+% Let $t$ be the fail of one computer. We need to acquire a formula to calculate
+
+% Let $X_n = \textnormal{Exponential}(\lambda_n)$ for $1 \leq n \leq N$ be independent random variables. The probability that $X_i$ is the minimum can be obtained by conditioning:
+
+% \begin{align*}
+%     \prob{X_i \textnormal{ is the minimum}} &= \prob{X_i < X_j \textnormal{ for } j \neq i}\\
+%     &= \int_{0}^{\infty} \prob{X_i < X_j \textnormal{ for } j \neq i\ |\ X_i = t} \lambda_i e^{-\lambda_i t} dt\\
+%     &= \prob{t < X_j \textnormal{ for } j \neq i} \lambda_i e^{-\lambda_i t} dt\\
+%     &= \int_{0}^{\infty} \lambda_i e^{-\lambda_i t} \prod_{j \neq i}^{} \prob{X_j > t} dt\\
+%     &= \int_{0}^{\infty} \lambda_i e^{-\lambda_i t} \prod_{j \neq i}^{} e^{-\lambda_j t} dt\\
+%     &= \lambda_i \int_{0}^{\infty} e^{-(\lambda_1 + ... + \lambda_N)t} dt\\
+%     &= \lambda_i \frac{- e^{-(\lambda_1 + \cdots + \lambda_N)t}}{\lambda_1 + \cdots + \lambda_N} \Biggl|_0^{\infty}\\
+%     &= \frac{\lambda_i}{\lambda_1 + \cdots + \lambda_N}
+% \end{align*}
+
+% \begin{equation*}
+%     \expc{X} = \dfrac{1}{10 + 5 + \dfrac{10}{3} + \dfrac{10}{4} + 2 + \dfrac{10}{6} + \dfrac{10}{7} + \dfrac{10}{8} + \dfrac{10}{9} + 1} = \dfrac{252}{7381}
+% \end{equation*}
+
+From question, there are 10 $\expc{X_i}$'s:
+\begin{multicols}{4}
+\begin{itemize}
+    \item $\expc{X_1} = \dfrac{10}{1}$
+    \item $\expc{X_2} = \dfrac{10}{2}$
+    \item $\expc{X_3} = \dfrac{10}{3}$
+    \item $\expc{X_4} = \dfrac{10}{4}$
+    \item $\expc{X_5} = \dfrac{10}{5}$
+    \item $\expc{X_6} = \dfrac{10}{6}$
+    \item $\expc{X_7} = \dfrac{10}{7}$
+    \item $\expc{X_8} = \dfrac{10}{8}$
+    \item $\expc{X_9} = \dfrac{10}{9}$
+    \item $\expc{X_{10}} = \dfrac{10}{10}$
+\end{itemize}
+\end{multicols}
+
+Since $\lambda_i = \dfrac{1}{\expc{X_i}}$, from question, there are 10 $\lambda$'s:
+\begin{multicols}{5}
+\begin{itemize}
+    \item $\lambda_1 = \dfrac{1}{10}$
+    \item $\lambda_2 = \dfrac{2}{10}$
+    \item $\lambda_3 = \dfrac{3}{10}$
+    \item $\lambda_4 = \dfrac{4}{10}$
+    \item $\lambda_5 = \dfrac{5}{10}$
+    \item $\lambda_6 = \dfrac{6}{10}$
+    \item $\lambda_7 = \dfrac{7}{10}$
+    \item $\lambda_8 = \dfrac{8}{10}$
+    \item $\lambda_9 = \dfrac{9}{10}$
+    \item $\lambda_{10} = \dfrac{10}{10}$
+\end{itemize}
+\end{multicols}
+
+We found the CDF in part a. By using that CDF, we can calculate $\expc{X}$ and we reach
+\begin{equation*}
+    \expc{X} = \frac{1}{\lambda_1 + \cdots + \lambda_N}
+\end{equation*}
+
+So, when we use $\expc{X}$ for 10 variables in question
+
+\begin{equation*}
+    \expc{X} = \dfrac{1}{\dfrac{1}{10} + \dfrac{2}{10} + \dfrac{3}{10} + \dfrac{4}{10} + \dfrac{5}{10} + \dfrac{6}{10} + \dfrac{7}{10} + \dfrac{8}{10} + \dfrac{9}{10} + \dfrac{10}{10}} = \dfrac{2}{11}
+\end{equation*}

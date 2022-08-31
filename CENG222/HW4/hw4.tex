@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+% \usepackage[most]{tcolorbox}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{color, colortbl}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{xparse}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+% \usepackage{parskip}
+\usepackage{blindtext}
+\usepackage{forest}
+\usepackage[newfloat]{minted}
+\usepackage{booktabs}
+\usepackage[most, minted]{tcolorbox}
+
+
+\geometry
+{
+  a4paper,
+  left=12mm,
+  right=12mm,
+  top=12mm,
+  bottom=15mm,
+}
+
+% mybox
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+\definecolor{ex}{rgb}{1.00,0.65,0.00}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+
+\newtcblisting{myminted}{%
+    listing engine=minted,
+    minted language=matlab,
+    listing only,
+    breakable,
+    enhanced,
+    minted options = {
+        linenos, 
+        breaklines=true, 
+        breakbefore=., 
+        fontsize=\footnotesize, 
+        numbersep=2mm
+    },
+    overlay={%
+        \begin{tcbclipinterior}
+            \fill[gray!25] (frame.south west) rectangle ([xshift=4mm]frame.north west);
+        \end{tcbclipinterior}
+    }   
+}
+
+\SetupFloatingEnvironment{listing}{name=Code}
+
+% New environments that use mybox
+\newcounter{example}[section]
+\newenvironment{example}[1]{\begin{mybox}[breakable]{ex}{\refstepcounter{example}\textbf{Example \thesection.\theexample #1}}}{\end{mybox}}
+
+\newcounter{definition}[section]
+\newenvironment{definition}[1]{\refstepcounter{definition}\begin{mybox}[breakable]{blue}{\textbf{Definition \thesection.\thedefinition #1}}}{\end{mybox}}
+
+\newcounter{theorem}[section]
+\newenvironment{theorem}[1]{\begin{mybox}{red}{\refstepcounter{theorem}\textbf{Theorem \thesection.\thetheorem #1}}}{\end{mybox}}
+
+\newenvironment{formula}[1]{\begin{mybox}{cyan}{\textbf{#1}}}{\end{mybox}}
+
+% Changing maketitle
+\makeatletter         
+\renewcommand\maketitle{
+{\raggedright % Note the extra {
+\begin{center}
+{\Large \bfseries \@title}\\[2ex] 
+{\large \@author \ - \@date}\\[2ex]
+\end{center}}} % Note the extra }
+\makeatother
+
+% \onehalfspacing % adjust spacing
+\setlength{\parskip}{0.5\baselineskip}
+
+% macros
+\newcommand{\prob}[1]{\textbf{\textit{P}}\left\{#1\right\}}
+\newcommand{\expc}[1]{\mathbf{E}\left(#1\right)}
+\newcommand{\expcs}[1]{\mathbf{E}^2\left(#1\right)}
+\newcommand{\var}[1]{\text{Var}\left( #1 \right)}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\tar}{\vartriangleright}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\blank}{\sqcup}
+\newcommand{\R}[2]{\tikz [remember picture,overlay] \node (#1) {#2};}
+
+\def\circtxt#1{$\mathalpha \bigcirc \mkern-13mu \mathtt #1$}
+\def\smiley{\textcircled{\scriptsize $\mkern3mu\ddot{\ } \mkern-15mu \smallsmile$}}
+
+\NewDocumentCommand{\dsum}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\sum
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
+
+% maketitle variables
+\title{Title}
+\author{Burak Metehan Tunçel}
+\date{\today}
+
+\begin{document}
+
+\section*{Student Information}
+
+\noindent \textbf{Full Name:} Burak Metehan Tunçel
+
+\noindent \textbf{Id Number:} 2468726
+
+\input{tex-files/answer1.tex}
+
+\newpage
+\input{tex-files/answer2.tex}
+
+\newpage
+\input{tex-files/code-hw4.tex}
+
+\end{document}

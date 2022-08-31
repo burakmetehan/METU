@@ -1,0 +1,354 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{xparse}
+\usepackage{setspace}
+
+\newcommand{\prob}[1]{\textbf{\textit{P}}\{#1\}}
+\newcommand{\probb}[2]{P_{(#1)}(#2)}
+\newcommand{\expc}[1]{\mathbf{E}(#1)} % in equation
+\newcommand{\expec}[1]{$\mathbf{E}(#1)$} % outside equation
+
+\onehalfspacing
+
+\begin{document}
+
+\section*{Student Information}
+
+Name : Burak Metehan Tunçel\\
+
+ID : 2468726\\
+
+
+\section*{Answer 1}
+
+\subsection*{a)}
+
+In this drawing, there are 8 possible mutually exclusive events. The question states ``\underline{at least} one'' condition. So, the following probabilities need to be considered. ($W$: Choosing White, $B$: Choosing Black)
+
+\begin{multicols}{4}
+    \begin{enumerate}
+        \item $\prob{WBB}$
+        \item $\prob{BWB}$
+        \item $\prob{BBW}$
+        \item $\prob{WWB}$
+        \item $\prob{WBW}$
+        \item $\prob{BWW}$
+        \item $\prob{WWW}$
+    \end{enumerate}
+\end{multicols}
+
+\noindent Since these events are mutually exclusive, the sum of the probabilities of these 7 seven events is asked. Instead of calculating and adding the above probabilities, we can calculate
+\begin{equation*}
+    \left( \prob{\Omega} - \prob{BBB} \right) = \left( 1 - \prob{BBB} \right)
+\end{equation*}
+The reason is that only condition that violates the `\underline{at least}' statement is the event ``$BBB$'', so subtracting its probability from 1 is enough.
+
+\begin{equation*}
+    \prob{\Omega} - \prob{BBB} = 1 - \left( \frac{8}{10} \cdot \frac{11}{15} \cdot \frac{9}{12} \right) = \frac{14}{25} = 0.56
+\end{equation*}
+
+\subsection*{b)}
+
+Again there are 8 possible mutually exclusive events. However, this time, only one of them is asked. This event is ``$WWW$''. So the probability of this event,
+\begin{equation*}
+    \prob{WWW} = \frac{2}{10} \cdot \frac{4}{15} \cdot \frac{3}{12} = \frac{1}{75} = 0.01\overline{3}
+\end{equation*}
+
+\subsection*{c)}
+
+I would choose the \textbf{BOX 2}. The reason for this choice is that the highest probability for asked condition is on BOX 2. The probabilities for each box:
+
+\begin{itemize}
+    \item \prob{Drawing two white balls from BOX 1}: $\dfrac{2}{10} \cdot \dfrac{1}{9} = \dfrac{1}{45} \approx 0.022$
+    \item \prob{Drawing two white balls from BOX 2}: $\dfrac{4}{15} \cdot \dfrac{3}{14} = \dfrac{2}{35} \approx 0.057$
+    \item \prob{Drawing two white balls from BOX 3}: $\dfrac{3}{12} \cdot \dfrac{2}{11} = \dfrac{1}{22} \approx 0.045$
+\end{itemize}
+
+\subsection*{d)}
+
+\textbf{First BOX 2, then BOX 3}.
+
+\noindent Probability of choosing white ball in first draw:
+\begin{itemize}
+    \item From BOX 1: $\dfrac{2}{10} = 0.20$
+    \item From BOX 2: $\dfrac{4}{15} = 0.2666666667$
+    \item From BOX 3: $\dfrac{3}{12} = 0.25$
+\end{itemize}
+
+\noindent Since, I would choose the \textbf{BOX 2}, in the first draw, because the highest probability for drawing white ball is in BOX 2. 
+
+After choosing the first white ball from BOX 2, probability of choosing white ball in second draw:
+\begin{itemize}
+    \item From BOX 1: $\dfrac{2}{10} = 0.20$
+    \item From BOX 2: $\dfrac{3}{14} = 0.2142857143$
+    \item From BOX 3: $\dfrac{3}{12} = 0.25$
+\end{itemize}
+
+\noindent When one white ball is drawn from BOX 2, the highest probability for drawing white balls is in BOX 3. Therefore, in the second draw, I would choose \textbf{BOX 3}.
+
+\subsection*{e)}
+
+To calculate the expected value, we need to calculate the probabilities of the following:
+
+\begin{itemize}
+    \item \prob{0 White Balls} = $\prob{BBB}$
+    \item \prob{1 White Balls} = $\prob{WBB} + \prob{BWB} + \prob{BBW}$
+    \item \prob{2 White Balls} = $\prob{WWB} + \prob{WBW} + \prob{BWW}$
+    \item \prob{3 White Balls} = $\prob{WWW}$
+\end{itemize}
+
+\noindent After the calculations of these probabilities, we need to use the expactation formula for discrete case because this is a discrete case by using the following:
+\begin{equation*}
+    \mu = \expc{X} = \sum_x x P(x) 
+\end{equation*}
+
+\noindent Starting by calculating the probabilities of the events.
+\begin{itemize}
+    \item \prob{0 White Balls} = $0.440 = 
+        \dfrac{8}{10} \cdot \dfrac{11}{15} \cdot \dfrac{9}{12} = \dfrac{11}{25}$
+    \item \prob{1 White Balls} = $0.41\overline{6} = 
+        \dfrac{2}{10} \cdot \dfrac{11}{15} \cdot \dfrac{9}{12} + 
+        \dfrac{8}{10} \cdot \dfrac{4}{15} \cdot \dfrac{9}{12} + 
+        \dfrac{8}{10} \cdot \dfrac{11}{15} \cdot \dfrac{3}{12} 
+        = \dfrac{5}{12}$
+    \item \prob{2 White Balls} = $0.130 =
+        \dfrac{2}{10} \cdot \dfrac{4}{15} \cdot \dfrac{9}{12} + 
+        \dfrac{2}{10} \cdot \dfrac{11}{15} \cdot \dfrac{3}{12} + 
+        \dfrac{8}{10} \cdot \dfrac{4}{15} \cdot \dfrac{3}{12} 
+        = \dfrac{13}{100}$
+    \item \prob{3 White Balls} = $0.01\overline{3} = 
+        \dfrac{2}{10} \cdot \dfrac{4}{15} \cdot \dfrac{3}{12} 
+        = \dfrac{1}{75}$
+\end{itemize}
+
+\noindent By using this probabilities, we calculate the expected value:
+\begin{equation*}
+    \mu = 0 \cdot \dfrac{11}{25} + 1 \cdot \dfrac{5}{12} + 2 \cdot \dfrac{13}{100} + 3 \cdot \dfrac{1}{75} = \dfrac{43}{60} = 0.71\overline{6}
+\end{equation*}
+
+\newpage
+
+\subsection*{f)}
+
+We are asked $\prob{B | W}$ if the following denotations are used,
+
+\begin{itemize}
+    \item $B$ = \{Choosing a ball from BOX 1\}
+    \item $W$ = \{Choosing a white ball\}
+\end{itemize}
+
+\noindent Intuitively, the following notion can be used
+\begin{quote}
+    Suppose that all the balls are in a giant box, and all the balls have a number on them that indicates which box they are from. If we know that drawn ball is white the probability that the ball has number 1 on it is $\dfrac{2}{9}$.    
+\end{quote}
+
+Instead, we can also use ``\textit{Bayes Rule}'' and ``\textit{Law of Total Probability}'' to show that intuition was not wrong.
+
+\noindent Before, note that we can acquire the followings:
+\begin{itemize}
+    \item $\prob{B} = \dfrac{10}{37}$: There are 37 balls in total and 10 of them are in BOX 1.
+    \item $\prob{\overline{B}} = \dfrac{27}{37}$: There 37 balls in total and 27 of them are not in BOX 1
+    \item $\prob{W | B} = \dfrac{2}{10}$: If a ball is drawn from BOX 1, the probability of it should be 2/10.
+    \item $\prob{W |\overline{B}} = \dfrac{7}{27}$: There are 27 balls that are not in BOX 1, and 7 of them are white.
+\end{itemize}
+
+\noindent Now, we can start using \textit{Bayes Rule} and \textit{Law of Total Probability}:
+
+\begin{align*}
+    \prob{B | W} &= \frac{\prob{W | B} \prob{B}}{\prob{W}} &\textit{(Bayes Rules)}\\
+    &= \frac{\prob{W | B} \prob{B}}{\prob{W | B} \prob{B} + \prob{W | \overline{B}} \prob{\overline{B}}} &\textit{(Law of Total Probability)}\\
+    &= \dfrac{
+            \dfrac{2}{10} \cdot \dfrac{10}{37}
+        }{
+            \dfrac{2}{10} \cdot \dfrac{10}{37} + \dfrac{7}{27} \cdot \dfrac{27}{37}
+        }\\
+    &= \dfrac{2}{9} \approx 0.22
+\end{align*}
+
+\noindent The answer is ``$\dfrac{2}{9}$''
+
+
+\section*{Answer 2}
+
+For this question the following event denotations will be used.
+\begin{align*}
+    &
+    D = \left\{ \textnormal{The ring is destroyed} \right\}
+    &&
+    F = \left\{ \textnormal{Frodo is corrupted} \right\}
+    &&
+    S = \left\{ \textnormal{Sam is corrupted} \right\}
+    &
+\end{align*}
+
+\subsection*{a)}
+
+\noindent The followings are given:
+
+\begin{multicols}{3}
+    \begin{itemize}
+        \item $\prob{D | \overline{S}} = 0.9$
+        \item $\prob{D | S} = 0.5$
+        \item $\prob{S} = 0.1$
+    \end{itemize}    
+\end{multicols}
+
+\noindent and the following is asked
+
+$\prob{S | D} = ?$
+
+\noindent By using \textit{Bayes Rule}, we can calculate the $\prob{S | D}$:
+\begin{align*}
+    \prob{S | D} &= \frac{\prob{D|S} \prob{S}}{\prob{D}}\\
+    &(\textnormal{We can use the \textbf{Law of Total Probability} to calculate the $\prob{D}$})\\
+    &= \frac{\prob{D|S} \prob{S}}{\prob{D|S} \prob{S} + \prob{D|\overline{S}} \prob{\overline{S}}}\\
+    &= \frac{(0.5)(0.1)}{(0.5)(0.1)+(0.9)(0.9)} = 0.05813953488 \approx 0.058
+\end{align*}
+
+\subsection*{b)}
+
+\noindent The followings are given:
+
+\begin{itemize}
+    \begin{multicols}{3}
+        \item $\prob{F} = 0.25$
+        \item $\prob{S} = 0.1$
+        \item $\prob{D | (F \setminus S)} = 0.2$
+        \item $\prob{D | (S \setminus F)} = 0.5$
+        \item $\prob{D | (\overline{F} \cap \overline{S})} = 0.9$
+        \item $\prob{D | (F \cap S)} = 0.05$
+    \end{multicols}
+    \item The corruption of Frodo and Sam are independent events.
+\end{itemize}
+
+\noindent and the following is asked
+
+$\prob{(F \cap S) | D} = ?$
+
+\noindent Since we know the independence from question, we can calculate $\prob{F \cap S}$
+\begin{equation}
+    \prob{F \cap S} = \prob{F} \prob{S} = (0.25)(0.1) = 0.025
+\end{equation}
+
+\noindent Since $F$ is a union of disjoint events $F \setminus S$ and $F \cap S$, and -similarly- S is a union of disjoint events $S \setminus F$ and $F \cap S$, we can compute,
+\begin{align}
+    \prob{F \setminus S} &= \prob{F} - \prob{F \cap S} = 0.25 - 0.025 = 0.225\\
+    \prob{S \setminus F} &= \prob{S} - \prob{F \cap S} = 0.1 - 0.025 = 0.075
+\end{align}
+
+Event $(F \setminus S)$, $(S \setminus F)$, $F \cap S$, and $\overline{(F \cup S)}$ form a partition $\Omega$, because they are mutually exclusive and exhaustive. The last of them is the event of no corruption. Notice that $F$, $S$, and $(F \cap S)$ are neither mutually exclusive nor exhaustive, so they cannot be used for the Bayes Rules. Now orginze the data,
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{l|l}
+    \multicolumn{1}{c|}{Corruption}      & \multicolumn{1}{c}{Destroy}               \\ 
+    \hline
+    $\prob{F \setminus S}       = 0.225$ & $\prob{D | (F \setminus S)}       = 0.2$  \\
+    $\prob{S \setminus F}       = 0.075$ & $\prob{D | (S \setminus F)}       = 0.5$  \\
+    $\prob{F \cap S}            = 0.025$ & $\prob{D | (F \cap S)}            = 0.05$ \\
+    $\prob{\overline{F \cup S}} = 0.675$ & $\prob{D | (\overline{F \cup S})} = 0.9$        
+    \end{tabular}
+\end{table}
+
+Combining the \textit{Bayes Rules} and the \textit{Law of Total Probability},
+
+\begin{equation*}
+    \prob{(F \cap S) | D} = \frac{\prob{D | (F \cap S)} \prob{F \cap S}}{\prob{D}}
+\end{equation*}
+where
+\begin{align*}
+    \prob{D} = &\prob{D | (F \setminus S)} \prob{F \setminus S} + \prob{D | (S \setminus F)} \prob{S \setminus F}\\
+    &+ \prob{D | (F \cap S)} \prob{F \cap S} + \prob{D | (\overline{F \cup S})} \prob{\overline{F \cup S}}
+\end{align*}
+Then
+\begin{align*}
+    \prob{(F \cap S) | D} &= \frac{(0.05)(0.025)}{(0.2)(0.225) + (0.5)(0.075) + (0.05)(0.025) + (0.9)(0.675)}\\
+    &= 0.001808318264 \approx 0.0018
+\end{align*}
+
+
+\section*{Answer 3}
+
+By using the data provided in PDF, we can construct a table by organizing the joint pmf of $X$ and $Y$. So, in this way, we get the marginal pmf. (This table is similar to the table in example 3.6 in book.)
+
+% Starting Huge
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|} 
+    \hline
+    \multicolumn{2}{|c|}{\multirow{2}{*}{$P_{(A,I)}(a, i)$}} & \multicolumn{3}{c|}{$a$}             & \multirow{2}{*}{$P_{I}(i)$}  \\ 
+    \cline{3-5}
+    \multicolumn{2}{|c|}{}                           & \textbf{1} & \textbf{2} & \textbf{3} &                          \\ 
+    \hline
+    \multirow{2}{*}{$i$} & \textbf{1}                & 0.18       & 0.3        & 0.12       & 0.6                      \\
+                         & \textbf{2}                & 0.12       & 0.2        & 0.08       & 0.4                      \\ 
+    \hline
+    \multicolumn{2}{|c|}{$P_A(a)$}                     & 0.3        & 0.5        & 0.2        & 1.0                      \\
+    \hline
+\end{tabular}
+\caption*{Table 1}
+\end{table}
+
+\subsection*{a)}
+
+\noindent There are 2 cases that satisfy the conditon \textit{four snowy days}:
+\begin{multicols}{4}
+    \begin{itemize}
+        \item $a = 2,\ i = 2$
+        \item $a = 3,\ i = 1$
+    \end{itemize}
+\end{multicols}
+
+\noindent So we need to calculate the followings:
+\begin{multicols}{4}
+    \begin{itemize}
+        \item $\probb{A,I}{2, 2}$
+        \item $\probb{A,I}{3, 1}$
+    \end{itemize}
+\end{multicols}
+
+\noindent From Table 1, we can read these probabilities.
+
+\begin{equation*}
+    \prob{\text{Four Snowy Days}} = \probb{A, I}{2, 2} + \probb{A, I}{3, 1} = 0.2 + 0.12 = 0.32
+\end{equation*}
+
+\noindent The answer is ``\textbf{0.32}''.
+
+\subsection*{b)}
+
+To decide on the independence of $A$ and $I$, we need to check if their joint pmf factors into a product of marginal pmfs. If there is at least one pair that violates the equality, it showing violation is enough to porve the dependence.
+
+Therefore, we need to check all pairs.
+\begin{multicols}{2}
+    \begin{itemize}
+        \item $\probb{A,I}{1, 1} = 0.3 \cdot 0.6 = 0.18$
+        \item $\probb{A,I}{1, 2} = 0.3 \cdot 0.4 = 0.12$
+        \item $\probb{A,I}{2, 1} = 0.5 \cdot 0.6 = 0.30$
+        \item $\probb{A,I}{2, 2} = 0.5 \cdot 0.4 = 0.20$
+        \item $\probb{A,I}{3, 1} = 0.2 \cdot 0.6 = 0.12$
+        \item $\probb{A,I}{3, 2} = 0.2 \cdot 0.4 = 0.08$
+    \end{itemize}    
+\end{multicols}
+
+\noindent All pairs satisfy the condition for independence. There is no pair to violate the equality mentioned above.
+
+Answer is ``\textbf{Independent}''.
+
+\end{document}

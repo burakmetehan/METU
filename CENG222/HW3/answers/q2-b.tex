@@ -1,0 +1,31 @@
+\begin{itemize}[leftmargin=.6cm]
+  \item Null hypothesis $H_0$ (the restaurant has a greater than or equal rating of 7.5): $\mu_0 \geq 7.5$.
+  \item Alternate hypothesis $H_A$ (the restaurant has lower rating of 7.5): $\mu < 7.5$
+  \item Mean is 7.4: $\bar{X} = 7.4$ 
+  \item Standard deviation is 0.8: $s = 0.8$
+  \item Sample size is 256: $n = 256$.
+\end{itemize}
+
+\begin{tcolorbox}[colback=ex!50]
+Since sample size, $n$ is sufficiently large, Z and T test will give similar results. (Since their critical value is equal due to n=256).
+
+(Also, in the text of the question, the given standard deviation 0.8 can be understood as population standard deviation (although "sample standard deviation" is stated). Therefore, in here, my assumption is that the given standard deviation 0.8 is population standard deviation.)
+
+\end{tcolorbox}
+
+\noindent \textit{In here, I will use Z-test.} The formula is,
+\begin{equation*}
+  Z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
+\end{equation*}
+When the given variables are inserted,
+\begin{equation*}
+  Z = \frac{7.4 - 7.5}{0.8 / \sqrt{256}} = -2
+\end{equation*}
+Now, we need to calculate the critical value where $\alpha = 0.05$ (because our significance level is $5\%$).
+\begin{equation*}
+  z_{\alpha} = 1.6449
+\end{equation*}
+
+\noindent The acceptance region for left tail Z-test is: $[-z_{\alpha},\ \infty)$. So our acceptance region is $[-1.6449,\ \infty)$. Since $-2 < -1.6449$, sufficient evidence against $H_0$ is provided (and sufficient evidence in favor of $H_A$ is also provided.)\\
+
+Thus, restaurant A \textbf{\textit{should not}} be in my list of candidate restaurants to order food from.
