@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{color, colortbl}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{xparse}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+% \usepackage{parskip}
+\usepackage{blindtext}
+\usepackage{forest}
+\usepackage[newfloat]{minted}
+\usepackage{booktabs}
+
+
+\geometry
+{
+  a4paper,
+  left=12mm,
+  right=12mm,
+  top=12mm,
+  bottom=15mm,
+}
+
+% mybox
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+\definecolor{ex}{rgb}{1.00,0.65,0.00}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setminted
+{
+	mathescape=true,
+	xleftmargin=\parindent,
+	bgcolor=bg,
+	escapeinside=@@
+}
+
+\SetupFloatingEnvironment{listing}{name=Code}
+
+\usetikzlibrary{patterns,positioning,fit,arrows,calc,shapes.geometric,shapes.multipart,decorations.pathreplacing}
+
+
+% New environments that use mybox
+\newcounter{example}[section]
+\newenvironment{example}[1]{\begin{mybox}[breakable]{ex}{\refstepcounter{example}\textbf{Example \thesection.\theexample #1}}}{\end{mybox}}
+
+\newcounter{definition}[section]
+\newenvironment{definition}[1]{\refstepcounter{definition}\begin{mybox}[breakable]{blue}{\textbf{Definition \thesection.\thedefinition #1}}}{\end{mybox}}
+
+\newcounter{theorem}[section]
+\newenvironment{theorem}[1]{\begin{mybox}{red}{\refstepcounter{theorem}\textbf{Theorem \thesection.\thetheorem #1}}}{\end{mybox}}
+
+\newenvironment{formula}[1]{\begin{mybox}{cyan}{\textbf{#1}}}{\end{mybox}}
+
+% Changing maketitle
+\makeatletter         
+\renewcommand\maketitle{
+{\raggedright % Note the extra {
+\begin{center}
+{\Large \bfseries \@title}\\[2ex] 
+{\large \@author \ - \@date}\\[2ex]
+\end{center}}} % Note the extra }
+\makeatother
+
+% \onehalfspacing % adjust spacing
+\setlength{\parskip}{0.5\baselineskip}
+
+% macros
+\newcommand{\prob}[1]{\textbf{\textit{P}}\left\{#1\right\}}
+\newcommand{\expc}[1]{\mathbf{E}\left(#1\right)}
+\newcommand{\expcs}[1]{\mathbf{E}^2\left(#1\right)}
+\newcommand{\var}[1]{\text{Var}\left( #1 \right)}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\def\circtxt#1{$\mathalpha \bigcirc \mkern-13mu \mathtt #1$}
+
+\NewDocumentCommand{\dsum}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\sum
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
+
+% maketitle variables
+\title{CENG 242 - Chapter 8: Type Systems}
+\author{Burak Metehan Tunçel}
+\date{May 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols*}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\input{sections/8.0-intro.tex}
+
+\input{sections/8.1-inclusion-polymorphism.tex}
+
+\input{sections/8.2-parametric-polymorphism.tex}
+
+\input{sections/8.3-overloading.tex}
+
+\input{sections/8.4-type-conversion.tex}
+
+\end{multicols*}
+
+\end{document}

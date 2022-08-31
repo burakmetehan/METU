@@ -1,0 +1,248 @@
+\section{Memory Management}
+\label{sec:memory-management}
+
+Memory manamegement of variables involves architecture, operating system, language runtime and the compiler. A typical OS divides memory in sections (segments):
+\begin{itemize}
+  \item \textit{\textbf{Stack section:}} run time stack
+  \item \textit{\textbf{Heap section:}} heap variables
+  \item \textit{\textbf{Data section:}} global variables
+  \item \textit{\textbf{Code section:}} executable instructions, read only.
+\end{itemize}
+\textit{Global variables} are fixed at compile time and they are put in data section. \textit{Heap variables} are stored in the dynamic data structures in heap section. \textit{Heap section grows and shrinks as new variables are allocated and deallocated}. Heap section is maintained by language runtime. For \texttt{C}, it is \texttt{libc}.
+
+\subsection{Local Variables}
+
+Local variables can have multiple instances alive in case of recursion. For recursive calls of a function, there should be multiple instances of a variable and compiled code should know where it is depending on the current call state. The solution is to use \textit{\textbf{run-time stack}}. Each function call will introduce an \textit{\textbf{activation record}} to store its local context. It is also called \textbf{stack frame}, \textbf{activation frame}.
+
+In a typical architecture, \textit{\textbf{activation record}} contains:
+\begin{itemize}
+  \item \textit{\textbf{Return address}}. Address of the next instruction after the caller.
+  \item \textit{\textbf{Parameter values}}.
+  \item \textit{A reserved area for local variables}.
+\end{itemize}
+
+\subsection{Function Call}
+
+When a function is called:
+\begin{itemize}
+  \item \textbf{Caller Side}:
+    \begin{itemize}
+      \item Push parameters
+      \item Push return address and jump to function code start (usually a single CPU instruction like callq )
+    \end{itemize}
+  
+    \item \textbf{Function entry}:
+      \begin{itemize}
+        \item Set base pointer to current stack pointer
+        \item Advance stack pointer to size of local variables
+      \end{itemize}
+    
+    \item Function body can access all local variables relative to base pointer
+    
+    \item \textbf{Function return}:
+      \begin{itemize}
+        \item Set stack pointer to base pointer
+        \item Pop return address and jump to return address (single CPU instruction like retq)
+      \end{itemize}
+    
+    \item \textbf{Caller side after return}:
+      \begin{itemize}
+        \item Recover stack pointer (remove parameters on stack)
+        \item Get and use return value if exists (typically from a register)
+      \end{itemize}
+\end{itemize}
+
+All locals and parameters have the same offset from base pointer. Recursive calls execute same instructions.
+
+\begin{itemize}
+  \item Order of values in the activation record may differ for different
+  languages.
+  \item Registers are used for passing primitive value parameters instead of stack.
+  \item Garbage collecting languages keep references on stack with actual variables on heap.
+  \item Languages returning nested functions as first order values require more complicated mechanisms.
+\end{itemize}
+
+% \end{multicols*}
+
+% \subsection{Examples}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%% Example of Activation Record %%%%
+
+% \begin{multicols}{2}
+
+% %% Column 1 %%
+% \begin{listing}[H]
+
+% \begin{minted}{c}
+% int f(short a, int b) {
+%   char tmp[10];
+%   ...
+%   return a + b;
+% }
+
+% int g(int x) {
+%   int tmp, p;
+%   ...
+%   tmp = f(x, x+1);
+%   ...
+%   return tmp + p;
+% }
+
+% int main() {
+%   return g(4);
+% }
+% \end{minted}
+  
+% \caption{Example of Activation Record.}
+% \label{code:code-5}
+  
+% \end{listing}
+
+% %% Column 2 %%
+% \begin{center}
+
+% \begin{tikzpicture}
+%       [stack/.style={rectangle split, rectangle split parts=#1,draw,
+%       text width=10em}]
+%   \node [stack=10, rectangle split part fill={white,blue!40!white,blue!40!white,blue!40!white,
+%       green!40!white, green!40!white, green!40!white,
+%       orange!40!white, orange!40!white, orange!40!white}] (stk) {
+%   \nodepart{one} \rule{0pt}{3em}
+%   \nodepart{two} locals to f():\\
+%                   tmp,10 bytes
+%   \nodepart{three} return adress:\\
+%           end of line 9
+%   \nodepart{four} parameters of f():\\
+%           a=4, b=5 (6 bytes)
+%   \nodepart{five} locals to g():\\
+%           none
+%   \nodepart{six} return adress:\\
+%           end of line 14
+%   \nodepart{seven} parameters of g():\\
+%           x = 4
+%   \nodepart{eight} locals to main():\\
+%   \nodepart{nine} return adress:\\
+%             program exit code
+%   \nodepart{ten} parameters of main():\\
+%   };
+%   \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.text split west) to (stk.four split west); 
+%   \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.four split west) to (stk.seven split west); 
+%   \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.seven split west) to (stk.south west); 
+%   \node [left=of stk.three,rotate=90,anchor=center,yshift=-5mm] {\footnotesize A.R. of f()};
+%   \node [left=of stk.six,rotate=90,anchor=center,yshift=-5mm] {\footnotesize A.R. of g()};
+%   \node [left=of stk.nine,rotate=90,anchor=center,yshift=-5mm] {\footnotesize A.R. of main()};
+%   \draw [->,thick] ($(stk.text split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize Stack Pointer}
+%       (stk.text split east);
+%   \draw [->,thick] ($(stk.two split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize f() base pointer}
+%       (stk.two split east);
+% \end{tikzpicture}
+
+% \end{center}
+  
+% \end{multicols}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%% Example of Function Call %%%%
+% \begin{multicols}{2}
+
+% %%%% Column 1 %%%%
+% \begin{listing}[H]
+
+% \begin{minted}{c}
+% int h(int n) {
+%   int tmp;
+%   if (n <= 1) return 0;
+%   else {
+%     tmp = h(n-1);
+%     return n+tmp;
+%   }
+% }
+
+% int main() {
+%   printf("%d\n", h(2));
+%   return 0;
+% }
+% \end{minted}
+    
+% \caption{Example of Function Call.}
+% \label{code:code-6}
+    
+% \end{listing}
+
+% \begin{center}
+
+% \begin{tikzpicture}
+%     [stack/.style={rectangle split, rectangle split parts=7,draw,
+%     text width=10em},
+%   scolor/.style={rectangle split part fill={white,
+%         green!40!white, green!40!white, green!40!white,
+%       orange!40!white, orange!40!white, orange!40!white}}]
+% \node [stack,scolor] (stk) {
+% \nodepart{one} \rule{0pt}{3em}
+% \nodepart{two} tmp
+% \nodepart{three} return addr.
+% \nodepart{four} n = 2
+% \nodepart{five} locals to main():\\
+% \nodepart{six} return adress:\\
+%           program exit code
+% \nodepart{seven} parameters of main():\\
+% };
+% \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.text split west) to (stk.four split west); 
+% \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.four split west) to (stk.south west); 
+% \node [left=of stk.three,rotate=90,anchor=center,yshift=-5mm] {\footnotesize h()};
+% \node [left=of stk.six,rotate=90,anchor=center,yshift=-5mm] {\footnotesize main()};
+% \draw [->,thick] ($(stk.text split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize Stack Pointer}
+%     (stk.text split east);
+% \draw [->,thick] ($(stk.two split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize base pointer}
+%     (stk.two split east);
+% \end{tikzpicture}
+
+% \end{center}
+
+% \columnbreak
+
+% %%%% Column 2 %%%%
+% \begin{center}
+
+% \begin{tikzpicture}
+%   [stack/.style={rectangle split, rectangle split parts=10,draw,
+%   text width=10em},
+%   scolor/.style={rectangle split part fill={white,blue!40!white,blue!40!white,blue!40!white,%
+%               green!40!white, green!40!white, green!40!white,%
+%               orange!40!white, orange!40!white, orange!40!white}}]
+
+% \node [stack,scolor] (stk) {
+% \nodepart{one} \rule{0pt}{3em}
+% \nodepart{two} tmp
+% \nodepart{three} return addr.
+% \nodepart{four} n = 1
+% \nodepart{five} tmp
+% \nodepart{six} return addr.
+% \nodepart{seven} n = 2
+% \nodepart{eight} locals to main():\\
+% \nodepart{nine} return adress:\\
+%         program exit code
+% \nodepart{ten} parameters of main():\\
+% };
+% \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.text split west) to (stk.four split west); 
+% \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.four split west) to (stk.seven split west); 
+% \draw [decorate,thick,decoration={brace,mirror,raise=5pt}] (stk.seven split west) to (stk.south west); 
+% \node [left=of stk.three,rotate=90,anchor=center,yshift=-5mm] {\footnotesize h()};
+% \node [left=of stk.six,rotate=90,anchor=center,yshift=-5mm] {\footnotesize h()};
+% \node [left=of stk.nine,rotate=90,anchor=center,yshift=-5mm] {\footnotesize main()};
+% \draw [->,thick] ($(stk.text split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize Stack Pointer}
+%     (stk.text split east);
+% \draw [->,thick] ($(stk.two split east) + (1cm,0)$) {} -- node [above,anchor=south west] {\footnotesize base pointer}
+%     (stk.two split east);
+% \end{tikzpicture}
+
+% \end{center}
+% \end{multicols}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{multicols*}{2}
+% \setlength{\columnsep}{1.5cm}
+% \setlength{\columnseprule}{0.2pt}

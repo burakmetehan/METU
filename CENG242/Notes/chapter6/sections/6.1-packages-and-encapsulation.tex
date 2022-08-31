@@ -1,0 +1,25 @@
+\section{Program Units, Packages and Encapsulation}
+\label{sec:packages-encapsulation}
+
+A \textit{\textbf{program unit}} is any named part of a program that can be designed and implemented more-or-less independently. A well-designed program unit has a \textit{single purpose}, and has a \textit{simple application program interface}. If well designed, a program unit is likely to be modifiable (capable of being changed without forcing major changes to other program units), and is potentially reusable (capable of being used in many programs).
+
+The \textit{\textbf{application program interface}} (or \textit{\textbf{API}}) of a program unit is the minimum information that application programmers need to know in order to use the program unit successfully.
+
+For instance, a procedure's API consists of its \textit{identifier}, \textit{formal parameters}, and \textit{result type if any}, together with a \textit{specification of its observable behavior}. The procedure's API does \textit{not} include the algorithm used in its definition.
+
+In large-scale program construction, complexity grows, and reusability and abstraction become important. For example,
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lp{.6\linewidth}}
+    \rowcolor{blue!10} 50 lines & no abstraction is essential, all in main() \\
+    \rowcolor{blue!5} 500 lines & function/procedure abstraction sufficient\\
+    \rowcolor{blue!10} 5,000 lines & function groups forming modules, modules are combined to form the application\\
+    \rowcolor{blue!5} 500,000 lines & heavy abstraction and modularization, all parts designed for reuse (libraries, components etc)
+\end{tabular}
+\end{table}
+
+Therefore, a programming language whose only program units are procedures (such as \texttt{C}) is suitable only for small-scale program construction. For large-scale program construction, the language should support large-scale program units such as \textit{packages}, \textit{abstract types}, and \textit{classes}.
+
+\input{sections/6.1/packages.tex}
+
+\input{sections/6.1/encapsulation.tex}

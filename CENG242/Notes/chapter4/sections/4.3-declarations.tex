@@ -1,0 +1,72 @@
+\section{Declaration}
+\label{sec:declaration}
+
+\textit{\textbf{Definition:}} Creating a new name for an existing binding.
+
+\noindent \textit{\textbf{Declaration:}} Creating a completely new binding.
+
+\begin{itemize}
+  \item in \texttt{C}: \texttt{struct Person} is a declaration. \texttt{typedef struct Person persontype} is a definition.
+  \item in \texttt{C++}: \texttt{double x} is a declaration. \texttt{double \&y=x;} is a definition.
+\end{itemize}
+
+The basic distinction is whether creating a new entity or not. However, usually the distinction is not clear and used interchangeably.
+
+\subsection{Type Declaration}
+
+A \textit{\textbf{type declaration}} binds an identifier to a type. We can distinguish two kinds of type declaration. A \textit{\textbf{type definition}} binds an identifier to an existing type. A \textit{\textbf{new-type declaration}} binds an identifier to a new type that is not equivalent to any existing type.
+
+\subsection{Constant Declaration}
+
+A \textit{\textbf{constant declaration}} binds an identifier to a constant value. A constant declaration typically has the form ``\texttt{const \textit{I} = \textit{E};}''.
+
+\subsection{Variable Declaration}
+
+A \textit{\textbf{variable declaration}}, in its simplest form, creates a single variable and binds an identifier to that variable. A \textit{\textbf{variable renaming definition}} binds an identifier to an \textit{existing} variable. In other words, it creates an \textit{alias}.
+
+\subsection{Procedure Definitions}
+
+A \textit{\textbf{procedure definition}} binds an identifier to a procedure. In most programming languages, we can bind an identifier to either a function procedure or a proper procedure.
+
+\textit{Note: The following subsections are important.}
+
+\subsection{Sequential Declarations}
+
+A \textit{\textbf{sequential declaration}} composes subdeclarations that are to be elaborated one after another. Each subdeclaration can use bindings produced by any \textit{previous} subdeclarations, but not those produced by any \textit{following} subdeclarations.
+
+Declared identifier is not available in preceding declarations but is available in following declaration.
+
+Most programming languages provide only such declarations.
+
+\subsection{Collateral Declarations}
+
+A \textit{\textbf{collateral declaration}} composes subdeclarations that are to be elaborated independently of each other. These subdeclarations may not use bindings produced by each other. The collateral declaration merges the bindings produced by its subdeclarations.
+
+Collateral declarations are uncommon in imperative and object-oriented languages, but they are common in functional and logic languages.
+
+\subsection{Recursive Declarations}
+
+A \textit{\textbf{recursive declaration}} is one that uses the bindings that it produces itself. Such a construct is important because it enables us to define recursive types and procedures.
+
+\textit{Declaration:} \texttt{Name = Body}. The body of the declaration can access the declared identifier. Declaration is available in the body of itself.
+
+\texttt{C} functions and type declarations are recursive. Variable definitions are usually not recursive.
+
+\subsection{Recursive Collateral Declarations}
+
+All declarations can access the others regardless of their order.
+\begin{itemize}
+  \item All \texttt{Haskell} declarations are recursive collateral (including variables). All declarations are mutually recursive.
+  \item \texttt{C++} class members are like this.
+  \item In \texttt{C}, a similar functionality can be achieved by prototype
+  definition.
+\end{itemize}
+
+\subsection{Scopes of Declarations}
+
+\textit{Collateral}, \textit{sequential}, and \textit{recursive declarations} differ in their influence on scope:
+\begin{itemize}
+  \item In a \textit{collateral declaration}, the scope of each subdeclaration extends from the end of the collateral declaration to the end of the enclosing block.
+  \item In a \textit{sequential declaration}, the scope of each subdeclaration extends from the end of that subdeclaration to the end of the enclosing block.
+  \item In a \textit{recursive declaration}, the scope of every subdeclaration extends from the start of the recursive declaration to the end of the enclosing block.
+\end{itemize}

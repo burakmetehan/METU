@@ -1,0 +1,37 @@
+\section{Exceptions}
+\label{sec:exceptions}
+
+An \textit{\textbf{abnormal situation}} is one in which a program cannot continue normally. Typical examples are the situations that arise when an arithmetic operation overflows, or an input/output operation cannot be completed.
+
+What should happen when such an abnormal situation arises? Too often, the program simply halts with a diagnostic message. It is much better if the program transfers control to a \textit{handler}, a piece of code that enables the program to recover from the situation. A program that recovers reasonably from such situations is said to be \textit{robust}.
+
+Exceptions are a superior technique for handling abnormal situations. An \textit{\textbf{exception}} is an entity that represents an abnormal situation (or a family of abnormal situations). Any code that detects an abnormal situation can \textit{\textbf{throw}} (or \textit{raise}) an appropriate exception. That exception may subsequently be \textit{\textbf{caught}} in another part of the program, where a construct called an \textit{\textbf{exception handler}} (or \textit{just handler}) recovers from the abnormal situation.
+
+Every exception can be caught and handled, and the programmer has complete control over where and how each exception is handled. Exceptions cannot be ignored: if an exception is thrown, the program will halt unless it catches the exception.
+
+The first major programming language with a general form of exception handling was \texttt{PL/I}. Then, a better exception concept has been designed into more modern languages such as \texttt{C++} and \texttt{JAVA}.
+
+A handler for any exception may be attached to any command. If that command (or any procedure called by it) throws the exception, execution of that command is terminated and control is transferred to the handler. The command that threw the exception is never resumed.
+
+We can attach different handlers for the same exception to different commands in the program. We can also attach handlers for several different exceptions to the same command.
+
+\noindent Note the following important properties of exceptions:
+\begin{itemize}
+  \item If a subcommand throws an exception, the enclosing command also throws that exception, unless it is an exception-handling command able to catch that particular exception. If a procedure's body throws an exception, the corresponding procedure call also throws that exception.
+  \item A command that throws an exception is terminated abruptly (and will never be resumed).
+  \item Certain exceptions are built-in, and may be thrown by built-in operations. Examples are arithmetic overflow and out-of-range array indexing.
+  \item Further exceptions can be declared by the programmer, and can be thrown explicitly when the program itself detects an abnormal situation.
+\end{itemize}
+\texttt{C++} and \texttt{JAVA}, being object-oriented languages, treat exceptions as objects. \texttt{JAVA}, for instance, has a built-in \texttt{Exception} class, and every exception is an object of a subclass of \texttt{Exception}. Each subclass of \texttt{Exception} represents a different abnormal situation. An exception object contains an explanatory message (and possibly other values), which will be carried to the handler. Being first-class values, exceptions can be stored and passed as parameters as well as being thrown and caught.
+
+The \texttt{JAVA} sequencer ``\texttt{throw $E$;}'' throws the exception yielded by expression $E$. The \texttt{JAVA} exception-handling command has the form:
+\begin{minted}[escapeinside=\#\#]{java}
+try { #$C_0$#; }
+catch { (#$T_1$# #$I_1$#) #$C_1$#; }
+...
+catch { (#$T_n$# #$I_n$#) #$C_n$#; } 
+finally { #$C_f$#; }
+\end{minted}
+this is able to catch any exception of class $T_1$ or $\ldots$ or $T_n$. If the subcommand $C_0$ throws an exception of type $T_i$, then the exception handler $C_i$ is executed with the identifier $I_i$ bound to that exception. Just before the exception-handling command terminates (whether normally or abruptly), the subcommand $C_f$ is executed unconditionally. (The \texttt{\textbf{finally}} clause is optional.)
+
+\input{sections/9.4/from-lecture-slides.tex}

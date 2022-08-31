@@ -1,0 +1,35 @@
+\section{Pointers}
+
+A \textit{\textbf{pointer}} is a reference to a particular variable. In fact, pointers are sometimes called \textit{references}. The variable to which a pointer refers is called the pointer's \textit{\textbf{referent}}.
+
+\subsection{Pointers and Recursive Types}
+
+Pointers and heap variables can be used to represent recursive values such as lists and trees, but the pointer itself is a low-level concept.
+
+Nearly all imperative languages provide pointers rather than supporting recursive types directly. The reasons for this lie in the semantics and implementation of assignment.
+
+\noindent Given the \texttt{C++} declarations:
+\begin{minted}{cpp}
+  IntNode* listA;   IntNode* listB;
+\end{minted}
+the assignment ``\texttt{listA = listB'}' updates \texttt{listA} to contain the same pointer value as \texttt{listB}. In other words, \texttt{listA} now points to the same list as \texttt{listB}; \textit{the list is \textbf{shared} by the two pointer variables}. Any selective update of the list pointed to by \texttt{listA} also selectively updates the list pointed to by \texttt{listB}, and vice versa, because they are one and the same list.
+
+\noindent Suppose that \texttt{C++} were extended to support list types directly, e.g.:
+\begin{minted}{cpp}
+  int list listA;   int list listB;
+\end{minted}
+Now how should we expect the assignment ``\texttt{listA = listB}'' to be interpreted? There are two possible interpretations:
+\begin{itemize}
+  \item \textit{Copy semantics}. Store in \texttt{listA} a complete copy of the list contained in \texttt{listB}. Any subsequent update of either \texttt{listA} or \texttt{listB} would have no effect on the other. This would be consistent with assignment of structures in \texttt{C++}, and is arguably the most natural interpretation. However, \textit{copying of lists is expensive}.
+  \item \textit{Reference semantics}. Store in \texttt{listA} a pointer to the list referred to by \texttt{listB}. This interpretation would involve sharing, and would amount to using pointers in disguise. It would be consistent with the assignment of arrays in \texttt{C++}. Another advantage of this interpretation would be ease of implementation.
+\end{itemize}
+A possible compromise would be to prohibit selective update of lists. Then assignment could be \textit{implemented} by sharing. \textit{In the absence of selective updates, we cannot tell the difference between copy and reference semantics.}
+
+\subsection{Dangling Pointers}
+\label{sec:dangling-pointers}
+
+A \textit{\textbf{dangling pointer}} is a pointer to a variable that has been destroyed. Dangling pointers arise from the following situations:
+\begin{itemize}
+  \item A pointer to a heap variable still exists after the heap variable is destroyed.
+  \item A pointer to a local variable still exists (e.g., it is stored in a global variable) at exit from the block in which the local variable was declared.
+\end{itemize}

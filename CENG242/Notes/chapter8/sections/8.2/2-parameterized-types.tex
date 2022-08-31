@@ -1,0 +1,49 @@
+\subsection{Parameterized Types}
+\label{subsec:param-types}
+
+A \textit{\textbf{parameterized type}} is a type that takes other type(s) as parameters. For instance, consider array types in \texttt{C}. We can think of \texttt{$\tau$[]} as a parameterized type, which can be specialized to an ordinary type (such as \texttt{char[]}, or \texttt{float[]}, or \texttt{float[][]}) by substituting an actual type for the type variable $\tau$.
+
+All programming languages have built-in parameterized types. For instance, \texttt{C} and \texttt{C++} have \texttt{$\tau$[]} and $\tau^*$. But only a few programming languages, notably \texttt{HASKELL}, allow programmers to define their own parameterized types.
+
+\begin{example}{}
+Consider the following HASKELL parameterized type definition:
+\mint[bgcolor={}]{haskell}{type Pair @$\tau$@ = (@$\tau$@, @$\tau$@)}
+In this definition $\tau$ is a type parameter, denoting an unknown type.
+\end{example}
+
+\begin{example}{}
+The following \texttt{HASKELL} (recursive) parameterized type definition defines homogeneous lists with elements of type $\tau$:
+\mint[bgcolor={}]{haskell}{data List @$\tau$@ = Nil | Cons (@$\tau$@, List @$\tau$@)}
+\end{example}
+
+\subsubsection{Polymorphism in \texttt{C++} and \texttt{Java}}
+\label{subsubsec:poly-in-cpp-java}
+
+In such languages, inheritence provides subtyping polymorphism. \texttt{C++} \mintinline[bgcolor={}]{cpp}{virtual} methods, and all methods in \texttt{Java} implements \textcolor{blue}{late binding} to improve polymorphism  through inheritence.
+
+Generic abstractions, \texttt{C++} \mintinline[bgcolor={}]{cpp}{template} and \texttt{Java} \textcolor{blue}{generics} provide polymorphic classes and functions.
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+template <typename T>
+void sort(T arr[], int n) {
+  // ... your favorite sort algorithm here
+}
+\end{minted}
+
+\begin{minted}{java}
+class Test { 
+  //Java requires functions be in a class
+  void <T> sort(T[] arr) {
+    // ... your favorite sort algorithm here
+  }
+}
+\end{minted}
+
+\caption{}
+\label{code:code1}
+\end{listing}
+\texttt{C++} \textcolor{blue}{templates} use compile time binding. \texttt{Java} \textcolor{blue}{generics} binds at run time.
+
+\vspace*{\fill}
+\columnbreak

@@ -1,0 +1,79 @@
+\subsection{Encapsulation}
+\label{subsec:encapsulation}
+
+In order to keep its API simple, a package typically makes only \textit{some of its components visible} to the application code that uses the package; these components are said to be \textit{\textbf{public}}. \textit{Other components are visible only inside the package}; these
+components are said to be \textit{\textbf{private}}, and serve only to support the implementation of the public components.
+
+A package with private components hides information that is irrelevant to the application code. This technique for making a simple API is called \textit{\textbf{encapsulation}}.
+
+The \textit{\textbf{package specification}} declares only the \textit{public components}, while the \textit{\textbf{package body}} declares any \textit{private components}.The package specification gives the package's interface, while the package body provides the implementation details.
+
+Building an independent and self complete set of function and variable declarations is \underline{\textit{packaging}}. Restricting access to this set only via a set of interface
+function and variables is \underline{\textit{hiding and encapsulation}}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[private/.style = {black,thick}, public/.style = {black,thick},
+		pubcall/.style = {transparent}, pubtext/.style = {transparent},pricall/.style={transparent},
+		pritext/.style={transparent} ]
+    \tikzset{private/.style={red,thick}, public/.style = {green,thick}}
+    \tikzset{pubcall/.style={green,draw,thick},pubtext/.style={green,fill=white}, pricall/.style={red,draw,thick},pritext/.style={red,fill=white}}
+    \node [rectangle split, rectangle split parts=2, text width=9em,rectangle split draw splits=true] (box) {
+      interface 
+      \nodepart{two} 
+      detail \\
+      \footnotesize ( functions, variables, algorithm) 
+    };
+    \node [right of=box,xshift=4cm] (other) {other application};
+    \draw (box.text split west) -- (box.text split east);
+    \draw [private] (box.north west) -- (box.south west) -- (box.south east) -- (box.north east);
+    \draw [public] (box.north west) -- (box.north east);
+    \path [pubcall,->] (other) -- +(0,1.2) -| node [pubtext,pos=0.3] {$\surd$} (box.mid);
+    \path [pricall,->,bend left=10] (other) to  node [pritext] {$\times$} ($(box.two) +(2cm,-2mm)$);
+  \end{tikzpicture}
+\end{figure}
+
+\vspace*{\fill}
+\columnbreak
+
+\subsubsection*{Advantages of Encapsulation}
+\label{subsubsec:adv-encap}
+
+\begin{itemize}
+  \item High volume details reduced to interface definitions (\textbf{Ease of development/maintenance})
+  \item Many different applications use the same module via the same interface (\textbf{Code re-usability})
+  \item Lego like development of code with building blocks (\textbf{Ease of
+  development/maintenance}) 
+  \item Even details change, applications do not change (as long as interface is kept same) (\textbf{Ease of development/maintenance})
+  \item Module can be used in following projects (\textbf{Code re-usability})
+\end{itemize}
+
+\subsubsection*{Hiding}
+\label{subsubsec:hiding}
+
+A group of functions and variables hidden inside. The others are interface. Abstraction inside of a package:
+
+\begin{table}[H]
+  \begin{tabular}{|>{\tt}l|} \hline
+    \color{gray}double taylorseries(double);  		\\
+    double sin(double x);			\\
+    double pi=3.14159265358979;		\\
+    \color{gray}double randomseed;	\\
+    double cos(double x);			\\
+    \color{gray}double errorcorrect(double x); \\ \hline
+  \end{tabular}
+\end{table}
+\begin{listing}[H]
+\begin{minted}{Haskell}
+{-- only sin, pi and cos are accessible --}
+module Trig(sin,pi,cos) where
+  taylorseries x = ... 
+  sin x = ...
+  pi=3.14159265358979
+  randomseed= ...
+  cos x = ...
+  errorcorrect x = ...
+\end{minted}
+\caption{}
+\label{code:code2}
+\end{listing}

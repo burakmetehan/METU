@@ -1,0 +1,22 @@
+Older programming languages had very simple type systems that are not suitable for large-scale software development. Therefore, there are more powerful type systems, which were adopted by the modern programming languages.
+
+In a programming language, there are choices for type systems. Design choices for types:
+\begin{itemize}
+  \item \textit{monomorphic} vs \textit{polymorphic} type system.
+  \item Is overloading allowed?
+  \item Is coercion(auto type conversion) applied, how?
+  \item Do type relations and subtypes exist?
+\end{itemize}
+
+\subsection*{Monomorphic and Polymorphic}
+
+\textit{\textbf{Monomorphic types:}} Each value has a single specific type. Functions operate on a single type. \texttt{C} and most languages are
+monomorphic.
+
+\noindent \textit{\textbf{Polymorphism:}} A type system allowing different data types handled in a uniform interface:
+\begin{itemize}
+  \item \textit{\textbf{Ad-hoc polymorphism:}} Also called \textit{overloading}. Functions that can be applied to different types and behave differently.
+  \item \textit{\textbf{Inclusion polymorphism:}} Polymorphism based on subtyping relation. Function applies to a type and all subtypes of the
+  type (class and all subclasses).
+  \item \textit{\textbf{Parametric polymorphism:}} Functions that are general and can operate identically on different types.
+\end{itemize}

@@ -1,0 +1,61 @@
+\section{Jumps}
+\label{sec:jumps}
+
+A \textit{\textbf{jump}} is a sequencer that transfers control to a specified program point. A jump typically has the form ``\texttt{goto $L$;}'', and this transfers control directly to the program point denoted by $L$, which is a \textit{\textbf{label}}.
+
+\vspace*{\fill}
+\columnbreak
+
+\begin{formula}{}
+\begin{listing}[H]
+
+\begin{minted}[bgcolor={}]{c}
+@\R{l1}{}@L1:  x++;
+      if (x>10) goto L2@\R{gl2}{}@;
+      j++;
+      for (i=0;i<j;j++) {
+          x=x*2;
+@\R{l2}{}@L2:      if (x>1000) goto L3@\R{gl3}{}@;
+          else goto L1@\R{gl1}{}@;
+      }
+@\R{l3}{}@L3:  printf("out\n");
+\end{minted}
+
+\begin{tikzpicture} [thick,remember picture,overlay,rounded corners=3pt]
+  \draw [green,->] (gl1) -- +(0,3) -| (l1);
+  \draw [violet,->] (gl2) -- +(0,-0.55) -|  (l2);
+  \draw [red,->] (gl3) -- +(0,-1.7) -| (l3);
+\end{tikzpicture}
+
+\caption{}
+\label{code:code1}
+
+\end{listing}
+\end{formula}
+
+Unrestricted jumps allow any command to have multiple entries and multiple
+exits. They tend to give rise to ``spaghetti'' code, so called because its flowchart is tangled. Also, ``spaghetti'' code tend to be hard to understand and is prone to errors.
+\begin{listing}[H]
+
+\begin{minted}{c}
+L1: ...
+  goto L2;        @\color{violet}\circtxt{1}@
+  ...
+  for (i=0;i<10;i++) {
+    int x=t;
+L2: ...
+    goto L1;    @\color{violet}\circtxt{2}@
+    ...
+	  goto L2:    @\color{violet}\circtxt{3}@
+  }
+\end{minted}
+
+\caption{}
+\label{code:code2}
+\end{listing}
+
+Also, when we consider the jumps, lifetime and values of local variables and values of index variables become a problem.
+
+In \texttt{C}, labels are local to enclosing block. No jumps allowed into the block or out the block. Newer languages avoid jumps.
+
+Jump is avoided but single entrance multiple exit is still desirable. It can be satisfied by \textbf{escapes}.

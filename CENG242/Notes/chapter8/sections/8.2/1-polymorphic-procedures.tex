@@ -1,0 +1,27 @@
+\subsection{Polymorphic Procedures}
+\label{subsec:Polymorp-procedure}
+
+A \textit{\textbf{type variable}} is an identifier that stands for any one of a family of types. In this section we shall write type variables as Greek letters ($\alpha, \beta, \gamma, \ldots$), partly for historical reasons and partly because they are easily recognized. In \texttt{HASKELL} type variables are conventionally written as lowercase Roman
+
+A \textit{\textbf{polytype}} derives a family of similar types. Two examples of polytypes are $\sigma \times \tau$ and $\sigma \times \tau \ra \tau$. A polytype always includes one or more type variables.
+
+The family of types derived by a polytype is obtained by making all possible systematic substitutions of types for type variables. The family of types derived by $\sigma \times \tau \ra \tau$ includes
+\begin{itemize}
+  \item \texttt{Integer $\times$ Boolean $\ra$ Boolean}
+  \item \texttt{String $\times$ String $\ra$ String}
+\end{itemize}
+It does not include
+\begin{itemize}
+  \item \texttt{Integer $\times$ Boolean $\ra$ Integer}
+  \item \texttt{Integer $\ra$ Integer}
+  \item \texttt{Integer $\times$ Integer $\times$ Integer $\ra$ Integer}
+\end{itemize}
+In other words, each type in the family derived by $\sigma \times \tau \ra \tau$ is the type of a function that accepts a pair of values and returns a result of the same type as the second component of the pair.
+
+\noindent In brief:
+\begin{itemize}
+  \item Operations are same, but types are different.
+  \item Types with type variables: \textit{polytypes}.
+  \item Most functional languages are polymorphic.
+  \item Object oriented languages provide polymorphism through inheritance, run time binding and generics.
+\end{itemize} 

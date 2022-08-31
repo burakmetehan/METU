@@ -1,0 +1,11 @@
+\subsection{Classes and Subclasses}
+\label{subsec:class-subclass}
+
+A class $C$ is a \textit{set of objects}, equipped with some
+operations (constructors and methods). These methods may be inherited by the \textit{subclasses} of $C$. Any object of a subclass may be used in a context where an object of class $C$ is expected.
+
+Consider a class $C$ and a subclass $S$. Each object of class $C$ has one or more variable components, and is equipped with methods that access the variable components.  Each object of class $S$ inherits all the variable components of objects of class $C$, and may have additional variable components. Each object of class $S$ potentially inherits all the methods of objects of class $C$, and may be equipped with additional methods that access the additional variable components.
+
+Subclasses are \textit{not exactly analogous to subtypes}. The objects of the subclass $S$ may be used wherever objects of class $C$ are expected, but the former objects have additional components, so the set of objects of subclass $S$ is \textit{not a subset} of the objects of $C$.
+
+The methods of the superclass remain applicable to objects of the subclass, although they can be overridden (specialized) to the subclass if necessary. 

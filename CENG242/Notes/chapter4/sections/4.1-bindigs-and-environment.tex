@@ -1,0 +1,74 @@
+\section{Bindings and Environment}
+\label{sec:bind-env}
+
+The most important feature of high level languages: programmers able to give names to program entities (variable, constant, function, type, ...). These names are called \textit{\textbf{identifiers}}. They are declared once, used $n$ times.
+
+A \textit{\textbf{binding}} is a fixed association between an identifier and an entity such as a value, variable, or procedure. A declaration produces one or more bindings. For binding:
+\begin{itemize}
+  \item Scope of identifiers should be known: What is the block structure?, Which blocks the identifier is available?
+  \item What will happen if we use same identifier name again ``\texttt{C} forbids reuse of same identifier name in the same scope. Same name can be used in different nested blocks. The identifier inside hides the outside identifier''.
+\end{itemize}
+
+\setlength{\columnsep}{0.2cm}
+\setlength{\columnseprule}{0pt}
+\begin{multicols*}{2}
+\begin{listing}[H]
+\begin{minted}{cpp}
+  double f, y;
+  int f() { // Error
+    ...
+  }
+  double y; // Error
+\end{minted}
+\caption{}
+\label{code:code1}
+\end{listing}
+
+\columnbreak
+
+\begin{listing}[H]
+\begin{minted}{cpp}
+  double y;
+  int f() {
+    double f; // OK
+    int y; // OK 
+  }
+\end{minted}
+\caption{}
+\label{code:code2}
+\end{listing}
+\end{multicols*}
+\setlength{\columnseprule}{0.2pt}
+\setlength{\columnsep}{1.5cm}
+
+\textit{An \textbf{environment} (or name space) is a set of bindings occurrences that are accessible at a point in the program}. Each expression or command is interpreted in a particular environment, and all identifiers used in the expression or command must have bindings in that environment. It is possible that expressions and commands in different parts of the program will be interpreted in different environments.
+
+\begin{listing}[H]
+\begin{minted}{c}
+struct Person { ... } x;
+int f(int a) { 
+  double y;
+  int x;
+  ... @\circtxt{1}@
+}
+
+int main() {
+   double a;
+   ... @\circtxt{2}@
+}
+\end{minted}
+\caption{}
+\label{code:code3}
+\end{listing}
+
+\noindent O(\circtxt{1})=\{struct Person $\mapsto$ type, x $\mapsto$ int, f $\mapsto$ func, a $\mapsto$ int, y $\mapsto$ double\}
+
+\noindent O(\circtxt{2})=\{struct Person $\mapsto$ type, x $\mapsto$ struct Person, f $\mapsto$ func, a $\mapsto$ double, main $\mapsto$ func\}
+
+Usually at most one binding per identifier is allowed in any environment. An environment is then a partial mapping from identifiers to entities.
+
+A \textit{\textbf{bindable}} entity is one that may be bound to an identifier. Programming languages vary in the kinds of entity that are bindable:
+\begin{itemize}
+  \item \texttt{C}'s bindable entities are types, variables, and function procedures.
+  \item \texttt{JAVA}'s bindable entities are values, local variables, instance and class variables, methods, classes, and packages.
+\end{itemize}

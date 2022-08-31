@@ -1,0 +1,12 @@
+\section{Type Conversion}
+\label{sec:type-conversion}
+
+A \textit{\textbf{type conversion}} is a mapping from the values of one type to corresponding values of a different type.
+
+Programming languages vary, not only in which type conversions they define, but also in whether these type conversions are explicit or implicit.
+
+A \textit{\textbf{cast}} is an \textit{explicit type conversion}. In \texttt{C}, \texttt{C++}, and \texttt{JAVA}, a cast has the form ``$(T)E$''. If the subexpression $E$ is of type $S$ (not equivalent to $T$), and if the programming language defines a type conversion from $S$ to $T$, then the cast maps the value of $E$ to the corresponding value of type $T$.
+
+A \textit{\textbf{coercion}} is an implicit type conversion, and is performed automatically wherever the syntactic context demands it. Consider an expression $E$ in a context where a value of type $T$ is expected. If $E$ is of type $S$ (not equivalent to $T$), and if the programming language allows a coercion from $S$ to $T$ in this context, then the coercion maps the value of $E$ to the corresponding value of type $T$.
+
+Some programming languages are very permissive in respect of coercions. However, the general trend in modern programming languages is to minimize or even eliminate coercions altogether, while retaining casts. At first sight this might appear to be a retrograde (back) step. However, coercions fit badly with parametric polymorphism and overloading, concepts that are certainly more useful than coercions. Casts fit well with any type system, and anyway are more general than coercions.

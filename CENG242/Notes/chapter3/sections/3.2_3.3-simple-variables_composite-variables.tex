@@ -1,0 +1,39 @@
+\section{Simple and Composite Variables}
+
+\subsection{Simple Variables}
+
+A \textit{\textbf{simple variable}} is a variable that may contain a storable value. \textit{Each simple variable occupies a single storage cell}.
+
+\subsection{Composite Variables}
+
+A \textit{\textbf{composite variable}} is a variable of a composite type. \textit{Each composite variable occupies a group of contiguous storage cells}.
+
+\subsubsection{Total vs Selective Update}
+
+A composite variable may be updated either \textit{in a single step} or \textit{in several steps}, one component at a time. \textit{\textbf{Total update}} of a composite variable means updating it with a new (composite) value in a single step. \textit{\textbf{Selective update}} of a composite variable means updating a single component.
+
+\begin{listing}[H]
+\begin{minted}[]{c}
+struct Complex { double x, y; } a, b;
+...
+a = b; // Total update
+a.x = b.y * a.x; // Selective update
+\end{minted}
+\caption{}
+\label{code:code-2}
+\end{listing}
+
+\subsubsection{Static vs Dynamic vs Flexible Arrays}
+
+We can view an array variable as a mapping from an index range to a group of component variables. How and when a given array variable's index range is determined can be changed. There are several possibilities:
+\begin{itemize}
+  \item the index range might be fixed at compile-time
+  \item the index range might be fixed at run-time when the array variable is created
+  \item the index range might not be fixed at all
+\end{itemize}
+
+A \textit{\textbf{static array}} is an array variable whose index range is fixed at compile-time. In other words, the program code determines the index range.
+
+A \textit{\textbf{dynamic array}} is an array variable whose index range is fixed at the time when the array variable is created.
+
+A \textit{\textbf{flexible array}} is an array variable whose index range is not fixed at all. A flexible array's index range may be changed when a new array value is assigned to it.

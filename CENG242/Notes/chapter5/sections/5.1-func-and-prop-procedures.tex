@@ -1,0 +1,293 @@
+\section{Function Procedures and Proper Procedures}
+
+A \textit{\textbf{procedure}} is an entity that embodies a computation. In particular, a \textit{function procedure} embodies an expression to be evaluated, and a \textit{proper procedure} embodies a command to be executed. The embodied computation is to be performed whenever the procedure is called.
+
+A procedure is often defined by one programmer (the \textit{implementer}) and called by other programmers (the \textit{application programmers}). The application programmers are concerned only with the procedure's \textit{observable behavior}, in other words the outcome of calling the procedure. The implementer is concerned with how that outcome is to be achieved, in other words the choice of algorithm.
+
+Note that the \textit{methods} of object-oriented languages are essentially procedures by another name. The only difference is that every method is associated with a class or with a particular object.
+
+\subsection{Function Procedures}
+
+A \textit{\textbf{function procedure}} (or simply \textit{function}) embodies an expression to be evaluated. When called, the function procedure will yield a value known as its \textit{result}. The application programmer observes only this result, not the steps by which it was computed.
+
+\vspace*{\fill}
+\columnbreak
+
+\noindent A \texttt{C} or \texttt{C++} function definition has the form:
+\begin{equation*}
+  T\ I\ (FPD_1, \ldots, FPD_n)\ B
+\end{equation*}
+where
+\begin{itemize}
+  \item $I$ is the function’s identifier
+  \item $FPD_i$ are \textit{formal parameter} declarations
+  \item $T$ is the result type
+  \item $B$ is a block command called the function's \textbf{body}.
+\end{itemize}  
+$B$ must contain at least one return of the form ``\textbf{return $E$};'', where $E$ is an expression of type $T$. The function procedure will be called by an expression of the form ``$I(AP_1, \ldots, AP_n)$;'', where the $AP_i$ are \textit{actual parameters}.
+
+In general, a function call can be understood from two different points of view:
+\begin{itemize}
+  \item The \textit{application programmer}'s view of the function call is that it will map the arguments to a result of the appropriate type. Only this mapping is of concern to the application programmer.
+  \item The \textit{implementer}'s view of the function call is that it will evaluate or execute the function's body, using the function's formal parameters to access the corresponding arguments, and thus compute the function's result. Only the algorithm encoded in the function's body is the implementer's concern.
+\end{itemize}
+
+
+\subsection{Proper Procedures}
+
+A \textit{\textbf{proper procedure}} embodies a command to be executed, and when called will update variables. The application programmer observes only these updates, not the steps by which they were effected.
+
+A \texttt{C} or \texttt{C++} proper procedure definition has the form:
+\begin{equation*}
+  \textbf{void}\ I\ (FPD_1, \ldots, FPD_n)\ B
+\end{equation*}
+where
+\begin{itemize}
+  \item $I$ is the function's identifier
+  \item $FPD_i$ are the \textit{formal parameter} declarations
+  \item $B$ is a block command called the procedure's \textit{\textbf{body}}.
+\end{itemize}
+The procedure will be called by a command of the form ``$I(AP_1, \ldots, AP_n)$;'', where the $AP_i$ are \textit{actual parameters}.
+
+\vspace*{\fill}
+\columnbreak
+
+In general, a procedure call can be understood from two different points
+of view:
+\begin{itemize}
+  \item The \textit{application programmer}'s view of the procedure call is its final outcome, which is that certain variables are updated. Only this outcome is of concern to the application programmer.
+  \item The \textit{implementer}'s view of the procedure call is that it will execute the procedure's body, using the procedure's formal parameters to access the corresponding arguments. Only the algorithm encoded in the procedure's body is the implementer's concern.
+\end{itemize}
+
+
+\subsection{The Abstraction Principle}
+
+We may summarize the preceding subsections as follows:
+\begin{itemize}
+  \item A \textit{function procedure} abstracts over an \textit{expression}. That is to say, a function procedure has a body that is an expression (at least in effect), and a function call is an expression that will yield a result by evaluating the function procedure's body.
+  \item A \textit{proper procedure} abstracts over a command. That is to say, a proper procedure has a body that is a command, and a procedure call is a command that will update variables by executing the proper procedure's body.
+\end{itemize}
+
+Thus there is a clear analogy between function and proper procedures. We can extend this analogy to construct other types of procedures. The \textit{\textbf{Abstraction Principle}} states:
+\begin{quote}
+  \textit{It is possible to design procedures that abstract over any syntactic category, provided only that the constructs in that syntactic category specify some kind of computation.}
+\end{quote}
+
+\subsubsection{Selector Abstraction}
+
+For instance, a variable access refers to a variable. We could imagine designing a new type of procedure that abstracts over variable accesses. Such a procedure, when called, would yield a variable. In fact, such procedures do exist, and are called \textit{\textbf{selector procedures}}:
+\begin{itemize}
+  \item A \textit{selector procedure} abstracts over a \textit{variable access}. That is to say, a selector procedure has a body that is a variable access (in effect), and a selector call is a variable access that will yield a variable by evaluating the selector procedure’s body.
+\end{itemize}
+Selector procedures are uncommon in programming languages, but they are
+supported by \texttt{C++}. 
+
+\vspace*{\fill}
+\columnbreak
+
+As an example, [..] is a operator that selects elements of an array. There can be user defined selectors on user defined structures.
+
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+struct List {
+  int data;
+  List *next;
+
+  int &operator[](int el) {
+    int i; List *p = this;
+    for (i = 1 ; i < el ; i++) 
+      p = p->next;  /* take the next element */
+  
+    return p->data;
+  };
+  ...
+};
+
+List h;
+...
+h[1] = h[2] + 1;
+\end{minted}
+\caption{}
+\label{code:code1}
+\end{listing}
+
+In Python, \mintinline[bgcolor={}]{py}{__setitem__(k,v)} implements l-value, \mintinline[bgcolor={}]{py}{__getitem__(k,v)} r-value selector.
+
+\begin{listing}[H]
+
+\begin{minted}{py}
+class BSTree:
+  def __init__(self):
+    self.node = None
+  def __getitem__(self, key):
+    if self.node == None:
+        raise KeyError
+    elif key < self.node[0]:
+      return self.left[key]
+    elif key > self.node[0]:
+      return self.right[key]
+    else:
+      return self.node[1]
+  def __setitem__(self, key, val):
+    if self.node == None:
+        self.node = (key,val)
+        self.left = BSTree()    # empty tree
+        self.right = BSTree()   # empty tree
+    elif key < self.node[0]:
+      self.left[key] = val
+    elif key > self.node[0]:
+      self.right[key] = val
+    else:
+      self.node = (key,val)
+
+a = BSTree()
+a["hello"] = 4
+a["world"] = a["hello"] + 5
+\end{minted}
+\caption{}
+\label{code:code2}
+\end{listing}
+
+\vspace*{\fill}
+\columnbreak
+
+\subsubsection{Generic Abstraction}
+
+Another direction in which we might push the Abstraction Principle is to
+consider whether we can abstract over \textit{declarations}. This is a much more radical idea, but it has been adopted in some modern languages such as \texttt{C++} and \texttt{JAVA}. We get a construct called a \textit{\textbf{generic unit}}:
+\begin{itemize}
+  \item A \textit{generic unit} abstracts over a \textit{declaration}. That is to say, a generic unit has a body that is a declaration, and a generic instantiation is a declaration that will produce bindings by elaborating the generic unit's body.
+\end{itemize}
+
+In other words, \textit{same declaration pattern applied to different data types}. A function or class declaration can be adapted to different types or values by using type or value parameters.
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+template <class T> class List {
+	T content;
+	List *next;
+  public: List() { next = NULL };
+	void add(T el) { ... };
+	T get(int n) { ...};
+};
+
+template <class U>
+  void swap(U &a, U &b)
+    { U tmp; tmp=a; a=b; b=tmp; }
+...
+List<int> a; List<double> b; List<Person> c;
+int t,x; double v,y; Person z,w;
+swap(t,x); swap(v,y); swap(z,w);
+\end{minted}
+\caption{}
+\label{code:code3}
+\end{listing}
+
+\subsubsection{Iterator Abstraction}
+
+Iteration over a user defined data structure. Python generator example:
+\begin{listing}[H]
+
+\begin{minted}{py}
+class BSTree(object):
+  def __init__(self):
+    self.val = ()
+  def inorder(self):
+    if self.val == ():
+      return
+    else:
+      for i in self.left.inorder():
+        yield i
+      yield self.val
+      for i in self.right.inorder():
+        yield i
+
+v = BSTree()
+...
+for v in v.inorder():
+  print v
+\end{minted}
+\caption{}
+\label{code:code4}
+\end{listing}
+
+\paragraph{C++ Iterators}
+\texttt{C++} Standard Template Library containers support \textit{iterators} \mintinline{cpp}{begin()} and \mintinline{cpp}{end()} methods return iterators to start and end of the data structure. Iterators can be dereferenced as \mintinline{cpp}{*iter} or \mintinline{cpp}{iter->member}.`\mintinline{cpp}{++}' operation on an iterator skips to the next value.
+\begin{listing}[H]
+\begin{minted}{cpp}
+for (@$\textit{ittype}$@ it = a.begin(); it != a.end(); ++it) {
+  // use *it or it->member it->method() in body
+}
+\end{minted}
+\end{listing}
+\texttt{C++11} added:
+\begin{listing}[H]
+\begin{minted}{cpp}
+for (@$\textit{valtype}$@ & i : a ) {
+  // use directly i as l-value or r-value. 
+}
+\end{minted}
+\end{listing}
+This syntax is equivalent to:
+\begin{listing}[H]
+\begin{minted}{cpp}
+for (@$\textit{ittype}$@ it = a.begin() ; it != a.end(); it++) {
+  @$\textit{valtype}$@ & i = *it;
+  // use directly i as l-value or r-value 
+}
+\end{minted}
+\end{listing}
+Following is the general examples:
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+template<class T>
+class List {
+  struct Node { T val; Node *next;} *list;
+public:
+  List() { list = nullptr;}
+  void insert(const T& v) { 
+    Node *newnode = new Node;
+    newnode->next = list; newnode->val = v; 
+    list = newnode;
+  }
+  class Iterator {
+    Node *pos;
+  public: 
+    Iterator(Node *p) { pos = p; }
+    T & operator*() { return pos->val; }
+    void operator++() { pos = pos->next; }
+    bool operator!=(const Iterator &it) { 
+      return pos != it.pos;
+    }
+  };
+  
+  Iterator begin() 
+    { Iterator it = Iterator(list); return it; }
+  Iterator end()
+    { Iterator it = Iterator(nullptr); return it; }
+};
+List<int> a;
+// C++11 syntax below
+for (int & i : a )
+  i *= 2; cout << i << '\n';
+\end{minted}
+\caption{}
+\label{code:code5}
+\end{listing}
+
+\subsection{Abstraction Principle}
+
+If any programming language entity involves computation, it is possible to define an abstraction over it
+
+\begin{center}
+  \begin{tabular}{l!{$\rightarrow$}l}\rowcolor{blue!10!white}
+  \bf Entity & \bf Abstraction \\
+  \rowcolor{blue!5!white} Expression	& Function \\
+  \rowcolor{blue!5!white} Command  & Procedure \\
+  \rowcolor{blue!5!white} Selector & Selector function \\
+  \rowcolor{blue!5!white} Declaration  & Generic \\
+  \rowcolor{blue!5!white} Command Block & Iterator \\
+  \end{tabular}
+\end{center}

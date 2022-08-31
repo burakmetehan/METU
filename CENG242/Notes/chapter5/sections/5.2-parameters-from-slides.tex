@@ -1,0 +1,289 @@
+\section{Parameters (\textit{from slides})}
+
+\textbf{Declaration part:}
+
+\texttt{abstraction\_name $(FP_1, FP_2, \ldots, FP_n)$}
+
+\noindent \textbf{Use part:}
+
+\texttt{abstraction\_name $(AP_1, AP_2, \ldots, AP_n)$}
+
+\noindent \textit{\textbf{Formal parameters:}} Identifiers or constructors of identifiers (patterns in functional languages).
+
+\noindent \textit{\textbf{Actual parameters:}} Expression or identifier based on the type of the abstraction and parameter.
+
+\subsection{Parameter passing mechanisms}
+
+Programming language may support one or more mechanisms. 3 basic methods:
+\begin{enumerate}
+ \item Copy mechanisms (assignment based)
+ \item Binding mechanisms 
+ \item Pass by name (substitution based)
+\end{enumerate}
+
+\subsubsection{Copy Mechanisms}
+
+Function and procedure abstractions, assignment between actual and formal parameter:
+\begin{enumerate}
+ \item \textbf{Copy In:} \\
+	On function call: $FP_i \leftarrow AP_i$
+ \item \textbf{Copy Out:} \\
+	On function return: $AP_i \leftarrow FP_i$
+ \item \textbf{Copy In-Out:} \\
+	On function call: $FP_i \leftarrow AP_i$, and\\
+	On function return: $AP_i \leftarrow FP_i$
+\end{enumerate}
+\texttt{C} only allows copy-in mechanism. This mechanism is also called as \textbf{Pass by value}.
+
+\end{multicols}
+
+\begin{minipage}{.29\linewidth}
+
+\begin{listing}[H]
+
+\begin{minted}{c}
+int x=1, y=2;
+void f(int a, int b) {
+  x += a+b;
+  a++;
+  b=a/2;
+}
+
+int main() {
+  f(x,y);
+  printf("x:%d, y:%d\n",x,y);
+  return 0;
+}
+\end{minted}
+\caption{}
+\label{code:code6}
+\end{listing}
+
+\end{minipage}%
+\begin{minipage}{.05\linewidth}
+  \vspace*{\fill}
+  \hspace*{\fill}
+\end{minipage}%
+\begin{minipage}{.29\linewidth}
+
+  \underline{\textbf{Copy In:}}
+
+  \begin{tikzpicture}
+  \matrix [matrix of nodes,nodes in empty cells,ampersand replacement=\&,column sep=4mm] (m) {
+      \underline{x} \&\underline{y} \&\underline{a} \&\underline{b} \\
+          {$\not 1$} \& {$2$} \& {$\not 1$} \& {$\not 2$} \\ 
+  $4$ \&  \&  $2$ \& $1$ \\
+  };
+  \draw [bend right=25,->,thick,blue!70!white] (m-2-1) to (m-2-3); 
+  \draw [bend left=25,->,thick,blue!70!white] (m-2-2) to (m-2-4); 
+  \end{tikzpicture}
+
+  \texttt{x:4, y:2}
+
+  \underline{\textbf{Copy Out:}}
+
+  \begin{tikzpicture}
+  \matrix [matrix of nodes,nodes in empty cells,ampersand replacement=\&,column sep=4mm] (m) {
+  \underline{x} \&\underline{y} \&\underline{a} \&\underline{b} \\
+  $\not 1$ \& $\not 2$ \& $\not 0$ \& $\not 0$ \\
+  $\not 1$      \&  {$0$}   \& {$1$}  \& {$0$} \\
+  {$1$} \& \& \& \\ 
+  };
+  \draw [bend left=25,->,thick,blue!70!white] (m-3-3) to (m-4-1); 
+  \draw [bend right=25,->,thick,blue!70!white] (m-3-4) to (m-3-2); 
+  \end{tikzpicture}
+
+  \texttt{x:1, y:0}
+
+\end{minipage}%
+\begin{minipage}{.05\linewidth}
+  \vspace*{\fill}
+  \hspace*{\fill}
+\end{minipage}%
+\begin{minipage}{.29\linewidth}
+
+  \underline{\textbf{Copy In-Out:}}
+
+  \begin{tikzpicture}
+  \matrix [matrix of nodes,nodes in empty cells,ampersand replacement=\&,column sep=4mm] (m) {
+  \underline{x} \&\underline{y} \&\underline{a} \&\underline{b} \\
+  {$\not 1$} \& {$\not 2$} \& {$\not 1$} \& {$\not 2$} \\ 
+  $\not 4$ \&  {$1$}\&  {$2$} \& {$1$} \\
+  {$2$} \\
+  };
+  \draw [bend right=15,->,thick,blue!70!white] (m-2-1) to (m-2-3); 
+  \draw [bend left=15,->,thick,blue!70!white] (m-2-2) to (m-2-4); 
+  \draw [bend left=15,->,thick,blue!70!white] (m-3-3) to (m-4-1); 
+  \draw [bend right=15,->,thick,blue!70!white] (m-3-4) to (m-3-2); 
+  \end{tikzpicture}
+
+  \texttt{x:2, y:1}
+
+\end{minipage}
+
+\subsubsection{Binding Mechanisms}
+
+Based on binding of the formal parameter variable/identifier to actual parameter value/identifier. Only one entity (value, variable, type) exists with more than one names.
+\begin{enumerate}
+  \item \textbf{Constant binding:} Formal parameter is constant during the function. The value is bound to actual parameter expression value. \\
+  Functional languages including Haskell uses this mechanism.
+  \item \textbf{Variable binding:} Formal parameter variable is bound to the actual parameter variable. Same memory area is shared by two variable references.\\  
+  Also known as \textbf{pass by reference}.
+\end{enumerate}
+The other type and entities (function, type, etc) are passed with similar mechanisms. 
+
+\begin{minipage}{.4\linewidth}
+
+\begin{listing}[H]
+\begin{minted}{c}
+int x = 1, y = 2;
+void f(int a, int b) {
+  x += a + b;
+  a++;
+  b = a / 2;
+}
+
+int main() {
+  f(x, y);
+  printf("x:%d , y:%d\n",x,y);
+  return 0;
+}
+\end{minted}
+\caption{}
+\label{code:code7}
+\end{listing}
+
+\end{minipage}%
+\begin{minipage}{.1\linewidth}
+  \vspace*{\fill}
+  \hspace*{\fill}
+\end{minipage}%
+\begin{minipage}{.4\linewidth}
+  \underline{\textbf{Variable binding:}}\\
+  \begin{tabular}{cp{.5em}c}
+    f():a & & f():b \\
+    x & & y \\ \cline{1-1} \cline{3-3}
+    $\not 1$ 		& &  	$\not 2$	\\
+    $\not 4$ 		& &  	$2$	\\
+    $5$ 			& &  		\\
+  \end{tabular}\\
+  \texttt{x: 5, y:2}
+\end{minipage}
+
+\subsubsection{Pass by Name}
+
+Actual parameter syntax replaces each occurence of the formal parameter in the function body, then the function body evaluated. \texttt{C} macros works with a similar mechanism (by pre-processor).
+
+\noindent Mostly useful in theoretical analysis of PL's. Also known as \textbf{Normal order evaluation}.
+
+Example (Haskell-like)
+\begin{listing}[ht]
+
+\begin{minted}{haskell}
+f x y = if (x < 12) then x*x + y*y + x 
+        else x + x*x
+\end{minted}
+
+\caption{}
+\label{code:code8}
+\end{listing}
+
+\noindent \textbf{Evaluation:}
+\begin{align*}
+  &\texttt{f } (3*12 + 7)\ (24 + 16*3) \\
+  &\mapsto \texttt{if } ((3*12 + 7) < 12) \texttt{ then } (3*12 + 7) * (3*12 + 7) + (24 + 16*3) * (24 + 16*3) + (3*12 + 7)\\
+  &\quad\ \ \ \ \texttt{else } (3*12 + 7) + (3*12 + 7) * (3*12 + 7)\\
+  &\stackrel{*}{\mapsto} \texttt{if } (43 < 12) \texttt{ then } ...\\
+  &\mapsto \texttt{if } (false) \texttt{ then } ...\\
+  &\mapsto (3*12 + 7) + (3*12 + 7) * (3*12 + 7)\\
+  &\stackrel{*}{\mapsto} (3*12 + 7) + 43 * (3*12 + 7)\\
+  &\mapsto ... \mapsto 1892\quad \texttt{\textcolor{blue}{12 steps}}
+\end{align*}
+
+\noindent \textbf{Normal order evaluation} is mathematically natural order of evaluation.
+
+\newpage
+
+Most of the PL's apply \textit{\textbf{eager evaluation}}: Actual parameters are evaluated first, then passed.
+\begin{align*}
+  &\texttt{f } (3*12+7)\ (24+16*3) \\
+  &\mapsto \texttt{f } (36+7)\ (24+16*3) \\
+  &\stackrel{*}{\mapsto} \texttt{f } 43\ 72 \\
+  &\mapsto \texttt{if } (43 < 12) \texttt{ then } 43*43 + 72*72 + 43 \\
+  &\quad\ \ \texttt{else } 43+43*43\\
+  &\mapsto \texttt{if } (false)\ \texttt{then } ...\\
+  &\mapsto 43 + 43*43 \stackrel{*}{\mapsto} 1892 \quad \texttt{\textcolor{blue}{8 steps}}
+\end{align*}
+
+\noindent \textbf{Church–Rosser Property:} 
+\begin{quote}
+  If an expression can be evaluated at all, it can be evaluated by consistently using normal-order evaluation. If an expression can be evaluated in several different orders (mixing eager and normal-order evaluation), then all of these evaluation orders yield the same result.
+\end{quote}
+
+\noindent In $\lambda$-calculus, all orders reduce the same normal form.
+\begin{center}
+  
+\xygraph{[]!{<20mm,0mm>:<0mm,12mm>::}
+{\lambda x.(\lambda y.y+(\lambda x.x+1~y)~~(x+2))~~5}
+ ( :@{|->}[dll] {\lambda y.y+(\lambda x.x+1~~y)~~(5+2)}
+    ( :@{|->}[dl] {5+2+(\lambda x.x+1~~(5+2))}
+        ( :@{|->}[ddddrrr] {5+2+5+2+1}="bot" ) ,
+      :@{|->}@(dr,ur)[dddl] {\lambda y.y+y+1~~(5+2)} :@{|->}"bot"
+    ),
+   :@{|->}[dd]  {\lambda x.x+2+(\lambda x.x+1~~(x+2))~5}
+    (
+    :@{|->}[dl]  {5+2+(\lambda x.x+1~~(5+2))} :@{|->}"bot",
+    :@{|->}[dr]  {\lambda x.x+2+x+2+1~~5} :@{|->}"bot"
+    ),
+   :@{|->}[drr] {\lambda x.(\lambda y.y+y+1~~(x+2))~~5} (
+       :@{|->}[ddr] {\lambda y.y+y+1~~(5+2)} :@{|->}@(dr,r)"bot",
+       :@{|->}[ddd] {\lambda x.x+2+x+2+1~~5} :@{|->}"bot")
+ )
+}
+
+\end{center}
+
+\noindent Haskell implements \textbf{Lazy Evaluation} order.
+\begin{itemize}
+  \item Eager evaluation is faster than normal order evaluation but violates Church-Rosser Property.
+  \item Lazy evaluation is as fast as eager evaluation but computes same results with normal order evaluation (unless there is a side effect).
+\end{itemize}
+Lazy evaluation expands the expression as normal order evaluation however once it evaluates the formal parameter value other evaluations use previously found value:
+\begin{align*}
+  &\texttt{f } (3*12 + 7)\ (24 + 16*3)\\
+  &\mapsto \texttt{if } (x:(3*12 + 7) < 12) \texttt{ then } x:(3*12 + 7) * x:(3*12 + 7) + y:(24 + 16*3) * y:(24 + 16*3) + x:(3*12+7)\\
+  &\quad\ \ \texttt{else } x:(3*12 + 7) + x:(3*12 + 7) * x:(3*12 + 7)\\
+  &\stackrel{*}{\mapsto} \texttt{if } (x:43 < 12) \texttt{ then } x:43 * x:43 + y:(24 + 16*3) * y:(24 + 16*3) + x:43\\
+  &\quad\ \ \ \texttt{else } x:43 + x:43 * x:43\\
+  &\mapsto \texttt{if } (false) \texttt{ then } ...\\
+  &\mapsto x:43 + x:43 * x:43\\
+  &\mapsto x:43 + 1849 \mapsto 1892 \quad \texttt{\textcolor{blue}{7 steps}}
+\end{align*}
+In lazy evaluation, parameters are passed by name but compiler keeps evaluation state of them. Parameter value is store once it is evaluated. Further evaluations use that.v
+
+Python implementation. First delay evaluation of expressions. Convert to functions:
+
+\lstinline!exp! $\rightarrow$ \lstinline[language=Python]!lambda : exp! \\
+$\eta$ expansion. Function version is also called \textbf{thunk}.
+
+Inside function, call these functions to evaluate the expression
+\begin{listing}[ht]
+
+\begin{minted}{py}
+def E(thunk):
+  if not hasattr(thunk,"stored"):
+    thunk.stored = thunk()      # evaluate and store
+  return thunk.stored           # use stored value
+def f(x,y):
+  if E(x) < 10:                # call E() on all evaluations
+    return E(x)*E(x)+E(y)
+  else:
+    return E(x)*E(x)+E(x)
+f(lambda : 3*32+4, lambda: 4/0)     # call by converting to function
+\end{minted}
+
+\caption{}
+\label{code:code9}
+\end{listing}v
+
+Delayed evaluation in normal order or lazy evaluation enables working on infinite values.

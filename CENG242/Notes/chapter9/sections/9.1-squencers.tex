@@ -1,0 +1,22 @@
+\section{Sequencers}
+\label{sec:sequencers}
+
+Figure 1 shows four flowcharts: a \textit{simple command}, a \textit{sequential subcommand}, an \textit{if-command}, and a \textit{while-command}. Each of these flowcharts has a single entry and a single exit. The same is true for other conditional commands, such as case commands, and other iterative commands, such as for-commands. It follows that \textit{any} command formed by composing simple, sequential, conditional, and iterative commands has a single-entry single-exit control flow.
+
+Sometimes we need to implement more general control flows. In particular, single-entry multi-exit control flows are often desirable.
+
+A \textit{\textbf{sequencer}} is a construct that transfers control to some other point in the program, which is called the sequencer's \textit{\textbf{destination}}. Using sequencers we can implement a variety of control flows, with multiple entries and/or multiple exits. We shall examine several kinds of sequencers:
+\setlength{\columnsep}{0cm}
+\setlength{\columnseprule}{0pt}
+\begin{multicols}{3}
+  \begin{itemize}[leftmargin=4pt]
+    \item jumps
+    \item escapes
+    \item exceptions 
+  \end{itemize}
+\end{multicols}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+This order of presentation follows the trend in language design from low-level sequencers (jumps) towards higher-level sequencers (escapes and exceptions).
+
+Some kinds of sequencers are able to \textit{\textbf{carry}} values. Such values are computed at the place where the sequencer is executed, and are available for use at the sequencer's destination.

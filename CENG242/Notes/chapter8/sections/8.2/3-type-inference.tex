@@ -1,0 +1,49 @@
+\subsection{Type Inference}
+\label{subsec:type-infer}
+
+\textit{\textbf{Type inference}} is a process by which the type of a declared entity is inferred, where it is not explicitly stated. Some functional programming languages such as \texttt{HASKELL} rely heavily on type inference, to the extent that we rarely need to state types explicitly.
+
+Type inference sometimes yields a monotype, but only where the available clues are strong enough. However, the available clues are not always so strong: the function body might be written entirely in terms of polymorphic functions. Indeed, it is conceivable that the function body might provide no clues at all. 
+
+\noindent In these circumstances, type inference will yield a polytype and finds the \textit{most general type satisfying the constraints}.
+
+Excessive reliance on type inference, however, tends to make large programs difficult to understand. 
+\begin{itemize}
+  \item A reader might have to study the whole of a program in order to discover the types of its individual functions.
+  \item Even the implementer of the program could have trouble understanding it: a slight programming error might cause the compiler to infer different types from the ones intended by the implementer, resulting in obscure error messages.
+\end{itemize}
+So explicitly declaring types, even if redundant, is good programming practice.
+
+\subsubsection{Inferring Type from Initializers}
+\label{subsubsec:infer-type-initializers}
+
+\begin{itemize}
+  \item C++11 \mintinline[bgcolor={}]{cpp}{auto} type specifier \textit{gets type from initializer or return expression}.
+  \item C++11 \mintinline[bgcolor={}]{cpp}{decltype(varexp)} \textit{gets type same as the variables declared type}.
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+auto f(int a) {
+  // double, function becomes double  
+  return a/3.0;
+}  
+struct P { double x, y;} *pptr;
+
+// double since pptr->x is double
+decltype(pptr->x) xval;
+
+// initializer is P typed
+auto v = (P)({ 2.0, 4.0});
+// f(3) returns double so t is double
+auto t = f(3);    
+\end{minted}
+
+\caption{}
+\label{code:code2}
+\end{listing}
+  
+  \item GCC has \textcolor{cyan}{\texttt{typeof(expr)}}, some other dialects have \textcolor{cyan}{\texttt{\_\_typeof\_\_(expr)}} macro having a similar mechanism in \texttt{C}.
+\end{itemize}
+
+\vspace*{\fill}
+\columnbreak

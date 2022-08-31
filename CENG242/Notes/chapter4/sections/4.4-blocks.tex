@@ -1,0 +1,105 @@
+\newpage
+\section{Blocks}
+\label{sec:blocks}
+
+If we allow a command to contain a local declaration, we have a \textit{block command}. If we allow an expression to contain a local declaration, we have a\textit{block expression}.
+
+\subsection{Block Commands}
+
+A block command is a form of command that contains a local declaration (or group of declarations) \textit{D} and a subcommand \textit{C}. The bindings produced by \textit{D} are used only for executing \textit{C}.
+
+In other words, declarations done inside a block command is available only during the block. Statements inside work in this environment. The declarations lost outside of the block.
+
+\begin{listing}[H]
+\begin{minted}{c}
+int x = 3, i = 2;
+x += i;
+while (x > i) {
+  int i = 0;
+  ...
+  i++;
+}
+/* i is 2 again */
+\end{minted}
+\caption{}
+\label{code:code7}
+\end{listing}
+
+
+\subsection{Block Expressions}
+
+A \textit{\textbf{block expression}} is a form of expression that contains a local declaration (or group of declarations) \textit{D} and a subexpression \textit{C}. The bindings produced by \textit{D} are used only for evaluating \textit{E}.
+
+In other words, it allows an expression to be evaluated in a special local environment. Declarations done in the block is not available outside.
+
+\begin{listing}[H]
+\begin{minted}{Haskell}
+x=5
+t=let xsquare=x*x
+      factorial n = if n<2 then 1
+                    else n*factorial (n-1)
+      xfact = factorial x
+  in  (xsquare+1)*xfact/(xfact*xsquare+2)
+\end{minted}
+\caption{}
+\label{code:code8}
+\end{listing}
+
+\vspace*{\fill}
+\columnbreak
+
+\noindent Hiding works in block expressions as expected:
+\begin{listing}[H]
+
+\begin{minted}{Haskell}
+x=5 ; y=6 ; z = 3
+t=let x=1 
+  in let y=2 
+     in   x+y+z
+{--
+t is 1+2+3 here. 
+local x and y hides the ones above
+--}
+\end{minted}
+\caption{}
+\label{code:code9}
+\end{listing}
+
+\noindent GCC (only GCC) block expressions has the last expression in block as the value:
+\begin{listing}[H]
+
+\begin{minted}{c}
+double min ;
+...
+min =  ({ double tmp;
+          if (b < a) then {
+            tmp = a;  a = b ; b = tmp;
+          }
+          a; // this is the value of the block
+        });
+\end{minted}
+\caption{}
+\label{code:code10}
+\end{listing}
+
+\subsection{Block Declaration}
+
+A declaration is made in a local environment of declarations. Local declarations are not made available to the outer environment.
+
+In \texttt{Haskell}: \texttt{D$_{exp}$ where D$_1$; D$_2$;  ... ; D$_n$}
+
+\noindent Only \texttt{D$_{exp}$} is added to environment. Body of \texttt{D$_{exp}$} has all local declarations available in its environment.
+
+\begin{listing}[H]
+
+\begin{minted}{Haskell}
+fifthpower x = (forthpowerx) * x where
+               squarex = x*x;
+               forthpowerx = squarex*squarex
+\end{minted}
+\caption{}
+\label{code:code11}
+\end{listing}
+
+
+

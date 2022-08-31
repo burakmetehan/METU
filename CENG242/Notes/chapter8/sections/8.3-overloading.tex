@@ -1,0 +1,110 @@
+\section{Overloading}
+\label{sec:overloading}
+
+An identifier is said to be \textit{\textbf{overloaded}} if it denotes two or more distinct procedures in the same scope. In other words, \textit{\textbf{overloading}} is using same identifier for multiple places in same
+scope.
+
+Such overloading is acceptable only if every procedure call is unambiguous, i.e., the compiler can uniquely identify the procedure to be called using only type information.
+
+\textit{Polymorphic function: one function that can process multiple types.}
+
+C++ allows overloading of functions and operators.
+\begin{listing}[H]
+\begin{minted}{cpp}
+typedef struct Comp { double x, y; } Complex;
+double @\color{orange}mult@(double a, double b) { return a * b; }
+Complex @\color{brown}mult@(Complex s, Complex u) {
+  Complex t;
+  t.x = s.x*u.x - s.y*u.y;
+  t.y = s.x*u.y + s.y*u.x;
+  return t;
+}
+Complex a,b; double x,y;
+a=@\color{brown}mult@(a,b) ; x=@\color{orange}mult@(y,2.1);
+\end{minted}
+\caption{}
+\label{code:code3}
+\end{listing}
+
+We can characterize overloading in terms of the types of the overloaded functions. Suppose that an identifier $F$ denotes both a function $f_1$ of type $S_1 \ra T_1$ and a function $f_2$ of type $S_2 \ra T_2$. (Recall that this covers functions with multiple arguments, since $S_1$ or $S_2$ could be a Cartesian product.) The overloading may be either \textit{context-independent} or \textit{context-dependent}.
+
+In brief, binding is more complicated. Binding is made not only according to name but \textcolor{red}{according to name and type}.
+
+\begin{formula}{}
+
+\noindent Function type: \\
+
+\texttt{
+  \tikz [remember picture,overlay] \matrix [anchor=west,rounded corners=2mm,thick,rectangle,draw=green!50!black,ampersand replacement=\&] (condep) 
+  {
+    \node [rectangle,draw=orange!80!black,thick] (conind) { 
+      name : {\em parameters\/}
+      }; \&
+    \node {
+      $\rightarrow$ \em result\/
+    };\\};} \\
+
+\noindent \textcolor{blue}{Context dependent overloading}:
+  \begin{tikzpicture} [overlay,remember picture] 
+    \node (here) {}; \draw [<-,thick,black,green!50!black] (condep.south east) |- (here) ;
+  \end{tikzpicture}\\
+\quad Overloading based on function name, parameter type and return type.
+
+\noindent \textcolor{blue}{Context independent overloading} : 
+  \begin{tikzpicture} [overlay,remember picture] 
+    \node (here) {}; \draw [->,thick,black,orange!80!black] (here) -| +(2.8,2.7) -| (conind) ;
+  \end{tikzpicture}\\
+\quad Overloading based on function name and parameter type. No return type!
+
+\end{formula}
+
+\vspace*{\fill}
+\columnbreak
+
+\subsection{Context-dependent Overloading}
+\label{subsec:depend-overload}
+
+\textit{\textbf{Context-dependent overloading}} requires only that $S_1$ and $S_2$ are non-equivalent or that $T_1$ and $T_2$ are non-equivalent. If $S_1$ and $S_2$ are non-equivalent, the function to be called can be identified as below (\hyperref[subsec:independ-overload]{context-independent overloading}). If $S_1$ and $S_2$ are equivalent but $T_1$ and $T_2$ are non-equivalent, context must be taken into account to identify the function to be called. Consider the function call ``$F(E)$'', where $E$ is of type $S_1$ (equivalent to $S_2$). If the function call occurs in a context where an expression of type $T_1$ is expected, then $F$ must denote $f_1$; if the function call occurs in a context where an expression of type $T_2$ is expected, then $F$ must denote $f_2$.
+
+For example:
+Which type does the expression calling the function expects (context) ?
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+int f(double a) { ...@\color{orange}\circtxt{1}@ }
+int f(int a) { ...@\color{green!50!black}\circtxt{2}@ } 
+double f(int a) { ...@\color{violet}\circtxt{3}@ }  
+double x,y; 
+int a,b;
+\end{minted}
+\caption{}
+\label{code:code4}
+
+\end{listing}
+
+\begin{itemize}[leftmargin=*]
+  \item[] \texttt{a=f(x)}; {\color{orange}\circtxt{1}} (x double)
+  \item[] \texttt{a=f(x)}; {\color{orange}\circtxt{1}} (x double)
+  \item[] \texttt{a=f(a)}; {\color{green!50!black}\circtxt{2}} (a int, assign int)
+  \item[] \texttt{x=f(a)}; {\color{violet}\circtxt{3}} (a int, assign double)
+  \item[] \texttt{x=2.4+f(a)}; {\color{violet}\circtxt{3}} (a int, mult double)
+  \item[] \texttt{a=f(f(x))}; {\color{green!50!black}\circtxt{2}}({\color{orange}\circtxt{1}}) ( x double, f(x):int, assign int)
+  \item[] \texttt{a=f(f(a))}; {\color{green!50!black}\circtxt{2}}({\color{green!50!black}\circtxt{2}}) or {\color{orange}\circtxt{1}}({\color{violet}\circtxt{3}}) ???
+\end{itemize}
+Problem gets more complicated. (even forget about coercion)
+
+Context dependent overloading is more expensive, complex and confusing. Most overloading languages are context independent.
+
+\subsection{Context-independent Overloading}
+\label{subsec:independ-overload}
+
+\textit{\textbf{Context-independent overloading}} requires that $S_1$ and $S_2$ are non-equivalent. Consider the function call ``$F(E)$''. If the actual parameter $E$ is of type $S_1$, then $F$ here denotes $f_1$ and the result is of type $T_1$. If $E$ is of type $S_2$, then $F$ here denotes $f_2$ and the result is of type $T_2$. With context-independent overloading, the function to be called is always uniquely identified by the type of the actual parameter.
+
+\begin{formula}{\textcolor{brown}{Careful}}
+Overloading is useful only for functions doing same operations. Two functions with different purposes should not be given same names. Confuses programmer and causes errors.
+\end{formula}
+
+\vspace*{\fill}
+\columnbreak
+
+We must be careful not to confuse the distinct concepts of overloading (which is sometimes called \textit{ad hoc polymorphism}) and \textit{parametric polymorphism}. Overloading means that a small number of separately-defined procedures happen to have the same identifier; these procedures do not necessarily have related types, nor do they necessarily perform similar operations on their arguments. Polymorphism is a property of a single procedure that accepts arguments of a large family of related types; the parametric procedure is defined once and operates uniformly on its arguments, whatever their type.

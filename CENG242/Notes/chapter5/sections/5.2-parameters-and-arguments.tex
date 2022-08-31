@@ -1,0 +1,105 @@
+\section{Parameters and Arguments}
+
+An \textit{\textbf{argument}} is a value or other entity that is passed to a procedure. An \textit{\textbf{actual parameter}} is an expression (or other construct) that yields an argument. A \textit{\textbf{formal parameter}} is an identifier through which a procedure can access an argument.
+
+In all programming languages, \textit{first-class values can be passed as arguments}. In most languages, \textit{either variables or pointers to variables can be passed as arguments}. In some languages, \textit{either procedures or pointers to procedures can be passed as arguments}.
+
+When a procedure is called, each formal parameter will become associated, in some sense, with the corresponding argument. The nature of this association is called a \textit{\textbf{parameter mechanism}}. Parameter mechanisms can be understood in terms of two basic concepts:
+\begin{itemize}
+  \item A \textit{copy parameter} mechanism binds the formal parameter to a local variable that contains a copy of the argument.
+  \item A \textit{reference parameter} mechanism binds the formal parameter directly to the argument itself.
+\end{itemize}
+
+\subsection{Copy Parameter Mechanisms}
+
+A \textit{\textbf{copy parameter mechanism}} allows for a value to be copied into and/or out of a procedure. The formal parameter $FP$ denotes a local variable of the procedure. A value is copied into $FP$ on calling the procedure, \textit{and/or} is copied out of $FP$ (to an argument variable) on return. The local variable is created on calling the procedure, and destroyed on return.
+
+\noindent There are three possible copy parameter mechanisms:
+\begin{itemize}
+  \item A \textit{\textbf{copy-in parameter}} (also known as a \textit{value parameter}) works as follows. When the procedure is called, a local variable is created and initialized with the argument value. Inside the procedure, that local variable may be inspected and even updated. (However, any updating of the local variable
+  has no effect outside the procedure.)
+  \item A \textit{\textbf{copy-out parameter}} (also known as a \textit{result parameter}) is a mirror-image of a copy-in parameter. In this case the argument must be a variable. When the procedure is called, a local variable is created but not initialized. When the procedure returns, that local variable's final value is assigned to the argument variable.
+  \item A \textit{\textbf{copy-in-copy-out parameter}} (also known as a \textit{value-result parameter}) combines copy-in and copy-out parameters. In this case also, the argument must be a variable. When the procedure is called, a local variable is created and initialized with the argument variable's current value. When the procedure returns, that local variable's final value is assigned back to the argument variable.
+\end{itemize}
+\texttt{C}, \texttt{C++}, and \texttt{JAVA} support \textit{only} copy-in parameters.
+
+\subsection{Reference Parameter Mechanisms}
+
+A \textit{\textbf{reference parameter mechanism}} allows for the formal parameter $FP$ to be bound directly to the argument itself.
+
+\noindent Reference parameter mechanisms appear under several guises in programming languages:
+\begin{itemize}
+  \item In the case of a \textit{\textbf{constant parameter}}, the argument must be a value. $FP$ is bound to the argument value during the procedure's activation. Thus any inspection of $FP$ is actually an indirect inspection of the argument value.
+  \item In the case of a \textit{\textbf{variable parameter}}, the argument must be a variable. $FP$ is bound to the argument variable during the procedure's activation. Thus any inspection (or updating) of $FP$ is actually an indirect inspection (or updating) of the argument variable.
+  \item In the case of a \textit{\textbf{procedural parameter}}, the argument must be a procedure. $FP$ is bound to the argument procedure during the called procedure's activation. Thus any call to $FP$ is actually an indirect call to the argument procedure.
+\end{itemize}
+\texttt{C++} does support variable parameters directly. If the type of a formal parameter is $T\&$ (reference to $T$), the corresponding argument must be a variable of type $T$.
+
+The choice between reference and copy parameter mechanisms is an important decision for the language designer. Reference parameters have simpler semantics, and are suitable for all types of value (including procedures, which in most programming languages cannot be copied). Reference parameters rely on indirect access to argument data, so \textit{copy parameters are more efficient for primitive types, while reference parameters are usually more efficient for composite types}. (In a distributed system, however, the procedure might be running on a processor remote from the argument data, in which case it may be more efficient to copy the data and then access it locally.)
+
+A disadvantage of variable parameters is that aliasing becomes a hazard. \textit{\textbf{Aliasing}} occurs when two or more identifiers are simultaneously bound to the same variable (or one identifier is bound to a composite variable and a second identifier to one of its components). Aliasing tends to make programs harder to understand and harder to reason about.
+
+\end{multicols*}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+\subsection{The Correspondence Principle}
+
+You might have noticed a correspondence between certain parameter mechanisms and certain forms of declaration. For example:
+\begin{itemize}
+  \item A \textit{constant parameter} corresponds to a \textit{constant definition}. In each case, an identifier is bound to a first-class value.
+  \item A \textit{variable parameter} corresponds to a \textit{variable renaming definition}. In each case, an identifier is bound to an existing variable.
+  \item A \textit{copy-in parameter} corresponds to an \textit{(initialized) variable declaration}. In each case, a new variable is created and initialized, and an identifier is bound to that variable.
+\end{itemize}
+
+\noindent The \textit{\textbf{Correspondence Principle}} states:
+\begin{quote}
+  \textit{For each form of declaration there exists a corresponding parameter mechanism.}
+\end{quote}
+Note that the converse is not always true.
+
+\noindent \texttt{C}:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\tt}l!{$\leftrightarrow$}>{\tt}l}
+    \rowcolor{blue!5!white}
+      \mintinline[bgcolor={}]{c}{int a = p;} & \mintinline[bgcolor={}]{c}{void f(int a) {...}} \\
+    \rowcolor{blue!10!white}
+      \mintinline[bgcolor={}]{c}{const int a = p;} & \mintinline[bgcolor={}]{c}{void f(const int a) {...}}
+  \end{tabular}
+\end{table}
+
+
+\noindent \texttt{Pascal}:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\tt}l!{$\leftrightarrow$}>{\tt}l}
+    \rowcolor{blue!5!white}
+      var a: integer; & procedure f(a:integer) \\
+    \rowcolor{blue!5!white}
+      & begin\\
+    \rowcolor{blue!10!white} 
+      const a: 5; & ??? \\
+    \rowcolor{blue!5!white}
+      ???	    & procedure f(var a:integer)\\
+    \rowcolor{blue!5!white}
+      & begin
+  \end{tabular}
+\end{table}
+
+\noindent \texttt{C++}:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\tt}l!{$\leftrightarrow$}>{\tt}l}
+    \rowcolor{blue!5!white}
+      \mintinline[bgcolor={}]{cpp}{int a = p;} & \mintinline[bgcolor={}]{cpp}{void f(int a) {...}} \\
+    \rowcolor{blue!10!white}
+      \mintinline[bgcolor={}]{cpp}{const int a = p;} & \mintinline[bgcolor={}]{cpp}{void f(const int a) {...}}\\
+    \rowcolor{blue!5!white}
+      \mintinline[bgcolor={}]{cpp}{&a = p} & \mintinline[bgcolor={}]{cpp}{void f(int &a) {...}}
+  \end{tabular}
+\end{table}
+
+\vspace*{\fill}
+\columnbreak

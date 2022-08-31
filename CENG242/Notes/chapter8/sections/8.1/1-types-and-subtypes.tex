@@ -1,0 +1,28 @@
+\subsection{Types and Subtypes}
+\label{subsec:types-subtypes}
+
+Recall that a type $T$ is a set of values, equipped with some operations. A \textit{\textbf{subtype}} of $T$ is a subset of the values of $T$, equipped with the same operations as $T$. Every value of the subtype is also a value of type $T$, and therefore may be used in a context where a value of type $T$ is expected.
+
+It is better if the programming language allows us to declare the variable's \textit{subtype}, and thus declare more accurately what values it might take. This makes the program easier to understand, and possibly more efficient.
+
+\vspace*{\fill}
+\columnbreak
+
+If the programming language supports subtypes, we cannot uniquely state the subtype of a \textit{value}. For example, the value $2$ is not only in the type \texttt{int} but also in the subtypes \texttt{char} and \texttt{short} in \texttt{C}. However, the language should allow the subtype of each variable to be declared explicitly.
+
+\noindent \textbf{General properties of subtypes:}
+\begin{itemize}
+  \item A necessary condition for $S$ to be a subtype of $T$ is that every value of $S$ is also a value of $T$, in other
+  words $S \subseteq T$. A value known to be in subtype $S$ can then safely be used wherever a value of type $T$ is expected.
+  \item The type $T$ is equipped with operations that are applicable to all values of type $T$. Each of these operations will \textit{also be applicable to values of the subtype $S$}. We say that $S$ \textit{\textbf{inherits}} these operations.
+\end{itemize}
+
+Suppose that a value known to be of type $T_1$ is computed in a context where a value of type $T_2$ is expected. In such a context we have insisted that $T_1$ must be equivalent to $T_2$. In the \textit{presence of subtypes}, however, we can allow a looser compatibility between types $T_1$ and $T_2$.
+
+$T_1$ is \textit{\textbf{compatible}} with $T_2$ if and only if $T_1$ and $T_2$ have values in common. This implies that $T_1$ is a subtype of $T_2$, or $T_2$ is a subtype of $T_1$, or both $T_1$ and $T_2$ are subtypes of some other type.
+
+If $T_1$ is indeed compatible with $T_2$, there are two possible cases of interest:
+\begin{itemize}
+  \item $T_1$ is a subtype of $T_2$, so all values of type $T_1$ are values of type $T_2$. In this case, the value of type $T_1$ can be used safely in a context where a value of type $T_2$ is expected; no run-time check is necessary.
+  \item $T_1$ is not a subtype of $T_2$, so some (but not all) values of type $T_1$ are values of type $T_2$. In this case, the value of type $T_1$ can be used only after a run-time check to determine whether it is also a value of type $T_2$. This is a kind of run-time type check, but much simpler and more efficient than the full run-time type checks needed by a dynamically typed language.
+\end{itemize}

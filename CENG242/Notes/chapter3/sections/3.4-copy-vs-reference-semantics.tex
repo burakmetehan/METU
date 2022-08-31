@@ -1,0 +1,19 @@
+\section{Copy Semantics vs Reference Semantics}
+
+When a program assigns a composite value to a variable of the same type, what happens depends on the language. There are in fact two distinct possibilities:
+\begin{itemize}
+  \item \textit{\textbf{Copy semantics}}. The assignment copies all components of the composite value into the corresponding components of the composite variable.
+  \item \textit{\textbf{Reference semantics}}. The assignment makes the composite variable contain a pointer (or reference) to the composite value.
+\end{itemize}
+
+Copy semantics is adopted by \texttt{C} and \texttt{C++}. However, programmers can also achieve the effect of reference semantics by using explicit pointers.
+
+\texttt{JAVA} adopts copy semantics for primitive values, and reference semantics for objects. However, programmers can achieve the effect of copy semantics even for objects by using the clone method.
+
+The semantics of the \textit{equality test} operation in any programming language should be consistent with the semantics of assignment. This enables the programmer to assume that, immediately after an assignment of  $V_1$ to $V_2$, $V_1$ is equal to $V_2$, regardless of whether copy or reference semantics is used. It follows that the equality test operation should behave as follows:
+\begin{itemize}
+  \item \textit{Copy semantics}. The equality test operation should test whether corresponding components of the two composite values are equal.
+  \item \textit{Reference semantics}. The equality test operation should test whether the pointers to the two composite values are equal (i.e., whether they point to the same variable)
+\end{itemize}
+
+\textit{Copy semantics is slower than reference semantics. Reference semantics cause problems from storage sharing (all operations effect both variables), deallocation of one makes the other invalid.}

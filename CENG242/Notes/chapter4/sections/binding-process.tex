@@ -1,0 +1,14 @@
+\end{multicols*}
+
+\section{Binding Process}
+\label{sec:binding-process}
+
+Language processor keeps track of current environment in a data structure called \textit{\textbf{Symbol Table}} or \textit{\textbf{Identifier Table}}. Symbol table maps identifier strings to their type and binding. Each new block introduces its declarations/bindings to the symbol table and on exit, they are cleared. Usually implemented as a \textit{Hash Table}.
+
+For static binding, Symbol Table is a compile time data structure and maintained during different stages of compilation. For dynamic binding, symbol table is maintained at run time.
+
+\newpage
+
+\begin{multicols*}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}

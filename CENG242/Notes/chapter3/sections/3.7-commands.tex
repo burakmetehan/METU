@@ -1,0 +1,191 @@
+\section{Commands}
+\label{sec:commands}
+
+A \textit{\textbf{command}} is a program construct that will be \textit{\textbf{executed}} in order \textit{to update variables}. Commands are a characteristic feature of imperative, object-oriented, and concurrent languages. Commands are often called \textit{statements}.
+
+Commands may be formed in various ways. We survey the following fundamental forms of commands. Some commands are primitive:
+\begin{itemize}
+  \item \textit{skips}
+  \item \textit{assignments}
+  \item \textit{proper procedure calls}
+\end{itemize}
+Others are composed from simpler commands:
+\begin{itemize}
+  \item \textit{sequential commands}
+  \item \textit{collateral commands}
+  \item \textit{conditional commands}
+  \item \textit{iterative commands}
+\end{itemize}
+There are also \textit{block commands} and \textit{exception-handling commands}.
+
+A well-designed imperative, object-oriented, or concurrent language should provide \textit{all or most of the above forms of command}; it is impoverished if it omits (or arbitrarily restricts) any important forms. Conversely, a language that provides additional forms of command is probably bloated; the additional ones are likely to be unnecessary accretions rather than genuine enhancements to the language’s expressive power.
+
+All the above commands exhibit \textit{single-entry single-exit} control flow. This pattern of control flow is adequate for most practical purposes. But sometimes it is too restrictive, so modern imperative and object-oriented languages also provide \textit{sequencers} (such as exits and exceptions) that allow us to program \textit{single-entry multi-exit} control flows.
+
+\subsection{Skips}
+\label{sec:skips}
+
+The simplest possible kind of command is the \textit{\textbf{skip}} command, which has no effect whatsoever. In \texttt{C}, \texttt{C++} and \texttt{JAVA}, the skip command is written simply ``;''.
+
+\newpage
+
+\subsection{Assignments}
+\label{sec:assignments}
+
+We have already encountered the concept of \textit{\textbf{assignment}}. The assignment command typically has the form ``\texttt{$V$ = $E$}''. Here $E$ is an expression which yields a value, and $V$ is a variable access which yields a reference to a variable.
+
+More general kinds of assignment are possible. A \textit{\textbf{multiple assignment}}, typically written in the form ``$V_1 = \ldots = V_n = E$;'', causes the same value to be assigned to several variables.
+
+\subsection{Proper Procedure Call}
+\label{sec:proper-procedure-call}
+
+A \textit{\textbf{proper procedure call}} is a command that achieves its effect by applying a proper procedure (or method) to some arguments. The call typically has the form ``$P(E_1, \ldots, E_n)$;'', where $P$ determines the procedure to be applied, and the expressions $E_1, \ldots, E_n$ are evaluated to determine the arguments.
+
+\subsection{Sequential Commands}
+\label{sec:seq-com}
+
+Since commands update variables, the order in which commands are executed
+is important. 
+
+A \textit{\textbf{sequential command}} specifies that \textit{two (or more) commands are to be executed in sequence}. A sequential command might be written in the form:
+\begin{equation*}
+  C_1\ ;\ C_2
+\end{equation*}
+meaning that command $C_1$ is executed before command $C_2$.
+
+\subsection{Collateral Commands}
+\label{sec:col-com}
+
+A \textit{\textbf{collateral command}} specifies that \textit{two (or more) commands may be executed in any order}. A collateral command might be written in the form:
+\begin{equation*}
+  C_1\ ,\ C_2
+\end{equation*}
+where both $C_1$ and $C_2$ are to be executed, but in no particular order.
+
+An unwise collateral command would be:
+\begin{minted}{cpp}
+  n = 7,  n = n + 1;
+\end{minted}
+The net effect of this collateral command depends on the order of execution. Let us suppose that \texttt{n} initially contains 0:
+\begin{itemize}
+  \item If ``\texttt{n = 7}'' is executed first, \texttt{n} will end up containing 8.
+  \item If ``\texttt{n = 7}'' is executed last, \texttt{n} will end up containing 7.
+  \item If ``\texttt{n = 7}'' is executed between evaluation of ``\texttt{n + 1}'' and assignment of its value to \texttt{n}, \texttt{n} will end up containing 1.
+\end{itemize}
+
+Collateral commands are said to be \textit{nondeterministic}. \textit{A computation is \textbf{deterministic} if the sequence of steps it will perform is entirely predictable; otherwise the computation is \textbf{nondeterministic}}.
+
+If we perform a deterministic computation over and over again, with the same input, it will always produce the same output. But if we perform a nondeterministic computation over and over again, with the same input, it might produce different output every time.
+
+Although the sequence of steps performed by a nondeterministic computation is unpredictable, its output might happen to be predictable. We call such a computation \textit{\textbf{effectively deterministic}}. A collateral command is effectively deterministic if no subcommand inspects a variable updated by another subcommand.
+
+\subsection{Concurrent Commands}
+\label{sec:concur-com}
+
+\begin{itemize}
+  \item Concurrent paradigm languages:
+  \begin{equation*}
+    \{\ C_1\ |\ C_2\ |\ \ldots\ |\ C_n\ \}
+  \end{equation*}
+  \item All commands start concurrently in parallel. Block finishes when the last active command finishes.
+  \item Real parallelism in multi-core/multi-processor machines.
+  \item Transparently handled by only a few languages. Thread libraries required in languages like \texttt{Java, C, C++}.
+\end{itemize}
+
+\subsection{Conditional Commands}
+\label{sec:conditional-com}
+
+A \textit{\textbf{conditional command}} has two or more subcommands, of which exactly one is chosen to be executed.
+
+The most elementary form of conditional command is the \textit{\textbf{if-command}}, in which a choice between two subcommands is based on a boolean value. The if-command is found in every imperative language, and typically looks like this:
+
+$\begin{aligned}
+  &\textbf{if}\ (E)\ C_1\\
+  &\textbf{else}\ C_2
+\end{aligned}$
+
+\noindent If the boolean expression $E$ yields \textit{true}, $C_1$ is chosen; if it yields \textit{false}, $C_2$ is chosen.
+
+The if-command can be generalized to allow choice among several subcommands:
+
+$\begin{aligned}
+  &\textbf{if}\ (E_1)\ C_1\\
+  &\textbf{else if}\ (E_2)\ C_2\\
+  &...\\
+  &\textbf{else if}\ (E_n)\ C_n\\
+  &\textbf{else}\ C_0
+\end{aligned}$
+
+\noindent Here the boolean expressions $E_1, E_2, \ldots, E_n$ are evaluated sequentially.
+
+\newpage
+
+The above conditional commands are \textit{deterministic}: in each case we can predict which subcommand will be chosen. A \textit{nondeterministic} conditional command is also sometimes useful, and might be written in the following notation:
+
+$\begin{aligned}
+  &\textbf{if}\ (E_1)\ C_1\\
+  &\textbf{or if}\ (E_2)\ C_2\\
+  &...\\
+  &\textbf{or if}\ (E_n)\ C_n\\
+\end{aligned}$
+
+\noindent Here the boolean expressions $E_1, E_2, \ldots, E_n$ would be evaluated collaterally, and any $E_i$ that yields \textit{true} would cause the corresponding subcommand $C_i$ to be chosen. If no $E_i$ yields \textit{true}, the command would fail.
+
+Nondeterministic conditional commands tend to be available only in concurrent languages, where nondeterminism is present anyway, but their advantages are not restricted to such languages.
+
+A more general form of conditional command is the \textit{\textbf{case command}}, in which a choice between several subcommands is typically based on an integer (or other) value.
+
+The nearest equivalent to a case command in \texttt{C}, \texttt{C++}, and \texttt{JAVA} is the \textbf{switch} command.
+
+$\begin{aligned}
+  &\textbf{switch}\ (E):\\
+  &\quad \textbf{case}\ v_1:\ C_1;\ \texttt{break};\\
+  &\quad...\\
+  &\quad \textbf{case}\ v_n:\ C_n;\ \texttt{break};\\
+  &\quad \textbf{case}\ \textbf{default:}\ C_0;\ \texttt{break};
+\end{aligned}$
+
+\subsection{Iterative Commands}
+\label{sec:iter-com}
+
+An \textit{\textbf{iterative command}} (commonly known as a \textit{loop}) has a subcommand that is executed repeatedly. The latter subcommand is called the loop \textit{\textbf{body}}. Each execution of the loop body is called an \textit{\textbf{iteration}}.
+
+We can classify iterative commands according to when the number of iterations is fixed:
+
+\begin{itemize}
+  \item \textit{\textbf{Indefinite iteration:}} the number of iterations is not fixed in advance.
+  \item \textit{\textbf{Definite iteration:}} the number of iterations is fixed in advance.
+\end{itemize}
+
+Indefinite iteration is typically provided by the \textit{\textbf{while-command}}. The while-command typically looks like this:
+
+\begin{minted}[escapeinside=@@]{cpp}
+  while (@$E$@) @$C$@  
+\end{minted}
+The meaning of the while-command can be defined by the following equivalence:
+\begin{minted}[escapeinside=@@]{cpp}
+  while (@$E$@) @$C$@  @$\equiv$@ if (@$E$@) {
+                      @$C$@
+                      while (@$E$@) @$C$@
+                    }
+\end{minted}
+This definition makes clear that the loop condition in a while-command is tested \textit{before} each iteration of the loop body.
+
+Note that this definition of the \textit{while-command is recursive}. In fact, \textit{iteration is just a special form of recursion}. \texttt{C}, \texttt{C++}, and \texttt{JAVA} also have a \textbf{do-while-command}, in which the loop condition is tested \textit{after} each iteration.
+
+Definite iteration is characterized by a \textit{\textbf{control sequence}}, a predetermined sequence of values that are successively assigned (or bound) to a \textit{\textbf{control variable}} such as \textbf{\textit{for-command}} in \texttt{ADA}.
+\begin{minted}{ada}
+  for V in T loop
+    C
+  end loop;
+\end{minted}
+
+The control sequence consists of all components of the collection. Iteration over an array or list is deterministic, since the components are visited in order. Iteration over a set is nondeterministic, since the components are visited in no particular order.
+
+Note that the for-command of \texttt{C} and \texttt{C++} (and the old-style for-command of \texttt{JAVA}) is nothing more than syntactic shorthand for a while-command, and thus supports indefinite iteration:
+\begin{minted}[escapeinside=@@]{cpp}
+  for (@$C_1$@; @$E_1$@; @$E_2$@) @$C_2$@; @$\equiv$@ @$C_1$@ while (@$E_1$@) {
+                                  @$C_2$@;
+                                  @$E_2$@;
+                                }
+\end{minted}

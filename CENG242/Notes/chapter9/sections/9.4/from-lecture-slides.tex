@@ -1,0 +1,140 @@
+\vspace*{\fill}
+\columnbreak
+
+\subsection{From Lecture Slides}
+\label{subsec:from-lecture-slides}
+
+\subsubsection{Exception}
+\label{subsubsec:slide-exception}
+
+Exceptions are controlled jumps out of multiple levels of function calls to an outer control point (\texttt{handler} or \texttt{catch}). \texttt{C} does not have exceptions but non-local jumps possible via \texttt{setjmp()}, \texttt{longjmp()} library calls. However, \texttt{C++} and \texttt{Java} has ``\texttt{try $\{$...$\}$ catch(...) $\{$...$\}$}''.
+
+Each \texttt{try-catch} block introduces a non-local jump point. \texttt{try} block is executed and whenever a \texttt{throw {\em expr\/}} command is called in any functions called (even indirectly) inside \texttt{try}  block execution jumps to the \texttt{catch()} part. \texttt{try-catch} blocks can be nested. Execution jumps to closes \texttt{catch} block with a matching type in the parameters with the thrown expression.
+
+\noindent Conventional error handling. Propagate errors with return values.
+\begin{listing}[H]
+
+\begin{minted}{c}
+int searchopen(char *f) { ...
+  /* if search fails $\textnormal{\textcolor{red}{error occurs here}}$ */
+  return -5; @\R{e1}{}@ ...
+  }
+int openparse(char *f) { ...
+  if ((r = searchopen(f))<0) @\R{e2}{}@
+    return r;@\R{e3}{}@
+  else ...
+}
+int main() {  ...
+  if ((rv=openparse("file.txt"))<0) @\R{e4}{}@
+    /* $\textnormal{\textcolor{red}{handle error here}}$ */
+}
+\end{minted}
+
+\begin{tikzpicture} [remember picture, overlay, thick]
+  \draw [->,blue] (e1) -- +(4,0) |- (e2);
+  \draw [->,blue] (e3) -- +(5,0) |- (e4);
+\end{tikzpicture}
+
+\caption{}
+\label{code:code5}
+\end{listing}
+
+\noindent Error handling with \texttt{try-catch}. (based on run-time stack)
+\begin{listing}[H]
+\begin{minted}{cpp}
+enum Exception { NOTFOUND, ..., PERMS};
+void searchopen(char *f) { ...
+  /* if open fails $\textnormal{\textcolor{red}{error occurs here}}$ */
+  throw PERMS; @\R{ee1}{}@ ...
+}
+void openparse(char *f) { ...
+  searchopen(f); ...
+}
+int main() {  ...
+  try {...
+    openparse("file.txt"); ...
+  } catch(Exception e) {@\R{ee4}{}@
+    /* $\textnormal{\textcolor{red}{handle error here}}$ */
+  } ...
+}
+\end{minted}
+
+\tikz [remember picture, overlay,blue] \draw [->,thick] (ee1) -- +(4,0) |- (ee4);
+
+\caption{}
+\label{code:code6}
+\end{listing}
+
+\end{multicols*}
+
+\noindent Nested exceptions are handled based on types. \texttt{C++}:
+\begin{listing}[ht]
+
+\begin{minted}{cpp}
+int main() {... 
+  try { C1;  f@\R{tf}{}@() ; C2 } 
+  catch (double@\R{cdoub}{}@ a) {...}
+}
+
+void f@\R{ff}{}@() {...; 
+  try {...; g@\R{tg}{}@() ; ... } catch (int@\R{cint}{}@ a) {...} 
+}
+
+void g@\R{fg}{}@() {...; 
+  throw 4@\R{tint}{}@; ... ; throw 1.5@\R{tdoub}{}@; ...
+}
+\end{minted}
+
+\begin{tikzpicture} [remember picture,overlay, thick] 
+  \draw [->,blue] (tf) -- +(0,-1) -| node [fill=blue!5!white,pos=0.2] {\tiny call}  (ff);
+  \draw [->,blue] (tg) -- +(0,-0.4) -| node [fill=blue!5!white,pos=0.2] {\tiny call} (fg);
+  \draw [->,red] (tint) -- +(0,1) -|  node [fill=blue!5!white,pos=0.2] {\tiny exception} (cint);
+  \draw [->,red] (tdoub) -- +(0,2.5) -| node [fill=blue!5!white,pos=0.2] {\tiny exception} (cdoub);
+\end{tikzpicture}
+
+\caption{}
+\label{code:code7}
+\end{listing}
+
+\noindent In case no handlers found a run time error generated. Program halts.
+
+\subsubsection{Co-routines}
+\label{subsubsec:slide-coroutine}
+
+\begin{itemize}
+  \item \textit{\textbf{Sequential flow:}} local jumps, subroutine calls, exceptions
+  \item \textit{\textbf{Concurrent flow:}} multiple contexes (stack and instruction pointer). Execution switches between them.
+  \item \textit{\textbf{Multiple uses:}} \textcolor{red}{callbacks}, \textcolor{red}{generators} (iterators), \textcolor{red}{threads}, \textcolor{red}{fibers}, \textcolor{red}{asynchronous}, \textcolor{red}{event based}, or \textcolor{red}{concurrent} programming
+  \item Non-local jumps to different environments guided coordinated programs or a global scheduling mechanism:
+
+  \begin{tikzpicture}
+    [stack/.style={rectangle split, rectangle split parts=4,draw,
+      text width=10em},
+      scolor/.style={rectangle split part fill={white,blue!20!white,blue!20!white,blue!20!white}}]
+  
+    \node [stack,scolor,rectangle split parts=3] (stk2) {
+      \nodepart{one} \rule{0pt}{4.7em}
+      \nodepart{two} record of g()
+      \nodepart{three} record of main()
+    };
+  
+    \node [stack,scolor,right=5em of stk2] (stk1) {
+      \nodepart{one} \rule{0pt}{3em}
+      \nodepart{two} record of free()
+      \nodepart{three} record of traverse()
+      \nodepart{four} record of gc()
+    };
+  
+    \node [stack,scolor, rectangle split parts=3,right=5em of stk1] (stk3) {
+      \nodepart{one} \rule{0pt}{4.7em}\hspace*{2em}
+      \nodepart{two} record of mouseevent()
+      \nodepart{three} record of listener()
+    };
+  
+    \draw [->,blue!40!black,thick] (stk2.two east) -- +(1em,0) node [xshift=2em, yshift=.9em] {sched()} |- (stk1.two west);
+  
+    \draw [->,blue!40!black,thick] (stk1.two east) -- +(1em,0) node [xshift=2em, yshift=-.9em] {sched()} |-  (stk3.two west);
+  
+    \draw [->,blue!40!black,thick] (stk3.two east) -- +(2em,0) -- +(2em,-4em)  node [xshift=-20em, yshift=.5em] {sched()} -| ($(stk2.two west)+(-2em,0)$) --  (stk2.two west);
+  \end{tikzpicture}
+\end{itemize}

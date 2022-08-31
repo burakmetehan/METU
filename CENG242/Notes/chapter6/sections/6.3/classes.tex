@@ -1,0 +1,68 @@
+\subsection{Classes}
+\label{subsec:classes}
+
+A \textit{\textbf{class}} is a set of similar objects. All the objects of a given class have the same variable components, and are equipped with the same operations.
+
+Classes are supported by all the object-oriented languages including \texttt{C++} and \texttt{JAVA}. In object-oriented terminology, an object's variable components are variously called \textit{instance variables} or \textit{member variables}, and its operations are usually called \textit{constructors} and \textit{methods}.
+
+A \textit{\textbf{constructor}} is an operation that creates (and typically initializes) a new object of the class. In both \texttt{C++} and \texttt{JAVA}, a constructor is always named after the class to which it belongs.
+
+A \textit{\textbf{method}} is an operation that inspects and/or updates an existing object of the class.
+
+\noindent Method call,
+\mint{cpp}{O.M(E_1, @$\ldots$@, E_n)}
+where
+\begin{itemize}
+  \item $O$ identifies the target object.
+  \item $M$ is the name of method. If there is not method named $M$, it causes an error.
+  \item $E_i$ are evaluated to yield the arguments.
+\end{itemize}
+Inside the method's body, \textbf{\texttt{this}} denotes the target object.
+
+An \textit{object} is an \textit{\textbf{instance}} of the class that it belongs to (a counter type instead of a single counter). Classes have similar purposes to abstract data types.
+\begin{listing}[H]
+
+\begin{minted}{cpp}
+class Counter {
+private:   int counter;
+public:    Counter() { counter=0; }
+           int get() { return counter;}
+           void increment() { counter++; }
+} men,vehicles;
+men.increment(); vehicles.increment();
+men.get(); vehicles.get();
+\end{minted}
+\caption{C++ class declaration}
+\label{code:code3}
+\end{listing}
+
+\begin{table}[H]
+  \centering
+  \textcolor{blue}{\large Abstract data type}\\
+  \begin{tabular}{
+    !{\color{red!70!black}\vrule width 1pt}p{7cm}
+    !{\color{red!70!black}\vrule width 1pt}} \colorfline{green!70!black}
+    interface {\footnotesize (constructor, functions)} \\ \hline \\
+    detail {\footnotesize (\textcolor{red}{data type definition}, auxiliary functions)}  \colorline{red!70!black}
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \textcolor{blue}{\large Object}\\
+  \begin{tabular}{
+    !{\color{red!70!black}\vrule width 1pt}p{7cm}
+    !{\color{red!70!black}\vrule width 1pt}} \colorfline{green!70!black}
+    interface {\footnotesize (constructor, functions)}\\ \hline \\
+    detail {\footnotesize (\textcolor{red}{variables}, auxiliary functions)}  \colorline{red!70!black}
+  \end{tabular}
+\end{table}
+
+\begin{formula}{Purpose}
+\begin{itemize}
+  \item preserving data integrity, 
+  \item abstraction, 
+  \item re-usable codes.
+\end{itemize}
+\end{formula}

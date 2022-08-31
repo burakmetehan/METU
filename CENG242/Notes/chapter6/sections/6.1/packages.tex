@@ -1,0 +1,28 @@
+\subsection{Packages}
+\label{subsec:packages}
+
+A \textit{\textbf{package}} is a group of several components declared for a common purpose. In other words, a group of declarations put into a single body.
+
+These components may be \textit{types}, \textit{constants}, \textit{variables}, \textit{procedures}, or indeed \textit{any entities} that may be declared in the programming language.
+
+\vspace*{\fill}
+\columnbreak
+
+\texttt{C} has indirect way of packaging per source file. \texttt{Python} defines modules per source file. \texttt{C++} has namespaces.
+\begin{listing}[H]
+\begin{minted}[]{cpp}
+namespace Trig {
+  const double pi=3.14159265358979;
+  double sin(double x) { ... }
+  double cos(double x) { ... }
+  double tan(double x) { ... }
+  double atan(double x) { ... }
+  ...
+};
+\end{minted}
+\caption{}
+\label{code:code1}
+\end{listing}
+\noindent These functions can be used as 
+  \mint{cpp}{Trig::sin(Trig::pi/2+x) + Trig::cos(x)}
+\noindent In \texttt{C++}, (::) is \textit{Scope} operator. In this way, \textit{identifier overlap is avoided}. There is no name collisions in \mintinline{cpp}{List::insert(...)} and \mintinline{cpp}{Tree::insert(...)}.
