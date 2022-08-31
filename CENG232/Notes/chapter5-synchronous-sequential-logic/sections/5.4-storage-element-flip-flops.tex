@@ -1,0 +1,158 @@
+\section{Storage Element: Flip-Flops}
+\label{sec:stor-ele-flip-flop}
+
+A change in the control input of a latch or flip-flop switches its state. This momentary change is called a \textit{trigger}, and the transition it causes is said to trigger the flip-flop. The $D$ latch with pulses in its control input is essentially a flip-flop that is triggered every time the pulse goes to the logic-1 level.
+
+Flip-flop circuits are constructed in such a way as to make them operate properly when they are part of a sequential circuit that employs a common clock. The problem with the latch is that it responds to a change in the \textit{level} of a clock pulse. The key to the proper operation of a flip-flop is to trigger it only during a signal \textit{transition}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.8.png}
+  \caption{Clock response in latch and flip-flop}
+  \label{fig:5.8}
+\end{figure}
+
+There are two ways that a latch can be modified to form a flip-flop.
+\begin{itemize}
+  \item One way is to employ two latches in a special configuration that isolates the output of the flip-flop and prevents it from being affected while the input to the flip-flop is changing.
+  \item Another way is to produce a flip-flop that triggers only during a signal transition (from 0 to 1 or from 1 to 0) of the synchronizing signal (clock) and is disabled during the rest of the clock pulse.
+\end{itemize}
+
+\subsection{Edge-Triggered D Flip-Flop}
+\label{subsec:edge-trig-d-flip-flop}
+
+The construction of a $D$ flip-flop with two $D$ latches and an inverter is shown in Fig. 9. It is often referred to as a master–slave flip-flop. The first latch is called the master and the second the slave. The circuit samples the $D$ input and changes its output $Q$ \textit{only at the negative edge} of the synchronizing or controlling clock.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.9.png}
+  \caption{Master–slave $D$ flip-flop}
+  \label{fig:5.9}
+\end{figure}
+\noindent \textit{A change in the output of the flip-flop can be triggered only by and during the transition of the clock from 1 to 0}.
+
+The behavior of the master–slave flip-flop just described dictates that
+\begin{enumerate}[leftmargin=0.5cm]
+  \item The output may change only once,
+  \item A change in the output is triggered by the negative edge of the clock,
+  \item The change may occur only during the clock's negative level.
+\end{enumerate}
+\noindent The value that is produced at the output of the flip-flop is the value that was stored in the master stage immediately before the negative edge occurred. It is also possible to design the circuit so that the flip-flop output changes on the positive edge of the clock.
+
+Another construction of an edge-triggered $D$ flip-flop uses three $SR$ latches as shown in Fig. 10.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.10.png}
+  \caption{D-type positive-edge-triggered flip-flop}
+  \label{fig:5.10}
+\end{figure}
+
+In sum, \textit{when the input clock in the positive-edge-triggered flip-flop makes a positive transition, the value of \textnormal{D} is transferred to \textnormal{Q}}. A negative transition of the clock (i.e., from 1 to 0) does not affect the output, nor is the output affected by changes in $D$ when \textit{Clk} is in the steady logic-1 level or the logic-0 level.
+
+The timing of the response of a flip-flop to input data and to the clock must be taken into consideration when one is using edge-triggered flip-flops. There is a minimum time called the setup time during which the $D$ input must be maintained at a constant value prior to the occurrence of the clock transition. Similarly, there is a minimum time called the hold time during which the $D$ input must not change after the application of the positive transition of the clock.
+
+The graphic symbol for the edge-triggered $D$ flip-flop is shown in Fig. 11. It is similar to the symbol used for the $D$ latch, except for the arrowhead-like symbol in front of the letter \textit{Clk}, designating a \textit{dynamic} input. \textit{The dynamic indicator ($>$) denotes the fact that the flip-flop responds to the edge transition of the clock}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.11.png}
+  \caption{Graphic symbol for edge-triggered D flip-flop}
+  \label{fig:5.11}
+\end{figure}
+
+\begin{practice}{Practice Exercise 5.4}
+\noindent What is meant by ``a positive-edge flip-flop''?\\
+
+\textbf{Answer:} A positive-edge flip-flop is one that is activated by the rising (positive) edge of the clock (synchronizing signal).
+\end{practice}
+
+\subsection{Other Flip-Flops}
+\label{subsec:other-flip-flops}
+
+The most economical and efficient flip-flop constructed in this manner is the edge-triggered $D$ flip-flop, because it requires the smallest number of gates. Other types of flip-flops can be constructed by using the $D$ flip-flop and external logic. Two flip-flops less widely used in the design of digital systems are the $JK$ and $T$ flip-flops.
+
+There are three operations that can be performed with a flip-flop:
+\begin{enumerate}[]
+  \item Set it to 1,
+  \item Reset it to 0, or 
+  \item Complement its output.
+\noindent \end{enumerate}
+
+\subsubsection{JK Flip-Flops}
+\label{subsubsec:jk-flip-flops}
+
+With only a single input, the $D$ flip-flop can set or reset the output. The $JK$ flip-flop has two inputs and performs all three operations. The circuit diagram of a $JK$ flip-flop constructed with a $D$ flip-flop 
+and gates is shown in Fig. 12(a).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.12.png}
+  \caption{$JK$ flip-flop}
+  \label{fig:5.12}
+\end{figure}
+\noindent The $J$ input sets the flip-flop to 1, the $K$ input resets it 
+to 0, and when both inputs are enabled, the output is complemented. This can be verified by investigating the circuit applied to the D input:
+\begin{equation*}
+  D = JQ' + K'Q
+\end{equation*}
+The graphic symbol for the $JK$ flip-flop is shown in Fig. 12(b).
+
+\subsubsection{T Flip-Flops}
+\label{subsubsec:t-flip-flops}
+
+The $T$ (toggle) flip-flop is a complementing flip-flop and can be obtained from a $JK$ flip-flop when inputs $J$ and $K$ are tied together. This is shown in Fig. 13(a).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.13.png}
+  \caption{T flip-flop}
+  \label{fig:5.13}
+\end{figure}
+The complementing flip-flop is useful for designing binary counters. The $T$ flip-flop can be constructed with a $D$ flip-flop and an exclusive-OR gate as shown in Fig. 13(b). The expression for the D input is
+\begin{equation*}
+  D = T \oplus Q = TQ' + T'Q
+\end{equation*}
+The graphic symbol for this flip-flop has a $T$ symbol in the input.
+
+
+\subsection{Characteristic Tables}
+\label{subsec:char-tables}
+
+A characteristic table defines the logical properties of a flip-flop by describing its operation in tabular form. The characteristic tables of three types of flip-flops are presented in Table 5.1.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/table-5.1.png}
+  \label{table:5.1}
+\end{figure}
+
+
+\subsection{Characteristic Equations}
+\label{subsec:char-equations}
+
+The logical properties of a flip-flop, as described in the characteristic table, can be expressed algebraically with a characteristic equation. For the $D$ flip-flop, we have the characteristic equation
+\begin{equation*}
+  Q(t + 1) = D
+\end{equation*}
+which states that the next state of the output will be equal to the value of input $D$ in the present state. The characteristic equation for the $JK$ flip-flop can be derived from the characteristic table or from the circuit of Fig. 12. We obtain
+\begin{equation*}
+  Q(t + 1) = JQ' + K'Q
+\end{equation*}
+where $Q$ is the value of the flip-flop output prior to the application of a clock edge. The characteristic equation for the $T$ flip-flop is obtained from the circuit of Fig. 13:
+\begin{equation*}
+  Q(t + 1) = T \oplus Q = TQ' + T'Q
+\end{equation*}
+
+
+\subsection{Direct Inputs}
+\label{subsec:direct-inputs}
+
+Some flip-flops have asynchronous inputs that are used to force the flip-flop to a particular state independently of the clock. The input that sets the flip-flop to 1 is called \textit{preset} or \textit{direct set}. The input that clears the flip-flop to 0 is called \textit{clear} or \textit{direct reset}. When power is turned on in a digital system, the state of the flip-flops is unknown. The direct inputs are useful for bringing all flip-flops in the system to a known starting state prior to the clocked operation.
+
+\begin{practice}{Practice Exercise 5.5}
+Describe the functionality of a $D$-type flip-flop.
+
+\textbf{Answer:} A $D$-type flip-flop has a $D$ (data) input, a clock input, and possibly asynchronous or synchronous clear (reset) or set signal. If \textit{set} or \textit{clear} are not asserted, the clock signal synchronizes the transfer of $D$ to $Q$, the output. If \textit{set} or \textit{reset} are asynchronous, their action controls the flip-flop independently of the clock. \textit{set} causes the output to be 1; \textit{reset} causes the output to be 0. If \textit{set} or \textit{reset} are synchronous, their action has effect at the synchronizing edge of the clock
+\end{practice}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.14.png}
+  \caption{D flip-flop with asynchronous reset}
+  \label{fig:5.14}
+\end{figure}

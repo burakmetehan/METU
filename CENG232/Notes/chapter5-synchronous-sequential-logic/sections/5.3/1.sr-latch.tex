@@ -1,0 +1,45 @@
+\subsection{SR Latch}
+\label{subsec:sr-latch}
+
+The \textit{SR} latch is a circuit with two cross-coupled NOR gates or two cross-coupled NAND gates, and two inputs labeled \textit{S} for set, and \textit{R} for reset. The \textit{SR} latch constructed with two cross-coupled NOR gates is shown in Fig. 3. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.3.png}
+  \caption{SR latch with NOR gate}
+  \label{fig:5.3}
+\end{figure}
+\noindent The latch has two useful states. When output $Q = 1$ and $Q' = 0$, the latch is said to be in the \textit{set} state. When $Q = 0$ and $Q' = 1$, it is in the \textit{reset} state.
+
+However, when both inputs are equal to 1 at the same time, a condition in which both outputs are equal to 0 (rather than be mutually complementary) occurs. If both inputs are then switched to 0 simultaneously, the device will enter an unpredictable or undefined state or a metastable state. Consequently, in practical applications, \textbf{setting both inputs to 1 is forbidden}. Under normal conditions, both inputs of the latch remain at 0 unless the state has to be changed.
+
+The \textit{SR} latch with two cross-coupled NAND gates is shown in Fig. 4. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.4.png}
+  \caption{SR latch with NAND gates}
+  \label{fig:5.4}
+\end{figure}
+It operates with both inputs normally at 1, unless the state of the latch has to be changed. The condition that is forbidden for the NAND latch is both inputs being equal to 0 at the same time, an input combination that should be avoided.
+
+In comparing the NAND with the NOR latch, note that the input signals for the NAND require the complement of those values used for the NOR latch. Because the NAND latch requires a 0 signal to change its state, it is sometimes referred to as an $S'R'$ latch. The primes (or, sometimes, bars over the letters) designate the fact that the inputs must be in their complement form to activate the circuit.
+
+The operation of the basic $SR$ latch can be modified by providing an additional input signal that determines (controls) when the state of the latch can be changed by determining whether $S$ and $R$ (or $S'$ and $R'$) can affect the circuit. An SR latch with a control input is shown in Fig. 5. It consists of the basic SR latch and two additional NAND gates.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-5.5.png}
+  \caption{SR latch with control input}
+  \label{fig:5.5}
+\end{figure}
+An indeterminate condition occurs when all three inputs are equal to 1. This condition places 0's on both inputs of the basic $SR$ latch, which puts it in the undefined state.
+
+\begin{practice}{Practice Exercise 5.2}
+\begin{enumerate}[label=(\alph*), leftmargin=0.5cm]
+  \item What input condition puts an $SR$ NOR latch into an indeterminate state?
+  
+  \textbf{Answer:} Both inputs are 1.
+  
+  \item What input condition puts an $SR$ NAND latch into an indeterminate state?
+  
+  \textbf{Answer:} Both inputs are 0.
+\end{enumerate}
+\end{practice}
