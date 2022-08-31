@@ -1,0 +1,62 @@
+\subsection{Comparison of Two Populations with Unknown Variances}
+\label{subsec:comp-two-pop-unknown-var}
+\setcounter{equation}{10}
+
+We now construct a confidence interval for the difference of two means $\mu_X - \mu_Y$, comparing the population of $X$'s with the population of $Y$'s.
+
+Again, independent random samples are collected,
+\begin{align*}
+  \bs{X} = (X_1,\ \ldots,\ X_n) &&\textnormal{and}&& \bs{Y} = (Y_1,\ \ldots,\ Y_m)
+\end{align*}
+one from each population, as in Figure 4. This time, however, population variances $\sigma^2_X$ and $\sigma^2_Y$ are unknown to us, and we use their estimates.
+
+Two important cases need to be considered here. In one case, there exists an exact and simple solution based on T-distribution. The other case suddenly appears to be a famous Behrens-Fisher problem, where no exact solution exists, and only approximations are available.
+
+\vspace*{\fill}
+\columnbreak
+
+\subsubsection{Case 1. Equal Variances}
+
+Suppose there are reasons to assume that the two populations have equal variances,
+\begin{equation*}
+  \sigma^2_X = \sigma^2_Y = \sigma^2
+\end{equation*}
+For example, two sets of data are collected with the same measurement device, thus, measurements have different means but the same precision. In this case, there is only one variance $\sigma^2$ to estimate instead of two. We should use both samples $\bs{X}$ and $\bs{Y}$ to estimate their common variance. This estimator of $\sigma^2$ is called a \textbf{pooled sample variance}, and it is computed as
+\begin{align}
+  s_p^2 &= \frac{\dsum_{i=1}^{n} (X_i - \bar{X})^2 + \dsum_{i=1}^{n} (Y_i - \bar{Y})^2}{n + m - 2} \nonumber \\
+  &= \frac{(n-1) s_X^2 + (n-1) s_Y^2}{n + m - 2}
+\end{align}
+Substituting this variance estimator in (6) for $\sigma^2_X$ and $\sigma^2_Y$, we get the following confidence interval.
+\begin{formula}{Confidence interval for the difference of means; equal, unknown standard deviations}
+  \begin{equation*}
+    \bar{X} - \bar{Y} \ \pm\ t_{\alpha/2} s_p \sqrt{\frac{1}{n} + \frac{1}{m}}
+  \end{equation*}
+  where $s_p$ is the pooled standard deviation, a root of the pooled variance in (11) and $t_{\alpha/2}$ is a critical value from T-distribution with $(n + m - 2)$ degrees of freedom.
+\end{formula}
+
+\subsubsection{Case 2. Unequal Variances}
+
+The most difficult case is when both variances are unknown and unequal. Confidence estimation of $\mu_X - \mu_Y$ in this case is known as the \textit{Behrens-Fisher} problem. Certainly, we can replace unknown variances $\sigma^2_X$, $\sigma^2_Y$ by their estimates $s^2_X$, $s^2_Y$ and form a T-ratio
+\begin{equation*}
+  t = \frac{(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)}{\sqrt{\dfrac{s_X^2}{n} + \dfrac{s_Y^2}{m}}}
+\end{equation*}
+However, it won't have a T-distribution.
+
+An approximate solution was proposed in the 1940s by Franklin E. Satterthwaite. Satterthwaite used the method of moments to estimate degrees of freedom $\nu$ of a T-distribution that is ``closest'' to this T-ratio. This number depends on unknown variances. Estimating them by sample variances, he obtained the formula that is now known as \textit{Satterthwaite approximation}
+\begin{equation}
+  \nu = \dfrac{\left( \dfrac{s_X^2}{n} + \dfrac{s_Y^2}{m} \right)^2}{\dfrac{s_X^4}{n^2(n-1)} + \dfrac{s_Y^4}{m^2(m-1)}}
+\end{equation}
+This number of degrees of freedom often appears non-integer. There are T-distributions with non-integer $\nu$. To use Table A5, just take the closest $\nu$ that is given in that table.
+
+\vspace*{\fill}
+\columnbreak
+
+Formula (12) is widely used for t-intervals and t-tests.
+\begin{formula}{Confidence interval for the difference of means; unequal, unknown standard deviation}
+  \begin{equation*}
+    \bar{X} - \bar{Y} \ \pm \ t_{\alpha/2} \sqrt{\frac{s_X^2}{n} + \frac{s_Y^2}{m}}
+  \end{equation*}
+  where $t_{\alpha/2}$ is a critical value from T-distribution with $\nu$ degrees of freedom given by formula (12).
+\end{formula}
+
+\textbf{\textit{Check the examples of 9.3.4 from book.}}

@@ -1,0 +1,65 @@
+\section{Chapter8: Introdcution to Statistics}
+
+\begin{formula}{NOTATION}
+    \begin{align*}
+        \mu &= \textnormal{population mean}\\
+        \bar{X} &= \textnormal{Sample mean, estimator of $\mu$}\\
+        &\\
+        \sigma &= \textnormal{population standard deviation}\\
+        s &= \textnormal{sample standard deviation, estimator of $\sigma$}\\
+        &\\
+        \sigma^2 &= \textnormal{population variance}\\
+        s^2 &= \textnormal{sample variance, estimator of $\sigma$} \\
+        &\\
+        \sigma(\hat{\theta}) &= \textnormal{standard error of estimator $\hat{\theta}$ of parameter $\theta$}\\
+        s(\hat{\theta}) &= \textnormal{estimated standard error = $\hat{\sigma}(\hat{\theta})$}
+    \end{align*}
+\end{formula}
+
+\subsection{Mean}
+
+\paragraph{\textit{Population Mean:}} $\mu = \expc{X}$
+
+\paragraph{\textit{Sample Mean}}
+\begin{equation*}
+    \bar{X} = \frac{X_1 + \cdots + X_n}{n}
+\end{equation*}
+
+\subsubsection{Unbiasedness}
+
+\paragraph{Unbiased}
+\begin{equation*}
+    \expc{\hat{\theta}} = \theta
+\end{equation*}
+
+Bias of $\hat{\theta}$ is defined as Bias($\hat{\theta}$) = $\expc{\hat{\theta} - \theta}$.
+
+\subsection{Variance and Standard Deviation}
+
+\paragraph{Sample Variance}
+\begin{equation*}
+    s^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \bar{X})^2
+\end{equation*}
+Another formula
+\begin{equation*}
+    s^2 = \frac{\dsum_{i=1}^n X_i^2 - n\bar{X}^2}{n-1}
+\end{equation*}
+
+\paragraph{Sample Standard Deviation}
+\begin{equation*}
+    s = \sqrt{s^2}
+\end{equation*}
+
+\paragraph{Variance of $\bar{X}$}
+\begin{equation*}
+    \var{\bar{X}} = \frac{\sigma^2}{n}
+\end{equation*}
+
+\paragraph{Standard Deviation of $\bar{X}$}
+\begin{equation*}
+    \sigma(\bar{X}) = \sqrt{\var{\bar{X}}} = \sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}
+\end{equation*}
+
+\subsection{Standard Errors of Estimates}
+
+\textbf{Standard error} of an estimator $\hat{\theta}$ is its standard deviation, $\sigma(\hat{\theta}) = \textnormal{Std}(\hat{\theta})$

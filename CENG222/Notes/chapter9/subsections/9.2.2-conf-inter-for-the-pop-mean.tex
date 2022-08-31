@@ -1,0 +1,50 @@
+\subsection{Confidence Interval for the Population Mean}
+\label{subsec:conf-inter-for-the-pop-mean}
+
+Let us construct a confidence interval for the population mean
+\begin{equation*}
+  \theta = \mu = \expc{X}
+\end{equation*}
+\noindent Start with an estimator
+\begin{equation*}
+  \hat{\theta} = \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i
+\end{equation*}
+\noindent The rule (3) is applicable in two cases.
+\begin{enumerate}
+  \item If a sample $\bs{X} = (X_1,\ \ldots,\ X_n)$ comes from Normal distribution, then $\hat{X}$ is also Normal, and rule (3) can be applied.
+  \item If a sample comes from any distribution, but the sample size $n$ is large, then  $\hat{X}$ has an approximately Normal distribution according to the Central Limit Theorem. Then rule (3) gives an approximately $(1 - \alpha)100\%$ confidence interval.  
+\end{enumerate}
+
+The followings can be derived
+\begin{align*}
+  \expc{X} &= \mu &(\textnormal{unbiased estimator})\\
+  \sigma(\bar{X}) &= \sigma / \sqrt{n}
+\end{align*}
+\noindent Then, (3) reduces to the following $(1 - \alpha)100\%$ confidence interval for $\mu$
+\begin{formula}{Confidence interval for the mean; $\sigma$ is known}
+  \begin{equation}
+    \bar{X} \pm z_{\alpha / 2} \frac{\sigma}{\sqrt{n}}
+  \end{equation}
+\end{formula}
+\begin{example}{}
+  Construct a $95\%$ confidence interval for the population mean based on a sample of measurements
+  \begin{center}
+    2.5, 7.4, 8.0, 4.5, 7.4, 9.2
+  \end{center}
+  if measurement errors have Normal distribution, and the measurement device guarantees a standard deviation of $\sigma = 2.2$. \\
+
+  \textbf{Solution:}
+  This sample has size $n = 6$ and sample mean $\bar{X} = 6.50$. To attain a confidence level of 
+  \begin{equation*}
+    1 - \alpha = 0.95
+  \end{equation*}
+  we need $\alpha = 0.05$ and $\alpha/2 = 0.025$. Hence, we are looking for quantiles
+  \begin{align*}
+    q_{0.025} = - z_{0.025} &&\textnormal{and}&& q_{0.975} = z_{0.025}
+  \end{align*}
+  From Table 4 in textbook, we find that $q_{0.975} = 1.960$. Substituting these values into (9.5), we obtain a $95\%$ confidence interval for $\mu$,
+  \begin{align*}
+    \bar{X} \pm z_{\alpha / 2} \frac{\sigma}{\sqrt{n}} &= 6.50 \pm 1.960\frac{2.2}{\sqrt{6}}\\
+    &= 6.50 \pm 1.76 \textnormal{ or } \left[ 4.74,\ 8.26 \right]
+  \end{align*}
+\end{example}

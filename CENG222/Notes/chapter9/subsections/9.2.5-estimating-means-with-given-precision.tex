@@ -1,0 +1,35 @@
+\subsection{Estimating Means with a Given Precision}
+\label{subsec:estimating-means-with-given-precision}
+
+When we estimate a population mean, the margin of error is
+\begin{equation*}
+  \textnormal{margin} = z_{\alpha / 2} \cdot \sigma / \sqrt{n}
+\end{equation*}
+Solving inequality (7) for $n$ results in the following rule.
+\begin{formula}{Sample size for a given precision}
+  In order to attain a margin of error $\Delta$ for estimating a population mean with a confidence level $(1 - \alpha)$, a simple of size
+  \begin{equation}
+    n \geq \left( \frac{z_{\alpha/2} \cdot \sigma}{\Delta} \right)^2
+  \end{equation}
+  is required.
+\end{formula}
+When we compute the expression in (8), it will most likely be a fraction. Notice that we can only round it up to the nearest integer sample size. If we round it down, our margin will exceed $\Delta$.
+
+Looking at (8), we see that a large sample will be necessary
+\begin{itemize}
+  \item to attain a narrow margin (small $\Delta$);
+  \item to attain a high confidence level (small $\alpha$); and
+  \item to control the margin under high variability of data (large $\sigma$).
+\end{itemize}
+In particular, we need to quadruple the sample size in order to half the margin of the interval.
+
+\begin{example}{}
+  In Example 4,  we constructed a $95\%$ confidence with the center $6.50$ and margin $1.76$ based on a sample of size $6$. Now, that was too wide, right? How large a sample do we need to estimate the population mean with a margin of at most $0.4$ units with $95\%$ confidence?
+
+  \textbf{Solution:}
+  We have $\Delta = 0.4$, $\alpha = 0.05$, and $\sigma = 2.2$ (from Example 4). By (8), we need a sample of
+  \begin{equation*}
+    n \geq \left( \frac{z_{0.05 / 2} \sigma}{\Delta} \right)^2 = \left( \frac{(1.960) (2.2)}{0.4} \right)^2 = 116.2
+  \end{equation*}
+  Keeping in mind that this is the minimum sample size that satisfies $\Delta$, and we are only allowed to round it up, we need a sample of at least 117 observations.  
+\end{example}

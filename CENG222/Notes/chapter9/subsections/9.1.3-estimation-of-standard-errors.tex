@@ -1,0 +1,23 @@
+\subsection{Estimation of Standard Errors}
+\label{subsec:estimation-of-standard-errors}
+
+Standard errors can serve as measures of their accuracy. To estimate them, we derive an expression for the standard error and estimate all the unknown parameters in it.
+
+\begin{example}{ (Estimation of the Poisson Parameter)}
+  By the method of moments and maximum likelihood estimators of the Poisson parameter $\lambda$ is $\hat{\lambda} = \bar{X}$. Let us now estimate the
+  standard error of $\hat{\lambda}$.
+
+  \textbf{Solution:}
+  There are at least two ways to do it.
+
+  On one hand, $\sigma = \sqrt{\lambda}$ for the Poisson($\lambda$) distribution, so $\sigma(\hat{\lambda}) = \sigma(\bar{X}) = \sigma / \sqrt{n} = \sqrt{\lambda / n}$, as we know before (\textit{textbook (8.2) on p. 213}). Estimating $\lambda$ by $\bar{X}$, we obtain
+  \begin{equation*}
+    s_1(\hat{\lambda}) = \sqrt{\frac{\bar{X}}{n}} = \frac{\sqrt{\Sigma X_i}}{n}
+  \end{equation*}
+
+  On the other hand, we can use the sample standard deviation and estimate the standard error of the sample mean,
+  \begin{equation*}
+    s_2(\hat{\lambda}) = \frac{s}{\sqrt{n}} = \sqrt{\frac{\Sigma (X_i - \bar{X})^2}{n (n-1)}}
+  \end{equation*}
+  Apparently, we can estimate the standard error of $\hat{\lambda}$ by two good estimators, $s_1$ and $s_2$.
+\end{example}

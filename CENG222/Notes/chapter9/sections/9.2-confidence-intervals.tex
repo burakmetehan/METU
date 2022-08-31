@@ -1,0 +1,44 @@
+\section{Confidence Intervals}
+\label{sec:confidence-intervals}
+
+When we report an estimator $\hat{\theta}$ of a population parameter $\theta$, we know that most likely
+\begin{equation*}
+  \hat{\theta} \neq \theta
+\end{equation*}
+due to a sampling error. We realize that we have estimated $\theta$ up to \textit{some error}.
+
+Then how much can we trust the reported estimator? How far can it be from the actual parameter of interest? What is the probability that it will be reasonably close? And if we observed an estimator $\hat{\theta}$, then what can the actual parameter $\theta$ be?
+
+To answer these questions, statisticians use \textbf{confidence intervals}, which contain parameter values that deserve some confidence, given the observed data.
+\begin{definition}{}
+  An interval $\left[ a,\ b \right]$ is a $(1 - \alpha)100\%$ \textbf{confidence interval} for the parameter $\theta$ if it contains the parameter with probability $(1 - \alpha)$,
+  \begin{equation*}
+    \prob{a \leq \theta \leq b} = 1 - \alpha
+  \end{equation*}
+  The \textbf{coverage probability} $(1 - \alpha)$ is also called a \textbf{confidence level}.
+\end{definition}
+
+Let us take a moment to think about this definition. The probability of a random event $\{ a \leq \theta \leq b \}$ has to be $(1 - \alpha)$. What randomness is involved in this event?
+
+The population parameter $\theta$ is not random. It is a \textit{population feature, independent of any random sampling procedure}, and therefore, it remains constant. On the other hand, the interval is computed from random data, and therefore, it is random. The coverage probability refers to the chance that our interval covers a constant parameter $\theta$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/fig-9.2.png}
+  \caption{}
+  \label{fig:9.2}
+\end{figure}
+
+This is illustrated in Figure 2. Suppose that we collect many random samples and produce a confidence interval from each of them. If these are $(1 - \alpha)100\%$ confidence intervals, then we expect $(1 - \alpha)100\%$ of them to cover $\theta$ and $100\alpha\%$ of them to miss it. In Figure 2, we see one interval that does not cover $\theta$. No mistake was made in data collection and construction of this interval. It missed the parameter only due to a \textit{sampling error}.
+
+It is therefore wrong to say, ``I computed a $90\%$ confidence interval, it is $\left[ 3,\ 6 \right]$. Parameter belongs to this interval with probability $90\%$''. The parameter is constant; it either belongs to the interval $\left[ 3,\ 6 \right]$ (with probability $1$) or does not. In this case, $90\%$ refers to the proportion of confidence intervals that contain the unknown parameter in a long run.
+
+\input{subsections/9.2.1-const-of-conf-inter-a-gen-method.tex}
+
+\input{subsections/9.2.2-conf-inter-for-the-pop-mean.tex}
+
+\input{subsections/9.2.3-conf-inter-for-the-diff-two-means.tex}
+
+\input{subsections/9.2.4-selection-of-sample-size.tex}
+
+\input{subsections/9.2.5-estimating-means-with-given-precision.tex}

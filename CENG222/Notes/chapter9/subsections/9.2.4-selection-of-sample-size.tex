@@ -1,0 +1,21 @@
+\subsection{Selection of a Sample Size}
+\label{subsec:selection-of-a-sample-size}
+
+Formula (3) describes a confidence interval as
+\begin{center}
+  center $\pm$ margin
+\end{center}
+\noindent where
+\begin{align*}
+  \textnormal{center} &= \hat{\theta}\\
+  \textnormal{margin} &= z_{\alpha / 2} \cdot \sigma(\hat{\theta})
+\end{align*}
+
+We can revert the problem and ask a very practical question: \textit{How large a sample should be collected to provide a certain desired precision of our estimator}?
+
+To answer this question, we only need to solve the inequality
+\begin{equation}
+  \textnormal{margin} \leq \Delta
+\end{equation}
+in terms of $n$. Typically, parameters are estimated more accurately based on larger samples,
+so that the standard error $\sigma(\hat{\theta})$ and the margin are decreasing functions of sample size $n$. Then, (7) must be satisfied for sufficiently large $n$.

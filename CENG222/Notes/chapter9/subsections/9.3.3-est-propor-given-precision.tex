@@ -1,0 +1,25 @@
+\subsection{Estimating Proportions with a Given Precision}
+\label{subsec:est-propor-given-precision}
+
+Our confidence interval for a population proportion has a margin
+\begin{equation*}
+  \textnormal{margin} = z_{\alpha/2} \sqrt{\frac{\hat{p} (1 - \hat{p})}{n}}
+\end{equation*}
+A standard way of finding the sample size that provides the desired margin $\Delta$ is to solve the inequality
+\begin{align*}
+  \textnormal{margin} \leq \Delta &&\textnormal{or}&& n \geq \hat{p} (1 - \hat{p}) \left( \frac{z_{\alpha/2}}{\Delta} \right)^2
+\end{align*}
+However, this inequality includes $\hat{p}$. To know $\hat{p}$, we first need to collect a sample, but to know the sample size, we first need to know $\hat{p}$!
+
+Since $\hat{p} (1 - \hat{p})$ does not exceed 0.25, we can replace this unknown by 0.25 and find a sample size $n$, perhaps larger than we actually need, that will ensure that we estimate $\hat{p}$ with a margin not exceeding $\Delta$. That is, choose a sample size
+\begin{equation*}
+  n \geq 0.25 \left( \frac{z_{\alpha / 2}}{\Delta} \right)^2
+\end{equation*}
+
+\begin{example}{}
+  A sample of size
+  \begin{equation*}
+    n \geq 0.25 \left( \frac{1.960}{0.1} \right)^2 = 96.04
+  \end{equation*}
+  that is, at least 97 observations always guarantees that a populaiton proportion is estimated with an error of at most 0.1 with a $95\%$ confidence.
+\end{example}

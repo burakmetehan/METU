@@ -1,0 +1,32 @@
+\subsection{Pooled Sample Proportion}
+\label{subsec:pooled-sample-proportion}
+
+The test in Example 11 can be conducted differently and perhaps, more efficiently. Indeed, we standardize the estimator $\hat{\theta} = \hat{p}_A - \hat{p}_B$ using its expectation $\expc{\hat{\theta}}$ and variance $\var{\hat{\theta}}$ under the null distribution, i.e., when $H_0$ is true. However, under the null hypothesis $p_A = p_B$. Then, when we standardize $(\hat{p}_A - \hat{p}_B)$, instead of estimating two proportions in the denominator, we only need to estimate one.
+
+First, we estimate the common population proportion by the overall proportion of defective parts,
+\begin{align*}
+  \hat{p}(\textnormal{pooled}) &= \frac{\textnormal{number of defective parts}}{\textnormal{total number of parts}} \\
+  &= \frac{n\hat{p}_A + m\hat{p}_B}{n + m}
+\end{align*}
+Then we estimate the common variance as
+\begin{align*}
+  \widehat{\textnormal{Var}}(\hat{p}_A - \hat{p}_B) &= \frac{\hat{p} (1 - \hat{p})}{n} + \frac{\hat{p} (1 - \hat{p})}{m} \\
+  &= \hat{p}(1 - \hat{p}_A) \left( \frac{1}{n} + \frac{1}{m} \right)
+\end{align*}
+and use it for the Z-statistic,
+\begin{align*}\
+  Z = \dfrac{\hat{p}_A - \hat{p}_B}{\sqrt{\hat{p} (1 - \hat{p}) \left( \dfrac{1}{n} + \dfrac{1}{m} \right)}}
+\end{align*}
+
+\begin{example}{ (Example 11, continued)}
+  Here the pooled proportion equals
+  \begin{equation*}
+    \hat{p} = \frac{10 + 12}{500 + 400} = 0.0244
+  \end{equation*}
+  so that
+  \begin{equation*}
+    Z = \frac{0.02 - 0.03}{\sqrt{(0.0244)(0.9756) \left( \frac{1}{500} + \frac{1}{400} \right)}} = -0.966
+  \end{equation*}
+  This does not affect our result. We obtained a different value of Z-statistic, but it also belongs to the acceptance region. We still don't have a significant evidence against the equality of two population proportions.
+\end{example}
+  

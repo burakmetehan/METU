@@ -1,0 +1,32 @@
+\subsection{Large Samples}
+\label{subsec:large-samples}
+
+A large sample should produce a rather accurate estimator of a variance. We can then
+replace the true standard error $\sigma(\hat{\theta})$ in (3) by its estimator $s(\hat{\theta})$, and obtain an approximate confidence interval
+\begin{equation*}
+  \hat{\theta}\ \pm\ z_{\alpha/2} \cdot s(\hat{\theta})
+\end{equation*}
+
+\begin{example}{ (Delays at nodes)}
+  Internet connections are often slowed by delays at nodes. Let us determine if the delay time increases during heavy-volume times.
+  
+  Five hundred packets are sent through the same network between 5 pm and 6 pm (sample $\bs{X}$), and three hundred packets are sent between 10 pm and 11 pm (sample $\bs{Y}$). The early sample has a mean delay time of 0.8 sec with a standard deviation of 0.1 sec whereas the second sample has a mean delay time of 0.5 sec with a standard deviation of 0.08 sec. Construct a $99.5\%$ confidence interval for the difference between the mean delay times. \\
+
+  \textbf{Solution:}
+  We have $n = 500$, $\bar{X}$, $s_X = 0.1$; $m = 500$, $\bar{Y}$, $s_Y = 0.1$. Large sample sizes allow us to replace unknow population standard deviationsa by their estimates and use an approximately Normal distribution of sample means.
+
+  For a confidence level of $1 - \alpha = 0.995$, we need
+  \begin{equation*}
+    z_{\alpha/2} = z_{0.0025} = q_{0.9975}
+  \end{equation*}
+  Look for the \textit{probability} 0.9975 in the body of Table A4 (from textbook) and find the corresponding value of $z$,
+  \begin{equation*}
+    z_{0.0025} = 2.81
+  \end{equation*}
+  Then, a $99.5\%$ confidence interval for the difference of mean execution times is
+  \begin{align*}
+    \bar{X} - \bar{Y} \ &\pm\ z_{0.0025} \sqrt{\frac{s_X^2}{n} + \frac{s_Y^2}{m}}\\
+    &= (0.8 - 0.5) \ \pm\ (2.81) \sqrt{\frac{(0.1)^2}{500} + \frac{(0.08)^2}{300}}\\
+    &= 0.3 \ \pm\  \textnormal{ or } \left[ 0.282,\ 0.318 \right]
+  \end{align*}
+\end{example}

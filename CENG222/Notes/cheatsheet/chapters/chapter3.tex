@@ -1,0 +1,350 @@
+\section{Chapter 3: Discrete Random Variables and Their Distributions}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Distribution of Random Variable}
+
+\subsubsection{Main Concepts}
+
+\begin{itemize}
+  \item A \textbf{random variable} is a function of an outcome,
+    \begin{equation*}
+        X = f(\omega)
+    \end{equation*}
+    In other words, it is a quantity that depends on chance.
+  
+  \item Collection of all the probabilities related to $X$ is the \textbf{distribution} of $X$. 
+  
+  \item \textbf{Probability Mass Function}, or \textbf{PMF}:
+    \begin{equation*}
+      P(x) = \prob{X = x}
+    \end{equation*}
+  
+  \item \textbf{Cumulative Distribution Function}, or \textbf{CDF}:
+    \begin{equation*}
+        F(x) = \prob{X \leq x} = \sum_{y \leq x} P(y)
+    \end{equation*}
+  
+  \item The set of possible values of $X$ is called the \textbf{support} of the distribution $F$.
+  
+  \item For every outcome $\omega$, the variable $X$ takes one and only one value $x$. This makes events $\{X = x\}$ disjoint and exhaustive, and therefore,
+  \begin{equation*}
+      \sum_x P(x) = \sum_x \prob{X = x} = 1
+  \end{equation*}
+\end{itemize}
+
+\subsubsection{Types of Random Variables}
+
+\begin{itemize}
+  \item \textit{Discrete random variables}:
+    
+    These are variables whose range is \textit{finite or countable}. In particular, it means that their values can be listed, or arranged in a sequence. Examples include the number of jobs submitted to a printer, the number of errors, the number of error-free modules, the number of failed components, and so on.
+
+  \item \textit{Continuous random variables}:
+  
+    This could be a bounded interval $(a,\ b)$, or an unbounded interval such as $(a,\ +\infty)$, $(-\infty,\ b)$, or $(-\infty,\ +\infty)$. Intervals are uncountable, therefore, all values of a random variable cannot be listed in this case. Examples of continuous variables include various times (software installation time etc., also physical variables like weight, height etc.
+\end{itemize}
+
+
+\subsection{Distribution of a Random Vector}
+
+\subsubsection{Joint Distribution and Marginal Distributions}
+
+If $X$ and $Y$ are random variables, then the pair $(X,\ Y)$ is a \textbf{random vector}. Its distribution is called the \textbf{joint distribution} of $X$ and $Y$. Individual distributions of $X$ and $Y$ are then called the \textbf{marginal distributions}.
+
+Similarly to a single variable, the \textit{joint distribution} of a vector is a collection of probabilities for a vector $(X,\ Y)$ to take a value $(x,\ y)$. Recall that two vectors are equal,
+\begin{equation*}
+    (X,\ Y) = (x,\ y)
+\end{equation*}
+
+\paragraph*{Addition Rule}
+
+\begin{align*}
+  P_X(x) = \prob{X = x} = \sum_y P_{(X,\ Y)} (x,\ y)\\
+  P_Y(x) = \prob{Y = y} = \sum_x P_{(X,\ Y)} (x,\ y)\\
+\end{align*}
+
+\subsubsection{Independence of Random Variables}
+
+Random variables $X$ and $Y$ are \textbf{independent} if
+\begin{equation*}
+  P_{X,\ Y}(x,\ y) = P_X(x) P_Y(y)
+\end{equation*}
+
+
+\subsection{Expectation, Variance, Covariance and Correlation}
+
+\subsubsection{Expectation}
+
+\textit{Expected value} of a random variable $X$ is its \textit{mean, the average value}.
+\begin{align*}
+  \mu &= \expc{X} = \sum_x xP(x)\\
+  \mu &= \expc{g(x)} = \sum_x g(x)P(x)
+\end{align*}
+
+\subsubsection{Variance and Standard Deviation}
+
+\textbf{Variance}, the \textit{expected squared deviation} from the mean.
+  \begin{align*}
+    \sigma^2 = \var{X} &= \expc{X - \expc{X}}^2\\
+                      &= \expc{X - \mu}^2\\
+                      &= \sum_{x} (x - \mu)^2 P(x) 
+  \end{align*}
+
+\noindent \textbf{Standard deviation}, the \textit{Square root of variance},
+  \begin{equation*}
+      \sigma = \std{X} = \sqrt{\var{X}}
+  \end{equation*}
+
+\subsubsection{Covariance and Correlation}
+
+\textbf{Covariance}: $\sigma_{XY}$ = Cov$(X,\ Y)$ is defined as
+    \begin{align*}
+        \text{Cov}(X,\ Y) &= \mathbf{E}\{(X - \mathbf{E}(X)) (Y - \mathbf{E}(Y))\}\\
+        &= \mathbf{E}(XY) - \mathbf{E}(X)\mathbf{E}(Y)
+    \end{align*}
+  \quad It summarizes interrelation of two random variables.
+
+\noindent \textbf{Correlation coefficient}: Between variables $X$ and $Y$ is defined as
+  \begin{equation*}
+    \rho = \frac{\text{Cov}(X,\ Y)}{(\text{Std$X$})(\text{Std$Y$})}
+  \end{equation*}
+  \quad Correlation coefficient is a rescaled, normalized covariance.
+
+\subsubsection{Properties}
+
+\begin{itemize}
+  % Expectation
+  \item \textbf{Expectation:}
+    \begin{equation*}
+      \expc{aX + bY + c} = a\expc{X} + b\expc{Y} + c
+    \end{equation*}
+
+    For \textit{independent} $X$ and $Y$,
+      \begin{align*}
+          \mathbf{E}(XY) &= \mathbf{E}(X)\mathbf{E}(Y)
+      \end{align*}
+  
+  % Variance
+  \item \textbf{Variance:}
+      \begin{align*}
+        \var{aX + bY + c} =\ &a^2\var{X} + b^2\var{Y}\\
+                            &+ 2ab\text{Cov}(X,\ Y)
+      \end{align*}
+      In particular,
+      \begin{equation*}
+        \text{Var}(aX + b) = a^2\text{Var}(X)
+      \end{equation*}
+      For \textit{independent} $X$ and $Y$,
+      \begin{equation*}
+        \var{X + Y} = \var{X} + \var{Y}
+      \end{equation*}
+  
+  % Covariance
+  \item \textbf{Covarince}:
+      \begin{itemize}
+        \item If Cov$(X,\ Y) > 0$, these variables are \textit{\textbf{positively correlated}}.
+        
+        \item If Cov$(X,\ Y) < 0$, these variables are \textit{\textbf{negatively correlated}}.
+
+        \item If Cov$(X,\ Y) = 0$, these variables are \textit{\textbf{uncorrelated}}.
+      \end{itemize}
+
+      \begin{align*}
+        \text{Cov}(aX + bY,\ cZ + dW) &= ac\text{Cov}(X,\ Z)\\
+                                         &+ ad\text{Cov}(X,\ W)\\
+                                         &+ bc\text{Cov}(Y,\ Z)\\
+                                         &+ bd\text{Cov}(Y,\ W)\\
+        \text{Cov}(X,\ Y) = \text{Cov}(Y,\ X)\\
+      \end{align*}
+      In particular,
+      \begin{equation*}
+        \text{Cov}(aX + b,\ cY + d) = ac\text{Cov}(X,\ Y)
+      \end{equation*}
+      For \textit{independent} $X$ and $Y$,
+      \begin{equation*}
+        \text{Cov}(X,\ Y) = 0
+      \end{equation*}
+
+\end{itemize}
+\vfill\null
+\columnbreak
+\begin{itemize}
+    % Correlation
+    \item \textbf{Correlation}:
+      \begin{itemize}
+        \item \begin{equation*}
+          -1 \leq \rho \leq 1
+        \end{equation*}
+        where $|\rho| = 1$ is possible only when all values of $X$ and $Y$ lie on a straight line.
+        
+        \item If $\rho = 1$, it is \textit{\textbf{strong (perfect) positive correlation.}}
+        \item If $\rho = -1$, it is \textit{\textbf{strong (perfect) negative correlation.}}
+        \item If $\rho = 0$, it is \textit{\textbf{weak or no correlation.}}
+      \end{itemize}
+
+      \begin{equation*}
+        \rho(X,\ Y) = \rho(Y,\ X)
+      \end{equation*}
+      In particular,
+      \begin{equation*}
+        \rho(aX + b,\ cY + d) = \rho(X,\ Y)
+      \end{equation*}
+\end{itemize}
+
+\subsubsection{General Notation}
+
+\begin{formula}{}
+  \begin{center}
+  $\begin{aligned}
+    \mu \text{ or } \mathbf{E}(X) &= \text{expectation}\\
+    \sigma_X^2 \text{ or Var}(X) &= \text{variance}\\
+    \sigma_X \text{ or Std}(X) &= \text{standard deviation}\\
+    \sigma_{XY} \text{ or Cov}(X,\ Y) &= \text{covariance}\\
+    \rho_{XY} &= \text{correlation coefficient}
+  \end{aligned}$
+  \end{center}
+\end{formula}
+\end{multicols}
+
+The following page includes the ``Families of Discrete Distribution''. The following box is the a little summary.
+
+\begin{formula}{Summary of Families of Discrete Distribution}
+  \begin{center}
+    \begin{tabular}{l|l|l}
+    \textbf{Distribution} & \textbf{Number of} & \textbf{In/For}   \\ 
+    \hline
+    Binomial              & Successes          & In $n$ trials     \\
+    Geometric             & Trials             & For first success \\
+    Negative Binomial     & Trials             & For $k$ successes \\
+    Poisson               & Rare events        & In fixed time     \\
+    \end{tabular}
+  \end{center}
+  Additionally, in Binomial distribution, if $n \geq 30$ and $p \leq 0.05$, then
+  \begin{equation*}
+    \texttt{Binomial}(n, p) \approx \texttt{Poisson}(\lambda)\ \ \ \ (\lambda = np)
+  \end{equation*}
+\end{formula}
+
+\newpage
+
+
+\subsection{Families of Discrete Distributions}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsubsection{Bernoulli Distribution}
+
+\paragraph{Definitions}
+
+\begin{itemize}
+  \item \textbf{Bernoulli variable}: A random variable with two possible values, 0 and 1.
+  \item \textbf{Bernoulli distribution}: Distribution of \textit{bernoulli variable}.
+  \item \textbf{Bernoulli trial}: Any experiment with a \textit{binary outcome}.
+\end{itemize}
+
+\begin{formula}{Summary of Bernoulli Distribution}
+  \begin{center}
+  $\begin{aligned}
+    p &= \text{probability of success}\\
+    q &= \text{probability of failure}\\
+    P(x) &= \begin{cases}
+                q = 1-p &\text{if $x = 0$}\\
+                p &\text{if $x=1$}
+            \end{cases}\\
+    \mathbf{E}(X) &= p\\
+    \text{Var}(X) &= pq\ \ [=p (1-p)]
+  \end{aligned}$
+  \end{center}
+\end{formula}
+
+\subsubsection{Binomial Distribution}
+
+\textit{\textbf{Number of successes} in a sequence of independent Bernoulli \textbf{trials}} has Binomial distribution.
+
+\begin{formula}{Summary Binomial Distribution}
+  \begin{center}
+    $\begin{aligned}
+      n &= \text{number of trials}\\
+      p &= \text{probability of success}\\
+      P(x) &= \binom{n}{x} p^x q^{n-x}\\
+      \mathbf{E}(X) &= np\\
+      \text{Var}(X) &= npq = np(1-p)
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\subsubsection{Geometric Distribution}
+
+\textit{\textbf{The number of Bernoulli trials} needed to get the \textbf{first success}} has Geometric distribution.
+
+\begin{formula}{Summary of Geometric Distribution}
+  \begin{center}
+    $\begin{aligned}
+      p &= \text{probability of success}\\
+      P(x) &= (1-p)^{x-1} p,\ \ x = 1, 2, ...\\
+      \mathbf{E}(X) &= \frac{1}{p}\\
+      \text{Var}(X) &= \frac{1-p}{p^2}
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\subsubsection{Negative Binomial Distribution}
+
+\textit{Sequence of independent Bernoulli trials, the \textbf{number of trials} needed to \textbf{obtain $k$ successes}} has Negative Binomial distribution.
+
+\begin{formula}{Summary of Negative Binomial Distribution}
+  \begin{center}
+    $\begin{aligned}
+      k &= \text{number of success}\\
+      p &= \text{probability of success}\\
+      P(x) &= (1-p)^{x-k} p^k,\ \ \ \ x = k, k+1, ...\\
+      \mathbf{E}(X) &= \frac{k}{p}\\
+      \text{Var}(X) &= \frac{k (1-p)}{p^2}
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\subsubsection{Poisson Distribution}
+
+\textit{The \textbf{number of rare events} occurring within a \textbf{fixed period of time}} has Poisson distribution.
+
+\begin{formula}{Summary of Poisson Distribution}
+  \begin{center}
+    $\begin{aligned}
+      \lambda &= \text{frequency},\\
+              &\quad\ \text{average number of events}\\
+      P(x) &= e^{-\lambda} \frac{\lambda^x}{x!},\ \ \ x = 1, 2, ...\\
+      \mathbf{E}(X) &= \lambda\\
+      \text{Var}(X) &= \lambda
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\subsubsection{Poisson Approximation of Binomial Distribution}
+
+If
+\begin{align*}
+    n \geq 30 & & p \leq 0.05
+\end{align*}
+Poisson distribution can be effectively used to approximate Binomial probabilities. (If $p \geq 0.95$, then use $q \leq 0.05$ and consider failure instead of success.)
+
+\begin{formula}{Summary of Poisson Approximation of Binomial Distribution}
+  \begin{center}
+    \begin{equation*}
+      \texttt{Binomial}(n, p) \approx \texttt{Poisson}(\lambda)
+    \end{equation*}
+    where $n \geq 30$, $p \leq 0.05$, $np = \lambda$.
+  \end{center}
+\end{formula}
+
+\textbf{Remark:} Mathematically, it means closeness of Binomial and Poisson pmf
+\begin{equation*}
+    \lim_{\substack{n \to \infty \\ p\to0 \\ np\to\lambda}} \binom{n}{x} p^x (1-p)^{n-x} = e^{- \lambda} \frac{\lambda^x}{x!}
+\end{equation*}
+
+\end{multicols}

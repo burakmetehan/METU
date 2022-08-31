@@ -1,0 +1,92 @@
+\section{Chapter 2: Probability}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Events and Their Probabilities}
+
+\subsubsection*{Definitions}
+
+\begin{itemize}
+    \item \textbf{Outcome:} The result of certain random experiment.
+    \item \textbf{Sample Space ($\Omega$):} A collection of all (observable) outcomes, or elementary results, of an experiment. Not observable outcome in sample space.
+    \item \textbf{Event:} Any set of outcomes.
+    \item \textbf{Disjoint $\subseteq$ Mutually exclusive:} Events whose intersections is empty. $A_i \cap A_j = \emptyset$ for any $i \neq j$.
+    \item \textbf{Exhaustive Events:} Events whose union is sample space. $A \cup B \cup C \cup \cdots = \Omega$.
+\end{itemize}
+
+
+\subsubsection*{Set Operations}
+
+\begin{itemize}
+    \item \textbf{Union ($\cup$):} \texttt{or}
+    \item \textbf{Intersection ($\cap$):} \texttt{and}
+    \item \textbf{Complement ($',\ A^c,\ \overline{A}$):} \texttt{not}
+    \item \textbf{Difference ($\setminus$):} \texttt{but not}
+    \item 
+        $ \begin{aligned}[t]
+            \overline{E_1 \cup \cdots \cup E_n} &= \overline{E_1} \cap \cdots \cap \overline{E_n}\\
+            \overline{E_1 \cap \cdots \cap E_n} &= \overline{E_1} \cup \cdots \cup \overline{E_n}
+        \end{aligned} $
+\end{itemize}
+
+
+\subsection{Rules of Probability}
+
+\begin{itemize}
+    \item $\prob{\Omega} = 1$
+    \item $\prob{\emptyset} = 0$
+    \item $\prob{E} = \dsum_{\omega_k \in E} \prob{\omega_k}$ (Only for mutually exclusive events)
+    \item $\prob{A \cup B} = \prob{A} + \prob{B} - \prob{A \cap B}$
+    \item $\prob{A \cup B \cup C} = \prob{A} + \prob{B} + \prob{C} - \prob{A \cap B} - \prob{A \cap C} - \prob{B \cap C} + \prob{A \cap B \cap C}$
+    \item $\prob{A} + \prob{\overline{A}} = \prob{A \cup \overline{A}} = \prob{\Omega} = 1$
+    \item $\prob{E_1 \cap \cdots \cap E_n} = \prob{E_1} \cdot \ldots \cdot \prob{E_n}$ (Independent Events)
+\end{itemize}
+
+
+\subsection{Permutations and Combinations}
+
+\begin{itemize}
+    \item \textbf{Permutations with replacement:}
+        \begin{equation*}
+            P_r(n,k) = \overbrace{n \cdot n \cdot ... \cdot n}^{\text{k terms}} = n^k
+        \end{equation*}
+    
+    \item \textbf{Permutations without replacement:}
+        \begin{equation*}
+            P(n,k) = \overbrace{n(n-1)(n-2) \cdot ... \cdot (n - k + 1)}^{\text{k terms}} = \dfrac{n!}{(n - k)!}
+        \end{equation*}
+    
+    \item \textbf{Combinations with replacement:}
+        \begin{equation*}
+            C_r(n,k) = \binom{k + n - 1}{k} = \dfrac{(k + n - 1)!}{k! (n - 1)!}
+        \end{equation*}
+    
+    \item \textbf{Combinations without replacement:}
+        \begin{equation*}
+            C(n,k) = \binom{n}{k} = \dfrac{P(n,k)}{P(k,k)} = \dfrac{n!}{k! (n - k)!}
+        \end{equation*}
+\end{itemize} 
+
+
+\subsection{Conditional Probability and Independence}
+
+\subsubsection*{Definitions}
+
+\begin{itemize}
+    \item \textbf{Conditional Probability ($\prob{A\ |\ B}$):} Conditional probability basically is ``What is the probability of observing event $A$ given that event $B$ is observed?"
+    \item \textbf{Independent Events:} Occurrence of one event does not affect the probabilities of other.
+\end{itemize}
+
+\noindent \textbf{Formulas}
+\begin{itemize}
+    \item $\prob{A|B} = \dfrac{\prob{A \cap B}}{\prob{B}}$ and $\prob{B|A} = \dfrac{\prob{A \cap B}}{\prob{A}}$
+    \item $\prob{A} \prob{B\ |\ A} = \prob{A \cap B} = \prob{B} \prob{A\ |\ B}$
+    \item $\prob{A\ |\ B} = \prob{A}$ and $\prob{B\ |\ A} = \prob{B}$ (Independent Events)
+    \item $\prob{A \cap B} = \prob{A} \prob{B}$ (Independent Events)
+    \item $\prob{A|B} = \dfrac{\prob{B|A} \prob{A}}{\prob{B}}$ (Bayes Rule)
+    \item $\prob{A} = \dsum_{j = 1}^{k} \prob{A|B_j} \prob{B_j}$ (Law of Probability)
+    \item $\prob{A|B} = \dfrac{\prob{B|A} \prob{A}}{\prob{B|A} \prob{A} + \prob{B|\overline{A}} \prob{\overline{A}}}$ (Bayes Rule for Two Events)
+\end{itemize}
+\end{multicols}

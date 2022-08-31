@@ -1,0 +1,77 @@
+\subsection{\textit{Z}-Test: Standard Normal Null Distribution}
+\label{subsec:z-test}
+\setcounter{equation}{13}
+
+An important case, in terms of a large number of applications, is when the null distribution of the test statistic is \textit{Standard Normal}.
+
+The test in this case is called a \textbf{Z-test}, and the test statistic is usually denoted by $Z$.
+
+\begin{enumerate}[label=(\alph*)]
+  \item A level $\alpha$ test with a \textbf{right-tail alternative} should
+    \begin{equation}
+      \begin{cases}
+        \textnormal{reject } H_0 &\textnormal{if } Z \geq z_{\alpha}\\
+        \textnormal{accepts } H_0 &\textnormal{if } Z < z_{\alpha}\\
+      \end{cases}
+    \end{equation}
+    The rejection region in this case consists of large values of $Z$ only,
+    \begin{align*}
+      \mathcal{R} = \left[ z_{\alpha},\ +\infty \right), & &\mathcal{A} = \left( -\infty,\ z_{\alpha} \right)
+    \end{align*}
+    Under the null hypothesis, $Z$ belongs to $\mathcal{A}$ and we reject the null hypothesis with probability
+    \begin{equation*}
+      \prob{T \geq z_{\alpha}\ |\ H_0} = 1 - \Phi(z_{\alpha}) = \alpha
+    \end{equation*}
+    making the probability of false rejection (type I error) equal $\alpha$.
+
+    For example, we use this acceptance region to test the population mean,
+    \begin{align*}
+      H_0\ :\ \mu = \mu_0 &&\textnormal{vs}&& H_A\ :\ \mu > \mu_0
+    \end{align*}
+  
+  \item With a \textbf{left-tail alternative} should
+    \begin{equation}
+      \begin{cases}
+        \textnormal{reject } H_0 &\textnormal{if } Z \leq -z_{\alpha}\\
+        \textnormal{accepts } H_0 &\textnormal{if } Z > -z_{\alpha}\\
+      \end{cases}
+    \end{equation}
+    The rejection region consists of smal values of $Z$ only,
+    \begin{align*}
+      \mathcal{R} = \left( -\infty,\ -z_{\alpha} \right], & &\mathcal{A} = \left( -z_{\alpha},\ +\infty \right)
+    \end{align*}
+    Similarly, $\prob{Z \in \mathcal{R}} = \alpha$ under $H_0$; thus, the probability of type I error equals $\alpha$. For example, this is how we should test
+    \begin{align*}
+      H_0\ :\ \mu = \mu_0 &&\textnormal{vs}&& H_A\ :\ \mu < \mu_0
+    \end{align*}
+
+  \item With a \textbf{two-sided alternative}, we
+    \begin{equation}
+      \begin{cases}
+        \textnormal{reject } H_0 &\textnormal{if } |Z| \geq z_{\alpha/2}\\
+        \textnormal{accepts } H_0 &\textnormal{if } |Z| < z_{\alpha/2}\\
+      \end{cases}
+    \end{equation}
+    The rejection region consists of very small and very large values of $Z$,
+    \begin{align*}
+      \mathcal{R} = \left( -\infty,\ z_{\alpha} \right] \cup \left[ z_{\alpha/2},\ +\infty \right), & &\mathcal{A} = \left( -z_{\alpha/2},\ z_{\alpha/2} \right)
+    \end{align*}
+    Again, the probability of type I error equals $\alpha$. For example, we use this test for
+    \begin{align*}
+      H_0\ :\ \mu = \mu_0 &&\textnormal{vs}&& H_A\ :\ \mu \neq \mu_0
+    \end{align*}
+\end{enumerate}
+
+This is easy to remember:
+\begin{itemize}
+  \item for a two-sided test, divide $\alpha$ by two and use $z_{\alpha/2}$;
+  \item for a one-sided test, use $z_{\alpha}$ keeping in mind that the rejection region consists of just one piece.
+\end{itemize}
+
+Now consider testing a hypothesis about a population parameter $\theta$. Suppose that its estimator $\hat{\theta}$ has Normal distribution, at least approximately, and we know $\expc{\hat{\theta}}$ and $\var(\hat{\theta})$ if the hypothesis is true.
+
+Then the test statistic
+\begin{equation}
+  Z = \frac{\hat{\theta} - \expc{\hat{\theta}}}{\sqrt{\var{\hat{\theta}}}}
+\end{equation}
+has Standard Normal distribution, and we can use (14), (15), and (16) to construct acceptance and rejection regions for a level $\alpha$ test. We call $Z$ a \textbf{Z-statistic}.

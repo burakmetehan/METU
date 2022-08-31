@@ -1,0 +1,378 @@
+\section{Chapter 4: Continuous Distributions}
+
+\setlist[itemize]{leftmargin=5mm}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Probability Density}
+
+\subsubsection{Definitions}
+\begin{itemize}
+  \item Probability mass function (PMF), $P(x)$, is always equal to 0.
+  \item Cumulative Distribution Function (CDF), $F(x)$, is useful.
+  \item Probability Density Function (PDF, density), $f(x)$ is the derivative of the cdf. The distribution is called continuous if it has a density.
+\end{itemize}
+
+\subsubsection{Notation}
+\begin{itemize}
+  \item \textbf{PMF:} $P(x)$
+  \item \textbf{CDF:} $F(x)$
+  \item \textbf{PDF:} $f(x)$
+\end{itemize}
+
+\vfill\null
+\columnbreak
+
+\subsubsection{Formulas and Equations}
+\begin{itemize}
+  \item $P(x) = 0$ for all $x$.
+  \item $F(x) = \prob{X \leq x} = \prob{X < x}$
+  \item $\begin{aligned}
+    P(x) = \prob{x \leq X \leq x} = \int_x^x f = 0
+  \end{aligned}$
+  \item $f(x) = F'(x)$.
+  \item $\begin{aligned}
+    \int_a^b f(x)dx = F(b) - F(a) = \prob{a < X < b}
+  \end{aligned}$
+  \begin{itemize}
+      \item $\begin{aligned}
+        \int_{-\infty}^b f(x)dx &= \prob{-\infty < X < b} = F(b)
+      \end{aligned}$
+      \item $\begin{aligned}
+        \int_{-\infty}^{\infty} f(x)dx &= \prob{-\infty < X < {\infty}} = 1
+      \end{aligned}$
+  \end{itemize}
+\end{itemize}
+
+\end{multicols}
+
+\subsubsection{Analogy: PMF vs. PDF}
+\begin{table}[ht]
+  \renewcommand{\arraystretch}{1.5}
+  \centering
+  \begin{tabular}{|l|l|l|} 
+  \hline
+  \textbf{Distribution}            & \textbf{Discrete}                               & \textbf{Continuous}                                 \\ 
+  \hline
+  Definition                       & $P(x) = \prob{X = x}$                           & $f(x) = F'(x)$                                      \\ 
+  \hline
+  Computing probabilities          & $\begin{aligned}\prob{X \in A} = \sum_{x \in A} P(x)\end{aligned}$          & $\begin{aligned}\prob{X \in A} = \int_A f(x)dx\end{aligned}$                    \\ 
+  \hline
+  Cumulative
+  distribution
+  function & $\begin{aligned}F(x) = \prob{X \leq x} = \sum_{y \leq x} P(y)\end{aligned}$ & $\begin{aligned}F(x) = \prob{X \leq x} = \int_{-\infty}^x f(y)dy\end{aligned}$  \\ 
+  \hline
+  Total probability                & $\begin{aligned}\sum_{x} P(x) = 1\end{aligned}$                             & $\begin{aligned}\int_{-\infty}^{+\infty} f(x)dx = 1\end{aligned}$                \\
+  \hline
+  \multirow{2}{*}{Marginal
+  Distributions} & $\begin{aligned}P(x) = \sum_y P(x, Y)\end{aligned}$                                     & $\begin{aligned}f(x) = \int f(x, y)dy\end{aligned}$                                         \\
+                                          & $\begin{aligned}P(y) = \sum_x P(x, Y)\end{aligned}$                                     & $\begin{aligned}f(y) = \int f(x, y)dx\end{aligned}$                                         \\ 
+  \hline
+  Independence                            & $P(x, y) = P(x)P(y)$                                        & $f(x, y) = f(x) f(y)$                                           \\ 
+  \hline
+  Computing
+  Probabilities                 & $\begin{aligned}\prob{(X, Y) \in A } = \mathop{\sum\sum}_{(x, y) \in A} P(x, y)\end{aligned}$ & $\begin{aligned}\prob{(X, Y) \in A} = \int \int_{(x, y) \in A} f(x, y) dx dy\end{aligned}$  \\
+  \hline
+  \end{tabular}
+  \caption{\textbf{Row 1-4:} \textit{PMF $P(x)$ vs. PDF $f(x)$} $|$ \textbf{Row 5-7:} \textit{Joint and Marginal Distributions}}
+\end{table}
+
+\subsubsection{Expectation and Variance}
+\begin{table}[ht]
+  \renewcommand{\arraystretch}{1.5}
+  \centering
+  \begin{tabular}{|l|l|} 
+  \hline
+  \textbf{Discrete}                                   & \textbf{Continuous}                                  \\ 
+  \hline
+  $\begin{aligned}\mathbf{E}(X) = \sum_x xP(x)\end{aligned}$                      & $\begin{aligned}\mathbf{E}(X) = \int xf(x)dx\end{aligned}$                       \\ 
+  \hline
+  % Second Row
+  $\begin{aligned}\text{Var}(X) &= \mathbf{E}(X - \mu)^2 = \sum_x (x - \mu)^2 P(x)\\
+                                &= \sum_x x^2 P(x) - \mu^2\\
+  \end{aligned}$ 
+  & 
+  $\begin{aligned}\text{Var}(X) &= \mathbf{E}(X - \mu)^2 = \int (x - \mu)^2 f(x)dx\\
+                                &= \int x^2 f(x)dx - \mu^2    
+  \end{aligned}$\\
+  \hline
+
+  %Third Row
+  $\begin{aligned}\text{Cov}(X, Y) &= \mathbf{E}(X - \mu_X)(Y-\mu_Y)\\
+                                   &= \sum_x \sum_y (x - \mu_X)(y - \mu_Y)P(x, y)\\
+                                   &= \sum_x \sum_y (xy)P(x, y) - \mu_X \mu_Y
+  \end{aligned}$
+  &
+  $\begin{aligned}\text{Cov}(X, Y) &= \mathbf{E}(X - \mu_X)(Y-\mu_Y)\\
+                                   &= \int \int (x - \mu_X)(y - \mu_Y)f(x, y)dxdy\\
+                                   &= \int \int (xy)f(x, y)dxdy - \mu_X \mu_Y
+  \end{aligned}$\\
+  \hline
+  \end{tabular}
+  \caption{\textit{Moments for discrete and continuous distributions.}}
+\end{table}
+
+
+\subsection{Families of Continuous Distribution}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsubsection{Uniform Distribution}
+
+\textbf{\textit{Outcomes with equal density.}} Picking ``random'' from a given interval; that is, \textit{without any preference} to lower, higher, or medium values.
+\begin{align*}
+  &f(x) = \dfrac{1}{b-a}, &a \leq x \leq b
+\end{align*}
+
+\paragraph{Uniform Property}
+The probability is only determined by the length of the interval, but not by its location.
+\begin{itemize}
+  \item 
+  $\begin{aligned}
+    \prob{t < X < t + h} = \int_t^{t+h} \frac{1}{b - a} dx = \frac{h}{b - a}
+  \end{aligned}$
+  \item
+  $\begin{aligned}
+    \prob{s < X < s + h} = \prob{t < X < t + h}
+  \end{aligned}$
+\end{itemize}
+
+\paragraph{Standard Uniform Distribution}
+
+The Uniform distribution with $a = 0$ and $b = 1$ is called \textit{Standard Uniform distribution}. The Standard Uniform density is $f(x) = 1$ for $0 < x < 1$.
+
+Let $X$ be a Uniform$(a, b)$ random variable (\textit{not standard uniform random variable}), then
+\begin{equation*}
+    Y = \frac{X - a}{b - a}
+\end{equation*}
+is Standard Uniform. Likewise, Let $Y$ be Standard Uniform, then
+\begin{equation*}
+    X = a + (b-a)Y
+\end{equation*}
+is Uniform$(a, b)$.
+
+\begin{formula}{Summary of Uniform Distribution}
+  \begin{center}
+    $\begin{aligned}
+      (a, b) &= \text{range of values}\\
+      f(x) &= \frac{1}{b - a},\ \ \ \ a \leq x \leq b\\
+      \expc{X} &= \frac{b+a}{2}\\
+      \var{X} &= \frac{(b - a)^2}{12}
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\vfill\null
+\columnbreak
+
+\subsubsection{Exponential Distribution}
+
+\textit{\textbf{Time between events, time until an event.}} In a sequence of rare events, \textit{when the number of events is Poisson, the time between events is Exponential.}
+
+\begin{align*}
+  f(x) &= \lambda e^{-\lambda x} &\textnormal{ for } x > 0\\
+  \prob{X \leq x} = F(x) &= 1 - e^{-\lambda x} &\textnormal{    ($x > 0)$}
+\end{align*}
+\begin{formula}{Important Note}
+    \begin{center}
+    $\prob{X > x} = 1 - \prob{X \leq x} = 1 - (1 - e^{-\lambda x}) = e^{-\lambda x}$
+    \end{center}
+    In here $X$ is ``\textit{time between two events}'' and $x$ is ``\textit{particular time}''.
+
+    \quad ``\textbf{\textit{Exponential distribution}} is a continuous version of \textbf{\textit{Geometric distribution}}. In the \textit{Geometric distribution}, we analyze the how many trials are required before the first success, whereas, in the \textit{Exponential distribution}, we analyze the time until the event.''
+\end{formula}
+
+\paragraph{Memoryless Property}
+
+Memoryless property means that the fact of having waited for $t$ minutes gets ``\textit{forgotten}'', and it \textit{does not affect the future waiting time}. Mathematically,
+\begin{equation*}
+    \prob{T > t + x\ |\ T > t} = \prob{T > x}\ \ \ \ \textnormal{ for } t, x > 0
+\end{equation*}
+In this formula, $t$ is the already elapsed portion of waiting time, and $x$ is the additional, remaining time.
+
+\textit{This property is unique for Exponential distribution. No other continuous variable $X \in (0, \infty)$ is memoryless. Among discrete variables, such a property belongs to Geometric distribution.}
+
+\begin{formula}{Summary of Exponential Distribution}
+  \begin{center}
+    $\begin{aligned}
+      \lambda &= \textnormal{frequency parameter},\\
+              &\quad\ \textnormal{the number of events per time unit}\\
+      f(x) &= \lambda e^{-\lambda x},\ \ \ \ x \geq 0\\
+      \expc{X} &= \frac{1}{\lambda}\\
+      \var{X} &= \frac{1}{\lambda^2}
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\newpage
+
+\subsubsection{Gamma Distribution}
+
+$\alpha$ \textbf{\textit{independent steps}}, and each step takes \textbf{\textit{Exponential($\lambda$)}} amount of time, the total time has Gamma distribution with parameters $\alpha$ and $\lambda$.
+
+\begin{align*}
+    f(x) &= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1}e^{-\lambda x},\ \ \ \ x > 0\\
+    F(t) &= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} \int_{0}^{t} x^{\alpha-1} e^{-\lambda x} dx
+\end{align*}
+where $\Gamma(\alpha) = (\alpha - 1)!$
+
+\begin{formula}{Special Cases}
+  \begin{center}
+    $\begin{aligned}
+      \textnormal{Gamma}(1, \lambda) &= \textnormal{Exponential}(\lambda)\\
+      \textnormal{Gamma}(\alpha, 1/2) &= \textnormal{Chi-square}(2\alpha)\\
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\begin{formula}{Summary of Gamma Distribution}
+  \begin{center}
+    $\begin{aligned}
+      \alpha &= \textnormal{shape parameter}\\
+      \lambda &= \textnormal{frequency parameter}\\
+      f(x) &= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} e^{-\lambda x},\ \ \ \ x > 0\\
+      \expc{X} &= \frac{\alpha}{\lambda}\\
+      \var{X} &= \frac{\alpha}{\lambda^2}
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\paragraph{Gamma-Poisson Formula}
+
+Let $T$ be a Gamma variable with an integer parameter $\alpha$ and some positive $\lambda$. This is a distribution of the time of the $\alpha$-th rare event. Then, the event $\{T > t\}$ means that the $\alpha$-th rare event occurs after the moment $t$, and therefore, \textit{fewer than $\alpha$ rare events occur before the time $t$}. We see that
+\begin{equation*}
+    \left\{ T > t \right\} = \left\{ X < \alpha \right\}
+\end{equation*}
+where $X$ is the number of events that occur before the time $t$. This number of rare events $X$ has Poisson distribution with parameter ($\lambda t$) [\textit{poisscdf($X, \lambda t$)}]; therefore, the probability
+\begin{equation*}
+    \prob{T > t} = \prob{X < \alpha}
+\end{equation*}
+and the probability of a complement
+\begin{equation*}
+    \prob{T \leq t} = \prob{X \geq \alpha}
+\end{equation*}
+can both be computed using the Poisson distribution of $X$.
+
+\begin{formula}{Summary of Gamma-Poisson Formula}
+    For a Gamma($\alpha, \lambda$) variable $T$ and a Poisson($\lambda t$) variable $X$,
+    \begin{align*}
+        \prob{T > t} &= \prob{X < \alpha}\\
+        \prob{T \leq t} &= \prob{X \geq \alpha}
+    \end{align*}
+\end{formula}
+
+\subsubsection{Normal Distribution}
+
+\textbf{Values with a bell-shaped distribution.}
+
+\begin{equation*}
+    f(x) = \frac{1}{\sigma \sqrt[]{2 \pi}} \textnormal{exp}\left\{ \frac{-(x - \mu)^2}{2\sigma^2} \right\},\ \ \ \ -\infty < x < +\infty
+\end{equation*}
+where parameters $\mu$ and $\sigma$ have a simple meaning of the expectation $\expc{X}$ and the standard deviation Std($X$). 
+
+This density is known as the bell-shaped curve, symmetric and centered at $\mu$, its spread being controlled by $\sigma$. Changing $\mu$ shifts the curve to the left or to the right without affecting its shape, while changing $\sigma$ makes it more concentrated or more flat.
+
+\begin{formula}{Summary of Normal Distribution}
+  \begin{center}
+    $\begin{aligned}
+      \mu &= \textnormal{expectation},\\
+          &\quad\ \textnormal{\textit{location} parameter}\\
+      \sigma &= \textnormal{standard deviation},\\
+             &\quad\ \textnormal{\textit{scale} parameter}\\
+      f(x) &= \frac{1}{\sigma \sqrt[]{2 \pi}} \textnormal{exp}\left\{ \frac{-(x - \mu)^2}{2\sigma^2} \right\},\ \ \ \ -\infty < x < +\infty\\
+      \expc{X} &= \mu\\
+      \var{X} &= \sigma^2
+    \end{aligned}$
+  \end{center}
+\end{formula}
+
+\paragraph{Standard Normal Distribution}
+
+Normal distribution with ``standard parameters'' $\mu = 0$ and $\sigma = 1$.
+
+\textbf{Notation:}
+\begin{align*}
+  Z &= \textnormal{Standard Normal random variable}\\
+  \phi(x) &= \frac{1}{\sqrt[]{2 \pi}} e^{-x^2/2},\textnormal{ Standard Normal pdf}\\
+  \Phi(x) &= \int_{-\infty}^{x} \frac{1}{\sqrt[]{2 \pi}} e^{-z^2/2} dz, \textnormal{ Standard Normal cdf}
+\end{align*}
+
+A Standard Normal variable, usually denoted by $Z$, can be obtained from a non-standard Normal($\mu, \sigma$) random variable $X$ by \textit{standardizing}, that is, subtracting the mean and dividing by the standard deviation,
+\begin{equation*}
+    Z = \frac{X - \mu}{\sigma}
+\end{equation*}
+\textit{Unstandardizing} $Z$, we can reconstruct the initial variable $X$,
+\begin{equation*}
+    X = \mu + \sigma Z
+\end{equation*}
+
+\end{multicols}
+
+
+\subsection{Central Limit Theorem}
+
+\begin{theorem}{: Central Limit Theorem}
+  Let $X_1, X_2, ...$ be independent random variables with the same expectation $\mu = \expc{X_i}$ and the same standard deviation $\sigma = \textnormal{Std}(X_i)$, and let
+  \begin{equation*}
+      S_n = \sum_{i=1}^{n} X_i = X_i + ... + X_n
+  \end{equation*}
+  As $n \to \infty$, the standardized sum
+  \begin{equation*}
+      Z_n = \frac{S_n - \expc{S_n}}{\textnormal{Std}(S_n)} = \frac{S_n - n\mu}{\sigma\sqrt{n}}
+  \end{equation*}
+  converges in distribution to a Standard Normal random variable, that is,
+  \begin{equation*}
+      F_{Z_n}(z) = \prob{\frac{S_n-n\mu}{\sigma\sqrt{n}} \leq z} \to \Phi(z)
+  \end{equation*}
+  for all $z$.
+\end{theorem}
+\noindent As long as $n$ is large (the rule of thumb is $n > 30$), one can use \textbf{Normal distribution} to compute probabilities about $S_n$.
+
+\noindent Among the random variables, at least three have a form of $S_n$:
+
+$\begin{aligned}
+    &\textnormal{Binomial variable} &= &&&\textnormal{sum of independent Bernoulli variables}\\
+    &\textnormal{Negative Binomial variable} &= &&&\textnormal{sum of independent Geometric variables}\\
+    &\textnormal{Gamma variable} &= &&&\textnormal{sum of independent Exponential variables}
+\end{aligned}$
+
+\noindent Hence, the Central Limit Theorem applies to all these distributions with sufficiently large $n$ in the case of Binomial, $k$ for Negative Binomial, and $\alpha$ for Gamma variables.
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsubsection{Normal Approximation to Binomial Distribution}
+
+Binomial variables represent a special case of
+\begin{equation*}
+  S_n = X_1 + ... + X_n
+\end{equation*}
+where all $X_i$ have Bernoulli distribution with some parameter $p$.
+
+\begin{itemize}
+  \item Small or large $p \Rightarrow$ approximate Binomial distribution with Poisson
+  \item Moderate values of $p$ (say, $0.05 \leq p \leq 0.95$) and for large $n$, \texttt{Central Limit Theorem} can be used
+\end{itemize}
+
+\begin{equation*}
+    \textnormal{Binomial}(n, p) \approx Normal \left( \mu = np, \sigma = \sqrt{np(1-p)} \right)
+\end{equation*}
+
+\subsubsection{Continuity Correction}
+
+\begin{itemize}
+  \item This correction is needed when we approximate a discrete distribution (Binomial in this case) by a continuous distribution (Normal). Expand the interval by 0.5 units in each direction, then use the Normal approximation. Notice that
+  \begin{equation*}
+      P_X(x) = \prob{X = x} = \prob{x - 0.5 < X < x + 0.5}
+  \end{equation*}
+  is true for a Binomial variable $X$; therefore, the continuity correction does not change the event and preserves its probability. Every time when we approximate some discrete distribution with some continuous distribution, we should be using a continuity correction.
+
+  \item When a continuous distribution (say, Gamma) is approximated by another continuous distribution (Normal), the continuity correction is not needed. In fact, it would be an error to use it in this case because it would no longer preserve the probability.
+\end{itemize}
+
+\end{multicols}

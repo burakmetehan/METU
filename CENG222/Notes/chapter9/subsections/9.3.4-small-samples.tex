@@ -1,0 +1,60 @@
+\subsection{Small Samples: Student's \textit{t} distribution}
+\label{subsec:small-samples}
+
+Having a small sample, we can no longer pretend that a sample standard deviation $s$ is an accurate estimator of the population standard deviation $\sigma$. Then, how should we adjust the confidence interval when we replace $\sigma$ by $s$, or more generally, when we replace the standard error $\sigma(\hat{\theta})$ by its estimator $s(\hat{\theta})$?
+
+A famous solution was proposed by \textit{William Gosset} (1876–1937), he derived the \textbf{T-distribution}.
+
+He replaced the true but unknown standard error of $\hat{\theta}$ by its estimator $s(\hat{\theta})$ and concluded that the \textbf{T-ratio}
+\begin{equation*}
+  t = \frac{\hat{\theta} - \theta}{s(\hat{\theta})}
+\end{equation*}
+the \textit{ratio} of two random variables, no longer has a Normal distribution!
+
+For the problem of estimating the mean based on $n$ Normal observations $X_1,\ \ldots,\ X_n$, this was \textbf{T-distribution} with $(n - 1)$ \textit{degrees of freedom}. Table A5 (from textbook) gives critical values $t_{\alpha}$ of the T-distribution that we'll use for confidence intervals.
+
+So, using \textit{T-distribution} instead of Standard Normal and estimated standard error instead of the unknown true one, we obtain the confidence interval for the population mean.
+
+\begin{formula}{Confidence interval for the mean $\sigma$ is unknown}
+  \begin{equation}
+    \bar{X} \ \pm\ t_{\alpha/2} \frac{s}{\sqrt{n}}
+  \end{equation}
+  where $t_{\alpha/2}$ is a critical value from T-distribution with $n - 1$ degrees of freedom.
+\end{formula}
+
+The density of \textit{Student's T-distribution} is a bell-shaped symmetric curve that can be easily confused with Normal. Comparing with the Normal density, \textit{its peak is lower and its tails are thicker}. Therefore, a larger number $t_{\alpha}$ is generally needed to cut area $\alpha$ from the right tail. That is
+\begin{equation*}
+  t_{\alpha} > z_{\alpha}
+\end{equation*}
+for small $\alpha$. As a consequence, the confidence interval (9) is wider than the interval (5) for the case of known $\sigma$. This wider margin is the price paid for not knowing the standard deviation $\sigma$. When we lack a certain piece of information, we cannot get a more accurate estimator.
+
+\vspace*{\fill}
+\columnbreak
+
+However, we see in Table A5 that
+\begin{equation*}
+  t_{\alpha} \ra z_{\alpha}
+\end{equation*}
+as the number of degrees of freedom $\nu$ tends to infinity. Indeed, having a large sample (hence, large $\nu = n - 1$), we can count on a very accurate estimator of $\sigma$, and thus, the confidence interval is almost as narrow as if we knew $\sigma$ in this case.
+
+\textbf{Degrees of freedom $\nu$} is the parameter of T-distribution controlling the shape of the T-density curve. Its meaning is the dimension of a vector used to estimate the variance. Here we estimate $\sigma^2$ by a sample variance
+\begin{equation*}
+  s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (X_i - \bar{X})^2
+\end{equation*}
+and thus, we use a vector
+\begin{equation*}
+  \bs{X'} = (X_1 - \bar{X},\ \ldots,\ X_n - \bar{X})
+\end{equation*}
+The initial vector $\bs{X} = (X_1,\ \ldots,\ X_n)$ has dimension $n$; therefore, it has $n$ degrees of freedom. However, when the sample mean $\bar{X}$ is subtracted from each observation, there appears a linear relation among the elements,
+\begin{equation*}
+  \sum_{i=1}^{n} (X_i - \bar{X}) = 0
+\end{equation*}
+We lose 1 degree of freedom due to this constraint; the vector $\bs{X'}$ belongs to an $(n - 1)$.
+
+In many similar problems, degrees of freedom can be computed as
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{2cm} c p{2cm} c p{2cm} r}
+    number of degrees of freedom & $=$ & sample size & $-$ & number of estimated location parameters & (10) \\
+  \end{tabular}
+\end{table}

@@ -1,0 +1,101 @@
+\subsection{Method of Moments}
+\label{subsec:method-of-moments}
+
+\subsubsection{Moments}
+\label{subsubsec:moments}
+
+First, let us define the moments.
+\begin{definition}{}
+  The $k$-th \textbf{population moment} is defined as
+  \begin{equation*}
+    \mu_k = \expck{X}{k}
+  \end{equation*}
+  The $k$-th \textbf{sample moment}
+  \begin{equation*}
+    m_k = \frac{1}{n} \sum_{i=1}^{n} X_i^k
+  \end{equation*}
+  estimates $\mu_k$ from a sample $(X_1,\ \ldots,\ X_n)$. \\
+
+  The first sample moment is the sample mean $\bar{X}$.  
+\end{definition}
+
+Central moments are computed similarly, after centralizing the data, that is, subtracting the mean.
+
+\begin{definition}{}
+  For $k \geq 2$, the $k$-th \textbf{population central moment} is defined as
+  \begin{equation*}
+    \mu_k' = \expck{(X - \mu_1)}{k}
+  \end{equation*}
+  The $k$-th \textbf{sample central moment}
+  \begin{equation*}
+    m_k' = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^k
+  \end{equation*}
+  estimates $\mu_k$ from a sample $(X_1,\ \ldots,\ X_n)$.
+\end{definition}
+
+\textbf{Remark:} 
+\begin{itemize}
+  \item The \textit{second population central moment is variance} $\var{X}$.
+  \item The \textit{second sample central moment is sample variance}, although $(n - 1)$ in its denominator is now replaced by $n$.
+\end{itemize}
+We mentioned that estimation methods are not unique. For unbiased estimation of $\sigma^2 = \var{X}$, we use
+\begin{equation*}
+  s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (X_i - \bar{X})^2
+\end{equation*}
+however, method of moments and method of maximum likelihood produce a different version,
+\begin{equation*}
+  S^2 = m_2' = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2
+\end{equation*}
+
+
+\subsubsection{Estimation}
+\label{subsubsec:estimation}
+
+\textbf{Method of moments} is based on a simple idea. Since our sample comes from a family of distributions $\{ F(\theta) \}$, we choose such a member of this family whose properties are close to properties of our data. Namely, we shall \textit{match the moments}.
+
+To estimate $k$ parameters, equate the first $k$ population and sample moments,
+\begin{equation*}
+  \begin{cases}
+    \mu_1 = m_1 \\
+    \cdots\ \cdots\ \cdots \\
+    \mu_k = m_k \\
+  \end{cases}
+\end{equation*}
+The left-hand sides of these equations depend on the distribution parameters. The right-hand sides can be computed from data. The \textbf{method of moments estimator} is the solution of this system of equation.
+
+\begin{example}{ (Poisson)}
+  To estimate parameter $\lambda$ of Poisson($\lambda$) distribution, we recall that
+  \begin{equation*}
+    \mu_1 = \expc{X} = \lambda
+  \end{equation*}
+  There is only one unknown parameter, hence we write one equation,
+  \begin{equation*}
+    \mu_1 = \lambda = m_1 = \bar{X}
+  \end{equation*}
+  ``Solving'' it for $\lambda$, we obtain
+  \begin{equation*}
+    \hat{\lambda} = \bar{X}
+  \end{equation*}
+  the method of moments estimator of $\lambda$.
+\end{example}
+
+\textbf{\textit{Check the examples 9.4 and 9.5 from textbook.}}
+
+\noindent On rare occasions, when $k$ equations are not enough to estimate $k$ parameters, we'll consider higher moments.
+
+\vspace*{\fill}
+\columnbreak
+
+\begin{example}{ (Normal)}
+  Suppose we already know the mean $\mu$ of a Normal distribution and would like to estimate the variance $\sigma^2$. Only one parameter $\sigma^2$ is unknown; however, the first method of moments equation
+  \begin{equation*}
+    \mu_1 = m_1
+  \end{equation*}
+  does not contain $\sigma^2$ and therefore does not produce its estimate. We then consider the second equation, say,
+  \begin{equation*}
+    \mu_2' = \sigma^2 = m_2' = S^2
+  \end{equation*}
+  which gives us the method of moments estimate immediately, $\hat{\sigma}^2 = S^2$.
+\end{example}
+
+Method of moments estimates are typically easy to compute. They can serve as a quick tool for estimating parameters of interest.

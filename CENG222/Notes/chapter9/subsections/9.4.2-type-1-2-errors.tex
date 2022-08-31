@@ -1,0 +1,38 @@
+\subsection{Type I and Type II errors: Level of Significance}
+\label{subsec:type-1-2-errors}
+
+When testing hypotheses, we realize that all we see is a random sample. Therefore, with all the best statistics skills, our decision to accept or to reject $H_0$ may still be wrong
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|c|c|c|} 
+  \cline{2-3}
+  \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Result of the test}}  \\ 
+  \cline{2-3}
+  \multicolumn{1}{c|}{} & Reject $H_0$  & Accept $H_0$               \\ 
+  \hline
+  $H_0$ is true          & Type I error & correct                   \\ 
+  \hline
+  $H_0$ is false         & correct      & Type II error             \\
+  \hline
+  \end{tabular}
+\end{table}
+\begin{definition}{}
+  A \textbf{type I error} occurs when we reject the true null hypothesis.\\
+
+  A \textbf{type II error} occurs when we accept the false null hypothesis.
+\end{definition}
+
+A type I error is often considered \textit{more dangerous and undesired} than a type II error. For this reason,  we shall design tests that bound the probability of type I error by a preassigned small number $\alpha$. Under this condition, we may want to minimize the probability of type II error.
+
+\begin{definition}{}
+  Probability of a type I error is the \textbf{significance level} of a test,
+  \begin{equation*}
+    \alpha = \prob{\textnormal{reject } H_0\ |\ H_0 \textnormal{ is true}}
+  \end{equation*}
+  Probability of rejecting a false hypothesis is the \textbf{power of the test},
+  \begin{equation*}
+    p(\theta) = \prob{\textnormal{reject } H_0\ |\ H_A \textnormal{ is true}}
+  \end{equation*}
+  It is usually a function of the parameter $\theta$ because the alternative hypothesis includes a set of parameter values. Also, the power is the probability to avoid a Type II error.
+\end{definition}

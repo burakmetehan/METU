@@ -1,0 +1,110 @@
+\subsection{Confidence Intervals for Proportions}
+\label{subsec:conf-inter-for-proportions}
+
+In particular, we surely don't know the variance when we estimate a population proportion.
+\begin{definition}{}
+  We assume a subpopulation $A$ of items that have a certain \textit{attribute}. By the \textbf{population proportion} we mean the probability
+  \begin{equation*}
+    p = \prob{i \in A}
+  \end{equation*}
+  for a randomly selected item i to have this attribute.
+
+  A \textbf{sample proportion}
+  \begin{equation*}
+    \hat{p} = \frac{\textnormal{number of sampled items from A}}{n}
+  \end{equation*}
+  is used to estimate $p$.
+\end{definition}
+\noindent Let us use the \textit{indicator} variables
+\begin{equation*}
+  X_i = \begin{cases}
+    1 &\textnormal{if } i \in A\\
+    0 &\textnormal{if } i \notin A\\
+  \end{cases}
+\end{equation*}
+Each $X_i$ has Bernoulli distribution with parameter $p$. In particular
+\begin{align*}
+  \expc{X_i} = p &&\textnormal{and}& &\var{X_i} = p (1 - p)
+\end{align*}
+Also,
+\begin{equation*}
+  \hat{p} = \frac{1}{n} \sum_{i=1}^{n} X_i
+\end{equation*}
+is nothing but a sample of $X_i$.
+
+\noindent Therefore,
+\begin{align*}
+  \expc{\hat{p}} = p &&\textnormal{and}& &\var{\hat{p}} = \frac{p (1 - p)}{n}
+\end{align*}
+
+\vspace*{\fill}
+\columnbreak
+
+\noindent We conclude that
+\begin{enumerate}
+  \item a sample proportion $\hat{p}$ is unbiased for the population proportion $p$;
+  \item it has approximately Normal distribution for large samples, because it has a form of
+  a sample mean;
+  \item when we construct a confidence interval for $p$, we do not know the standard deviation
+  Std($\hat{p}$).
+\end{enumerate}
+
+Indeed, knowing the standard deviation is equivalent to knowing p, and if we know p, why
+would we need a confidence interval for it?
+
+Thus, we estimate the unknown standard error
+\begin{equation*}
+  \sigma(\hat{p}) = \sqrt{\frac{p (1-p)}{n}}
+\end{equation*}
+by
+\begin{equation*}
+  s(\hat{p}) = \sqrt{\frac{\hat{p} (1 - \hat{p})}{n}}
+\end{equation*}
+and use it in the general formula
+\begin{equation*}
+  \hat{p}\ \pm\ z_{\alpha/2} \cdot s(\hat{p})
+\end{equation*}
+to construct an approximate $(1 - \alpha)100\%$ confidence interval.
+\begin{formula}{Confidence interval for a population proportion}
+  \begin{equation*}
+    \hat{p} \ \pm\ z_{\alpha/2} \sqrt{\frac{\hat{p} (1 - \hat{p})}{n}}
+  \end{equation*}
+\end{formula}
+
+Similarly, we can construct a confidence interval for the difference between two proportions. In two populations, we have proportions $p_1$ and $p_2$ of items with an attribute. Independent samples of size $n_1$ and $n_2$ are collected, and both parameters are estimated by sample proportions $\hat{p_1}$ and $\hat{p_2}$.
+
+Summarizing, we have
+\begin{align*}
+  \textnormal{Parameter of interest:} &\theta = p_1 - p_2 \\
+  \textnormal{Estimated by:}          &\hat{\theta} = \hat{p_1} - \hat{p_2} \\
+  \textnormal{Its standard error:}    &\sigma(\hat{\theta}) = \sqrt{\frac{p_1 (1 - p_1)}{n_1} + \frac{p_2 (1- p_2)}{n_2}} \\
+  \textnormal{Estimated by:}          &s(\hat{\theta}) = \sqrt{\frac{\hat{p_1} (1 - \hat{p_1})}{n_1} + \frac{\hat{p_2} (1- \hat{p_2})}{n_2}}
+\end{align*}
+
+\begin{formula}{Confidence interval for the difference of proportions}
+  \begin{equation*}
+    \hat{p_1} - \hat{p_2} \ \pm \ z_{\alpha/2} \sqrt{\frac{\hat{p_1} (1 - \hat{p_1})}{n_1} + \frac{\hat{p_2} (1 - \hat{p_2})}{n_2}}
+  \end{equation*}
+\end{formula}
+
+\begin{example}{ (Pre-election poll)}
+  A candidate prepares for the local elections. During his campaign, 42 out of 70 randomly selected people in town A and 59 out of 100 randomly selected people in town B showed they would vote for this candidate. Estimate the difference in support that this candidate is getting in towns A and B with $95\%$ confidence. Can we state affirmatively that the candidate gets a stronger support in town A? \\
+
+  \textbf{Solution:}
+  We have $n_1 = 70$, $n_2 = 100$, $\hat{p_1} = 42/70 = 0.6$, and $\hat{p_2} = 59/100 = 0.59$. For the confidence interval, we have
+  \begin{equation*}
+    \textnormal{center} = \hat{p_1} - \hat{p_2} = 0.01
+  \end{equation*}
+  and
+  \begin{align*}
+    \textnormal{margin} &= z_{0.05/2} \sqrt{\frac{\hat{p_1} (1 - \hat{p_1})}{n_1} + \frac{\hat{p_2} (1 - \hat{p_2})}{n_2}}\\
+    &= (1.960) \sqrt{\frac{(0.6) (0.4)}{70} + \frac{(0.59) (0.41)}{100}} = 0.15
+  \end{align*}
+  Then
+  \begin{equation*}
+    0.01 \ \pm \ 0.15 = \left[ -0.14,\ 0.16 \right]
+  \end{equation*}
+  is a $95\%$ confidence interval for the difference in support ($p_1 - p_2$) in the two towns.\\
+
+  So, is the support stronger in town A? On one hand, the estimator $\hat{p_1} - \hat{p_2} = 0.01$ suggests that the support is $1\%$ higher in town A than in town B. On the other hand, the difference could appear positive just because of a sampling error. As we see, the $95\%$ confidence interval includes a large range of negative values too. Therefore, the obtained data \textit{does not} indicate affirmatively that the support in town A is stronger.
+\end{example}
