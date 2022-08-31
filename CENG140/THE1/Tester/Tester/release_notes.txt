@@ -1,0 +1,23 @@
+Tester_1.0:
+The first release of the Tester
+
+Tester_1.1:
+To fix cases which have overlapping, debugging Case Creator
+Now Tester ask for "THE1 File Name"
+
+Tester_1.2:
+To fix cases which have overlapping, debugging Case Creator
+Now Tester is working on Windows
+
+Tester_1.3:
+Debugging of Case Creator is done.
+All cases are normal now.
+The working version.
+
+Tester_1.4:
+Now, Tester show the percentage of cases that are processed.
+The last print is changed.
+
+Tester_1.4.1:
+Some test cases are changed in order to add edge cases.
+

@@ -1,0 +1,2897 @@
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: TOKA
+	Flat List: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
+Apartment Name: NEW_APARTMENT
+	Max Bandwidth: 145
+	Next Apartment Name: NEW_APARTMENT
+	Flat List: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 27
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 27
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 27
+		Prev: 1
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 3
+		Prev: 4
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 27
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 27
+		Prev: 1
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 3
+		Prev: 4
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 27
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 27
+		Prev: 4
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: NULL
+		Prev: 3
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 27
+		Prev: 4
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 3
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 125
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 27
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 27
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 27
+		Prev: 1
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 3
+		Prev: 4
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 27
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 27
+		Prev: 1
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 3
+		Prev: 4
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 27
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 27
+		Prev: 4
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: NULL
+		Prev: 3
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 27
+		Prev: 4
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 3
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 27
+		Initial Bandwidth: 105
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+**************************
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
+Apartment List is Empty.
+**************************
+Apartment List is Empty.
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 0
+		IS Empty: 1
+		Next: NULL
+		Prev: 4
+**************************
+Function 5 (Sum of Max Bandwidth) Outputs:0
+	Case_1: 460
+	Case_2: 105Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 2
+		Prev: 4
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: 3
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 135
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 260
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 260
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: 6
+		Prev: 2
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: 8
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 2
+		Prev: 4
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: 3
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 230
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 60
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: PAPATYA
+	Max Bandwidth: 285
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: NULL
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 14
+		Prev: 4
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 6
+		Prev: 11
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 1
+		Prev: 14
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 2
+		Prev: 6
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: 1
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 80
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 15
+		Prev: 9
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 7
+Apartment Name: PASTA
+	Max Bandwidth: 35
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 60
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: PAPATYA
+	Max Bandwidth: 285
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 2
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 14
+		Prev: 4
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 6
+		Prev: 11
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 1
+		Prev: 14
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 8
+		Prev: 6
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 1
+Apartment Name: TOKA
+	Max Bandwidth: 80
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 15
+		Prev: 9
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 7
+Apartment Name: PASTA
+	Max Bandwidth: 35
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 30
+	Next Apartment Name: PAPATYA
+	Flat List: NULL
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 95
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: NULL
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 210
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 3
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 6
+		Prev: 1
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: 4
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 30
+	Next Apartment Name: PAPATYA
+	Flat List: NULL
+Apartment Name: PAPATYA
+	Max Bandwidth: 100
+	Next Apartment Name: TOKA
+	Flat List: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 20
+	Next Apartment Name: PASTA
+	Flat List: NULL
+Apartment Name: PASTA
+	Max Bandwidth: 310
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 1
+		Prev: NULL
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: 3
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 2
+		Prev: 1
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: 4
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: 9
+		Prev: 2
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 11
+		Prev: 8
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 7
+		Prev: 9
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 15
+		Prev: 11
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 6
+		Prev: 7
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: 15
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 80
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: NULL
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 110
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 185
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 2
+		Prev: NULL
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 6
+		Prev: 1
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 9
+		Prev: 2
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: 6
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 85
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: NULL
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 75
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: NULL
+		Prev: 1
+Apartment Name: PAPATYA
+	Max Bandwidth: 115
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 185
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: 3
+		Prev: 14
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 9
+		Prev: 8
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: 3
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 85
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: NULL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 6
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 85
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 3
+		Prev: NULL
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 1
+Apartment Name: PAPATYA
+	Max Bandwidth: 110
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 180
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 2
+		Prev: NULL
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 6
+		Prev: 4
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 9
+		Prev: 2
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: 6
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 85
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: NULL
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 105
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 125
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: NULL
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: 2
+Apartment Name: TOKA
+	Max Bandwidth: 145
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 9
+		Prev: NULL
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: 7
+		Prev: 6
+	Flat List: 
+		Flat ID: 7
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 11
+		Prev: 9
+	Flat List: 
+		Flat ID: 11
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 15
+		Prev: 7
+	Flat List: 
+		Flat ID: 15
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: NULL
+		Prev: 11
+Apartment Name: PASTA
+	Max Bandwidth: 85
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: NULL
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 80
+	Next Apartment Name: PAPATYA
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: NULL
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: NULL
+		Prev: 4
+Apartment Name: PAPATYA
+	Max Bandwidth: 110
+	Next Apartment Name: TOKA
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: NULL
+		Prev: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 185
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 2
+		Prev: NULL
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 6
+		Prev: 1
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 9
+		Prev: 2
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: NULL
+		Prev: 6
+Apartment Name: PASTA
+	Max Bandwidth: 85
+	Next Apartment Name: KARANFIL
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: NULL
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: NULL
+		Prev: 5
+**************************
+Apartment Name: KARANFIL
+	Max Bandwidth: 30
+	Next Apartment Name: PAPATYA
+	Flat List: NULL
+Apartment Name: PAPATYA
+	Max Bandwidth: 100
+	Next Apartment Name: TOKA
+	Flat List: NULL
+Apartment Name: TOKA
+	Max Bandwidth: 330
+	Next Apartment Name: PASTA
+	Flat List: 
+		Flat ID: 1
+		Initial Bandwidth: 25
+		IS Empty: 0
+		Next: 4
+		Prev: NULL
+	Flat List: 
+		Flat ID: 4
+		Initial Bandwidth: 20
+		IS Empty: 0
+		Next: 3
+		Prev: 1
+	Flat List: 
+		Flat ID: 3
+		Initial Bandwidth: 30
+		IS Empty: 0
+		Next: 2
+		Prev: 4
+	Flat List: 
+		Flat ID: 2
+		Initial Bandwidth: 15
+		IS Empty: 0
+		Next: 8
+		Prev: 3
+	Flat List: 
+		Flat ID: 8
+		Initial Bandwidth: 10
+		IS Empty: 0
+		Next: 6
+		Prev: 2
+	Flat List: 
+		Flat ID: 6
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 5
+		Prev: 8
+	Flat List: 
+		Flat ID: 5
+		Initial Bandwidth: 35
+		IS Empty: 0
+		Next: 14
+		Prev: 6
+	Flat List: 
+		Flat ID: 14
+		Initial Bandwidth: 50
+		IS Empty: 0
+		Next: 9
+		Prev: 5
+	Flat List: 
+		Flat ID: 9
+		Initial Bandwidth: 5
+		IS Empty: 0
+		Next: NULL
+		Prev: 14
+Apartment Name: PASTA
+	Max Bandwidth: 0
+	Next Apartment Name: KARANFIL
+	Flat List: NULL
+**************************
