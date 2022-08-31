@@ -1,0 +1,37 @@
+\subsection*{b)}
+
+% Write a context-free grammar for the language $L_2 = \left\{ a^nb^m\ |\ m,n \in \mathbb{N} \land m \leq n \leq 2m \right\}$
+
+\begin{equation*}
+  G_2 = \left( V_2, \Sigma_2, R_2, S_2 \right)
+\end{equation*}
+with
+\begin{multicols}{3}
+  \raggedcolumns
+  \centering
+  \begin{itemize}
+    \vspace*{\fill}
+      \item[] $V_2 = \left\{ S_2, a, b \right\}$
+    \vspace*{\fill}
+
+    \columnbreak
+    
+    \vspace*{\fill}
+      \item[] $\Sigma_2 = \left\{ a, b \right\}$
+    \vspace*{\fill}
+    
+    \columnbreak
+
+    \vspace*{\fill}
+      \item[] $R_2 = \left\{
+        \begin{aligned}
+          &S_2 \ra aS_2b,\\
+          &S_2 \ra aaS_2b,\\
+          &S_2 \ra e
+        \end{aligned} \right\}$
+    \vspace*{\fill}
+  \end{itemize}
+\end{multicols}
+
+
+

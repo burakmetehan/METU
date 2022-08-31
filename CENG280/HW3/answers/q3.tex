@@ -1,0 +1,189 @@
+\section*{Answer 3}
+\label{answer-3}
+
+Let $M_{2D} = (K, \Sigma, \delta, s, H)$ be a 2-dimensional tape where
+\begin{itemize}
+  \item $K$ is the finite set of states
+  \item $\Sigma$ is the input alphabet with $\blank$
+  \item $s \in K$, initial state
+  \item $H \subseteq K$, halting states
+  \item $\delta\ :\ ( (K - H) \times \Sigma) \mapsto K \times ( \Sigma \cup \{ \la, \ra, \uparrow, \downarrow \} )$ is the transition function.
+\end{itemize}
+
+\subsection*{Configuration}
+\label{q3-configuration}
+
+\begin{itemize}
+  \item Let the input string $w$ be of the form:
+    \begin{table}[ht]
+      \centering
+      \begin{tabular}{rcccc}
+                  & $\triangledown$ & $\triangledown$ & $\triangledown$ & $\cdots$  \\
+        $\tar$    & $w_{11}$        & $w_{12}$        & $w_{13}$        & $\cdots$  \\
+        $\tar$    & $w_{21}$        & $w_{22}$        & $w_{23}$        & $\cdots$  \\
+        $\tar$    & $w_{31}$        & $w_{32}$        & $w_{33}$        & $\cdots$  \\
+        $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$        & $\ddots$  \\
+      \end{tabular}
+    \end{table}
+  \item Also, let the $i^{th}$ row is denoted as $w_i$, $j^{th}$ column is denoted as $w_j$ and let $\underline{w_{ij}}$ show that head of tape is on symbol $w_{ij}$.
+\end{itemize}
+
+\noindent So, configuration can be shown as follows,
+\begin{center} % Configuration
+$\left( q, 
+  \begin{tabular}{rccccc}
+            & $\triangledown$ & $\triangledown$ & $\triangledown$       & $\triangledown$  & $\cdots$  \\
+  $\tar$    & $w_{11}$        & $\cdots$        & $w_{1j}$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $\vdots$        & $\ddots$        & $\cdots$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $w_{i1}$        & $\vdots$        & $\underline{w_{ij}}$  & $\cdots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\ddots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\vdots$         & $\ddots$  \\
+  \end{tabular}
+\right)$
+or
+$\left( q, \sigma \right)$
+\end{center}
+where $q$ is the state of the machine, $\sigma$ is the symbol that is located on $w_{ij}$ and head is on the $w_{ij}$.
+
+\noindent As an example, consider the following:
+\begin{center} % Example Configuration
+$\left( q, 
+  \begin{tabular}{rccc}
+            & $\triangledown$ & $\triangledown$       & $\triangledown$ \\
+  $\tar$    & $a$             & $a$                   & $b$             \\
+  $\tar$    & $a$             & $\underline{b}$       & $a$             \\
+  $\tar$    & $b$             & $b$                   & $b$             \\
+  \end{tabular}
+\right)$
+\end{center}
+where $q$ is the state of the machine, the symbol that is located on $w_{ij}$ is $b$ and head is on the this $b$.
+
+
+\subsection*{Computation}
+\label{q3-computation}
+
+\noindent Computation may be done as follows:
+\begin{center} % Computation
+$\left( q, 
+  \begin{tabular}{rccccc}
+            & $\triangledown$ & $\triangledown$ & $\triangledown$       & $\triangledown$  & $\cdots$  \\
+  $\tar$    & $w_{11}$        & $\cdots$        & $w_{1j}$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $\vdots$        & $\ddots$        & $\cdots$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $w_{i1}$        & $\vdots$        & $\underline{w_{ij}}$  & $\cdots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\ddots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\vdots$         & $\ddots$  \\
+  \end{tabular}
+\right)
+\vdash_{M_{2D}}
+\left( p, 
+  \begin{tabular}{rccccc}
+            & $\triangledown$ & $\triangledown$ & $\triangledown$       & $\triangledown$  & $\cdots$  \\
+  $\tar$    & $w_{11}$        & $\cdots$        & $w_{1j}$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $\vdots$        & $\ddots$        & $\cdots$              & $\cdots$         & $\cdots$  \\
+  $\tar$    & $w_{i1}$        & $\vdots$        & $\underline{w_{ij}'}$ & $\cdots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\ddots$         & $\cdots$  \\
+  $\vdots$  & $\vdots$        & $\vdots$        & $\vdots$              & $\vdots$         & $\ddots$  \\
+  \end{tabular}
+\right)$
+where
+$\delta(q, w_{ij}) = (p, w_{ij}')$
+\end{center}
+
+\noindent As an example, consider the following:
+\begin{center} % Example Computation 1
+$\left( q, 
+  \begin{tabular}{rccc}
+            & $\triangledown$ & $\triangledown$       & $\triangledown$ \\
+  $\tar$    & $a$             & $a$                   & $b$             \\
+  $\tar$    & $a$             & $\underline{b}$       & $a$             \\
+  $\tar$    & $b$             & $b$                   & $b$             \\
+  \end{tabular}
+\right)
+\vdash_{M_{2D}}
+\left( q, 
+  \begin{tabular}{rccc}
+            & $\triangledown$ & $\triangledown$       & $\triangledown$ \\
+  $\tar$    & $a$             & $a$                   & $b$             \\
+  $\tar$    & $a$             & $\underline{a}$       & $a$             \\
+  $\tar$    & $b$             & $b$                   & $b$             \\
+  \end{tabular}
+\right)$
+where $\delta(q, b) = (p, a)$
+\end{center}
+
+\begin{center} % Example Computation 2
+  $\left( q, 
+    \begin{tabular}{rccc}
+              & $\triangledown$ & $\triangledown$       & $\triangledown$ \\
+    $\tar$    & $a$             & $a$                   & $b$             \\
+    $\tar$    & $a$             & $\underline{b}$       & $a$             \\
+    $\tar$    & $b$             & $b$                   & $b$             \\
+    \end{tabular}
+  \right)
+  \vdash_{M_{2D}}
+  \left( q, 
+    \begin{tabular}{rccc}
+              & $\triangledown$ & $\triangledown$       & $\triangledown$ \\
+    $\tar$    & $a$             & $a$                   & $b$             \\
+    $\tar$    & $a$             & $\underline{\blank}$       & $a$             \\
+    $\tar$    & $b$             & $b$                   & $b$             \\
+    \end{tabular}
+  \right)$
+where $\delta(q, b) = (p, \blank)$
+\end{center}
+
+
+\subsection*{Meaning of Deciding a Language $L$}
+
+\noindent Deciding a language $L$ for such a machinev $M$ is the following:
+\begin{quote}
+  If $\Sigma_0 \subseteq \Sigma - \{ \blank, \tar \}$ is an alphabet and $L$ is a language such that $L \subseteq \Sigma_0^*$. It is said that $M$ decides a language $L$ if one of the followings is true for any string $w \in \Sigma_0^*$:
+  \begin{itemize}
+    \item $w \in L$ $\Rightarrow$ $M$ accepts $w$.
+    \item $w \notin L$ $\Rightarrow$ $M$ rejects $w$.
+  \end{itemize}
+\end{quote}
+
+
+\subsection*{Showing that simulating $t$ steps is polynomial in t and n.}
+
+In order to simulate $t$ steps of $M_{2D}$, first $2D$ input should be written on a $1D$ tape with a special character, let say $\$$, such that:
+
+\begin{figure}[ht]
+  \centering
+  \begin{minipage}{.3\linewidth}
+    \centering
+    \caption*{\underline{$M_{2D}$ tape}}
+    \begin{tabular}{rcccc}
+                & $\triangledown$ & $\triangledown$ & $\triangledown$ & $\triangledown$   \\
+      $\tar$    & $a$             & $b$             & $a$             & $a$               \\
+      $\tar$    & $b$             & $a$             &                 &                   \\
+      $\tar$    & $b$             & $b$             &                 &                   \\
+      $\vdots$  &                 &                 &                 &                   \\
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}{.15\linewidth}
+    \caption*{\underline{$M_{1D}$ tape}}
+    \begin{equation*}
+      {\tar}abaa\$ba\$bb\ldots
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+\noindent Based on this scheme $t$ steps can be simulated in polynomial time such that:
+\begin{itemize}
+  \item $\la (\textbf{L}eft)$: Left move in $1D$ is similar to in $2D$ except:
+    \begin{quote}
+      On $2D$ tape, if head is on left boundary and tries to move left, it will stay put. On $1D$ tape, if $\$$ is read while moving left it will stay out instead. 
+    \end{quote}
+  \item $\ra (\textbf{R}ight)$: Right move in $1D$ is similar to in $2D$ except:
+    \begin{quote}
+      On $2D$ tape, if head moves the $\textbf{R}ight$ to the end of the input, content of $1D$ tape should be shifted from that point (in order to insert $\blank$'s that are not shown.)
+    \end{quote}
+  \item $\uparrow (\textbf{U}p)$: Up move can be implemented such that count the distance from the closest $\$$ on the left, then find the cell having similar distance from its $\$$.
+  
+    For ceiling boundary and tries to move $\uparrow$, it will stay put. In $1D$ tape, if the tape head is on cells before $\$$ character, no transition need to be defined.
+  \item $\downarrow (\textbf{D}own)$: Similar to $\uparrow$.
+\end{itemize}
+
+\noindent All actions can be simulated in polynomial time since for a given action, at every step of the simulation either a constant time operation or $O(n^k)$ times for some $k \geq 1$. So, $t$ steps of $M_{2D}$ can be achieved in $t \cdot O(n^k)$ which is polynomial in $t$ and $n$.

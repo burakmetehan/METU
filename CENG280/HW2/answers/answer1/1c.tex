@@ -1,0 +1,59 @@
+\subsection*{c)}
+
+% Formally define and draw a PDA that accepts $L_1$
+\begin{multicols}{2}
+  
+Let
+\begin{equation*}
+  M_1 = \left( \{p, q\}, \Sigma_1, V_1, \Delta, p, \{q\} \right)
+\end{equation*}
+where, $\Delta$ contains the following transitions
+\begin{center}
+  $\Delta = \left\{ 
+    \begin{aligned}
+      &((p, e, e), (q, S_1)),\\
+      &((q, e, S_1), (q, S_1bS_1bS_1aS_1)),\\
+      &((q, e, S_1), (q, S_1bS_1aS_1bS_1)),\\
+      &((q, e, S_1), (q, S_1aS_1bS_1bS_1)),\\
+      &((q, e, S_1), (q, e)),\\
+      &((q, a, a), (q, e)),\\
+      &((q, b, b), (q, e)),
+    \end{aligned}
+    \right\}$
+\end{center}
+
+\vfill\null
+\columnbreak
+
+PDA that accepts the $L_1$:
+\begin{center}
+  \begin{tikzpicture}[scale=0.2]
+  \tikzstyle{every node}+=[inner sep=0pt]
+  \draw [black] (3.2,-9.1) circle (3);
+  \draw (3.2,-9.1) node {$p$};
+  \draw [black] (20,-9.1) circle (3);
+  \draw (20,-9.1) node {$q$};
+  \draw [black] (20,-9.1) circle (2.4);
+  \draw [black] (6.2,-9.1) -- (17,-9.1);
+  \fill [black] (17,-9.1) -- (16.2,-8.6) -- (16.2,-9.6);
+  \draw (11.6,-9.6) node [below] {$e\ \ e/S_1$};
+  \draw [black] (18.677,-6.42) arc (234:-54:2.25);
+  \draw (20,-1.85) node [above] {
+    $\begin{aligned}
+      &e\ \ S_1 / S_1bS_1bS_1aS_1,\\
+      &e\ \ S_1 / S_1bS_1aS_1bS_1,\\
+      &e\ \ S_1 / S_1aS_1bS_1bS_1,\\
+      \end{aligned}$};
+  \fill [black] (21.32,-6.42) -- (22.2,-6.07) -- (21.39,-5.48);
+  \draw [black] (21.323,-11.78) arc (54:-234:2.25);
+  \draw (20,-16.35) node [below] {
+    $\begin{aligned}
+      &e\ \ S_1 / e,\\
+      &a\ \ a / e,\\
+      &b\ \ b / e,
+    \end{aligned}$};
+  \fill [black] (18.68,-11.78) -- (17.8,-12.13) -- (18.61,-12.72);
+  \end{tikzpicture}
+\end{center}
+
+\end{multicols}

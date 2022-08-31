@@ -1,0 +1,53 @@
+\subsection*{c)}
+
+% Give the leftmost derivation of the string $00111$ from the grammar you have constructed at part-b and draw the corresponding parse tree.
+
+The left-most derivation:
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{ccccccccccc}
+    $S$ & $\Ra$ & $AS$ & $\Ra$ & $0A1S$ & $\Ra$ & $00B11S$ & $\Ra$ & $00B111S$ & $\Ra$ & $00111$\\
+  \end{tabular}
+\end{table}
+
+The left-most derivation parse tree:
+\begin{center}
+  \begin{forest}
+    [$S$ 
+      [$A$ 
+        [$0$]
+        [$A$
+          [$0$]
+          [$B$
+            [$B$
+              [$e$]
+            ]
+            [$1$]
+          ]  
+          [$1$]
+        ]
+        [$1$]
+      ]
+      [$S$
+        [$e$]
+      ]
+    ]
+  \end{forest}
+\end{center}
+
+% Use qtree package
+% \Tree[
+% .$S$ 
+%   [.$A$ 
+%     $0$
+%     [.$A$
+%       $0$
+%       [.$A$ $1$ ]
+%       $1$
+%     ]
+%     $1$
+%   ]
+%   [.$S$
+%     $e$
+%   ]
+% ]

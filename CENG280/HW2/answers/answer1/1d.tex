@@ -1,0 +1,23 @@
+\newpage
+\subsection*{d)}
+
+% Write a context-free grammar for the language $L_3 = L_1 \cup L_2$
+
+Let $S$ be a new symbol and let $G_3 = \left( V_3, \Sigma_3, R_3, S \right)$
+where
+\begin{itemize}
+  \item $V_3 = V_1 \cup V_2 \cup \{ S \} = \{ S_1, S_2, S, a, b \}$
+  \item $\Sigma_3 = \Sigma_1 \cup \Sigma_2 = \{ a, b \}$
+  \item $R_3 = R_1 \cup R_2 \cup \left\{ S \ra S_1, S \ra S_2 \right\} 
+    = \left\{  
+      \begin{aligned}
+        S &\ra S_1, & S &\ra S_2,\\
+        S_1 &\ra S_1bS_1bS_1aS_1, & S_1 &\ra S_1bS_1aS_1bS_1,\\
+        S_1 &\ra S_1aS_1bS_1bS_1, & S_1 &\ra e,\\
+        S_2 &\ra aS_2b, & S_2 &\ra aaS_2b,\\
+        S_2 &\ra e
+      \end{aligned} 
+    \right\}$
+\end{itemize}
+
+The only rules involving $S$ are $S \ra S_1$ and $S \ra S_2$, so $S \Ra_G^* w$ if and only if either $S_1 \Ra_{G_1}^* w$ or $S_2 \Ra_{G_2}^* w$. Also, since $G_1$ and $G_2$ have disjoint sets of nonterminals, the last disjunction is equivalent to saying that $w \in L(G_1) \cup L(G_2)$.

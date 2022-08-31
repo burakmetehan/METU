@@ -1,0 +1,29 @@
+name: q1
+source code: |-
+  input: '000111'
+  blank: ' '
+  start state: Initial
+  table:
+    Initial:
+      0   : {write: 0, R: A}
+    A: # Scanning to the right for the blank
+      0   : {write: 0, R}
+      1   : {write: 1, R}
+      ' ' : {write: ' ', L: B}
+    B: # The rightmost 1
+      1   : {write: ' ', L: C} 
+      ' ' : {write: ' ', R: Accept}
+    C: # Scanning to the left for the first blank
+      0   : {write: 0, L}
+      1   : {write: 1, L}
+      ' ' : {write: ' ', R: D}
+    D: # The leftmost 0
+      0   : {write: ' ', R: A}
+    Accept:
+positions:
+  Initial: {x: 100.00, y: 100.00}
+  A: {x: 300.00, y: 100.00}
+  B: {x: 500.00, y: 100.00}
+  C: {x: 500.00, y: 300.00}
+  D: {x: 300.00, y: 300.00}
+  Accept: {x: 700.00, y: 100.00}

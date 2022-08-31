@@ -1,0 +1,34 @@
+\section*{Answer 1}
+\label{answer-1}
+
+\begin{figure}[ht] % SS of TM
+  \centering
+  \includegraphics[width=\linewidth]{answers/img/q1-machine.png}
+  \caption{\textit{Screenshot of the Turing Machine designed for Q1}}
+  \label{fig:q1-machine}
+\end{figure}
+
+\begin{center} \subsection*{Descriptions of States} \end{center}
+\label{q1:description-of-states}
+
+\input{answers/q1-descriptions-of-states.tex}
+
+\newpage 
+
+\begin{center} \subsection*{Input Samples} \end{center}
+\label{q1:input-samples}
+
+\input{answers/q1-input-samples.tex}
+
+
+% --- General Description ---
+
+% Machine will start in the beginning of the string (namely, $0^{th}$ index). Then it will scan to the right for an $\blank$ symbol. 
+
+% When it found the $\blank$ symbol, it will move to the left. 
+
+% If there is a 1, then a $\blank$ will be written and start scanning to the left for another $blank$ symbol.
+
+% If there is a $\blank$, then accepts
+
+% When it found the first $blank$, it will move the right. If there is a 0, then a $\blank$ will be written.

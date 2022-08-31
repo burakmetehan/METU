@@ -1,0 +1,43 @@
+name: q2
+source code: |
+  input: '1011'
+  blank: ' '
+  start state: A
+  table:
+    A: # Initial
+      0   : {write: 0, R: B}
+      1   : {write: 1, R: B}
+    B: # Scanning to the right for the first blank in first time
+      0   : {write: 0, R}
+      1   : {write: 1, R}
+      ' ' : {write: ' ', L: C}
+    C: # Copied Symbol
+      0   : {write: ' ', R: D} # Transfer to 0 remembered states
+      1   : {write: ' ', R: E} # Transfer to 1 remembered states
+      ' ' : {write: ' ', R: Accept}
+    D: # Scanning to the right for the first blank by remembering symbol is 0 
+      0   : {write: 0, R}
+      1   : {write: 1, R}
+      ' ' : {write: 0, L: F} # Transfer to left scan remembering symbol is 0
+    E: # Scanning to the right for the first blank by remembering symbol is 1 
+      0   : {write: 0, R}
+      1   : {write: 1, R}
+      ' ' : {write: 1, L: G} # Transfer to left scan remembering symbol is 1
+    F: # Scans back to the left for the inserted blank by remembering symbol is 0 
+      0   : {write: 0, L}
+      1   : {write: 1, L}
+      ' ' : {write: 0, L: C}
+    G: # Scans back to the left for the inserted blank by remembering symbol is 1 
+      0   : {write: 0, L}
+      1   : {write: 1, L}
+      ' ' : {write: 1, L: C}
+    Accept:
+positions:
+  A: {x: 100.00, y: 300.00}
+  B: {x: 250.00, y: 300.00}
+  C: {x: 400.00, y: 300.00}
+  D: {x: 300.00, y: 100.00}
+  E: {x: 300.00, y: 500.00}
+  F: {x: 500.00, y: 100.00}
+  G: {x: 500.00, y: 500.00}
+  Accept: {x: 650.00, y: 300.00}

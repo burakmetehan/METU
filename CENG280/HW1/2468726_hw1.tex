@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{xparse}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pdflscape}
+
+
+\geometry
+{
+  a4paper,
+  left=5mm,
+  right=5mm,
+  top=5mm,
+  bottom=5mm,
+}
+
+% mybox
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+% New environments that use mybox
+\newenvironment{example}[1]{\begin{mybox}{green}{\textbf{Example #1}}}{\end{mybox}}
+\newenvironment{example_break}[1]{\begin{mybox}[breakable]{green}{\textbf{Example #1}}}{\end{mybox}}
+\newenvironment{definition}[1]{\begin{mybox}{blue}{\textbf{Definition #1}}}{\end{mybox}}
+\newenvironment{theorem}[1]{\begin{mybox}{red}{\textbf{Theorem #1}}}{\end{mybox}}
+\newenvironment{formula}[1]{\begin{mybox}{red}{\textbf{#1}}}{\end{mybox}}
+
+% Changing maketitle
+\makeatletter         
+\renewcommand\maketitle{
+{\raggedright % Note the extra {
+\begin{center}
+{\Large \bfseries \@title}\\[2ex] 
+{\large \@author \ - \@date}\\[2ex]
+\end{center}}} % Note the extra }
+\makeatother
+
+% \onehalfspacing % adjust spacing
+
+% macros
+\newcommand{\prob}[1]{\textbf{\textit{P}}\{#1\}}
+\NewDocumentCommand{\dsum}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\sum
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
+
+% maketitle variables
+\title{Title}
+\author{Burak Metehan Tunçel}
+\date{\today}
+
+\begin{document}
+
+\section*{Student Information}
+
+Name : Burak Metehan Tunçel\\
+ID : 2468726\\
+
+\section*{Answer 1}
+
+\subsection*{a)}
+
+The regular expression:
+\begin{equation*}
+  \left( \left( a \cup b \right)^* aa \left(a \cup b \right)^* bb \left( a \cup b \right)^* \right) \cup \left( \left( a \cup b \right)^* bb \left(a \cup b \right)^* aa \left( a \cup b \right)^* \right)
+\end{equation*}
+This is equivalent to:
+\begin{equation*}
+  (a \cup b)^* ((aa (a \cup b)^* bb) \cup (bb (a \cup b)^* aa)) (a \cup b)^*
+\end{equation*}
+
+\subsection*{b)}
+
+\input{1b-NFA-constructing.tex}
+
+\newpage
+\subsection*{c)}
+
+\input{1c_DFA_constructing.tex}
+
+\subsection*{d)}
+
+\input{1d-Tracing.tex}
+
+
+
+\newpage
+\section*{Answer 2}
+
+\subsection*{a)}
+
+\quad If $L_1$ is a regular language, it should satisfy pumping lemma. According to pumping lemma, if $L_1$ is regular, there should be an integer $p \geq 1$ such that $w = a^mb^n \in L_1$ with $|w| \geq p$ can be written as $w = xyz$ such that:
+\begin{itemize}
+  \item $|y| > 0$,
+  \item $|xy| < p$, and
+  \item $xy^iz \in L_1$ for each $i \geq 0$.
+\end{itemize}
+
+\noindent When we focus on $y$, there are 4 possible $y$, while $k, l \geq 1$:
+\begin{enumerate}
+  \item $y = e$
+  \item $y = a^k$
+  \item $y = b^l$
+  \item $y = a^kb^l$
+\end{enumerate}
+
+\noindent We can notice that there is not $y$ such that satisfies the conditions of pumping lemma. 
+\begin{enumerate}
+  \item $y \neq e$, from pumping lemma itself. (Contradiction)
+  \item $y \neq a^k$, $y$ cannot include \textit{some} $a$: There are some situations that is valid but not all situation is valid. If the $m = n + 1$, $m \ngtr n$ when $i = 0$ for all $y = a^k$, while $k \geq 1$. (Contradiction)
+  \item $y \neq b^l$, $y$ cannot include \textit{some} $b$: $m \ngtr n$ when for some $i > 0$. (Contradiction)
+  \item $y \neq a^kb^l$, $y$ cannot include both \textit{some} $a$ and \textit{some} $b$: New strings out of pattern are generated (Example: $aaabbbaabb$). (Contradiction)
+\end{enumerate}
+
+\noindent Since all possible $y$ cause contradictions (at some points), which means that there is no integer $p$ that $L_1$ is \textbf{not regular language} according to pumping lemma. According to \textit{Theorem 2.3.1} in the textbook, languages accepted by finite automata are closed under complementation. So, $\overline{L_1}$ is also \textbf{not regular} language which is $L_2$
+
+So, $L_2$ is \textbf{not regular} language.
+
+\subsection*{b)}
+
+\subsubsection*{$L_4$ is not regular}
+
+\quad $L_4$ defines a language whose strings include equal number of $a$'s and $b$'s where $a$'s are located before $b$'s. We can use pumping lemma to show that $L_4$ is not regular.
+
+Assume $L_4$ is regular languages. Then there should be an integer $p \geq 1$ such that $w = a^nb^n \in L_4$ with $|w| \geq p$ can be written as $w = xyz$ such that:
+\begin{itemize}
+  \item $|y| > 0$,
+  \item $|xy| < p$, and
+  \item $xy^iz \in L_4$ for each $i \geq 0$.
+\end{itemize}
+
+If $y = a^i$ for some $i > 0$, $xz = a^{n-i}b^n \notin L_4$ for $y^0 = e$, contradicting theorem. In other words, there is not any $y$ that satisfies $xy^iz \in L_4$ for each $i \geq 0$. New strings, $xy^iz$, either are out of pattern or does not have same number of $a$'s and $b$'s.
+
+So, $L_4$ is \textbf{not regular} language according to pumping lemma.
+
+\subsubsection*{$L_5$ is regular}
+
+\quad In $L_5$, it stated that $m, n \in \mathbb{N}$, which means $m, n \geq 0$. So, $L_5$ can be expressed as:
+\begin{equation*}
+  L_5 = a^*b^*
+\end{equation*}
+because of the definition of \href{https://en.wikipedia.org/wiki/Kleene_star}{Kleene star} (Kleene star basically means \textit{zero or more occurences}).
+
+So, it means that $L_5$ has a regular expression. If there is certain regular expression for a language, that language is regular language (It is also stated book in page 50: \textit{Regular languages are all languages that can be described by regular expressions.}).
+
+Therefore, $L_5$ is \textbf{regular}.
+
+\subsubsection*{$L_6$ is regular}
+
+\quad Again, since $L_6$ is represented by certain regular expression, $L_6$ is regular.
+
+\subsubsection*{$L_4 \cup L_5 \cup L_6$ is regular}
+
+\quad At that point, we know that:
+\begin{itemize}
+  \item $L_4$ is not regular
+  \item $L_5$ is regular
+  \item $L_6$ is regular
+\end{itemize}
+
+If all of them was regular, we can say that the union of them is also regular because the languages are closed under union. However, $L_4$ is not regular.
+
+When we focus on $L_4 \cup L_5$, we can notice that $L_4$ is subset of $L_5$, $L_4 \subset L_5$. So their union should be $L_5$:
+\begin{equation*}
+  L_4 \cup L_5 = L_5
+\end{equation*}
+So
+\begin{equation*}
+  L_4 \cup L_5 \cup L_6 = L_5 \cup L_6
+\end{equation*}
+
+So, according to \textit{Theorem 2.3.1} in the textbook, languages accepted by finite automata are closed under union. So, $L_5 \cup L_6$ is also \textbf{regular}.
+
+Finally, we can say that $L_4 \cup L_5 \cup L_6$ is \textbf{regular}.
+
+\end{document}

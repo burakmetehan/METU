@@ -1,0 +1,41 @@
+\subsubsection*{Tracing in NFA}
+
+\begin{align*}
+    (q_0, bbabb) &\vdash_M (q_1, babb)\\
+                 &\vdash_M (q_6, abb)\\
+\end{align*}
+This way is failed.
+\begin{align*}
+    (q_0, bbabb) &\vdash_M (q_1, bbabb)\\
+                 &\vdash_M (q_6, babb)\\
+                 &\vdash_M (q_7, abb)\\
+                 &\vdash_M (q_8, abb)\\
+                 &\vdash_M (q_9, bb)\\
+\end{align*}
+This way is failed.
+\begin{align*}
+    (q_0, bbabb) &\vdash_M (q_1, babb)\\
+                 &\vdash_M (q_0, babb)\\
+                 &\vdash_M (q_1, abb)\\
+                 &\vdash_M (q_0, abb)\\
+                 &\vdash_M (q_1, bb)\\
+                 &\vdash_M (q_0, bb)\\
+                 &\vdash_M (q_1, b)\\
+                 &\vdash_M (q_0, b)\\
+                 &\vdash_M (q_1, e)\\
+\end{align*}
+This way is failed.
+
+Actually there is a no way to accept this string. In other words, $w'$ \textbf{cannot be accepted} by NFA $M$. It can be more clearly seen in DFA.
+
+\subsubsection*{Tracing in DFA}
+
+\begin{align*}
+    (q_{100}, bbabb) &\vdash_M (q_{102}, babb)\\
+                     &\vdash_M (q_{104}, abb)\\
+                     &\vdash_M (q_{106}, bb)\\
+                     &\vdash_M (q_{104}, b)\\
+                     &\vdash_M (q_{104}, e)\\
+\end{align*}
+
+\noindent String $w'$ is \textbf{not accepted} by DFA $M'$ because the automata is not stopped at the one of the final states.

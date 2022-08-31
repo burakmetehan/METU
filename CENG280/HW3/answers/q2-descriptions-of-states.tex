@@ -1,0 +1,66 @@
+\subsubsection*{State: A}
+\label{q2-state:initial}
+
+\textit{It is the start state}. If string starts with $\blank$, machine immediately stops in this state. If string starts with $\mathbf{0}$ or $\mathbf{0}$, head is moved to right and state of machine goes to state \hyperref[q2-state:B]{$\mathbf{B}$}.
+
+\subsubsection*{State: B}
+\label{q2-state:B}
+
+It scans to the right for the first $\blank$. When $\blank$ is found, head is moved to left and state of machine goes to state \hyperref[q2-state:C]{$\mathbf{C}$}. 
+
+It is used only once to find the last symbol in the string.
+
+\subsubsection*{State: C}
+\label{q2-state:C}
+
+It is the state indicating that the symbol below the head needs to be put the end of string; that is, head is on the symbol that will be copied to the end of the string if state of machine is in state \hyperref[q2-state:C]{$\mathbf{C}$}. In this state,
+\begin{itemize}
+  \item If $\mathbf{0}$ is read, a $\blank$ is temporarily placed and head is moved right and state of machine goes to state \hyperref[q2-state:D]{$\mathbf{D}$} (The upper part of states, as shown in \hyperref[fig:q2-machine]{Figure 8}. This part remembers the symbol was $\mathbf{0}$).
+  \item If $\mathbf{1}$ is read, a $\blank$ is temporarily placed and head is moved right and state of machine goes to state \hyperref[q2-state:E]{$\mathbf{E}$} (The lower part of states, as shown in \hyperref[fig:q2-machine]{Figure 8}. This part remembers the symbol was $\mathbf{1}$).
+  \item If $\blank$ is read, it means that computing is done without any error or crash. State of the machine goes to state \hyperref[q2-state:Accept]{$\mathbf{Accept}$}
+\end{itemize}
+
+\subsubsection*{State: D}
+\label{q2-state:D}
+
+It scans to the right for the first $\blank$. The important part is that it knows (symbol that will be copied was $\mathbf{0}$) symbol will be written is $\mathbf{0}$. When $\blank$ is found,
+\begin{itemize}
+  \item $\mathbf{0}$ is placed,
+  \item head is moved left, and
+  \item state of the machine goes to state \hyperref[q2-state:F]{$\mathbf{F}$}.
+\end{itemize}
+
+\subsubsection*{State: F}
+\label{q2-state:F}
+
+It scans to the left for the $\blank$ that is placed temporarily. The important part is that it knows (copied symbol was $\mathbf{0}$) symbol will be written is $\mathbf{0}$. When $\blank$ is found,
+\begin{itemize}
+  \item $\mathbf{0}$ is reinserted to its old place,
+  \item head is moved left (next is symbol that will be copied or a $\blank$), and
+  \item state of the machine goes to state \hyperref[q2-state:C]{$\mathbf{C}$}.
+\end{itemize}
+
+\subsubsection*{State: E}
+\label{q2-state:E}
+
+It scans to the right for the first $\blank$. The important part is that it knows (symbol that will be copied was $\mathbf{1}$) symbol will be written is $\mathbf{1}$. When $\blank$ is found,
+\begin{itemize}
+  \item $\mathbf{1}$ is placed,
+  \item head is moved left, and
+  \item state of the machine goes to state \hyperref[q2-state:G]{$\mathbf{G}$}.
+\end{itemize}
+
+\subsubsection*{State: G}
+\label{q2-state:G}
+
+It scans to the left for the $\blank$ that is placed temporarily. The important part is that it knows (copied symbol was $\mathbf{1}$) symbol will be written is $\mathbf{1}$. When $\blank$ is found,
+\begin{itemize}
+  \item $\mathbf{1}$ is reinserted to its old place,
+  \item head is moved left (next is symbol that will be copied or a $\blank$), and
+  \item state of the machine goes to state \hyperref[q2-state:C]{$\mathbf{C}$}.
+\end{itemize}
+
+\subsubsection*{State: Accept}
+\label{q2-state:Accept}
+
+\textit{It is state indicating that computing is done without any error or crash}. Therefore, the machine stops, successfully.

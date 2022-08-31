@@ -1,0 +1,14 @@
+\subsection*{a)}
+
+% Show that $G_1$ is ambiguous.
+
+One way to show $G_1$ i ambiguous is showing that there are more than 1 derivations or parse tree for string $w$ such that $w \in L(G_1)$. For example, there are more than 1 derivations for $w = 00111$:
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{ccccccccccc}
+    $S$ & $\Ra$ & $AS$ & $\Ra$ & $0A1S$ & $\Ra$ & $0A11S$ & $\Ra$ & $00111S$ & $\Ra$ & $00111$\\
+    $S$ & $\Ra$ & $AS$ & $\Ra$ & $A1S$ & $\Ra$ & $0A11S$ & $\Ra$ & $00111S$ & $\Ra$ & $00111$\\
+  \end{tabular}
+\end{table}
+
+Therefore, $G_1$ is ambiguous.

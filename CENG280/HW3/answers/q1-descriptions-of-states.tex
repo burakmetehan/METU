@@ -1,0 +1,45 @@
+\subsubsection*{State: Initial}
+\label{q1-state:initial}
+
+\textit{It is the start state}. If string starts with $\mathbf{1}$ or $\blank$, machine immediately stops in this state. If string starts with $\mathbf{0}$, head is moved to $\mathbf{R}$ and state of machine goes to state \hyperref[q1-state:A]{$\mathbf{A}$}.
+
+\subsubsection*{State: A}
+\label{q1-state:A}
+
+\textit{It scans to the right for the first $\blank$}.
+\begin{itemize}
+  \item If $\blank$ is found, head is moved one left and state of machine goes to state \hyperref[q1-state:B]{$\mathbf{D}$}.
+  \item If $\blank$ is not found, head is moved one right and state of machine is still in \hyperref[q1-state:A]{$\mathbf{A}$}.
+\end{itemize}
+
+\subsubsection*{State: B}
+\label{q1-state:B}
+
+\textit{It is state indicating that the head is in rightmost $\mathbf{1}$ or input is correct and it should be accepted}. 
+\begin{itemize}
+  \item If $\mathbf{1}$ is read, $\blank$ is written and head is moved to left. State of machine goes to state \hyperref[q1-state:C]{$\mathbf{C}$}.
+  \item If $\blank$ is read, it indicates that the input is correct and should be accepted. Therefore, state of machine goes to state \hyperref[q1-state:Accept]{$\mathbf{Accept}$}.
+\end{itemize}
+
+\subsubsection*{State: C}
+\label{q1-state:C}
+
+\textit{It scans to the left for the first $\blank$}.
+\begin{itemize}
+  \item If $\blank$ is found, head is moved one right and state of machine goes to state \hyperref[q1-state:D]{$\mathbf{D}$}.
+  \item If $\blank$ is not found, head is moved one left and state of machine is still in \hyperref[q1-state:C]{$\mathbf{C}$}.
+\end{itemize}
+
+\subsubsection*{State: D}
+\label{q1-state:D}
+
+\textit{It is state indicating that the head is in leftmost $\mathbf{0}$}. 
+\begin{itemize}
+  \item If $\mathbf{0}$ is read, $\blank$ is written and head is moved to right. State of machine goes to state \hyperref[q1-state:A]{$\mathbf{A}$}.
+  \item If $\mathbf{0}$ is not read, it indicates that the input is not correct and shouldn't be accepted. Therefore, state of machine is not changed and crash.
+\end{itemize}
+
+\subsubsection*{State: Accept}
+\label{q1-state:Accept}
+
+\textit{It is state indicating that the input is correct and accepted}. Therefore, the machine stops, successfully.

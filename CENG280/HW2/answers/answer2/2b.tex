@@ -1,0 +1,20 @@
+\subsection*{b)}
+
+% Give an unambiguous grammar for $L(G_1)$. (i.e. disambiguate the given grammar.)
+
+The following grammer is unambiguous grammar for $L(G_1)$:
+\begin{equation*}
+  G_1' = \left\{ V', \Sigma, R', S \right\}
+\end{equation*}
+where
+\begin{itemize}
+  \item $V' = \{ 0, 1, S, A, B \}$
+  \item $\Sigma = \{ 0, 1 \}$
+  \item $R' = \left\{  
+    \begin{aligned}
+      S &\ra AS\ |\ e, \\
+      A &\ra 0A1\ |\ 0B1, \\
+      B &\ra B1\ |\ e
+    \end{aligned} 
+  \right\}$
+\end{itemize}

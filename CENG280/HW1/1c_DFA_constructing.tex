@@ -1,0 +1,811 @@
+We want to construct DFA. In other words we want to acquire:
+\begin{equation*}
+    M' = (K', \Sigma, \delta', s', F')
+\end{equation*}
+
+While constructing a DFA from an NFA, $E(q)$ should be computed for $q \in K$. Instead of doing this, I will compute $E(q)$ for some, or all, $q \in K$ when it is needed. Also, it can be decided that $s' = q_{100}$
+
+We start from the initial state of DFA, $s' = q_{100} = E(q_0)$.
+
+\begin{equation*}
+    E(q_{0}) = \{ q_{0}, q_{1} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{0})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{100}, a) = E(q_{1}) \cup E(q_{2})
+\end{equation*}
+
+\noindent I need to compute $E(q_{1}), E(q_{2})$:
+\begin{itemize}
+    \item $E(q_{1}) = \{ q_{0}, q_{1} \}$
+    \item $E(q_{2}) = \{ q_{2} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{100}, a) = \{ q_{0}, q_{1}, q_{2} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{101}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{0})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{100}, b) = E(q_{1}) \cup E(q_{6})
+\end{equation*}
+
+\noindent I have $E(q_{1})$. I need to compute $E(q_{6})$:
+\begin{itemize}
+    \item $E(q_{6}) = \{ q_{6} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{100}, b) = \{ q_{0}, q_{1}, q_{6} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{102}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{101} = \{ q_{0}, q_{1}, q_{2} \}$
+            \item $q_{102} = \{ q_{0}, q_{1}, q_{6} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{100}, a) = q_{101}$
+            \item $\delta'(q_{100}, b) = q_{102}$
+        \end{itemize}
+\end{formula}
+
+\begin{center}
+\subsubsection*{$q_{101}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{101}$.
+
+\begin{equation*}
+    q_{101} = \{ q_{0}, q_{1}, q_{2} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{101}) = \{ q_{0}, q_{1}, q_{2} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{2}, a, q_{3})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{101})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{101}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{3})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2})$. I need to compute $E(q_{3})$:
+\begin{itemize}
+    \item $E(q_{3}) = \{ q_{3}, q_{4} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{101}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{103}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{101})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{101}, b) = E(q_{1}) \cup E(q_{6})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{6})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{101}, b) = \{ q_{0}, q_{1}, q_{6} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{102}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{103} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{101}, a) = q_{103}$
+            \item $\delta'(q_{101}, b) = q_{102}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+\subsubsection*{$q_{102}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{102}$.
+
+\begin{equation*}
+    q_{102} = \{ q_{0}, q_{1}, q_{6} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{102}) = \{ q_{0}, q_{1}, q_{6} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{102})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{102}, a) = E(q_{1}) \cup E(q_{2})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{102}, a) = \{ q_{0}, q_{1}, q_{2} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{101}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{6}, b, q_{7})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{102})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{102}, b) = E(q_{1}) \cup E(q_{6}) \cup E(q_{7})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{6})$. I need to compute $E(q_{7})$:
+\begin{itemize}
+    \item $E(q_{7}) = \{ q_{7}, q_{8} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{102}, b) = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{104}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{104} = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{102}, a) = q_{101}$
+            \item $\delta'(q_{102}, b) = q_{104}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+\subsubsection*{$q_{103}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{103}$.
+
+\begin{equation*}
+    q_{103} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{103}) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{2}, a, q_{3}), (q_{3}, a, q_{4})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{103})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{103}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{3}) \cup E(q_{4})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2}), E(q_{3})$. I need to compute $E(q_{4})$:
+\begin{itemize}
+    \item $E(q_{4}) = \{ q_{3}, q_{4} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{103}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{103}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{3}, b, q_{4}), (q_{4}, b, q_{5})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{103})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{103}, b) = E(q_{1}) \cup E(q_{4}) \cup E(q_{5}) \cup E(q_{6})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{4}), E(q_{6})$. I need to compute $E(q_{5})$:
+\begin{itemize}
+    \item $E(q_{5}) = \{ q_{5} \} $
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{103}, b) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{105}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{105} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{103}, a) = q_{103}$
+            \item $\delta'(q_{103}, b) = q_{105}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+\subsubsection*{$q_{104}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{104}$.
+
+\begin{equation*}
+    q_{104} = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{104}) = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{7}, a, q_{8}), (q_{8}, a, q_{9})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{104})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{104}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{8}) \cup E(q_{9})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2})$. I need to compute $E(q_{8}), E(q_{9})$:
+\begin{itemize}
+    \item $E(q_{8}) = \{ q_{7}, q_{8} \}$
+    \item $E(q_{9}) = \{ q_{9} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{104}, a) = \{ q_{0}, q_{1}, q_{2}, q_{7}, q_{8}, q_{9} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{106}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{6}, b, q_{7}), (q_{7}, b, q_{8})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{104})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{104}, b) = E(q_{1}) \cup E(q_{6}) \cup E(q_{7}) \cup E(q_{8})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{6}), E(q_{7}), E(q_{8})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{104}, b) = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{104}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{106} = \{ q_{0}, q_{1}, q_{2}, q_{7}, q_{8}, q_{9} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{104}, a) = q_{106}$
+            \item $\delta'(q_{104}, b) = q_{104}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+\subsubsection*{$q_{105}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{105}$.
+
+\begin{equation*}
+    q_{105} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{105}) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{3}, a, q_{4})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{105})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{105}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{4})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2}), E(q_{4})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{105}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{103}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{3}, b, q_{4}), (q_{4}, b, q_{5}), (q_{5}, b, q_{10}), (q_{6}, b, q_{7})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{105})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{105}, b) = E(q_{1}) \cup E(q_{4}) \cup E(q_{5}) \cup E(q_{6}) \cup E(q_{7}) \cup E(q_{10})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{4}), E(q_{5}), E(q_{6}), E(q_{7})$. I need to compute $E(q_{10})$:
+\begin{itemize}
+    \item $E(q_{10}) = \{ q_{10}, q_{11} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{105}, b) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{107}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{107} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{105}, a) = q_{103}$
+            \item $\delta'(q_{105}, b) = q_{107}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+\subsubsection*{$q_{106}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{106}$.
+
+\begin{equation*}
+    q_{106} = \{ q_{0}, q_{1}, q_{2}, q_{7}, q_{8}, q_{9} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{106}) = \{ q_{0}, q_{1}, q_{2}, q_{7}, q_{8}, q_{9} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{2}, a, q_{3}), (q_{7}, a, q_{8}), (q_{8}, a, q_{9}), (q_{9}, a, q_{10})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{106})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{106}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{3}) \cup E(q_{8}) \cup E(q_{9}) \cup E(q_{10})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2}), E(q_{3}), E(q_{8}), E(q_{9}), E(q_{10})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{106}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is a new state. Let the state be $q_{108}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{7}, b, q_{8})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{106})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{106}, b) = E(q_{1}) \cup E(q_{6}) \cup E(q_{8})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{6}), E(q_{8})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{106}, b) = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with $q_{104}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item $q_{108} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}$
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{106}, a) = q_{108}$
+            \item $\delta'(q_{106}, b) = q_{104}$
+        \end{itemize}
+\end{formula}
+
+
+\begin{center}
+    {$q_{107}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{107}$.
+
+\begin{equation*}
+    q_{107} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{107}) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{3}, a, q_{4}), (q_{7}, a, q_{8}), (q_{8}, a, q_{9}), (q_{10}, a, q_{11})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{107})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{107}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{4}) \cup E(q_{8}) \cup E(q_{9}) \cup E(q_{11})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2}), E(q_{4}), E(q_{8}), E(q_{9})$. I need to compute $E(q_{11})$:
+\begin{itemize}
+    \item $E(q_{11}) = \{ q_{10}, q_{11} \}$
+\end{itemize}
+
+\begin{align*}
+    \delta'(q_{107}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with $q_{108}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{3}, b, q_{4}), (q_{4}, b, q_{5}), (q_{5}, b, q_{6}), (q_{6}, b, q_{7}), (q_{7}, b, q_{8}), (q_{10}, b, q_{11})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{107})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{107}, b) = E(q_{1}) \cup E(q_{4}) \cup E(q_{5}) \cup E(q_{6}) \cup E(q_{7}) \cup E(q_{8}) \cup E(q_{11})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{4}), E(q_{5}), E(q_{6}), E(q_{7}), E(q_{8}), E(q_{11})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{107}, b) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with $q_{107}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{107}, a) = q_{108}$
+            \item $\delta'(q_{107}, b) = q_{107}$
+        \end{itemize}
+\end{formula}
+
+\begin{center}
+\subsubsection*{$q_{108}$}
+\end{center}
+
+Repeating the calculation for newly introduced state $q_{108}$.
+
+\begin{equation*}
+    q_{108} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}
+\end{equation*}
+So,
+
+\begin{equation*}
+    E(q_{108}) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}
+\end{equation*}
+
+\begin{equation*}
+    (q_{0}, a, q_{1}), (q_{1}, a, q_{2}), (q_{2}, a, q_{3}), (q_{3}, a, q_{4}), (q_{7}, a, q_{8}), (q_{8}, a, q_{9}), (q_{9}, a, q_{10}), (q_{10}, a, q_{11})
+\end{equation*}
+
+\noindent are all the transitions $(q, a, p)$ for some $q \in E(q_{108})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{108}, a) = E(q_{1}) \cup E(q_{2}) \cup E(q_{3}) \cup E(q_{4}) \cup E(q_{8}) \cup E(q_{9}) \cup E(q_{10}) \cup E(q_{11})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{2}), E(q_{3}), E(q_{4}), E(q_{8}), E(q_{9}), E(q_{10}), E(q_{11})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{108}, a) = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with the $q_{108}$. Similarly,
+
+\begin{equation*}
+    (q_{0}, b, q_{1}), (q_{1}, b, q_{6}), (q_{3}, b, q_{4}), (q_{4}, b, q_{5}), (q_{7}, b, q_{8}), (q_{10}, b, q_{11})
+\end{equation*}
+
+\noindent are all the transitions $(q, b, p)$ for some $q \in E(q_{107})$. It follows that
+
+\begin{equation*}
+    \delta'(q_{108}, b) = E(q_{1}) \cup E(q_{4}) \cup E(q_{5}) \cup E(q_{6}) \cup E(q_{8}) \cup E(q_{11})
+\end{equation*}
+
+\noindent I have $E(q_{1}), E(q_{4}), E(q_{5}), E(q_{6}), E(q_{8}), E(q_{11})$. No need to compute anything.
+
+\begin{align*}
+    \delta'(q_{108}, b) = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}
+\end{align*}
+
+\noindent There is not a new state, it is same with $q_{107}$.
+
+\begin{formula}{New States and Transitions}
+    \textbf{States:}
+        \begin{itemize}
+            \item
+        \end{itemize}
+    \textbf{Transitions:}
+        \begin{itemize}
+            \item $\delta'(q_{108}, a) = q_{108}$
+            \item $\delta'(q_{108}, b) = q_{107}$
+        \end{itemize}
+\end{formula}
+
+\newpage
+\subsubsection*{Constructing the DFA}
+
+Finally, we reached the the end and we have new states as follows:
+\begin{multicols}{2}
+\begin{itemize}
+    \item $q_{101} = \{ q_{0}, q_{1}, q_{2} \}$
+    \item $q_{102} = \{ q_{0}, q_{1}, q_{6} \}$
+    \item $q_{103} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4} \}$
+    \item $q_{104} = \{ q_{0}, q_{1}, q_{6}, q_{7}, q_{8} \}$
+    \item $q_{105} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6} \}$
+    \item $q_{106} = \{ q_{0}, q_{1}, q_{2}, q_{7}, q_{8}, q_{9} \}$
+    \item $q_{107} = \{ q_{0}, q_{1}, q_{3}, q_{4}, q_{5}, q_{6}, q_{7}, q_{8}, q_{10}, q_{11} \}$
+    \item $q_{108} = \{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{7}, q_{8}, q_{9}, q_{10}, q_{11} \}$
+\end{itemize}
+\end{multicols}
+Since, in the NFA $M$, $q_{11}$ is the final states, states that include $q_{11}$ are final states of DFA $M$. In this situation, they are $q_{107}$ and $q_{108}$. So, we have
+\begin{equation*}
+    M' = (K', \Sigma, \delta', s', F')
+\end{equation*}
+where,
+\begin{itemize}
+    \item $K' = \{ q_{100}, q_{101}, q_{102}, q_{103}, q_{104}, q_{105}, q_{106}, q_{107}, q_{108} \}$
+    \item $\Sigma = \{ a, b \}$
+    \item $s' = q_{100}$, the initial state
+    \item $F' = \{ q_{107}, q_{108} \}$, final states
+    \item The transition relation $\delta'$:
+        \begin{table}[h!]
+            \centering
+                \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+                \begin{tabular}{P{3cm}|P{3cm}|P{3cm}} 
+                \hline
+                $q_0$        & $\sigma$   & $\delta'(q, \sigma)$        \\ 
+                \hline
+                $q_{100}$    & $a$        & $q_{101}$                  \\
+                $q_{100}$    & $b$        & $q_{102}$                  \\
+                $q_{101}$    & $a$        & $q_{103}$                  \\
+                $q_{101}$    & $b$        & $q_{102}$                  \\
+                $q_{102}$    & $a$        & $q_{101}$                  \\
+                $q_{102}$    & $b$        & $q_{104}$                  \\
+                $q_{103}$    & $a$        & $q_{103}$                  \\
+                $q_{103}$    & $b$        & $q_{105}$                  \\
+                $q_{104}$    & $a$        & $q_{106}$                  \\
+                $q_{104}$    & $b$        & $q_{104}$                  \\
+                $q_{105}$    & $a$        & $q_{103}$                  \\
+                $q_{105}$    & $b$        & $q_{107}$                  \\
+                $q_{106}$    & $a$        & $q_{108}$                  \\
+                $q_{106}$    & $b$        & $q_{104}$                  \\
+                $q_{107}$    & $a$        & $q_{108}$                  \\
+                $q_{107}$    & $b$        & $q_{107}$                  \\
+                $q_{108}$    & $a$        & $q_{108}$                  \\
+                $q_{108}$    & $b$        & $q_{107}$                  \\
+                \hline
+                \end{tabular}
+            \end{table}
+\end{itemize}
+So, we get the following DFA:
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[scale=0.2]
+        \tikzstyle{every node}+=[inner sep=0pt]
+        \draw [black] (3.2,-18.5) circle (3);
+        \draw (3.2,-18.5) node {$q_{100}$};
+        \draw [black] (13.2,-9.1) circle (3);
+        \draw (13.2,-9.1) node {$q_{101}$};
+        \draw [black] (13.2,-28.4) circle (3);
+        \draw (13.2,-28.4) node {$q_{102}$};
+        \draw [black] (27.7,-9.1) circle (3);
+        \draw (27.7,-9.1) node {$q_{103}$};
+        \draw [black] (26.7,-28.4) circle (3);
+        \draw (26.7,-28.4) node {$q_{104}$};
+        \draw [black] (39,-9.1) circle (3);
+        \draw (39,-9.1) node {$q_{105}$};
+        \draw [black] (39,-28.4) circle (3);
+        \draw (39,-28.4) node {$q_{106}$};
+        \draw [black] (52,-9.1) circle (3);
+        \draw (52,-9.1) node {$q_{107}$};
+        \draw [black] (52,-9.1) circle (2.4);
+        \draw [black] (52,-28.4) circle (3);
+        \draw (52,-28.4) node {$q_{108}$};
+        \draw [black] (52,-28.4) circle (2.4);
+        \draw [black] (5.39,-16.45) -- (11.01,-11.15);
+        \fill [black] (11.01,-11.15) -- (10.09,-11.34) -- (10.77,-12.07);
+        \draw (9.16,-14.28) node [below] {$a$};
+        \draw [black] (5.33,-20.61) -- (11.07,-26.29);
+        \fill [black] (11.07,-26.29) -- (10.85,-25.37) -- (10.15,-26.08);
+        \draw (7.18,-23.93) node [below] {$b$};
+        \draw [black] (16.2,-28.4) -- (23.7,-28.4);
+        \fill [black] (23.7,-28.4) -- (22.9,-27.9) -- (22.9,-28.9);
+        \draw (19.95,-28.9) node [below] {$b$};
+        \draw [black] (14.027,-11.983) arc (13.12114:-13.12114:29.811);
+        \fill [black] (14.03,-11.98) -- (13.72,-12.88) -- (14.7,-12.65);
+        \draw (15.31,-18.75) node [right] {$a$};
+        \draw [black] (12.325,-25.532) arc (-166.07551:-193.92449:28.183);
+        \fill [black] (12.32,-25.53) -- (12.62,-24.64) -- (11.65,-24.88);
+        \draw (11,-18.75) node [left] {$b$};
+        \draw [black] (16.2,-9.1) -- (24.7,-9.1);
+        \fill [black] (24.7,-9.1) -- (23.9,-8.6) -- (23.9,-9.6);
+        \draw (20.45,-9.6) node [below] {$a$};
+        \draw [black] (26.377,-6.42) arc (234:-54:2.25);
+        \draw (27.7,-1.85) node [above] {$a$};
+        \fill [black] (29.02,-6.42) -- (29.9,-6.07) -- (29.09,-5.48);
+        \draw [black] (28.023,-31.08) arc (54:-234:2.25);
+        \draw (26.7,-35.65) node [below] {$b$};
+        \fill [black] (25.38,-31.08) -- (24.5,-31.43) -- (25.31,-32.02);
+        \draw [black] (36.323,-29.732) arc (-71.42721:-108.57279:10.903);
+        \fill [black] (36.32,-29.73) -- (35.41,-29.51) -- (35.72,-30.46);
+        \draw (32.85,-30.8) node [below] {$a$};
+        \draw [black] (36.402,-10.572) arc (-70.06975:-109.93025:8.953);
+        \fill [black] (36.4,-10.57) -- (35.48,-10.37) -- (35.82,-11.31);
+        \draw (33.35,-11.61) node [below] {$b$};
+        \draw [black] (30.438,-7.898) arc (105.71254:74.28746:10.753);
+        \fill [black] (30.44,-7.9) -- (31.34,-8.16) -- (31.07,-7.2);
+        \draw (33.35,-7) node [above] {$a$};
+        \draw [black] (29.309,-26.942) arc (110.6441:69.3559:10.044);
+        \fill [black] (29.31,-26.94) -- (30.23,-27.13) -- (29.88,-26.19);
+        \draw (32.85,-25.8) node [above] {$b$};
+        \draw [black] (42,-28.4) -- (49,-28.4);
+        \fill [black] (49,-28.4) -- (48.2,-27.9) -- (48.2,-28.9);
+        \draw (45.5,-28.9) node [below] {$a$};
+        \draw [black] (53.323,-31.08) arc (54:-234:2.25);
+        \draw (52,-35.65) node [below] {$a$};
+        \fill [black] (50.68,-31.08) -- (49.8,-31.43) -- (50.61,-32.02);
+        \draw [black] (50.677,-6.42) arc (234:-54:2.25);
+        \draw (52,-1.85) node [above] {$b$};
+        \fill [black] (53.32,-6.42) -- (54.2,-6.07) -- (53.39,-5.48);
+        \draw [black] (50.563,-25.771) arc (-156.26833:-203.73167:17.445);
+        \fill [black] (50.56,-25.77) -- (50.7,-24.84) -- (49.78,-25.24);
+        \draw (48.59,-18.75) node [left] {$a$};
+        \draw [black] (52.974,-11.936) arc (15.5733:-15.5733:25.382);
+        \fill [black] (52.97,-11.94) -- (52.71,-12.84) -- (53.67,-12.57);
+        \draw (54.41,-18.75) node [right] {$b$};
+        \draw [black] (42,-9.1) -- (49,-9.1);
+        \fill [black] (49,-9.1) -- (48.2,-8.6) -- (48.2,-9.6);
+        \draw (45.5,-9.6) node [below] {$b$};
+    \end{tikzpicture}
+    \caption{$M'$}
+\end{figure}
+
+\newpage
+Actually we can merge $q_{107}$ and $q_{108}$ if we want to acquire in order to minimize a little bit more. This will changed nothing:
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.2]
+        \tikzstyle{every node}+=[inner sep=0pt]
+        \draw [black] (3.2,-18) circle (3);
+        \draw (3.2,-18) node {$q_{100}$};
+        \draw [black] (13.2,-8.6) circle (3);
+        \draw (13.2,-8.6) node {$q_{101}$};
+        \draw [black] (13.2,-27.9) circle (3);
+        \draw (13.2,-27.9) node {$q_{102}$};
+        \draw [black] (27.7,-8.6) circle (3);
+        \draw (27.7,-8.6) node {$q_{103}$};
+        \draw [black] (26.7,-27.9) circle (3);
+        \draw (26.7,-27.9) node {$q_{104}$};
+        \draw [black] (39,-8.6) circle (3);
+        \draw (39,-8.6) node {$q_{105}$};
+        \draw [black] (39,-27.9) circle (3);
+        \draw (39,-27.9) node {$q_{106}$};
+        \draw [black] (51.5,-18) circle (3);
+        \draw (51.5,-18) node {$q_{107}$};
+        \draw [black] (51.5,-18) circle (2.4);
+        \draw [black] (5.39,-15.95) -- (11.01,-10.65);
+        \fill [black] (11.01,-10.65) -- (10.09,-10.84) -- (10.77,-11.57);
+        \draw (9.16,-13.78) node [below] {$a$};
+        \draw [black] (5.33,-20.11) -- (11.07,-25.79);
+        \fill [black] (11.07,-25.79) -- (10.85,-24.87) -- (10.15,-25.58);
+        \draw (7.18,-23.43) node [below] {$b$};
+        \draw [black] (16.2,-27.9) -- (23.7,-27.9);
+        \fill [black] (23.7,-27.9) -- (22.9,-27.4) -- (22.9,-28.4);
+        \draw (19.95,-28.4) node [below] {$b$};
+        \draw [black] (14.027,-11.483) arc (13.12114:-13.12114:29.811);
+        \fill [black] (14.03,-11.48) -- (13.72,-12.38) -- (14.7,-12.15);
+        \draw (15.31,-18.25) node [right] {$a$};
+        \draw [black] (12.325,-25.032) arc (-166.07551:-193.92449:28.183);
+        \fill [black] (12.32,-25.03) -- (12.62,-24.14) -- (11.65,-24.38);
+        \draw (11,-18.25) node [left] {$b$};
+        \draw [black] (16.2,-8.6) -- (24.7,-8.6);
+        \fill [black] (24.7,-8.6) -- (23.9,-8.1) -- (23.9,-9.1);
+        \draw (20.45,-9.1) node [below] {$a$};
+        \draw [black] (26.377,-5.92) arc (234:-54:2.25);
+        \draw (27.7,-1.35) node [above] {$a$};
+        \fill [black] (29.02,-5.92) -- (29.9,-5.57) -- (29.09,-4.98);
+        \draw [black] (28.023,-30.58) arc (54:-234:2.25);
+        \draw (26.7,-35.15) node [below] {$b$};
+        \fill [black] (25.38,-30.58) -- (24.5,-30.93) -- (25.31,-31.52);
+        \draw [black] (36.323,-29.232) arc (-71.42721:-108.57279:10.903);
+        \fill [black] (36.32,-29.23) -- (35.41,-29.01) -- (35.72,-29.96);
+        \draw (32.85,-30.3) node [below] {$a$};
+        \draw [black] (36.402,-10.072) arc (-70.06975:-109.93025:8.953);
+        \fill [black] (36.4,-10.07) -- (35.48,-9.87) -- (35.82,-10.81);
+        \draw (33.35,-11.11) node [below] {$b$};
+        \draw [black] (30.438,-7.398) arc (105.71254:74.28746:10.753);
+        \fill [black] (30.44,-7.4) -- (31.34,-7.66) -- (31.07,-6.7);
+        \draw (33.35,-6.5) node [above] {$a$};
+        \draw [black] (29.309,-26.442) arc (110.6441:69.3559:10.044);
+        \fill [black] (29.31,-26.44) -- (30.23,-26.63) -- (29.88,-25.69);
+        \draw (32.85,-25.3) node [above] {$b$};
+        \draw [black] (41.35,-26.04) -- (49.15,-19.86);
+        \fill [black] (49.15,-19.86) -- (48.21,-19.97) -- (48.83,-20.75);
+        \draw (46.2,-23.45) node [below] {$a$};
+        \draw [black] (41.4,-10.4) -- (49.1,-16.2);
+        \fill [black] (49.1,-16.2) -- (48.76,-15.32) -- (48.16,-16.12);
+        \draw (44.25,-13.8) node [below] {$b$};
+        \draw [black] (54.18,-16.677) arc (144:-144:2.25);
+        \draw (58.75,-18) node [right] {$a,b$};
+        \fill [black] (54.18,-19.32) -- (54.53,-20.2) -- (55.12,-19.39);
+    \end{tikzpicture}
+    \caption{$M'_2$}
+\end{figure}

@@ -1,0 +1,33 @@
+\subsection*{a)}
+
+% Write a context-free grammar for the language $L_1 = \left\{ w\ |\ w \in \left\{ a, b \right\}^* \land w \textnormal{ has twice as many $b$'s as $a$'s} \right\}$
+
+\begin{equation*}
+  G_1 = \left( V_1, \Sigma_1, R_1, S_1 \right)
+\end{equation*}
+with
+\begin{multicols}{3}
+  \begin{itemize}
+    \vspace*{\fill}
+    \item[] $V_1 = \left\{ S_1, a, b \right\}$
+    \vspace*{\fill}
+
+    \columnbreak
+    
+    \vspace*{\fill}
+    \item[] $\Sigma_1 = \left\{ a, b \right\}$
+    \vspace*{\fill}
+    
+    \columnbreak
+    
+    \vspace*{\fill}
+    \item[] $R_1 = \left\{
+    \begin{aligned}
+      &S_1 \ra S_1bS_1bS_1aS_1,\\
+      &S_1 \ra S_1bS_1aS_1bS_1,\\
+      &S_1 \ra S_1aS_1bS_1bS_1,\\
+      &S_1 \ra e
+    \end{aligned} \right\}$
+    \vspace*{\fill}
+  \end{itemize}
+\end{multicols}
