@@ -1,0 +1,18 @@
+\section{The Church Turing Thesis}
+\label{sec:church-turing-thesis}
+
+The main question was ``What can be computed?'' (And, more intriguingly, ``What cannot be computed?''). Various and diverse 
+mathematical models of computational processes that accomplish concrete computational tasks (in particular, \textit{decide}, \textit{semidecide}, or \textit{generate languages}, and \textit{compute functions}) are introduced. By trying to formalize our intuitions on which numerical functions can be considered computable, we defined a class of functions that turned out to be precisely the recursive ones. 
+
+All this suggests that a natural upper limit on what a computational device can be designed to do has been reached; that search for the ultimate and most general mathematical notion of a computational process, of an \textit{algorithm}, has been concluded successfully and the \textit{Turing machine} is the right answer. However, we have also seen that not all Turing machines deserve to be called ``\textit{algorithms}'': We argued that Turing machines that semi decide languages, and thus reject by never halting, are not useful computational devices, whereas Turing machines that decide languages and compute functions (and therefore halt at all inputs) are. Our notion of an algorithm must exclude Thring machines that may not halt on some inputs.
+
+\textit{We therefore propose to adopt the Turing machine that halts on all inputs as the precise formal notion corresponding to the intuitive notion of an ``algorithm''.} Nothing will be considered an algorithm if it cannot be rendered as a Turing machine that is guaranteed to halt on all inputs, and all such machines will be rightfully called algorithms.
+
+This principle is known as the \textbf{Church-Turing thesis}. It is a thesis, not a theorem, because it is not a mathematical 
+result: \textit{It simply asserts that a certain informal concept (algorithm) corresponds to a certain mathematical object (Turing machine)}. Not being a mathematical statement, the Church-Thring thesis cannot be proved. It is theoretically possible, however, that the Church-Turing thesis could be disproved at some future date, if someone were to propose an alternative model of computation that was publicly acceptable as a plausible and reasonable model of computation, and yet was provably capable of carrying out computations that cannot be carried out by any Turing machine. No one considers this likely.
+
+According to the Church-Turing thesis, computational tasks that cannot be performed by Turing machines are \textit{impossible}, \textit{hopeless}, \textit{undecidable}.
+
+\begin{formula}{Briefly}
+  Informally, an algorithm is a rule for solving a problem in a finite number of steps. \textbf{Church - Turing thesis} states that an algorithm corresponds to a Turing machine that \textit{halts on all inputs}. \textbf{CHURCH:} A function of positive integers is effectively computable only if recursive. \textbf{TURING:} Turing machine can do anything that could be described purely mathematical.
+\end{formula}

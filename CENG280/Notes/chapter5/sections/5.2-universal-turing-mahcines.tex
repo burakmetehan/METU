@@ -1,0 +1,132 @@
+\section{Universal Turing Machines}
+\label{sec:universal-turing-machines}
+
+We shall argue that Turing machines are also software. That is, we shall show that there is a certain ``generic'' Turing machine that can be programmed, about the same way that a general-purpose computer can, to solve \textit{any} problem that can be solved by Turing machines. The ``program'' that makes this generic machine behave like a specific machine $M$ will have to be \textit{a description of $M$}. In other words, we shall be thinking of the formalism of Turing machines as a \textit{programming language}, in which we can write programs. Programs written in this language can then be \textit{interpreted} by a \textit{universal Turing machine} (that is to say, another program in the same language). 
+
+That a program written in a language can interpret any program in the same language is not a very novel idea (it is the basis of the classical method for ``bootstrapping'' language processors). But to continue with our project in this book we must make this point precise in the context of Turing machines.
+
+To begin, we must present a general way of specifying Turing machines, so that their descriptions can be used as input to other Thring machines. That is, we must define a language whose strings are all legal representations of Turing machines. One problem manifests itself already:
+\begin{quote}
+  No matter how large an alphabet we choose for this representation, there will be Turing machines that have more states and more tape symbols.
+\end{quote}
+Evidently, we must encode the states and tape symbols as strings over a fixed alphabet. We adopt the following convention:
+\begin{itemize}
+  \item A string representing a Turing machine state is of the form $\{ q \}\{ 0, 1 \}^*$; that is, the letter $q$ followed by a binary string.
+  \item Similarly, a tape symbol is always represented as a string in $\{ a \}\{ 0, 1 \}^*$
+\end{itemize}
+
+Let $M = (K, \Sigma, \delta, s, H)$ be a Turing machine, and let $i$ and $j$ be the smallest integers such that $2^i \geq |K|$, and $2^j \geq |\Sigma| + 2$. Then each state in $K$ will be represented as a $q$ followed by a binary string of length $i$; each symbol in $\Sigma$ will be likewise represented as the letter $a$ followed by a string of $j$ bits. The head directions $\la$ and $\ra$ will also be treated as ``honorary tape symbols'' (they were the reason for the ``$+2$'' term in the definition of $j$). We fix the representations of the special symbols $\blank$, $\tar$, $\la$, and $\ra$ to be the lexicographically four smallest symbols, respectively:
+\begin{itemize}
+  \item $\blank$ will always be represented as $a0^j$,
+  \item $\tar$ as $a0^{j-1}1$,
+  \item $\la$ as $aO^{j-2}10$, and 
+  \item $\ra$ as $a0^{j-2}11$.
+\end{itemize}
+The start state will always be represented as the lexicographically first state, $q0^i$. Notice that we require the use of leading zeros in the strings that follow the symbols $a$ and $q$, to bring the total length to the required level.
+
+\begin{formula}{Represent TMs as strings}
+  \begin{itemize}[leftmargin=.6cm]
+    \item min $i$ such that $2^i \geq |K|$
+    \item States are represented as 
+    \begin{equation*}
+      q\{ \textit{binary string whose length is i} \}
+    \end{equation*}
+    for example: $q00$, $q01$, $q10$, $q11$ (increase the number of bits w.r. to the number of states)
+    \item $q0^i$ is \textit{fixed} representation of the start state
+    \item min $j$ such that $2^j \geq |\Sigma| + 2$ (for left/right), a + j bits
+    \item Symbols are represented as 
+    \begin{equation*}
+      a\{ \textit{binary string whose length is j} \}
+    \end{equation*}
+    for example: $a0$, $1$ (increase the number of bits w.r. to the number of states)
+    \item Fixed symbols:
+      \begin{itemize}
+        \item $\blank$: $a0^{j-2}00 = a0^{j}$,
+        \item $\tar$: $a0^{j-2}01 = a0^{j-1}1$,
+        \item $\la$: $a0^{j-2}10$,
+        \item $\ra$: $a0^{j-2}11$.
+      \end{itemize}
+\end{itemize}
+\end{formula}
+
+We shall denote the representation of the whole Turing machine $M$ as ``$M$''. ``$M$'', consists of the transition table $\delta$. That is, it is a sequence of strings of the form $(q,\ a,\ p,\ b)$, with $q$ and $p$ representations of states and $a$, $b$ of symbols, separated by commas and included in parentheses. We adopt the convention that the quadruples are listed in \textit{increasing lexicographic order}, starting with $\delta(s,\ \blank)$. The set of halting states $H$ will be determined indirectly, by the absence of its states as first components in any quadruple of $``M''$. If $M$ decides a language, and thus $H = \{ y,\ n \}$, we will adopt the convention that $y$ is the lexicographically smallest of the two halt states.
+
+This way, any Turing machine can be represented. We shall use the same method to represent \textit{strings} in the alphabet of the Turing machine. Any string $w \in \Sigma^*$ will have a unique representation, also denoted $``w''$, namely, the juxtaposition of the representations of its symbols.
+
+\vspace*{\fill}
+\columnbreak
+
+\begin{example}{}
+Consider the Turing machine $M = (K,\Sigma,\ \delta,\ s, \{ h \})$, where $K = \{ s,\ q,\ h \}$, $\Sigma = \{ \blank,\ \tar,\ a \}$, and $\delta$ is given in this table.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|cc|c|}
+    \hline
+    state & symbol & $\delta$ \\
+    \hline
+    $s$ & $a$ & $(q,\ \blank)$ \\
+    $s$ & $\blank$ & $(h,\ \blank)$ \\
+    $s$ & $\tar$ & $(s,\ \ra)$ \\
+    $q$ & $a$ & $(s,\ a)$ \\
+    $q$ & $\blank$ & $(s,\ \ra)$ \\
+    $q$ & $\tar$ & $(q,\ \ra)$ \\
+    \hline
+  \end{tabular}
+\end{table}
+\quad Since there are three states in $K$ and three symbols in $\Sigma$, we have $i = 2$ and $j = 3$. These are the smallest integers such that $2^i \geq 3$ and $2^j \geq 3 + 2$. The states and symbols are represented as follows:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    state / symbol & representation \\
+    \hline
+    $s$       & $q00$  \\
+    $q$       & $q01$  \\
+    $h$       & $q11$  \\
+    $\blank$  & $a000$ \\
+    $\tar$    & $a001$  \\
+    $\la$     & $a010$  \\
+    $\ra$     & $a011$  \\
+    $a$       & $a100$  \\
+    \hline
+  \end{tabular}
+\end{table}
+Thus, the representation of the string ${\tar}aa{\blank}a$ is
+\begin{equation*}
+  \textnormal{``}{\tar}aa{\blank}a\textnormal{''} = a001a100a100a100a000a100
+\end{equation*}
+
+The representation ``$M$'' of the Turing machine $M$ is the following string:
+\begin{align*}
+  \textnormal{``$M$''=} &(q00,\ a100,\ q01,\ a000),\ (q00,\ a000,\ q11,\ a000),\\
+                         &(q00,\ a001,\ q00,\ a011),\ (q01,\ a100,\ q00,\ a011),\\
+                         &(q01,\ a000,\ q00,\ a011),\ (q01,\ a001,\ q01,\ 011).
+\end{align*}
+\end{example}
+
+Now we are ready to discuss a \textit{universal Turing machine $U$}, which uses the encodings of other machines as programs to direct its operation. Intuitively, $U$ takes two arguments, \textit{a description of a machine $M$}, ``$M$'', and \textit{a description of an input string $w$}, ``$w$''. We want $U$ to have the following property:
+\begin{quote}
+  $U$ halts on input ``$M$''``$w$'' if and only if $M$ halts on input $w$.
+\end{quote}
+To use the functional notation for Turing machines we developed in the last chapter,
+\begin{equation*}
+  U(\textnormal{``$M$''}\textnormal{``$w$''}) = \textnormal{``$M(w)$''}
+\end{equation*}
+
+We actually describe not the single-tape machine $U$, but a closely related 3-tape machine $U'$ (then $U$ will be the single-tape Turing machine that simulates $U'$). 
+
+\vspace*{\fill}
+\columnbreak
+
+Specifically, $U'$ uses its three tapes as follows:
+\begin{itemize}
+  \item Initially ${\tar}{\underline{\blank}}\textnormal{``}M\textnormal{''``}w\textnormal{''}$ is on the first tape of $U'$  
+  \item $U'$ copies ``$M$'' to the second tape, shifts ``$w$'' to the left $({\tar}{\underline{\blank}}\textnormal{``}w\textnormal{''})$
+  \item $U'$ writes $q0^i$ to its third tape (initial state)
+  \item Then $U'$ simulates $M$ as follows:
+    \begin{itemize}
+      \item $U'$ scans its second tape until it finds a quadruple (\textit{a transition}) whose first element matches the string in the third tape (e.g. \textit{the state}) and second element matches the string on the first tape (e.g. \textit{the symbol under the reading head of $M$})
+      \item If it finds such a quadruple, updates the string on the third tape (\textit{the state of $M$}), and performs the action on the first tape (\textit{move the head, or write a symbol})
+      \item If it cannot find a matching quadruple or the state is in $H$, then halt.
+    \end{itemize}
+\end{itemize}

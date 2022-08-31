@@ -1,0 +1,108 @@
+\section{Pushdown Automata and Context Free Grammars}
+
+\begin{multicols*}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\begin{theorem}{}
+\textit{The class of languages accepted by pushdown automata is exactly the class of context-free languages.}
+\end{theorem}
+
+\textbf{Proof:} We break this proof into two parts.
+
+\begin{formula}{ Lemma 1}
+\textit{Each context-free language is accepted by some pushdown automaton.}
+\end{formula}
+
+\begin{proof}
+Let $G = (V, \Sigma, R, S)$ be a context-free grammar; we must construct a pushdown automaton $M$ such that ${L(M) = L(G)}$. The machine we construct has only two states, $p$ and $q$, and remains permanently in state $q$ after its first move. Also, $M$ uses $V$, the set of terminals and nonterminals, as its stack alphabet. We let $M = (\{ p, q \}, \Sigma, V, \Delta, p, \{ q \})$, where $\Delta$ contains the following transitions:
+\begin{enumerate}
+  \item $((p, e, e),\ (q, S))$
+  \item $((q, e, A),\ (q, x))$ for each rule $A \ra x$ in $R$.
+  \item $((q, a, a),\ (q, e))$ for each $a \in \Sigma$.
+\end{enumerate}
+The pushdown automaton $M$ begins by pushing $S$, the start symbol of $G$, on its initially empty pushdown store, and entering state $q$ (transition 1). On each subsequent step, it either replaces the topmost symbol $A$ on the stack provided that it is a nonterminal, by the right-hand side $x$ of some rule $A \ra x$ in $R$ (transitions of type 2), or pops the topmost symbol from the stack, provided that it is a terminal symbol that matches the next input symbol (transitions of type 3). 
+
+The transitions of $M$ are designed so that the pushdown store during an accepting computation mimics a leftmost derivation of the input string.
+
+To continue the proof of the Lemma, in order to establish that $L(M) = L(G)$, we prove the following claim
+
+\begin{quote}
+\textbf{Claim:} Let $w \in \Sigma^*$ and ${\alpha \in (V - \Sigma)V^* \cup \{ e \}}$. Then ${S \xRightarrow[]{L}^* w\alpha}$ iff ${(q, w, S) \vdash_M^* (q, e, \alpha)}$.
+\end{quote}
+This claim will suffice to establish Lemma 1, since it will follow (by taking $\alpha = e$) that $S \xRightarrow[]{L}^* w$ if and only if $(q, e, S) \vdash_M^* (q, e, e)$ in other words, $w \in L(G)$ if and only if $w \in L(M)$.
+
+(\textit{Only if}) Suppose that $S \xRightarrow[]{L}^* w\alpha$, where $w \in \Sigma^*$, and $\alpha \in (V - \Sigma)V^* \cup \{ e \}$. We shall show by induction on the length of the leftmost derivation of $w$ from $S$ that $(q, w, S) \vdash_M^* (q, e, \alpha)$.
+
+\noindent \textit{Basis Step}. If the derivation is of length 0, then $w = e$, and $\alpha = S$, and hence indeed $(q, w, S) \vdash_M^* (q, e, \alpha)$.
+
+\noindent \textit{Induction Hypothesis}. Assume that if $S \xRightarrow[]{L}^* w\alpha$ by a derivation of length $n$ or less, $n \geq 0$, then $(q, w, S) \vdash_M^* (q, e, \alpha)$.
+
+\noindent \textit{Induction Step}. Let
+\begin{equation*}
+  S = u_0 \xRaL u_1 \xRaL \cdots \xRaL u_n \xRaL u_{n+1} = w\alpha
+\end{equation*}
+be a leftmost derivation of $w\alpha$ from $S$. Let $A$ be the leftmost nonterminal of $u_n$. Then $u_n = xA\beta$, and $u_{n+1} = x\gamma\beta$ where $x \in \Sigma^*$, $\beta$, $\gamma \in V^*$, and $A \ra \gamma$ is a rule in $R$. Since there is a leftmost derivation of length $n$ of $u_n = xA\beta$ from $S$, by the induction hypothesis
+\begin{equation}
+  (q, x, S) \vdashm (q, e, A\beta)
+\end{equation}
+Since $A \ra \gamma$ is a rule in $R$,
+\begin{equation}
+  (q, e, A\beta) \vdash (q, e, \gamma\beta)
+\end{equation}
+by a transition of type 2.
+
+Now notice that $u_{n+1}$ is $w\alpha$, but it is also $x\gamma\beta$. Hence, there is a string $y \in \Sigma^*$ such that $w = xy$ and $y\alpha = \gamma\beta$. Thus, we can rewrite (1) and (2) above as
+\begin{equation}
+  (q, w, S) \vdashm (q, y, \gamma\beta)
+\end{equation}
+However, since $y\alpha = \gamma\beta$
+\begin{equation}
+  (q, y, \gamma\beta) \vdashm (q, e, \alpha)
+\end{equation}
+by a sequence of $|y|$ transitions of type 3. Combining (3) and (4) completes the induction step. 
+
+(\textit{If}) Now suppose that $(q, w, S) \vdashm (q, e, \alpha)$ with $w \in \Sigma^*$ and $\alpha \in (V - \Sigma)V^* \cup \{ e \}$; we show that $S \xRaL w\alpha$. Again, the proof is by induction, but this time on the number of transitions of type 2 in the computation by $M$.
+
+\textit{Basis Step}. Since the first move in any computation is by a transition of type 2, if $(q, w, S) \vdashm (q, e, \alpha)$ with no type-2 transitions, then $w = e$ and $\alpha = S$, and the result is true.
+
+\textit{Induction Hypothesis}. If $(q, w, S) \vdashm (q, e, \alpha)$ by a computation with $n$ type 2 steps or fewer, $n \geq 0$, then $S \xRaL w\alpha$.
+
+\textit{Induction Step}. Suppose that $(q, w, S) \vdashm (q, e, \alpha)$ in $n + 1$ type-2 transitions, and consider the next-to-Iast such transition, say,
+\begin{equation*}
+  (q, w, S) \vdashm (q, y, A\beta) \vdash (q, y, \gamma\beta) \vdashm (q, e, \alpha)
+\end{equation*}
+where $w = xy$ for some $x, y \in \Sigma^*$, and $A \ra \gamma$, is a rule of the grammar. By the induction hypothesis we have that $S \xRaL xA\beta$, and thus $S \xRaL x\gamma\beta$. Since however $(q, y, \gamma\beta) \vdashm (q, e, \alpha)$, presumably by transitions of type 3, it follows that $y\alpha = \gamma\beta$, and thus $S \xRaL xy\alpha = w\alpha$. This completes the proof of Lemma 1, and with it half the proof of Theorem 2.
+\end{proof}
+
+We now turn to the proof of the other half of Theorem 2.
+
+\begin{formula}{ Lemma 2}
+\textit{If a language is accepted by a pushdown automaton, it is a context-free language.}
+\end{formula}
+
+\begin{proof}
+  It will be helpful to restrict somewhat the pushdown automata under consideration. Call a pushdown automaton \textbf{simple} if the following is true:
+  \begin{quote}
+    Whenever $(( q,\ a,\ \beta),\ (p,\ \gamma))$ is a transition of the pushdown automaton and $q$ is not the start state, then $\beta \in \Gamma$, and $|\gamma| \leq 2$.
+  \end{quote}
+  In other words, the machine always consults its topmost stack symbol (and no symbols below it), and replaces it either with $e$, or with a single stack symbol, or with two stack symbols. Now it is easy to see that no interesting pushdown automaton can have only transitions of this kind, because then it would not be able to operate when the stack is empty (for example, it would not be able to start the computation, since in the beginning the stack is empty). This is why we do not restrict transitions from the start state.
+
+  We claim that if a language is accepted by an unrestricted pushdown automaton, then it is accepted by a simple pushdown automaton. To see this, let $M = (K,\ \Sigma,\ \Gamma,\ \Delta,\ s,\ F)$ be any pushdown automaton; we shall construct a simple pushdown automaton $M' = (K',\ \Sigma,\ \Gamma \cup \{ Z \},\ \Delta',\ s',\ \{ f \})$ that also accepts $L(M)$; here $s'$ and $f'$ are new states not in $K$, and $Z$ is a new stack symbol, the stack \textit{bottom symbol}, also not in $\Gamma$. We first add to $\Delta$ the transition $(( s',\ e,\ e),\ (s,\ Z))$; this transition starts the computation by placing the stack bottom symbol in the bottom of the stack, where it will remain throughout the computation. No rule of $\Delta'$ will ever push a $Z$ in the stack - except to replace it at the bottom of the stack. We also add to $\Delta'$ the transitions $((f,\ e,\ Z),\ (f',\ e))$ for each $f \in F$. These transitions end the computation by removing $Z$ from the bottom of the
+  stack and accepting the input seen so far.
+
+  Initially, $\Delta'$ consists of the start and final transitions described above, and all transitions of $\Delta$. We shall next replace all transitions in $\Delta'$ that violate the simplicity condition by equivalent transitions that satisfy the simplicity condition. We shall do this in three stages:
+  \begin{itemize}
+    \item First we shall replace transitions with $|\beta| \geq 2$.
+    \item Then we shall get rid of transitions with $|\gamma| > 2$, without introducing any transitions with $|\beta| \geq 2$.
+    \item Finally, we shall get rid of transitions with $\beta = e$, without introducing any transitions with $|\beta| \geq 2$ or $|\gamma| > 2$.
+  \end{itemize}
+
+  
+\end{proof}
+
+
+
+
+
+\end{multicols*}

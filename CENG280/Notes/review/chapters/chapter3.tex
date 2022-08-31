@@ -1,0 +1,53 @@
+\section{Chapter 3}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Context Free Grammars}
+
+\begin{definition}{}
+  A \textbf{context-free grammar} $G$ is a quadruple $(V, \Sigma, R, S)$ where
+  \begin{itemize}
+    \item $V$ is an alphabet
+    \item $\Sigma$ (the set of \textbf{terminals}) is a subset of $V$
+    \item $R$ (the set of \textbf{rules}) is a finite subset of $(V - \Sigma) \times V^*$
+    \item $S$ (the \textbf{start symbol}) is an element of $V - \Sigma$
+  \end{itemize}
+\end{definition}
+
+The members of $V - \Sigma$ are called \textbf{nonterminals}. For any $A \in V - \Sigma$ and $u \in V^*$, we write $A \rightarrow_G u$ whenever $(A, u) \in R$. 
+  
+For any strings $u, v \in V^*$, we write $u \Rightarrow_G v$ if and only if there are strings $x, y \in V^*$ and $A \in V - \Sigma$ such that $u = xAy$, $v = xv'y$, and $A \rightarrow_G v'$. 
+
+The relation $\Rightarrow_G^*$ is the \textit{reflexive}, \textit{transitive closure} of $\Rightarrow_G$. Finally, $L(G)$, the \textbf{language generated} by $G$, is $\left\{ w \in \Sigma^* : S \Rightarrow_G^* w \right\}$; we also say that $G$ \textbf{generates} each string in $L(G)$. A language $L$ is said to be a \textbf{context-free language} if $L = L(G)$ for some context-free grammar $G$.
+
+We call any sequence of the form
+\begin{equation*}
+  w_0 \Rightarrow_G w_1 \Rightarrow_G \cdots \Rightarrow_G w_n
+\end{equation*}
+a \textbf{derivation} in $G$ of $w_n$ from $w_0$. Here $w_o, \cdots, w_n$ may be any strings in $V^*$, and $n$, the \textbf{length} of the derivation, may be any natural number, including zero. We also say that the derivation has $n$ \textbf{steps}. 
+
+\end{multicols}
+
+\begin{formula}{}
+  \begin{itemize}
+    \item $u \Rightarrow v$: $u$ \textbf{\textit{directly yields}} $v$; $A \rightarrow w$: \textbf{\textit{(production) rule}}.
+    \item $V$, alphabet, can include symbols such as start symbol, $S$, or $A$.
+    \item (From example 3.1.4) The same string may have several derivations in a context-free grammar. Two derivations in this grammar are
+    \begin{align*}
+      &S \Rightarrow SS \Rightarrow S(S) \Rightarrow S((S)) \Rightarrow S(()) \Rightarrow ()(()) &\textnormal{ and } && S \Rightarrow SS \Rightarrow (S)S \Rightarrow ()S \Rightarrow ()(S) \Rightarrow ()(())
+    \end{align*}
+    \item Some context-free languages are not regular. However, all regular languages are context-free.
+    \item Context-free languages are precisely the languages accepted by certain language acceptors called \textit{\textbf{pushdown automata}}.
+  \end{itemize}
+\end{formula}
+
+
+% \begin{multicols}{2}
+%   \setlength{\columnsep}{1.5cm}
+%   \setlength{\columnseprule}{0.2pt}
+
+
+% \end{multicols}
+

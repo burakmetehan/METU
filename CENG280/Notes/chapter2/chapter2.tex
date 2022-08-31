@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{xparse}
+\usepackage{setspace}
+\usepackage{enumitem}
+
+
+\geometry
+{
+  a4paper,
+  left=15mm,
+  right=15mm,
+  top=15mm,
+  bottom=15mm,
+}
+
+% mybox
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+\definecolor{my-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
+
+% New environments that use mybox
+\newcounter{example}
+\newenvironment{example}[1]{\begin{mybox}{green}{\refstepcounter{example}\textbf{Example~\theexample #1}}}{\end{mybox}}
+
+\newenvironment{examplebreak}[1]{\begin{mybox}[breakable]{green}{\refstepcounter{example}\textbf{Example~\theexample #1}}}{\end{mybox}}
+
+\newcounter{definition}
+\newenvironment{definition}[1]{\refstepcounter{definition}\begin{mybox}{blue}{\textbf{Definition~\thedefinition #1}}}{\end{mybox}}
+
+\newcounter{theorem}
+\newenvironment{theorem}[1]{\begin{mybox}{red}{\refstepcounter{theorem}\textbf{Theorem~\thetheorem #1}}}{\end{mybox}}
+
+\newenvironment{formula}[1]{\begin{mybox}{cyan}{\textbf{#1}}}{\end{mybox}}
+
+
+% Changing maketitle
+\makeatletter         
+\renewcommand\maketitle{
+{\raggedright % Note the extra {
+\begin{center}
+{\Large \bfseries \@title}\\[2ex] 
+{\large \@author \ - \@date}\\[2ex]
+\end{center}}} % Note the extra }
+\makeatother
+
+% \onehalfspacing % adjust spacing
+
+% macros
+\newcommand{\prob}[1]{\textbf{\textit{P}}\{#1\}}
+\NewDocumentCommand{\dsum}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\sum
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
+
+% maketitle variables
+\title{CENG 280 - Chapter 2: Finite Automata}
+\author{Burak Metehan Tunçel}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/2.1-dfa.tex}
+
+\input{sections/2.2-nfa.tex}
+
+\input{sections/2.3-fa-and-re.tex}
+
+\input{sections/2.4-languages-regular-or-not.tex}
+
+\input{sections/2.5-state-minimization-myself.tex}
+
+% \input{sections/2.5-state-minimization-book.tex}
+
+% \input{sections/equivalence-relation-class.tex}
+
+\end{document}

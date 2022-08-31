@@ -1,0 +1,44 @@
+\section{Pushdown Automata}
+
+Not every context-free language can be recognized by a finite automaton, since some context-free languages are not regular.
+
+To be able to accept the context-free language, an automata needs to have a stack. The idea of an automaton with a stack as auxiliary storage can be formalized as follows. 
+
+\begin{definition}{}
+  \textbf{Pushdown automaton} is a sextuple $M = (K, \Sigma, \Gamma, \Delta, s, F)$ where
+  \begin{itemize}
+    \item $K$ is a finite set of \textbf{states},
+    \item $\Sigma$ is an alphabet (\textbf{input symbols})
+    \item $\Gamma$ is an alphabet (\textbf{stack symbols})
+    \item $s \in K$ is the \textbf{initial state}
+    \item $F \subseteq K$ is the set of \textbf{final states}, and,
+    \item $\Delta \subset (K \times (\Sigma \cup \{e\}) \times \Gamma^*) \times (K \times \Gamma^*)$ is a finite \textbf{transition relation}.
+  \end{itemize}
+\end{definition}
+
+If $((p, a, \delta),(q, \gamma)) \in \Delta$, then when $M$ is in state $p$, if it reads $a \in \Sigma$ (or if $a$ is $e$ without reading a symbol) and if the top of the stack is $\delta$, it enters state $q$ and replaces $\delta$ with $\gamma$. $((p, a, \delta),(q, \gamma)) \in \Delta$ is called a \textbf{transition} of $M$. Since $\Delta$ is a relation, several transitions can be applicable at a point. The machine chooses non-deterministically from the applicable transitions.
+\begin{itemize}
+  \item $((p, a, e),(q, b))$: \textbf{push} transition, read $a$ push $b$ to the top of the stack.
+  \item $((p, a, b),(q, e))$: \textbf{pop} transition, read $a$ pop $b$ from the top of the stack.
+  \item $((p, a, \delta),(q, \gamma))$: read $a$, \textbf{pop} $\delta$ and \textbf{push} $\gamma$.
+\end{itemize}
+
+\newpage
+\noindent The \textbf{configuration} of a pushdown automaton is a member of $K \times \Sigma^* \times \Gamma^*$:
+\begin{enumerate}
+  \item The first component is the \textit{state of the machine},
+  \item The second is the \textit{unread part of the input type},
+  \item The third is the \textit{contents of the pushdown store, read top-down}.\\
+\end{enumerate}
+
+\noindent A configuration $(p, x, \alpha)$ of $M$ yields $(q, y, \zeta)$ (shown as $(p, x, \alpha) \vdash_M (q, y, \zeta))$ if there is a transition $((p, a, \beta),(q, \gamma))$ such that
+\begin{center}
+  \begin{multicols}{3}
+    \begin{enumerate}
+      \item $x = ay$
+      \item $\alpha = \beta \eta$
+      \item $\zeta = \gamma \eta$
+    \end{enumerate}
+  \end{multicols}
+\end{center}
+\noindent for some $\eta \in \Gamma^*$. The reflexive transitive closure of $\vdash_M$ is denoted by $\vdash_M^*$. $M$ accepts a word $w \in \Sigma^*$ if and only if $(s, w, e) \vdash_M^* (f, e, e)$ for some $f \in F$. In other words, $M$ accepts $w$ iff there exists a sequence of configurations $C_0, \ldots, C_n$ with $C_0 = (s, w, e)$ and $C_n = (f, e, e)$ for some $f \in F$, and $C_0 \vdash_M C_1 \vdash_M \ldots \vdash_M C_n$. Any sequence $C_0, \ldots, C_n$ with $C_i \vdash_M C_{i+1}$ is called a \textbf{computation} of $M$. It has \textbf{length} $n$ (or $n$ steps). The language accepted by $M$, $L(M)$ is the set of strings accepted by $M$. (When no confusion can result, we write $\vdash$ and $\vdash^*$ instead of $\vdash_M$ and $\vdash_M^*$.)

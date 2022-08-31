@@ -1,0 +1,91 @@
+\section{Equivalence Relations and Classes}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Equivalence Relations}
+
+In mathematics, an \textbf{\textit{equivalence relation}} is a binary relation that is \textit{reflexive, symmetric} and \textit{transitive}. 
+
+Each equivalence relation provides a partition of the underlying set into disjoint \textit{equivalence classes}. \textit{Two elements of the given set are equivalent to each other if and only if they belong to the same equivalence class.}
+
+\subsubsection{Notation}
+
+Various notations are used in the literature to denote that two elements $a$ and $b$ of a set are equivalent with respect to an equivalence relation $R$; the most common are ``$a \sim b$'' and ``$a \equiv b$'', which are used when $R$ is implicit, and variations of ``$a \sim_{R} b$'', ``$a \equiv_R$'', or ``$a R b$'' to specify $R$ explicitly. Non-equivalence may be written ``$a \not\sim b$'' or ``$a \not\equiv b$''.
+
+\vfill\null
+\columnbreak
+
+\subsubsection{Definition}
+
+A binary relation $\sim$ on a set $X$ is said to be an equivalence relation, if and only if it is \textit{reflexive, symmetric} and \textit{transitive}. That is, for all $a, b$, and $c$ in $X$:
+\begin{itemize}
+    \item $a \sim a$. (Reflexivity)
+    \item $a \sim b$ if and only if $b \sim a$. (Symmetry)
+    \item If $a \sim b$ and $b \sim c$ then $a \sim c$. (Transitivity)
+\end{itemize}
+$X$ together with the relation $\sim$ is called a setoid. The equivalence class of $a$ under $\sim$ denoted, $\left[ a \right]$, is defined as $\left[ a \right] = \left\{ x \in X : x \sim a \right\}$
+
+\subsubsection{Example}
+
+On the set $X = \{a,b,c\}$, the relation $R = \{(a, a), (b, b), (c, c), (b, c), (c, b)\}$ is an equivalence relation. The following sets are equivalence classes of this relation:
+\begin{multicols}{3}
+    \begin{itemize}
+        \item $\left[ a \right] = \left\{ a \right\}$
+        \item $\left[ b \right] = \left\{ b, c \right\}$
+        \item $\left[ c \right] = \left\{ b, c \right\}$
+    \end{itemize}
+\end{multicols}
+\noindent The set of all equivalence classes for $R$ is $\{ \{a\}, \{b,c\} \}$. This set is a partition of the set $X$ with respect to $R$.
+
+\newpage
+\subsection{Equivalence Classes}
+
+An \textbf{\textit{equivalence class}} is the name that we give to the subset of $S$ which includes all elements that are equivalent to each other. ``Equivalent'' is dependent on a specified relationship, called an equivalence relation. If there is an equivalence relation between any two elements, they are called equivalent.
+
+Formally, given a set $S$ and an equivalence relation $\sim$, on $S$, the equivalence class of an element $a$ in $S$, denoted by $\left[ a \right]$, is the set
+
+$\begin{aligned}
+    \left\{ x \in S : x \sim a \right\}
+\end{aligned}$
+
+\noindent of elements which are equivalent to $a$.
+
+\subsubsection{Definition and Notation}
+
+An equivalence relation on a set $X$ is a binary relation $\sim$ on $X$ satisfying the three properties:
+\begin{itemize}
+    \item $a \sim a$ for all $a \in X$. (Reflexivity)
+    \item $a \sim b$ implies $b \sim a$ for all $a, b \in X$. (Symmetry)
+    \item If $a \sim b$ and $b \sim c$ then $a \sim c$ for all $a, b, c \in X$. (Transitivity)
+\end{itemize}
+
+The equivalence class of an element $a$ is often denoted $\left[ a \right]$ or $\left[ a \right]_{\sim}$ and is defined as the set $\left\{ x \in X : a \sim x \right\}$ of elements that are related to $a$ by $\sim$. The word ``class'' in the term ``equivalence class'' may generally be considered as a synonym of ``set''.
+
+\subsubsection{Properties}
+
+Every element $x$ of $X$ is a member of the equivalence class $\left[ x \right]$. Every two equivalence classes $\left[ a \right]$ and $\left[ b \right]$ are either equal or disjoint. Therefore, the set of all equivalence classes of $X$ forms a partition of $X$: every element of $X$ belongs to one and only one equivalence class. Conversely, every partition of $X$ comes from an equivalence relation in this way, according to which $x \sim y$ if and only if $x$ and $y$ belong to the same set of the partition.
+
+\noindent It follows from the properties of an equivalence relation that
+
+$\begin{aligned}
+    x \sim y
+\end{aligned}$
+
+\noindent if and only if $\left[ x \right] = \left[ y \right]$.
+
+In other words, if $\sim$ is an equivalence relation on a set $X$, and $x$ and $y$ are two elements of $X$, then these statements are equivalent:
+\begin{itemize}
+    \item $x \sim y$
+    \item $\left[ x \right] = \left[ y \right]$
+    \item $\left[ x \right] \cap \left[ y \right] \neq \emptyset$
+\end{itemize}
+
+\subsubsection{Examples}
+
+\begin{itemize}
+    \item Let $X$ be the set of all rectangles in a plane, and $\sim$ the equivalence relation ``has the same area as'', then for each positive real number $A$, there will be an equivalence class of all the rectangles that have area $A$.
+    \item Consider the modulo 2 equivalence relation on the set of integers, $\mathbb{Z}$, such that  $x \sim y$ if and only if their difference $x - y$ is an even number. This relation gives rise to exactly two equivalence classes: One class consists of all even numbers, and the other class consists of all odd numbers. Using square brackets around one member of the class to denote an equivalence class under this relation, $\left[ 7 \right], \left[ 9 \right]$, and $\left[ 1 \right]$ all represent the same element of $\mathbb{Z} / \sim$.
+\end{itemize}
+\end{multicols}

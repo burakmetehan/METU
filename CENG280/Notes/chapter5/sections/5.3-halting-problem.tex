@@ -1,0 +1,73 @@
+\section{The Halting Problem}
+\label{sec:halting-problem}
+
+The question is that ``Can we write a program that tells whether an arbitrary Turing machine (program) $P$ halts on its input $X$?''
+\begin{equation*}
+  \texttt{halts($P,\ X$):}
+  \begin{cases}
+    \texttt{YES} &\textnormal{if $P$ halts on $X$}\\
+    \texttt{NO} &\textnormal{if $P$ does not halts on $X$}\\
+  \end{cases}
+\end{equation*}
+
+Consider the following example:
+\begin{formula}{}
+
+\texttt{diagonal($X$)}
+
+\quad $a$: if \texttt{halts}($X,\ X$) then goto $a$ else \texttt{halt}
+\end{formula}
+Notice what \texttt{diagonal}($X$) does: If your halts program decides that program $X$ would halt if presented with itself as input, then \texttt{diagonal}($X$) loops forever; otherwise it halts.
+
+And now comes the unanswerable question:
+\begin{quote}
+  Does \texttt{diagonal(diagonal)} halt?
+\end{quote}
+It halts if and only if the call \texttt{halts(diagonal,\ diagonal)} returns ``no''; in other words, \textit{it halts if and only if it does not halt}. This is a contradiction: 
+\begin{quote}
+  We must conclude that the only hypothesis that started us on this path is false, that program \texttt{halts($P$, $X$)} does not exist.
+\end{quote}
+That is to say, there can be \textit{no program}, \textit{no algorithm} for solving the problem halts would solve: to tell whether arbitrary programs would halt or loop. Thus, \textbf{the halting problem is undecidable}.
+
+We are ready to define \textit{a language that is not recursive}, and \textit{prove that it is not}. Let
+\begin{equation*}
+  H = \left\{ \textnormal{``$M$''``$w$''}\ |\ \textnormal{Turing machine $M$ halts on input string $w$} \right\}
+\end{equation*}
+Notice first that $H$ is \textit{recursively enumerable}: It is precisely the \textit{language semidecided by our universal Turing machine $U$}. Indeed, on input ``$M$''``$w$'', $U$ halts precisely when the input is in $H$.
+
+Furthermore, if $H$ is recursive, then \textit{every} recursively enumerable language is recursive. In other words, $H$ holds the key to the question we asked in Section 4.2, \textit{whether all recursively enumerable languages are also Turing decidable}:
+\begin{quote}
+  The answer is positive if and only if $H$ is recursive.
+\end{quote}
+For suppose that $H$ is indeed decided by some Turing machine $M_0$. Then given any particular Turing machine $M$ semideciding a language $L(M)$, we could design a Turing machine $M'$ that decides $L(M)$ as follows:
+
+First, $M'$ transforms its input tape from ${\tar}{\blank}w{\underline{\blank}}$ to ${\tar}{\textnormal{``}M\textnormal{''``}w\textnormal{''}}{\underline{\blank}}$ and then simulates $M_0$ on this input. By hypothesis, $M_0$ will correctly decide whether or not $M$ accepts $w$. 
+
+However we can show, by formalizing the argument for \texttt{halts($P$, $X$)} above, that $H$ is \textit{not recursive}. First, if $H$ were recursive, then
+\begin{multline*}
+  H_1 = \{ \textnormal{``$M$''}\ |\ \textnormal{Turing machine $M$ halts on} \\ \textnormal{input string ``$M$''} \}
+\end{multline*}
+would also be recursive. ($H_1$ stands for the \texttt{halts($X$, $X$)} part of the diagonal program.) Uf there were a Turing mahcine $M_0$ that could decide $H$, then a Turing machine $M_1$ to decide $H_1$ would only need to transform its input string {$\tar$}{``$M$''}{\underline{$\blank$}} to {$\tar$}{``$M$''}{``$M$''}{\underline{$\blank$}} and then yield control to $M_0$. Therefore, it suffices to show that $H_1$ is not recursive.
+
+Second, if $H_1$, were recursive, then its complement would also be recursive:
+\begin{multline*}
+  \overline{H_1} = 
+  \{
+    w\ |\ \\
+    \text{either $w$ is not the encoding of a Turing machine} \\
+    \text{or it is the encoding of ``$M$'' of a Turing machine} \\
+    \text{$M$ that does not halt on ``$M$''}
+  \}
+\end{multline*}
+This is so because the class of recursive languages is closed under complement. Incidentally, $\overline{H_1}$ is the \textit{diagonal} language, the analog of our \texttt{diagonal} program, and the last act of the proof.
+
+But $\overline{H_1}$ cannot even be recursively enumerable (let alone recursive). For suppose $M^*$ were a Turing machine that semidecided $\overline{H_1}$. Is ``$M^*$'' in $\overline{H_1}$? By definition of $\overline{H_1}$, ``$M^*$'' $\in \overline{H_1}$ if and only if $M^*$ does not accept input string ``$M^*$''. But $M^*$ is supposed to semidecide $\overline{H_1}$, so ``$M^*$'' $\in \overline{H_1}$ if and only if $M^*$
+accepts ``$M^*$''. We have concluded that $M^*$ accepts ``$M^*$'' if and only if $M^*$ does not accept ``$M^*$''. This is absurd, so the assumption that $M_0$ exists must have been in error.
+
+\begin{theorem}{}
+  The language $H$ is not recursive; therefore, the class of recursive languages is a strict subset of the class of recursively enumerable languages.
+\end{theorem}
+
+\begin{theorem}{}
+  The class of recursively enumerable languages is not closed under complement.
+\end{theorem}

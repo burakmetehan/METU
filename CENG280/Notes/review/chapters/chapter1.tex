@@ -1,0 +1,81 @@
+\section{Chapter 1}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\subsection{Alphabets and Languages}
+
+\textbf{Alphabet:} A finite set of symbols, e.g., $\{a, b, \ldots, z\}$, $\{0, 1\}$.
+
+\textbf{String:} A string over an alphabet is a finite sequence of symbols from the alphabet, e.g., ``$0011$'', ``$a$'', ``$e$'' (empty string). The set of all strings (including the empty string) over $\Sigma$ is denoted by $\Sigma^*$. The length of a string is the length of the sequence, e.g. $|abc| = 3$.
+
+\textbf{Language:} Any subset $L$ of $\Sigma^*$ for an alphabet $\Sigma$ is called a language over $\Sigma$.
+
+\subsubsection{String Operations}
+
+\textbf{Concatenation:} Two strings $x$, $y$ over the same alphabet, e.g. $x, y \in \Sigma^*$, can be combined. $w = x \circ y$, or simply $w = xy$.
+
+\textbf{Substring:} A string $v$ is a substring of $w$ if $w$ can be written as $w = xvy$. If $w = vx$ then $v$ is a \textit{prefix} of $w$, and if $w = xv$, then $v$ is a \textit{suffix} of $w$.
+
+\textbf{Reversal:} The reverse of a string $w$, denoted by $w^R$, is the string spelled backwards. For example, $w = abc \Rightarrow w^R = cba$.
+
+\begin{theorem}{}
+  For any two strings $x, w$, $(wx)^R = x^Rw^R$.
+\end{theorem}
+
+\subsubsection{Languages}
+
+Given an alphabet $\Sigma$, any subset of $\Sigma^*$ is called a language.
+\begin{equation*}
+  L = \left\{ w \in \Sigma^*\ |\ w \textnormal{ has the property } P \right\}
+\end{equation*}
+
+\paragraph{Language Operations}
+
+Languages are sets, so set operations (union, intersection, difference) can be used on languages.
+\begin{itemize}
+  \item \textbf{Complement:} $\overline{L} = \Sigma^* \setminus L$
+  \item \textbf{Concatenation:} $L_1, L_2$ are languages over $\Sigma$. $L = L_1 \circ L_2$ (or simply $L = L_1L_2$) is defined as
+    \begin{equation*}
+      L = \left\{ w_1w_2\ |\ w_1 \in L_1 \textnormal{ and } w_2 \in L_2 \right\}
+    \end{equation*}
+  \item \textbf{Kleene star:} The Kleene star of a language $L$, denoted by $L^*$, is the set of strings obtained by concatenating $0$ or more strings from $L$.
+  \item $L^+ = LL^*$  
+\end{itemize}
+
+\vfill\null
+\columnbreak
+
+\subsection{Finite Representations of Languages}
+
+\begin{definition}{: Regular Expression}
+  The regular expressions over an alphabet $\Sigma$ are all strings over the alphabet $\Sigma \cup \{( , ), \emptyset, \cup, *\}$ that can be obtained as follows:
+  \begin{enumerate}
+    \item $\emptyset$ and each member of $\Sigma$ is a regular expression.
+    \item If $\alpha$ and $\beta$ are regular expressions than so is $(\alpha\beta)$.
+    \item If $\alpha$ and $\beta$ are regular expressions than so is $(\alpha \cup \beta)$.
+    \item If $\alpha$ is a regular expression than so is $\alpha^*$.
+    \item Nothing is a regular expression unless it follows from 1-4.
+  \end{enumerate}
+\end{definition}
+
+\textit{\textbf{Every regular expression defines a language.}}
+
+\begin{definition}{: Languages defined by regular expressions}
+  For a regular expression $\alpha$, $L(\alpha)$ is the language represented by $\alpha$ and it is defined as
+  \begin{enumerate}
+    \item $L(\emptyset) = \emptyset$ and $L(a) = \left\{ a \right\}$ for each $a \in \Sigma$.
+    \item If $\alpha$ and $\beta$ are regular expressions than $L(\alpha\beta) = L(\alpha)L(\beta)$.
+    \item If $\alpha$ and $\beta$ are regular expressions than $L(\alpha \cup \beta) = L(\alpha) \cup L(\beta)$.
+    \item If $\alpha$ is a regular expression than so is $L(\alpha^*) = L(\alpha)^*$
+  \end{enumerate}
+\end{definition}
+
+The class of \textbf{regular languages} consists of all languages $L$ such that $L = L(\alpha)$ for some regular expression $\alpha$.
+
+\noindent \textbf{Language recognition device:} For some language $L$, an algorithm that answers the question is $w \in L$
+
+\noindent \textbf{Language generators:} Descriptions of how a string from a language can be produced.
+
+\end{multicols}

@@ -1,0 +1,51 @@
+\section{Nondeterministic Turing Machines}
+\label{sec:nondeterministic-tm}
+
+Many seemingly powerful features, such as multiple tapes and heads, with no appreciative increase in power in Turing Machine. However, there is an important and familiar feature that was not tried yet: \textit{\textbf{nondeterminism}}.
+
+Formally, a \textbf{nondeterministic Turing machine} is a quintuple $(K, \Sigma, \Delta, s, H)$, where $K$, $\Sigma$, $s$, and $H$ are as for standard Turing machines, and $\Delta$ is a \textit{subset} of $((K - H) \times \Sigma) \times (K \times (\Sigma \cup \{ \la, \ra \}))$, rather than a \textit{function} from $((K - H) \times \Sigma)$ to $(K \times (\Sigma \cup \{ \la, \ra \}))$. Configurations and the relations $\vdash_M$ and $\vdash_M^*$ are defined in the natural way. But now $\vdash_M$ need not be single-valued: One configuration may yield several others in one step.
+
+Since a nondeterministic machine could produce two different outputs or final states from the same input, we have to be careful about what is considered to be the end result of a computation by such a machine. Because of this, it is easiest to consider at first nondeterministic Turing that \textit{semidecide} languages.
+
+\begin{definition}{}
+Let $M = (K, \Sigma, \Delta, s, H)$ be a \textit{nondeterministic} Turing machine. We say that $M$ \textbf{accepts} an input $w \in (\Sigma - \{ \tar, \blank \})^*$ if $(s,\ {\tar}{\underline{\blank}}w) \vdash_M (h,\ u\underline{a}v)$ for some $h \in H$ and $a \in \Sigma$; $u, v \in \Sigma^*$.
+
+\quad Notice that a nondeterministic machine accepts an input even though it may have many nonhalting computations on this input input (as long as at least one halting computation exists). We say that $M$ \textbf{semidecides a language} $L \subseteq (\Sigma - \{ \tar, \blank \})^*$ if the following holds for all $w \in (\Sigma - \{ \tar, \blank \})^*$: $w \in L$ if and only if $M$ accepts $w$. 
+%(?: `Semidecide' means that any halting state is enough, there is not such a condition about acceptance.)
+\end{definition}
+
+It is a little more subtle to define what it means for a nondeterministic Turing machine to decide a language, or to compute a function.
+\begin{definition}{}
+Let $M = (K, \Sigma, \Delta, s, \{ y, n\})$ be a nondeterministic Turing 
+machine. We say that $M$ \textbf{decides} a language $L \subseteq (\Sigma - \{ \tar, \blank \})^*$ if the following two conditions hold for all $w \in (\Sigma - \{ \tar, \blank \})^*$:
+\begin{enumerate}[label=(\alph*)]
+  \item There is a natural number $N$, depending on $M$ and $w$, such that there is no configuration $C$ satisfying $(s,\ {\tar}{\underline{\blank}}w) \vdash_M^N C$.
+  \item $w \in L$ if and only if $(s,\ {\tar}{\underline{\blank}}w) \vdash_M^* (y,\ u\underline{a}v)$ for some $u, v \in \Sigma^*$, $a \in \Sigma$.
+\end{enumerate}
+\quad Finally, we say that $M$ \textbf{computes} a function $f\ :\ (\Sigma - \{ \tar, \blank \})^* \mapsto (\Sigma - \{ \tar, \blank \})^*$ if the following two conditions hold for all $w \in (\Sigma - \{ \tar, \blank \})^*$: 
+\begin{enumerate}[label=(\alph*)]
+  \item There is an $N$, depending on $M$ and $w$, such that there is no configuration $C$ satisfying $(s,\ {\tar}{\underline{\blank}}w) \vdash_M^N C$.
+  \item $(s,\ {\tar}{\underline{\blank}}w) \vdash_M^* (h,\ u\underline{a}v)$ if and only if $ua = {\tar}{\blank}$, and $v = f(w)$.
+\end{enumerate}
+\end{definition}
+
+Nondeterminism would seem to be a very powerful feature that cannot be eliminated easily. Indeed, there appears to be no easy way to simulate a nondeterministic Turing machine by a deterministic one in a step-by-step manner, as we have done in all other cases of enhanced Turing machines that we have examined so far. However, the languages semidecided or decided by nondeterministic Turing machines are in fact no different from those semidecided or decided, respectively, by deterministic Turing machines.
+\begin{theorem}{}
+If a nondeterministic Turing machine $M$ \textit{semidecides} or \textit{decides a language}, or \textit{computes a function}, then there is a standard Turing machine $M'$ \textit{semideciding or deciding the same language}, or \textit{computing the same function}.
+\end{theorem}
+
+\begin{proof}
+Let $M = (K, \Sigma, \Delta, s, H)$ be a nondeterministic Turing machine semideciding a language $L$. Given an input $w$, $M'$ will attempt to run systematically through all possible computations by $M$, searching for one that halts. When and if it discovers a halting computation, it too will halt. So $M'$ will halt if and only if $M$ halts, as required.
+
+The proof uses a 3-tape deterministic Turing machine, $M_d$:
+\begin{enumerate}
+  \item The first tape is never changed; it always contains the original input $w$, so that each simulated computation of $M$ can begin a fresh with the same input.
+  \item The second and the third tapes are used to simulate the computations of $M_d$, the deterministic version of $M$, with all strings in $\{ 1, 2, \ldots, r \}^*$. The input is copied from the first tape onto the second before $M'$ begins to simulate each new computation. Initially, the third tape contains $e$, the empty string (and therefore the simulation of $M_d$ will not even start the first time around).
+  \item Between two simulations of $M_d$, $M'$ uses a Turing machine $N$ to generate the \textit{lexicographically} next string in $\{ 1, 2, \ldots, r \}^*$. That is, $N$ will generate from $e$ the strings $1,\ 2,\ \ldots,\ r,\ 11,\ 12,\ \ldots,\ rr,\ 111,\ \ldots$. For $r = 2$, $N$ is precisely the Turing machine that computes the binary successor function; its generalization to $r > 2$ is rather straightforward. 
+\end{enumerate}
+\end{proof}
+
+As we had expected, the simulation of a nondeterministic Turing machine by a deterministic one is not a step-by-step simulation. Instead, it goes through all possible computations of the nondeterministic Turing machine. As a result, it requires \textit{exponentially many steps} in $n$ to simulate a computation of $n$ steps by the nondeterministic machine. Whether this long and indirect simulation is an intrinsic feature of nondeterminism, or an artifact of our poor understanding of it, is a deep and important open question.
+
+\vspace*{\fill}
+\columnbreak
