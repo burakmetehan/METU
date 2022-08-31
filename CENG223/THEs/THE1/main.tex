@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{fitch}  % to use fitch
+\usepackage{float}
+\usepackage[hmargin=3cm,vmargin=5.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage[most]{tcolorbox}
+
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Burak Metehan Tunçel \\
+Id Number :  2468726 \\
+
+\section*{Q. 1}
+Prove that the compound proposition
+\begin{center}
+    \begin{equation*}
+        \neg(p \land q) \leftrightarrow (\neg q \rightarrow p)
+    \end{equation*}
+\end{center}
+is logically equivalent to
+\begin{center}
+    \begin{equation*}
+        (p \lor q) \land (\neg p \lor \neg q)
+    \end{equation*}
+\end{center}
+using logical identities and algebraic manipulation techniques. Write down the identity used in each step.
+
+\section*{S. 1}
+\begin{tcolorbox}
+\begin{align*}
+		&\neg(p \land q) \leftrightarrow (\neg q \rightarrow p) & \textit{Given}\\
+		&\neg(p \land q) \leftrightarrow (q \lor p) & \textit{Table 7, Equation 1 in 1.3}\\
+		&(\neg p \lor \neg q) \leftrightarrow (q \lor p) & \textit{Table 6, De Morgan's Law}\\
+		&((\neg p \lor \neg q) \land (q \lor p)) \lor (\neg (\neg p \lor \neg q) \land \neg (q \lor p)) & \textit{Table 8, Equation 3 in 1.3}\\
+		&((\neg p \lor \neg q) \land (q \lor p)) \lor ((p \land q) \land (\neg q \land \neg p)) & \textit{Table 6, De Morgan's Law}\\
+		&((\neg p \lor \neg q) \land (q \lor p)) \lor F & \textit{By Truth Table}\\
+		& ((\neg p \lor \neg q) \land (q \lor p)) & \textit{Identity Laws}\\
+		& & \\
+		& \neg(p \land q) \leftrightarrow (\neg q \rightarrow p) \equiv ((\neg p \lor \neg q) \land (q \lor p))
+\end{align*}
+\end{tcolorbox}
+
+
+\newpage
+\section*{Q. 2}
+Translate the following English sentences into compound predicate logic propositions using the predicates below.\\\\
+$ I(x, y) $ : $ x $ is an intern in faculty $ y $.\\
+$ E(x, y) $ : $ x $ has employee id number $ y $.\\
+$ S(x, y) $ : $ x $ is supervised by $ y $.\\
+$ A(x, y) $ : $ x $ is admitted to job position $ y $.\\
+$ J(x, y) $ : $ x $ is a job position in faculty $ y $.\\\\
+Besides the indicated predicates, you are only allowed to use additional variables, existential and universal quantifiers along with logical connectives, and equals (=) and not equals ($ \neq $) relations if necessary. Use of any other notation within your statements will cause the corresponding answers to be evaluated as 0.\\\\
+
+a. Two different interns in the same faculty cannot have the same employee id number.\\\\
+
+b. There are some interns in all faculties who are supervised by no one but themselves.\\\\
+
+c. At most two interns can be admitted to each job position in the medicine faculty.\\\\
+
+\section*{S. 2}
+\hspace{5mm}
+
+\textbf{a.}\ $\forall x_1, x_2, y (I(x_1, y) \land I(x_2, y) \rightarrow \neg(E(x_1, y) \land E(x_2, y)))$\\
+
+\textbf{b.}\ $\exists x \forall y (I(x, y) \land S(x, x))$\\
+
+\textbf{c.}\ $ \exists x_1, x_2 \forall j ((x_1 \neq x_2) \land J(j, medicine) \land (A(x_1, j) \lor A(x_2, j))) $\\
+
+
+\newpage
+\section*{Q. 3}
+Using natural deduction rules for propositional logic, prove the following statements.\\\\
+
+\textbf{a.}\ $ p \lor \neg q, p \lor r \vdash (r \rightarrow q) \rightarrow p $\\\\
+
+\textbf{b.}\ $ \vdash ((q \rightarrow p) \rightarrow q) \rightarrow q $
+
+\section*{S. 3}
+
+%Part a
+\begin{center}
+    \begin{equation*}
+        \textbf{a.}\ p \lor \neg q, p \lor r \vdash (r \rightarrow q) \rightarrow p
+    \end{equation*}
+    \begin{fitchproof}
+        \fitchline{$ p \land \neg q $}{premise}
+        \fitchline{$ p \land r $}{premise}
+        \subproof{
+            \fitchline{$ p $}{assumption}
+            \fitchline{$ \neg p $}{$ \neg i$, 3}
+            \fitchline{$ \neg q $}{Disjunctive Syllogism in page 5 1, 4}
+            \fitchline{$ \neg \neg q $}{$ \neg i $ 5}
+            \fitchline{$ q $}{$ \neg \neg e $ 6}
+            \fitchline{$ r $}{Disjunctive Syllogism in page 5 2, 4}
+            \fitchline{$ p \rightarrow q $}{$ \rightarrow i $ 3, 7}
+            \fitchline{$ r \rightarrow q $}{$ \rightarrow i $ 7, 8}
+            \fitchline{$ p $}{$ \lor e $ 2, 9, 10}
+        }
+        \fitchline{$ r \rightarrow q $}{$ \rightarrow i $ 8, 7}
+        \fitchline{$ (r \rightarrow q) \rightarrow p $}{$ \rightarrow i $ 12, 11}
+    \end{fitchproof}
+\end{center}
+
+%Part b
+\begin{center}
+    \begin{equation*}
+        \textbf{b.}\ \vdash ((q \rightarrow p) \rightarrow q) \rightarrow q
+    \end{equation*}
+    \begin{fitchproof}
+        \fitchline{$ (q \rightarrow p) \rightarrow p $}{Assumption}
+        \subproof{
+            \fitchline{$ \neg q $}{Assumption}
+            \subproof{
+                \fitchline{$ q $}{Assumption}
+                \fitchline{$ \perp $}{$ \neg e $\ 2, 3}
+                \fitchline{$ p $}{$ \perp e$\ 4}
+            }
+            \fitchline{$ q \rightarrow p $}{$ \rightarrow i$\ 3, 5}
+            \fitchline{$ q $}{$ \rightarrow e $\ 6, 1}
+            \fitchline{$ \perp $}{$ \neg e $\ 2, 7}
+        }
+        \fitchline{$ q $}{$ \neg i$ 2, 8}
+        \fitchline{$ ((q \rightarrow p) \rightarrow q) \rightarrow q $}{$ \rightarrow i $\ 1, 9}
+    \end{fitchproof}
+\end{center}
+
+
+\newpage
+\section*{Q. 4}
+Using natural deduction rules for propositional and predicate logic, prove the following statements.\\
+
+\textbf{a.}\ $ \neg \forall (P(x) \rightarrow Q(x)) \vdash \exists x (P(x) \land \neg Q(x)) $\\
+
+\textbf{b.}\ $ \forall x \forall y (P(x, y)) \rightarrow \neg P(y, x)),\ \forall x \exists y P(x, y) \vdash \neg \exists v \forall z P(z, v) $\\
+
+\section*{S. 4}
+
+%Part a
+\begin{center}
+    a.\ $ \neg \forall (P(x) \rightarrow Q(x)) \vdash \exists x (P(x) \land \neg Q(x)) $\\
+    \begin{fitchproof}
+        \fitchline{$ \neg \forall (P(x) \rightarrow Q(x)) $}{Premise}
+        \fitchline{$ \exists x \neg (P(x) \rightarrow Q(x)) $}{Proof 3 in page 5}
+        \fitchline{$ \exists x (P(x) \land \neg Q(x)) $}{Proof 4 in page 5}
+    \end{fitchproof}
+\end{center}
+
+%Proofs
+\newpage
+\section*{\hfil Proofs \hfil}
+
+%De Morgan's Law Truth Table
+\subsection*{Proof 1: $ \neg P \land \neg Q \equiv \neg (P \lor Q) $}
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $ P $ & $ Q $ & $ \neg P $ & $ \neg Q $ & $ \neg P \land \neg Q $ & $ P \lor Q $ & $ \neg (P \lor Q) $\\
+        \hline
+        T & T & F & F & F & T & F\\
+        T & F & F & T & F & T & F\\
+        F & T & T & F & F & T & F\\
+        F & F & T & T & T & F & T\\
+    \end{tabular}
+\end{center}
+
+\subsection*{Proof 2: Disjunctive Syllogism}
+\begin{center}
+$ P \lor Q, \neg P \vdash Q $\\
+\begin{fitchproof}
+    \fitchline{$ P \lor Q $}{Premise}
+    \fitchline{$ \neg P $}{Premise}
+    \subproof{
+        \fitchline{$ \neg Q $}{Assumption}
+        \fitchline{$ \neg P \land \neg Q $}{$ \land i $\ 2,3}
+        \fitchline{$ \neg (P \lor Q) $}{Proof 1 in page 5}
+        \fitchline{$ \neg (P \lor Q) \land (P \lor Q) $}{$ \land i $\ 1,5}
+    }
+    \fitchline{$ Q $}{RAA 3-6}
+\end{fitchproof}    
+\end{center}
+
+\subsection*{Proof 3: $ \exists x \neg P(x) \equiv \neg (\forall x P(x)) $}
+\begin{center}
+    $ \exists x \neg P(x) \vdash \neg \forall x P(x) $\\
+    \begin{fitchproof}
+        \fitchline{$ \exists x \neg P(x) $}{Premise}
+        \subproof{
+            \fitchline{$ \forall x P(x)$}{Assumption}
+            \subproof{
+                \fitchline{$ \neg P(a) $}{Existential Instantiation}
+                \fitchline{$ P(a) $}{$ \forall e $\ 2}
+                \fitchline{$ \perp $}{$ \neg e$\ 3, 4}
+            }
+            \fitchline{$ \perp $}{$ \exists e$ 1, 3-5}
+        }
+        \fitchline{$ \neg \forall x P(x) $}{$ \neg i $\ 2-6}
+    \end{fitchproof}
+\end{center}
+
+\subsection*{Proof 4: $ \neg (P \rightarrow Q) \vdash P \land \neg Q $}
+\begin{center}
+    $ \neg (P \rightarrow Q) \vdash P \land \neg Q $\\
+    \begin{fitchproof}
+        \fitchline{$ \neg (P \rightarrow Q) $}{Premise}
+        \subproof{
+            \fitchline{$ \neg (P \land \neg Q) $}{Assumption}
+            \subproof{
+                \fitchline{$ P $}{Assumption}
+                \subproof{
+                    \fitchline{$ \neg Q $}{Assumption}
+                    \fitchline{$ P \land \neg Q $}{$ \land i $\ 3, 4}
+                    \fitchline{$ \perp $}{$ \perp i $\ 2, 5}
+                }
+                \fitchline{$ Q $}{$ \neg i $\ 4, 6}
+            }
+            \fitchline{$ P \rightarrow Q $}{$ \rightarrow i $\ 3, 7}
+            \fitchline{$ \perp $}{$ \perp i $\ 1, 8}
+        }
+        \fitchline{$ P \land \neg Q $}{$ \neg i $\ 2, 9}
+    \end{fitchproof}
+\end{center}
+
+
+\end{document}
+

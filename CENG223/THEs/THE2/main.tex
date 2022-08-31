@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{fitch}  % to use fitch
+\usepackage{float}
+\usepackage[hmargin=3cm,vmargin=5.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage[most]{tcolorbox}
+
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Burak Metehan Tunçel \\
+Id Number :  2468726 \\
+
+\section*{Q. 1}
+Given the sets A and B, prove that
+\begin{equation*}
+    (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A)
+\end{equation*}
+using set membership notation and logical equivalences. Show each step clearly.
+
+\section*{S. 1}
+Prove the equation
+\begin{equation*}
+    (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A)
+\end{equation*}
+
+\begin{align*}
+    &(A \cup B) \setminus (A \cap B)\\
+    &= \{ x\ |\ x \in (A \cup B) \land x \notin (A \cap B) \} &\text{(Definition of difference)}\\
+    &= \{ x\ |\ (x \in A \lor x \in B) \land x \notin (A \cap B) \} &\text{(Definition of Union)}\\
+    &= \{ x\ |\ (x \in A \lor x \in B) \land \neg (x \in (A \cap B)) \} & \text{(Definition\ of\ $\notin$)}\\
+    &= \{ x\ |\ (x \in A \lor x \in B) \land \neg (x \in A \land x \in B)) \} & \text{(Definition\ of\ Intersection)}\\
+    &= \{ x\ |\ (x \in A \lor x \in B) \land (\neg (x \in A) \lor \neg (x \in B)) \} & \text{(De Morgan's for Logical Rules)}\\
+    &= \{ x\ |\ (x \in A \lor x \in B) \land (x \notin A \lor x \notin B) \} & \text{(Definition of $\notin$)}\\
+    &= \{ x\ |\ ((x \in A \lor x \in B) \land x \notin A) \lor ((x \in A \lor x \in B) \land x \notin B) \} & \text{(Definition of Distributive Law)}\\
+    &= \{ x\ |\ ((x \in A \land x \notin A) \lor (x \in B \land x \notin A)) \lor \\ 
+    &\quad((x \in A \land x \notin B) \lor (x \in B \land x \notin B)) \} & \text{(Definition of Distributive Law)}\\
+    &= \{ x\ |\ (\emptyset \lor (x \in B \land x \notin A)) \lor ((x \in A \land x \notin B) \lor \emptyset)\} &\text{(Domination Law)}\\
+    &= \{ x\ |\ (x \in B \land x \notin A) \lor (x \in A \land x \notin B)\} &\text{(Identity Law)}\\
+    &= \{ x\ |\ x \in (B \setminus A) \lor x \in (A \setminus B)\} &\text{(Definition of difference)}\\
+    &= (B \setminus A) \cup (A \setminus B) &\text{(Definition of Union)}\\
+    &= (A \setminus B) \cup (B \setminus A) &\text{(Commutative Law)}
+\end{align*}
+
+\newpage
+
+\section*{Q. 2}
+Prove that the set
+
+\begin{equation*}
+    \{f\ |\ f \subseteq \mathbb{N} \times \{0, 1\} \text{, f is a function}\} \setminus \{f\ |\ f : \{0, 1\} \rightarrow \mathbb{N} \text{, f is a function}\}
+\end{equation*}
+
+\noindent is uncountable.
+
+\section*{S. 2}
+
+\subsection*{Proof 1}
+Proof of the fact that if $A$ is an \textbf{uncountable} set and $B$ is a \textbf{countable} set, then $A \setminus B$ is \textbf{uncountable}.\\
+
+Suppose for an uncountable set $A$ and a countable set $B$ that $A \setminus B$ is countable. The union of countably many countable sets is countable; thus $(A \setminus B) \cup B$ is countable. But then $A$ is a subset of $(A \setminus B) \cup B$ and thus must be countable itself, which is a \textbf{contradiction}.\\
+
+Therefore, if $A$ is an \textbf{uncountable} set and $B$ is a \textbf{countable} set, then $A \setminus B$ is \textbf{uncountable}.
+
+\subsection*{Proof 2}
+
+Let $S_1$ and $S_2$ be countable sets. From the definition of countable, there exists a \textbf{injection} from $S_1$ to $\mathbb{N}$, and from $S_2$ to $\mathbb{N}$. Hence, there exists an \textbf{injection} $g$ from $S_1 \times S_2$ to $\mathbb{N}^2$.\\
+
+\noindent Now let us investigate the \textbf{cardinality} of N2. From the \textbf{Fundamental Theorem of Arithmetic}, every natural number greater than 1 has a unique prime decomposition. Thus, if a number can be written as $2^n 3^m$, it can be done thus in only one way. So, consider the function $f : \mathbb{N}^2 \rightarrow \mathbb{N}$ defined by:\\
+
+$f(n, m) = 2^n 3^m$\\
+
+\noindent Now suppose $\exists m,n,r,s \in \mathbb{N}$ such that $f(n, m) = f(r, s)$. Then $2^n 3^m = 2^r 3^s$ so that $n = r$ and $m = s$. Thus $f$ is an \textbf{injection}; hence, $\mathbb{N}^2$ is \textbf{countably infinite}.\\
+
+\subsection*{Solution}
+
+Since Cartesian product of two countable sets is countable set \textbf{(Proof 2)}. $\mathbb{N} \times \{0, 1\}$ \text{ is a infinitely countable set}. 
+
+\begin{equation*}
+    \{f\ |\ f \subseteq \mathbb{N} \times \{0, 1\} \text{, f is a function}\} \text{ is power set of } \{\mathbb{N} \times \{0, 1\}\}
+\end{equation*}
+
+Power set of a infinitely countable set is uncountable according to \textbf{Cantor's Theorem}. Therefore, $\{f\ |\ f \subseteq \mathbb{N} \times \{0, 1\} \text{, f is a function}\}$ is an \textbf{uncountable} set.\\
+
+Also, $\{f\ |\ f : \{0, 1\} \rightarrow \mathbb{N}$ \ is a countable set because $f$ is a function, whose domain is $\{0, 1\}$ while its range is $\mathbb{N}$.\\
+
+According to \textbf{Proof 1},
+\begin{equation*}
+    \{f\ |\ f \subseteq \mathbb{N} \times \{0, 1\} \text{, f is a function}\} \setminus \{f\ |\ f : \{0, 1\} \rightarrow \mathbb{N} \text{, f is a function}\}
+\end{equation*}
+is \textbf{uncountable}.
+
+\newpage
+
+\section*{Q. 3}
+Prove that the function $f(n) = 4^n + 5n^2logn$ is \textbf{not} $O(2^n)$.
+
+\section*{S. 3}
+$f$ is a function. Since $f$ contains $logn$, its domain needs to be the set D = $\{n \in \mathbb{R}\ |\ n > 0 \}$.
+
+\begin{equation}
+    4^x > 2^x,\ \forall x \in \mathbb{R}(x > 0)
+\end{equation}
+
+The Eq.1 can be proved by using graph of the functions.\\
+
+
+\textbf{Definition 1 in Book Chapter 3.2.2: } Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $O(g(x))$ if there are constants $C$ and $k$ such that
+
+\begin{equation*}
+    |f(x)| \leq C |g(x)|
+\end{equation*}
+
+whenever $x > k$. [This is read as "$f(x)$ is big-oh of $g(x)$."]\\
+
+\noindent We can prove that $f(n) = 4^n + 5n^2logn$ is \textbf{not} $O(2^n)$ by using contradiction. If the function $f$ is $O(2^n)$, then we can say that
+\begin{align}
+    &\ \ \ \ |f(n)| \leq C |2^n| &\forall n \in \mathbb{R}(n > k)\\
+    &=|4^n + 5n^2logn| \leq C |2^n| &\forall n \in \mathbb{R}(n > k)
+\end{align}
+
+There is a contradiction because there is not specific $C$ and $k$ pair that satisfies the inequality $\forall n$. Therefore, the function $f(n)$ is \textbf{not} $O(2^n)$
+
+\newpage
+
+\section*{Q. 4}
+Given two positive integers $x$ and $n$ such that $x > 2$ and $n > 2$, and the congruence relation
+\begin{equation*}
+    (2x - 1)^n - x^2 \equiv -x - 1\ (\bmod{(x-1)})  
+\end{equation*}
+determine the value of $x$.
+
+\section*{S. 4}
+\subsection*{Corollary 1}
+\begin{align}
+    \text{if } a \equiv b \bmod{n} \text{, then } a^k \equiv b^k \bmod{n}
+\end{align}
+
+\subsection*{Solution}
+\begin{align*}
+    (2x - 1)^n - x^2 &\equiv -x - 1\ (\bmod{(x-1)})\\
+    (2x - 1)^n &\equiv x^2 - x - 1\ (\bmod{(x-1)})\\
+    (2x - 1)^n &\equiv -1\ (\bmod{(x-1)}) &[x^2 - x - 1 &\equiv -1\ (\bmod{(x-1)})]\\
+    (2x - 1)^n &\equiv x - 2\ (\bmod{(x-1)}) &[-1 &\equiv x - 2\ (\bmod{(x-1)})]\\
+    1 &\equiv x - 2\ (\bmod{(x-1)}) &[2x - 1 &\equiv 1\ (\bmod{(x-1)}) \text{ and by \textbf{Corollary 1}}]\\
+    3 &\equiv x\ (\bmod{(x-1)})\\
+    3 &\equiv 1\ (\bmod{(x-1)})
+\end{align*}
+
+$x - 1 = 2$. Therefore, $x = 3$.
+
+\end{document}

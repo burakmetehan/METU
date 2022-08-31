@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{centernot}
+\usepackage{tcolorbox}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Burak Metehan Tunçel \\
+Id Number :  2468726 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+$a_n = a_{n-1} + 2^n, n\geq 1$ and $a_0 = 1$ are given. It is not hard to see that
+\begin{align}
+    a_n - a_{n-1} &= 2^n &n \geq 1
+\end{align}
+
+\noindent Let $G(x) = \sum_{n=0}^{\infty} a_nx^n$ be the generating function for the sequence $\{a_n\}$. Also note that,
+\begin{equation*}
+    x G(x) = \sum_{n=0}^{\infty} a_nx^{n+1} = \sum_{n=1}^{\infty} a_{n-1}x^{n}
+\end{equation*}
+
+\noindent Using the recurrence relation, we see that,
+\begin{align*}
+    G(x) - x G(x) &= \sum_{n=0}^{\infty} a_{n}x^{n} - \sum_{n=1}^{\infty} a_{n-1}x^{n}\\
+    &= a_0 + \sum_{n=1}^{\infty} (a_n - a_{n-1})x^{n}\\
+    &= 1 + \sum_{n=1}^{\infty} 2^nx^{n} &\text{From (1)}\\
+    &= \sum_{n=0}^{\infty} 2^nx^n &1 + \sum_{n=1}^{\infty} 2^nx^{n} = 2x + 2^2x^2 + \cdot \cdot \cdot\\
+    &= \frac{1}{1-2x} &\text{From Table 1 in Chapter 8 in textbook}
+\end{align*}
+So, we have the following,
+\begin{align}
+    G(x) - xG(x) &= \frac{1}{1-2x} \notag \\
+    G(x) (1-x) &= \frac{1}{1-2x} \notag \\
+    G(x) &= \frac{1}{(1-2x)(1-x)}
+\end{align}
+Also, note that
+\begin{equation}
+    \frac{1}{(1-2x)(1-x)} = \frac{2}{1-2x} - \frac{1}{1-x}
+\end{equation}
+By combining the (2) and (3), we get the following:
+\begin{equation}
+    G(x) = \frac{2}{1-2x} - \frac{1}{1-x}
+\end{equation}
+
+\noindent According to \textbf{Table 1 in Chapter 8 in textbook}
+\begin{align}
+    \frac{2}{1-2x} &= 2 \sum_{n=0}^{\infty} 2^{n}x^{n} = \sum_{n=0}^{\infty} 2^{n+1}x^{n}\\
+    \frac{1}{1-x} &= \sum_{n=0}^{\infty} x^{n}
+\end{align}
+
+\noindent When we insert the (5) and (6) into (4), we get
+\begin{equation}
+    G(x) = \sum_{n=0}^{\infty} 2^{n+1}x^{n} - \sum_{n=0}^{\infty} x^{n} = \sum_{n=0}^{\infty} (2^{n+1}-1)x^{n}
+\end{equation}
+
+\noindent From (7), it can be said that,
+\begin{equation*}
+    a_n = 2^{n+1} - 1
+\end{equation*}
+
+
+\newpage
+\section*{Answer 2}
+
+\subsection*{a)}
+
+\begin{tikzpicture}
+  \node (1) at (0, -2) {$1$};
+  \node (2) at (-2, 0) {$2$};
+  \node (3) at (2, 0) {$3$};
+  \node (9) at (2, 2) {$9$};
+  \node (18) at (0, 3) {$18$};
+  \draw (1) -- (2) -- (18) -- (9) -- (3) -- (1);
+\end{tikzpicture}
+
+\subsection*{b)}
+
+$\begin{bmatrix}
+1 & 1 & 1 & 1 & 1\\
+0 & 1 & 0 & 0 & 1\\
+0 & 0 & 1 & 1 & 1\\
+0 & 0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0 & 1\\
+\end{bmatrix}$
+
+\subsection*{c)}
+
+It is a lattice because every pair of elements has both a least upper bound and a greatest lower bound. There is not pair to cause contrary to that fact.
+
+\subsection*{d)}
+
+$R_S$, the symmetric closure of $R$, is,
+
+$R_S = R \cup R^{-1} = \{(a,\ b)\ |\ a \text{ divides } b\} \cup \{(a,\ b)\ |\ b \text{ divides } a \}$
+
+\noindent So, the matrix representation of the $R_S$ as follows
+
+% 1, 2, 3, 9, 18
+$\begin{bmatrix}
+1 & 1 & 1 & 1 & 1\\
+1 & 1 & 0 & 0 & 1\\
+1 & 0 & 1 & 1 & 1\\
+1 & 0 & 1 & 1 & 1\\
+1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}$
+
+\subsection*{e)}
+% In (A,R), are the integers 2 and 9 are comparable? Are 3 and 18 comparable? Explain your answer
+
+The integers 2 and 9 are not comparable because $2 \centernot{|} 9$ which means 2 does not divide 9. However, 3 and 18 are comparable because $3 \centering{|} 18$ which means 3 divides 18.
+
+\newpage
+\section*{Answer 3}
+
+\subsection*{a)} 
+
+\textbf{Answer:} $2^n \cdot 3^{(n^2 - n)/2}$
+
+\begin{tcolorbox}
+\textbf{Explanation:}
+
+The number of antisymmetric binary relations possible in $A$ is $2^n \cdot 3^{(n^2 - n)/2}$. For antisymmetric relation, if $(a, b) \in R$ and $(b, a) \in R$, then $a = b$ when $a, b \in A$.\\ 
+
+When matrix representation of relation is considered, antisymmetric means that if there is $(a_i, a_j)$ from the lower triangle of the matrix, then $(a_j, a_i)$ from the upper triangle should not be present in $R$ and vice versa. Therefore, there are three possibilities for each $(a_i, a_j)$.\\
+
+That is, either $(a_i, a_j)$ is in the relation or $(a_j, a_i)$ is in the relation, or none of the $(a_i, a_j), (a_j, a_i)$ is in the relation. There are $(n^2 - n)/2$ pairs for $(a_i, a_j)$ such that $i \neq j$. Therefore, there are $3^{(n^2 - n)/2}$ antisymmetric binary relations.\\
+
+Furthermore, any subset of the diagonal elements is also an antisymmetric relation. Therefore the number of antisymmetric binary relations is $2^n \cdot 3^{(n^2 - n)/2}$.
+\end{tcolorbox}
+
+\subsection*{b)}
+
+\textbf{Answer:} $3^{(n^2 - n)/2}$
+
+\begin{tcolorbox}
+The number of binary relations which are both reflexive and antisymmetric in the
+set $A$ is $3^{(n^2 - n)/2}$.\\
+
+All diagonal elements are part of the reflexive relation and there are 3 possibilities for each of the remaining $(n^2 - n)/2$ elements. Thus, we get $3^{(n^2 - n)/2}$ binary relations which are
+reflexive and antisymmetric.\\
+
+In other words, the antisymmetric part of this question is explained in the previous sub-question. In the last part of the previous sub-question, we think the any subset of the diagonal elements; however, only one subset of the diagonal elements is our concern because of the reflexive property. Therefore, there is $3^{(n^2 - n)/2}$ binary relations which are reflexive and antisymmetric.
+\end{tcolorbox}
+
+\end{document}

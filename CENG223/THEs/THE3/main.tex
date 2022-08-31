@@ -1,0 +1,261 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{float}
+%\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
+\usepackage[hmargin=3cm,vmargin=5.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Burak Metehan Tunçel \\
+Id Number :  2468726 \\
+
+
+\section*{Q1}
+Let $m \in Z^+-\{1\}$ and $f(x)$ is a identity function, which means that $f(x) = x$.
+
+\begin{equation*}
+    f(m-1) = f(m) - 1 = m - 1
+\end{equation*}
+which means $m - 1 \in Z^+$ and $m - 1 < m$ according \textbf{Well-Ordering Property} of the positive integers.
+
+When we insert any number instead of $m$, we acquire another positive integer. However, when we insert $1$, $1 \in Z^+$, instead of m
+\begin{equation*}
+    f(1 - 1) = f(1) - 1 = 1 - 1 = 0
+\end{equation*}
+Here, $0 \notin Z^+$. Therefore $1$ is the smallest positive integer
+
+
+\section*{Q2}
+\subsubsection*{Proof of $S(m, 1)$}
+
+For $n = 1$, the function $f(m, n)$ becomes $f(m, 1) = \frac{(1 + m - 1)!}{1! (m-1)!} = \frac{m!}{(m-1)!} = \frac{m (m-1)!}{(m-1)!} = m$
+
+\begin{itemize}
+    \item For $m = 1$, $S(1, 1): x_1 = 1$. There is only \textbf{1} solution
+    \begin{equation*}
+        \{(x_1 = 1)\}
+    \end{equation*}
+    Since $f(1, 1) = 1$, the function $f$ is valid for $m = 1$.
+    \item For $m = 2$, $S(2, 1): x_1 + x_2 = 1$. There are \textbf{2} solutions
+    \begin{equation*}
+        \{(x_1 = 1, x_2 = 0), (x_1 = 0, x_2 = 1)\}
+    \end{equation*}
+    Since $f(2, 1) = 1$, the function $f$ is valid for $m = 2$.
+    \begin{center}
+        $\bullet$\\
+        $\bullet$\\
+        $\bullet$\\    
+    \end{center}
+    \item For $m$, $S(m, 1): x_1 + x_2 + \cdot \cdot \cdot + x_m = 1$. There are \textbf{m} solutions
+    \begin{align*}
+        &\{(x_1, x_2, ..., x_m) | x_i = 1,\ x_j = 0,\ 1 \leq i, j \leq m,\ (i, j \in Z^+),\ i \neq j\}\\
+        &= \{(x_1 = 1, x_2 = 0, \cdot \cdot \cdot x_m = 0), (x_1 = 0, x_2 = 1, \cdot \cdot \cdot x_m = 0), \cdot \cdot \cdot, (x_1 = 0, x_2 = 0, \cdot \cdot \cdot x_m = 1)\}
+    \end{align*}
+    \item For $m$, $S(m+1, 1): x_1 + x_2 + \cdot \cdot \cdot + x_{m+1} = 1$. There are \textbf{m+1} solutions
+    \begin{align*}
+        &\{(x_1, x_2, ..., x_m) | x_i = 1,\ x_j = 0,\ 1 \leq i, j \leq m,\ (i, j \in Z^+),\ i \neq j\}\\
+        &= \{(x_1 = 1, x_2 = 0, \cdot \cdot \cdot x_m = 0), (x_1 = 0, x_2 = 1, \cdot \cdot \cdot x_m = 0), \cdot \cdot \cdot, (x_1 = 0, x_2 = 0, \cdot \cdot \cdot x_{m+1} = 1)\}
+    \end{align*}
+\end{itemize}
+So, it can be told that statement of $S$ is true.\\
+
+\textbf{Basis Step:} $S(1, 1)$ is true and verified above.
+
+\textbf{Inductive Step:} Assume that $S(m, 1)$ is true. show that $S(m, 1) \rightarrow S(m+1, 1)$ is true $\forall m$.\\ 
+
+\textit{It is showed above that $S(m+1, 1)$ is true and verified. Therefore, By induction $S(m, 1)$ is proved.}
+
+
+\subsubsection*{Proof of $S(1, n)$}
+
+For $m = 1$, the function $f(m, n)$ becomes $f(1, n) = \frac{(n + 1 - 1)!}{n! (1-1)!} = \frac{n!}{(n)!} = 1$
+
+\begin{itemize}
+    \item For $n = 1$, $S(1, 1): x_1 = 1$. There is only \textbf{1} solution
+    \begin{equation*}
+        \{(x_1 = 1)\}
+    \end{equation*}
+    Since $f(1, 1) = 1$, the function $f$ is valid for $n = 1$.
+    \item For $n = 2$, $S(1, 2): x_1 = 2$. There are \textbf{1} solutions
+    \begin{equation*}
+        \{(x_1 = 2)\}
+    \end{equation*}
+    Since $f(1, 2) = 1$, the function $f$ is valid for $n = 2$.
+    \begin{center}
+        $\bullet$\\
+        $\bullet$\\
+        $\bullet$\\    
+    \end{center}
+    \item For $n$, $S(1, n): x_1 = n$. There are \textbf{1} solutions
+    \begin{align*}
+        \{(x_1 = n)\}
+    \end{align*}
+    \item For $n$, $S(1, n): x_1 = n$. There are \textbf{1} solutions
+    \begin{align*}
+        \{(x_1 = n+1)\}
+    \end{align*}
+\end{itemize}
+
+\textbf{Basis Step:} $S(1, 1)$ is true and verified above.
+
+\textbf{Inductive Step:} Assume that $S(1, n)$ is true. Show that $S(1, n) \rightarrow S(1, n+1)$ is true $\forall n$.\\ 
+
+\textit{It is showed above that $S(1, n+1)$ is true and verified. Therefore, By induction $S(1, n)$ is proved.}
+
+
+\subsubsection*{Proof of $S(m+1, n)$}
+
+\textbf{Basis Step:} $S(1, n)$ is showed that it is true.\\
+\textbf{Inductive Step:} Assume that $[S(1, n) \land S(2, n) \land \cdot \cdot \cdot \land S(m, n)]$ is true. Show that $S(m+1, n)$ is true.
+
+According to our assumption, the following equations are true.
+\begin{align*}
+    S(1, n) &= f(1, n) = 1\\
+    S(2, n) &= f(2, n) = (n+1) f(1, n)\\
+    S(3, n) &= f(3, n) = \frac{n+2}{2} f(2, n)\\
+    &\cdot\\
+    &\cdot\\
+    &\cdot\\
+    S(m, n) &= f(m, n) = \frac{n+m-1}{m-1} f(m-1, n)
+\end{align*}
+
+Since
+\begin{align}
+    S(m+1, n) &= f(m+1, n) = \frac{n+m}{m} f(m, n),
+\end{align}$S(m+1, n)$ is also true by Strong Induction
+
+
+\subsubsection*{Proof of $S(m, n+1)$}
+
+\textbf{Basis Step:} $S(m, 1)$ is showed that it is true.\\
+\textbf{Inductive Step:} Assume that $S(m, 1) \land S(m, 2) \land \cdot \cdot \cdot \land S(m, n)$ is true. Show that $S(m, n+1)$ is true.
+
+According to our assumption, the following equations are true.
+\begin{align*}
+    S(m, 1) &= f(m, 1) = m\\
+    S(m, 2) &= f(m, 2) = \frac{m+1}{2} f(m, 1)\\
+    S(m, 3) &= f(m, 2) = \frac{m+2}{3} f(m, 2)\\
+    &\cdot\\
+    &\cdot\\
+    &\cdot\\
+    S(m, n) &= f(m, n) = \frac{m+n-1}{n} f(m, n-1)
+\end{align*}
+
+Since
+\begin{align}
+    S(m, n+1) &= f(m, n+1) = \frac{n+m}{n+1} f(m, n),
+\end{align}$S(m, n+1)$ is also true by Strong Induction
+
+
+\subsubsection*{Proof of $S(m+1, n+1)$}
+
+\textbf{Basis Step:} $S(1, 1)$ is showed that it is true.\\
+\textbf{Inductive Step:} Assume that $S(m+1, n) \land S(m, n+1)$ is true. Show that $S(m+1, n+1)$ is true.\\
+
+According the Equation 1, 
+\begin{equation}
+    S(m + 1, n + 1) = \frac{n+m+1}{m} f(m, n+1) = \frac{n+m+1}{m} \frac{(n+m)!}{(n+1)! (m-1)!}
+\end{equation}
+
+According to Equation 2,
+\begin{equation}
+    S(m + 1, n + 1) = \frac{n+m+1}{n+1} f(m+1, n) = \frac{n+m+1}{n+1} \frac{(n+m)!}{n! m!}
+\end{equation}
+
+Since Equations 3 and 4 are equal, it can be told that $S(m+1, n+1)$ is true.
+
+
+\newpage
+\section*{Q3}
+\paragraph{\textbf{a.}}
+
+In picture, \textbf{21} unit square can be formed. For each unit square, \textbf{4} congruent triangles can be drawn. The area that is outside these unit squares (the right side of the picture) there are \textbf{7} congruent triangle.
+
+\begin{equation*}
+    21 \times 4 + 7 = 91
+\end{equation*}
+
+\textbf{91} congruent triangles can be drawn.
+
+\paragraph{\textbf{b.}}
+
+\begin{equation*}
+    4^6 - \binom{4}{1} 3^6 + \binom{4}{2} 2^6 - \binom{4}{3} 1^6 = 1560
+\end{equation*}
+
+
+\section*{Q4}
+\paragraph{\textbf{a.}}
+\begin{align*}
+    &a_n = 2 a_{n-1} + 3^{n-1} &\forall n \geq 3
+\end{align*}
+
+\paragraph{\textbf{b.}}
+\begin{equation*}
+    a_2 = 3
+\end{equation*}
+
+\paragraph{\textbf{c.}}
+\begin{equation*}
+    a_n = a_n^{(h)} + a_n^{(p)}
+\end{equation*}
+
+Here, we need to calculate both homogeneous and particular solutions.
+\begin{equation*}
+    a_n = 2 a_{n-1} + 3^{n-1} \implies a_n - 2 a_{n-1} = 3^{n-1}
+\end{equation*}
+\\
+
+$a_n^{(h)}$: The associated linear homogeneous equation is  $a_n - 2 a_{n-1} = 0$. Its solutions are $a_n^{(h)} = \alpha 2^n$, where $\alpha$ is constant.\\
+
+$a_n^{(p)}$: We now ﬁnd a particular solution. Because $F(n) = 3^{n-1}$, a reasonable trial solution is $p_n = A3^n$, where $A$ is constant.
+
+Then equation becomes
+\begin{align*}
+    a_n - 2 a_{n-1} &= 3^{n-1}\\
+    A3^n - 2A3^{n-1} &= 3^{n-1}\\
+    3A - 2A &= 1 &\text{when the equation is divided by $3^{n-1}$}\\
+    A &= 1\\
+\end{align*}
+
+So, $a_n^{(p)} = 3^n$.\\
+
+At the end, since $a_n = a_n^{(h)} + a_n^{(p)}$,
+
+\begin{equation*}
+    a_n = \alpha 2^n + 3^n
+\end{equation*}
+
+By using $a_2 = 3$, we find $\alpha = \frac{-3}{2}$
+
+\begin{align*}
+    a_n &= \frac{-3}{2} 2^n + 3^n\\
+    a_n &= -3 \times 2^{n-1} + 3^n
+\end{align*}
+
+\end{document}
+
